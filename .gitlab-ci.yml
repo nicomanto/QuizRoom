@@ -1,0 +1,8 @@
+image: gcc
+
+build:
+  stage: build
+  script:
+    - qmake -project
+    - qmake
+    - make
