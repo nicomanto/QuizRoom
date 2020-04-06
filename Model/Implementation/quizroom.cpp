@@ -1,4 +1,4 @@
-#include "quizroom.h"
+#include "../Header/quizroom.h"
 #include "ui_quizroom.h"
 
 QuizRoom::QuizRoom(QWidget *parent)
