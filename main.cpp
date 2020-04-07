@@ -1,9 +1,9 @@
-#include "Model/Header/quizroom.h"
+#include "Model/quizroom.h"
 #include <iostream>
 #include <QApplication>
-#include <string.h>
+#include <string.h> // per testare
 
-#include "Model/Header/myvector.h"
+#include "Model/myvector.h" //per testare
 
 int main(int argc, char *argv[])
 {
