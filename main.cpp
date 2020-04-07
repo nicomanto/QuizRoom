@@ -1,4 +1,4 @@
-#include "quizroom.h"
+#include "Model/quizroom.h"
 #include <iostream>
 #include <QApplication>
 
