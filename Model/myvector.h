@@ -12,14 +12,14 @@ ostream& operator<< (ostream&, const MyVector<T>&);
 template<class T>
 class MyVector{
     friend ostream& operator<< <T> (ostream&, const MyVector<T>&);
-    friend class iterator;
+    //friend class iterator;
 private:
     T* punt;
     unsigned int my_size;
     unsigned int my_capacity;
 public:
 
-    MyVector(unsigned int s=0, const T& t=T());
+    MyVector(unsigned int s=0, const T& t=T());  //convertitore da unsigned int => MyVector
     MyVector(const MyVector& v);
     ~MyVector(){delete[] punt;}
 
@@ -30,27 +30,20 @@ public:
     T& back()const {return punt[my_size-1];} // ritorna l'ultimo elemento
 
     void push_back(const T& t) {insert(end(),t);}
-    void pop_back(){
-        //punt[my_size-1].~T(); my_size--;
-        erase(--end());
-    } //da fare try cacth undefined beaviour
+    void pop_back(){  erase(--end());} //da fare try cacth undefined beaviour
+    //punt[my_size-1].~T(); my_size--;
 
-    //assicura che il vettore può contenere almeno n elementi
-    void reserve (unsigned int n);
+    void reserve (unsigned int n);//assicura che il vettore può contenere almeno n elementi
     void resize(unsigned int n, const T& t=T());
     void clear() {erase(begin(),end());}
-
 
     T& operator[](unsigned int i) const {return punt[i];}
 
     MyVector& operator=(const MyVector& v);
-
-
     bool operator==(const MyVector& v) const;
-
     MyVector operator+(const MyVector& v) const;
+    void append(const MyVector& v) { *this= *this + v;}
 
-    void append(const MyVector& v) {*this= *this + v;}
 
     class iterator{
         friend class MyVector<T>;
@@ -70,7 +63,6 @@ public:
         iterator& operator=(const iterator& j) {i=j.i, past_the_end=j.past_the_end; sizeV=j.sizeV; return *this;}
         bool operator ==(const iterator& j) const {return i==j.i; }
         bool operator !=(const iterator& j) const { return i != j.i;}
-
     };
 
 
@@ -97,13 +89,7 @@ public:
     };
 
     iterator begin(){return iterator(punt,0,my_size);}
-    iterator end(){
-        if(punt==nullptr)
-            return nullptr;
-        return iterator((punt+my_size),my_size, my_size);
-    }
-
-
+    iterator end();
     iterator erase(iterator it);
     iterator erase(iterator it1, iterator it2);
     iterator insert(iterator it, const T& t);
@@ -113,17 +99,16 @@ public:
 template <class T>
 MyVector<T>::MyVector(unsigned int s, const T& t) : punt(s == 0 ? nullptr : new T[s]), my_size(s), my_capacity(s) {  //Converte da unsigned int ==> Vettore
 
-    for (unsigned int i = 0; i < my_size; ++i) {
-
+    for (unsigned int i = 0; i < my_size; ++i)
         punt[i] = t;
-    }
+
 }
 
 template <class T>
 MyVector<T>::MyVector(const MyVector& v): punt(v.my_size==0? nullptr : new T[v.my_size]), my_size(v.my_size), my_capacity(v.my_capacity){
-    for (unsigned int i=0; i<my_size;++i){
+    for (unsigned int i=0; i<my_size;++i)
         punt[i]=v[i];
-    }
+
 }
 
 //assicura che il vettore può contenere almeno n elementi
@@ -133,6 +118,7 @@ void MyVector<T>::reserve (unsigned int n){
         T* temp= new T[2*n]; //aumento del doppio per sicurezza
 
         my_capacity=2*n;
+
         for(unsigned int i=0;i<my_size;++i)
             temp[i]=punt[i];
 
@@ -206,14 +192,13 @@ MyVector<T> MyVector<T>::operator+(const MyVector<T>& v) const {
     MyVector temp(my_size + v.my_size);
     unsigned int i;
 
-    for (i = 0; i < my_size; ++i) {
+    for (i = 0; i < my_size; ++i)
         temp.punt[i] = punt[i];
-    }
 
-    for (unsigned int j = i, k=0; k < v.my_size; ++j, ++k) {
 
+    for (unsigned int j = i, k=0; k < v.my_size; ++j, ++k)
         temp.punt[j] = v.punt[k];
-    }
+
 
     return temp;
 }
@@ -231,6 +216,16 @@ typename MyVector<T>::iterator& MyVector<T>::iterator::operator++() {
         }
 
         return *this;
+}
+
+template<class T>
+typename MyVector<T>::iterator MyVector<T>::iterator::operator++(int) {
+        iterator temp=*this;
+
+        ++(*this);
+
+        return temp;
+
 }
 
 
@@ -252,19 +247,9 @@ typename MyVector<T>::iterator MyVector<T>::iterator::operator--(int) {
 
         return temp;
 
-
 }
 
-template<class T>
-typename MyVector<T>::iterator MyVector<T>::iterator::operator++(int) {
-        iterator temp=*this;
 
-        ++(*this);
-
-        return temp;
-
-
-}
 
 template<class T>
 typename MyVector<T>::const_iterator& MyVector<T>::const_iterator::operator++() {
@@ -276,6 +261,15 @@ typename MyVector<T>::const_iterator& MyVector<T>::const_iterator::operator++() 
         }
 
         return *this;
+}
+
+template<class T>
+typename MyVector<T>::const_iterator MyVector<T>::const_iterator::operator++(int) {
+        const_iterator temp=*this;
+
+        ++(*this);
+
+        return temp;
 }
 
 
@@ -298,13 +292,14 @@ typename MyVector<T>::const_iterator MyVector<T>::const_iterator::operator--(int
         return temp;
 }
 
+
+
 template<class T>
-typename MyVector<T>::const_iterator MyVector<T>::const_iterator::operator++(int) {
-        const_iterator temp=*this;
+typename MyVector<T>::iterator MyVector<T>::end(){
+    if(punt==nullptr)
+        return nullptr;
 
-        ++(*this);
-
-        return temp;
+    return iterator((punt+my_size),my_size, my_size);
 }
 
 
@@ -327,16 +322,18 @@ typename MyVector<T>::iterator MyVector<T>::erase(MyVector<T>::iterator it){ //d
 template<class T>
 typename MyVector<T>::iterator MyVector<T>::erase(MyVector<T>::iterator it1, MyVector<T>::iterator it2){ //da fare try cacth undefined beaviour
         int lenght_remove=it2.past_the_end-it1.past_the_end;
+        iterator return_iterator=it1;
 
-        if(lenght_remove>=0){
+        if(lenght_remove>0){
             iterator copy_iterator=it1;
 
             while (it2 != end())
                 *copy_iterator++ = *it2++;
 
-
             resize(my_size-(lenght_remove));
-            return copy_iterator;
+            return_iterator.sizeV=my_size;
+
+            return return_iterator;
         }
         else{
             //eccezzione
@@ -362,24 +359,26 @@ typename MyVector<T>::iterator MyVector<T>::insert(MyVector<T>::iterator it, con
 
 template<class T>
 void MyVector<T>::insert(MyVector<T>::iterator it,unsigned int n, const T& t){ //da fare try cacth undefined beaviour
+    int index_first_end=int((--end()).past_the_end); //conversione per evitare problemi con l'uguale a zero
+    int i_it=int(it.past_the_end); //conversione per evitare problemi con l'uguale a zero
+
     resize(my_size+n);
 
     iterator temp=end();
 
-    for(unsigned int i=it.past_the_end;i<it.sizeV;++i)
-        *--temp=punt[i];
+    for(int i=index_first_end;i>=i_it;--i)
+        *(--temp)=punt[i];
 
 
-
-    while(temp.past_the_end != it.past_the_end)
+    while(temp.past_the_end != i_it)
         *--temp=t;
+
 }
 
 template<class T>
 std::ostream& operator<<(std::ostream& os, const MyVector<T>& v) {
     for (unsigned int i = 0; i < v.my_size; ++i)
         os << v[i] << " ";
-
 
     return os;
 }

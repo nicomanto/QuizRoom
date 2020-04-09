@@ -7,19 +7,61 @@
 
 int main(int argc, char *argv[])
 {
-
-    MyVector<std::string> temp(5,"ciao");
+    int y=8;
+    MyVector<int> temp(2,y), f(temp),z;
 
     temp.pop_back();
-    std::cout<<temp[4];
-    std::cout<<"size:"<<temp.size()<<" "<<temp.capacity();
+    temp.pop_back();
+    temp.push_back(5);
+    std::cout<<"Front: "<<temp.front()<<std::endl;
+    std::cout<<"BAck: "<<temp.back()<<std::endl;
 
-    MyVector<int> prova(10,10);
-    int i=0;
-    for(MyVector<int>::iterator r=prova.begin(); r != prova.end(); ++r, i++){
-        *r=i;
+    temp=f;
+    z.insert(f.begin(),99);
+    z.insert(f.begin(),98);
+    z.insert(f.begin(),97);
+    z.insert(f.begin(),96);
+    z.insert(f.begin(),95);
+    z.insert(f.begin(),94);
+    z.insert(f.begin(),93);
+    z.insert(f.begin(),92);
+    z.insert(f.begin(),91);
+    z.insert(f.begin(),90);
+    z.insert(f.begin(),89);
+    std::cout<<std::endl;
+    std::cout<<"size:"<<temp.size()<<" capacity:"<<temp.capacity()<<std::endl;
+    for(MyVector<int>::iterator r=z.begin(); r != z.end(); ++r){
+        std::cout<<*r<<" ";
     }
-    MyVector<int>::iterator f=prova.begin(), t=prova.begin();
+
+    z.append(temp);
+    MyVector<int>::iterator c= ++(++z.begin());
+    MyVector<int>::iterator k= ++(++(++(++z.begin())));
+
+    if(temp==f){
+
+        std::cout<<"size:"<<temp.size()<<" capacity:"<<temp.capacity()<<std::endl;
+        for(MyVector<int>::iterator r=temp.begin(); r != temp.end(); ++r){
+            std::cout<<*r<<" ";
+        }
+        std::cout<<std::endl;
+        std::cout<<"size:"<<temp.size()<<" capacity:"<<temp.capacity()<<std::endl;
+        for(MyVector<int>::iterator r=z.erase(c,k); r != z.end(); ++r){
+            std::cout<<*r<<" ";
+        }
+
+
+    }
+
+
+    /*MyVector<int> prova(10,10);
+    int i=0;
+
+    MyVector<int>::const_iterator r=prova.begin();
+    r++;
+    MyVector<int>::const_iterator k=prova.begin();
+    //MyVector<int>::iterator y=k;
+    MyVector<int>::const_iterator f=prova.begin(), t=prova.begin();
 
     f++;
     f++;
@@ -44,7 +86,7 @@ int main(int argc, char *argv[])
     prova.clear();
     for(MyVector<int>::iterator r=prova.begin(); r != prova.end(); ++r){
         std::cout<<*r<<" ";
-    }
+    }*/
 
 
 
