@@ -30,8 +30,7 @@ public:
     T& back()const {return punt[my_size-1];} // ritorna l'ultimo elemento
 
     void push_back(const T& t) {insert(end(),t);}
-    void pop_back(){  erase(--end());} //da fare try cacth undefined beaviour
-    //punt[my_size-1].~T(); my_size--;
+    void pop_back(){  erase(--end());}
 
     void reserve (unsigned int n);//assicura che il vettore può contenere almeno n elementi
     void resize(unsigned int n, const T& t=T());
@@ -105,7 +104,7 @@ MyVector<T>::MyVector(unsigned int s, const T& t) : punt(s == 0 ? nullptr : new 
 }
 
 template <class T>
-MyVector<T>::MyVector(const MyVector& v): punt(v.my_size==0? nullptr : new T[v.my_size]), my_size(v.my_size), my_capacity(v.my_capacity){
+MyVector<T>::MyVector(const MyVector& v): punt(v.my_size==0? nullptr : new T[v.my_capacity]), my_size(v.my_size), my_capacity(v.my_capacity){
     for (unsigned int i=0; i<my_size;++i)
         punt[i]=v[i];
 
@@ -304,7 +303,7 @@ typename MyVector<T>::iterator MyVector<T>::end(){
 
 
 template<class T>
-typename MyVector<T>::iterator MyVector<T>::erase(MyVector<T>::iterator it){ //da fare try cacth undefined beaviour
+typename MyVector<T>::iterator MyVector<T>::erase(MyVector<T>::iterator it){
         iterator copy_iterator=it;
         iterator return_iterator=it;
         iterator e=end(); // shortens the vector by 1
@@ -320,29 +319,25 @@ typename MyVector<T>::iterator MyVector<T>::erase(MyVector<T>::iterator it){ //d
 
 }
 template<class T>
-typename MyVector<T>::iterator MyVector<T>::erase(MyVector<T>::iterator it1, MyVector<T>::iterator it2){ //da fare try cacth undefined beaviour
+typename MyVector<T>::iterator MyVector<T>::erase(MyVector<T>::iterator it1, MyVector<T>::iterator it2) {
         int lenght_remove=it2.past_the_end-it1.past_the_end;
         iterator return_iterator=it1;
 
-        if(lenght_remove>0){
-            iterator copy_iterator=it1;
 
-            while (it2 != end())
-                *copy_iterator++ = *it2++;
+        iterator copy_iterator=it1;
 
-            resize(my_size-(lenght_remove));
-            return_iterator.sizeV=my_size;
+        while (it2 != end())
+            *copy_iterator++ = *it2++;
 
-            return return_iterator;
-        }
-        else{
-            //eccezzione
-            return end();
-        }
+        resize(my_size-(lenght_remove));
+        return_iterator.sizeV=my_size;
+
+        return return_iterator;
+
 }
 
 template<class T>
-typename MyVector<T>::iterator MyVector<T>::insert(MyVector<T>::iterator it, const T& t){  //da fare try cacth undefined beaviour
+typename MyVector<T>::iterator MyVector<T>::insert(MyVector<T>::iterator it, const T& t){
     resize(my_size+1);
     iterator copy_iterator=end();
     --copy_iterator;
@@ -358,20 +353,20 @@ typename MyVector<T>::iterator MyVector<T>::insert(MyVector<T>::iterator it, con
 }
 
 template<class T>
-void MyVector<T>::insert(MyVector<T>::iterator it,unsigned int n, const T& t){ //da fare try cacth undefined beaviour
+void MyVector<T>::insert(MyVector<T>::iterator it,unsigned int n, const T& t){
     int index_first_end=int((--end()).past_the_end); //conversione per evitare problemi con l'uguale a zero
-    int i_it=int(it.past_the_end); //conversione per evitare problemi con l'uguale a zero
+    int i_it=static_cast<int>(it.past_the_end); //conversione per evitare problemi con l'uguale a zero
 
     resize(my_size+n);
 
     iterator temp=end();
 
-    for(int i=index_first_end;i>=i_it;--i)
+    for(int i=index_first_end;i>=i_it-1;--i)
         *(--temp)=punt[i];
 
 
-    while(temp.past_the_end != i_it)
-        *--temp=t;
+    while(temp.past_the_end != i_it-1)
+        *temp--=t;
 
 }
 

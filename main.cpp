@@ -1,44 +1,37 @@
 #include "Model/quizroom.h"
 #include <iostream>
 #include <QApplication>
-#include <string.h> // per testare
-
 #include "Model/myvector.h" //per testare
 
 int main(int argc, char *argv[])
 {
     int y=8;
-    MyVector<int> temp(2,y), f(temp),z;
+    MyVector<int> temp(2,y), f(temp),z(5,7);
+
+
+   z.front();
+
 
     temp.pop_back();
-    temp.pop_back();
+    temp.push_back(5);
     temp.push_back(5);
     std::cout<<"Front: "<<temp.front()<<std::endl;
     std::cout<<"BAck: "<<temp.back()<<std::endl;
 
-    temp=f;
-    z.insert(f.begin(),99);
-    z.insert(f.begin(),98);
-    z.insert(f.begin(),97);
-    z.insert(f.begin(),96);
-    z.insert(f.begin(),95);
-    z.insert(f.begin(),94);
-    z.insert(f.begin(),93);
-    z.insert(f.begin(),92);
-    z.insert(f.begin(),91);
-    z.insert(f.begin(),90);
-    z.insert(f.begin(),89);
+    //temp=f;
+    MyVector<int> te(temp);
     std::cout<<std::endl;
-    std::cout<<"size:"<<temp.size()<<" capacity:"<<temp.capacity()<<std::endl;
+    std::cout<<"size:"<<te.size()<<" capacity:"<<te.capacity()<<std::endl;
     for(MyVector<int>::iterator r=z.begin(); r != z.end(); ++r){
         std::cout<<*r<<" ";
     }
 
-    z.append(temp);
+    //z.append(temp);
+    z.insert(z.begin(),9);
     MyVector<int>::iterator c= ++(++z.begin());
     MyVector<int>::iterator k= ++(++(++(++z.begin())));
 
-    if(temp==f){
+    if(temp==te){
 
         std::cout<<"size:"<<temp.size()<<" capacity:"<<temp.capacity()<<std::endl;
         for(MyVector<int>::iterator r=temp.begin(); r != temp.end(); ++r){
@@ -46,7 +39,7 @@ int main(int argc, char *argv[])
         }
         std::cout<<std::endl;
         std::cout<<"size:"<<temp.size()<<" capacity:"<<temp.capacity()<<std::endl;
-        for(MyVector<int>::iterator r=z.erase(c,k); r != z.end(); ++r){
+        for(MyVector<int>::iterator r=z.begin(); r != z.end(); ++r){
             std::cout<<*r<<" ";
         }
 
