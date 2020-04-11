@@ -17,11 +17,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    Model/quizroom.cpp
+    Model/quizroom.cpp \
+    Model/user.cpp
 
 HEADERS += \
     Model/myvector.h \
-    Model/quizroom.h
+    Model/quizroom.h \
+    Model/user.h
 
 FORMS += \
     quizroom.ui
