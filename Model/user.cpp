@@ -12,6 +12,7 @@ void User::setSurname(string s) {surname=s;}
 void User::setUsername(string u) {username=u;}
 void User::setPassword(string p) {password=p;}
 void User::setEmail(string e) {email=e;}
+
 //da aggiungere i corsi
 
 bool User::operator == (const User& u) const{ // da aggiunger il controllo sui corsi

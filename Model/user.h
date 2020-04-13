@@ -30,7 +30,15 @@ public:
     void setEmail(string e);
     //da aggiungere i corsi
 
-    virtual bool isProfessor() const=0;
+    virtual bool addCourse()const =0;
+    virtual bool deleteCourse() const=0;
+    virtual bool editCourse() const=0;
+    virtual bool addQuiz() const=0;
+    virtual bool deleteQuiz() const=0;
+    virtual bool editQuiz() const=0;
+    virtual bool doQuiz() const=0;
+    virtual int ShowCourseStatistics(/*input Corso*/) const=0; //implementazione diverse per teacher o student
+    virtual int ShowQuizStatistics(/*input Quiz*/) const=0; //implementazione diverse per teacher o student
     virtual User* clone() const=0;
     virtual ~User() {}
 
