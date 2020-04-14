@@ -3,9 +3,10 @@
 #include <QApplication>
 #include "Model/myvector.h" //per testare
 
+
 int main(int argc, char *argv[])
 {
-    int y=8;
+    /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);
 
 
@@ -44,7 +45,7 @@ int main(int argc, char *argv[])
         }
 
 
-    }
+    }*/
 
 
     /*MyVector<int> prova(10,10);
@@ -118,9 +119,10 @@ int main(int argc, char *argv[])
 
 
 
-
     /*QApplication a(argc, argv);
     QuizRoom w;
     w.show();
     return a.exec();*/
+
+
 }

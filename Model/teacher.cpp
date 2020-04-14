@@ -1,13 +1,13 @@
 #include "teacher.h"
 
-Teacher::Teacher(string n, string s, string u, string p, string e, string m): User(n,s,u,p,e), materia(m){}
+Teacher::Teacher(string n, string s, string u, string p, string e, string m): User(n,s,u,p,e), subject(m){}
 
-string Teacher::getMateria() const{
-    return materia;
+string Teacher::getSubject() const{
+    return subject;
 }
 
-void Teacher::setMateria(string m){
-    materia=m;
+void Teacher::setSubject(string m){
+    subject=m;
 }
 
 bool Teacher::addCourse() const{

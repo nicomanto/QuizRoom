@@ -4,12 +4,12 @@
 
 class Teacher : public User{
 private:
-    string materia;
+    string subject;
 
 public:
     Teacher(string n, string s, string u, string p, string e, string m);
-    string getMateria() const;
-    void setMateria(string m);
+    string getSubject() const;
+    void setSubject(string m);
 
     virtual bool addCourse() const;
     virtual bool deleteCourse() const;
