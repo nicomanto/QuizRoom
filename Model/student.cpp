@@ -30,7 +30,7 @@ bool Student::doQuiz() const{
     return true;
 }
 
-int Student::ShowCourseStatistics(/*input Corso*/) const{
+int Student::ShowCourseStatistics(Course& c) const{
     //ritorna la statistisca su quello che è stato svolto da un SINGOLO studente sul corso
 }
 

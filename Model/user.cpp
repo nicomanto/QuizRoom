@@ -5,6 +5,10 @@ string User::getSurname() const {return surname;}
 string User::getUsername() const {return username;}
 string User::getPassword() const {return password;}
 string User::getEmail() const {return email;}
+
+MyVector<Course *> User::getCourse() const{
+    //da implementare
+}
 //da aggiungere i corsi
 
 void User::setName(string n) { name=n;}

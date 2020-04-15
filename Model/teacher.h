@@ -18,8 +18,8 @@ public:
     virtual bool deleteQuiz() const;
     virtual bool editQuiz() const;
     virtual bool doQuiz()const;
-    virtual int ShowCourseStatistics(/*input Corso*/) const;
-    virtual int ShowQuizStatistics(/*input Quiz*/) const;
+    virtual int ShowCourseStatistics(Course& c) const;  //da implementare
+    virtual int ShowQuizStatistics(/*input Quiz*/) const;  //da implementare
 
 
     Teacher *clone() const;

@@ -16,7 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Model/corso.cpp \
+    Model/course.cpp \
+    Model/homework.cpp \
+    Model/scorehomework.cpp \
     main.cpp \
     Model/quizroom.cpp \
     Model/user.cpp \
@@ -24,12 +26,14 @@ SOURCES += \
     Model/teacher.cpp
 
 HEADERS += \
+    Model/course.h \
+    Model/homework.h \
     Model/myvector.h \
     Model/quizroom.h \
+    Model/scorehomework.h \
     Model/user.h \
     Model/student.h \
-    Model/teacher.h \
-    Model/corso.h
+    Model/teacher.h
 
 FORMS += \
     quizroom.ui

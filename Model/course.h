@@ -1,28 +1,30 @@
-#ifndef CORSO_H
-#define CORSO_H
+#ifndef COURSE_H
+#define COURSE_H
 #include <string>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>
-#include "Model/myvector.h"
-#include "Model/user.h"
+#include "myvector.h"
+#include "homework.h"
 using std::string;
 
+class User;
 
-class Corso{
+
+class Course{
 private:
     string title;
     string code;
     string subject; //può essere null
     string description; //può essere null
     MyVector<User*> classroom;
-    //MyVector<Homework*> homew;  //da aggiunere i compiti
+    MyVector<Homework*> homew;  //da aggiunere i compiti
 
 
 
     void setCode();
     static string random_code();
 public:
-    Corso(string t, string s=string(), string d=string());
+    Course(string t, string s=string(), string d=string());
     string getTitle() const;
     string getCode() const;
     string getSubject() const;
@@ -33,6 +35,9 @@ public:
     void setDescription(string d);
 
 
+    int ShowStatistics() const;  // da implementare
+
+
 };
 
-#endif // CORSO_H
+#endif // COURSE_H

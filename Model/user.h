@@ -2,7 +2,7 @@
 #define USER_H
 #include "myvector.h"
 #include <string>
-
+#include "course.h"
 using std::string;
 
 class User {
@@ -12,7 +12,7 @@ private:
     string username;
     string password;
     string email;
-    //MyVector<*Corsi>   // da mettere dopo che è stata creata l'opportuna classe;
+    MyVector<Course*> course; // da mettere dopo che è stata creata l'opportuna classe;
 public:
     User(string n, string s, string u, string p, string e); //da aggiungere i corsi
 
@@ -21,14 +21,13 @@ public:
     string getUsername() const;
     string getPassword() const;
     string getEmail() const;
-    //MyVector<*Corsi> () const;
+    MyVector<Course*> getCourse() const;  //da implementare
 
     void setName(string n);
     void setSurname(string s);
     void setUsername(string u);
     void setPassword(string p);
     void setEmail(string e);
-    //da aggiungere i corsi
 
     virtual bool addCourse()const =0;
     virtual bool deleteCourse() const=0;
@@ -37,7 +36,7 @@ public:
     virtual bool deleteQuiz() const=0;
     virtual bool editQuiz() const=0;
     virtual bool doQuiz() const=0;
-    virtual int ShowCourseStatistics(/*input Corso*/) const=0; //implementazione diverse per teacher o student
+    virtual int ShowCourseStatistics(Course& c) const=0; //implementazione diverse per teacher o student
     virtual int ShowQuizStatistics(/*input Quiz*/) const=0; //implementazione diverse per teacher o student
     virtual User* clone() const=0;
     virtual ~User() {}

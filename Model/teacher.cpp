@@ -38,7 +38,7 @@ bool Teacher::doQuiz() const{
     return false;
 }
 
-int Teacher::ShowCourseStatistics(/*input Corso*/) const{
+int Teacher::ShowCourseStatistics(Course& c) const{
     //ritorna la statistisca su quello che è stato svolto da TUTTI gli studenti del corso
 }
 
