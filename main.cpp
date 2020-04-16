@@ -2,10 +2,14 @@
 #include <iostream>
 #include <QApplication>
 #include "Model/myvector.h" //per testare
-
-
+#include <iostream>
+#include "Model/date.h"
 int main(int argc, char *argv[])
 {
+
+
+    Date d(29,2,2019);
+    std::cout<<d;
     /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);
 

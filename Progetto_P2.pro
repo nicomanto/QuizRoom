@@ -17,8 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Model/course.cpp \
+    Model/date.cpp \
+    Model/datetime.cpp \
     Model/homework.cpp \
     Model/scorehomework.cpp \
+    Model/time.cpp \
+    Model/timehomework.cpp \
     main.cpp \
     Model/quizroom.cpp \
     Model/user.cpp \
@@ -27,10 +31,14 @@ SOURCES += \
 
 HEADERS += \
     Model/course.h \
+    Model/date.h \
+    Model/datetime.h \
     Model/homework.h \
     Model/myvector.h \
     Model/quizroom.h \
     Model/scorehomework.h \
+    Model/time.h \
+    Model/timehomework.h \
     Model/user.h \
     Model/student.h \
     Model/teacher.h
