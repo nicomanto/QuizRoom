@@ -1,5 +1,7 @@
 #include "time.h"
 
+Time::Time(): minutes(getCurrentTime().minutes){}
+
 Time::Time(unsigned int h, unsigned int m){
     if(h>23 || m>59)
         throw::std::out_of_range (std::to_string(h)+":"+std::to_string(m)+" non rappresenta un orario.");
@@ -32,19 +34,11 @@ std::string Time::ToString() const{
 }
 
 bool Time::operator<(const Time &t) const{
-    if(Hours()<t.Hours())
-        return true;
+    if(Hours()>t.Hours())
+        return false;
 
-    if(Hours()==t.Hours() && Minutes()<t.Minutes()){
-        if(Minutes()>t.Minutes())
-            return false;
-        else if(Minutes()==t.Minutes())
-            return false;
-        else
-            return true;
-    }
+    return (Hours()==t.Hours() && Minutes()<t.Minutes()) || Hours()<t.Hours();
 
-    return true;
 }
 
 bool Time::operator>(const Time &t) const{
