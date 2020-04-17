@@ -36,6 +36,8 @@ HEADERS += \
     Model/datetime.h \
     Model/homework.h \
     Model/myvector.h \
+    Model/quiz.h \
+    Model/quizcontainer.h \
     Model/quizroom.h \
     Model/scorehomework.h \
     Model/time.h \

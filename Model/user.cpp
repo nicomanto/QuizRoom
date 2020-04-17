@@ -1,5 +1,5 @@
 #include "user.h"
-User::User(string n, string s, string u, string p, string e): name(n), surname(s), username(u), password(p), email(e) {} //da aggiungere i corsi
+User::User(const string& n, const string& s,const string& u,const string& p,const string& e): name(n), surname(s), username(u), password(p), email(e) {} //da aggiungere i corsi
 string User::getName() const {return name;}
 string User::getSurname() const {return surname;}
 string User::getUsername() const {return username;}
@@ -11,11 +11,13 @@ MyVector<Course *> User::getCourse() const{
 }
 //da aggiungere i corsi
 
-void User::setName(string n) { name=n;}
-void User::setSurname(string s) {surname=s;}
-void User::setUsername(string u) {username=u;}
-void User::setPassword(string p) {password=p;}
-void User::setEmail(string e) {email=e;}
+void User::setName(const string& n) { name=n;}
+void User::setSurname(const string& s) {surname=s;}
+void User::setUsername(const string& u) {username=u;}
+void User::setPassword(const string& p) {password=p;}
+void User::setEmail(const string& e) {email=e;}
+
+User::~User(){}
 
 //da aggiungere i corsi
 

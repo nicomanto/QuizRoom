@@ -13,20 +13,20 @@ private:
     // MyVector <*QuizModule> module_q;       modulo per quiz (struttura del contenitore dei quiz)
 
 public:
-    Homework(string t, string i=string(),string a=string());
+    Homework(const string& t, const string& i=string(),const string& a=string());
 
     string getTitle() const;
     string getInstructions() const;
     string getArguments() const;
 
-    void setTitle(string t);
-    void setInstructions(string i);
-    void setArguments(string a);
+    void setTitle(const string& t);
+    void setInstructions(const string& i);
+    void setArguments(const string& a);
 
 
     virtual int getResult() const=0;
     virtual Homework* clone() const=0;
-    virtual ~Homework() {}
+    virtual ~Homework();
 };
 
 #endif // HOMEWORK_H

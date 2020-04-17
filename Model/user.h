@@ -14,7 +14,7 @@ private:
     string email;
     MyVector<Course*> course; // da mettere dopo che è stata creata l'opportuna classe;
 public:
-    User(string n, string s, string u, string p, string e); //da aggiungere i corsi
+    User(const string& n,const string& s,const string& u,const string& p,const string& e); //da aggiungere i corsi
 
     string getName() const;
     string getSurname() const;
@@ -23,11 +23,11 @@ public:
     string getEmail() const;
     MyVector<Course*> getCourse() const;  //da implementare
 
-    void setName(string n);
-    void setSurname(string s);
-    void setUsername(string u);
-    void setPassword(string p);
-    void setEmail(string e);
+    void setName(const string& n);
+    void setSurname(const string& s);
+    void setUsername(const string& u);
+    void setPassword(const string& p);
+    void setEmail(const string& e);
 
     virtual bool addCourse()const =0;
     virtual bool deleteCourse() const=0;
@@ -36,10 +36,10 @@ public:
     virtual bool deleteQuiz() const=0;
     virtual bool editQuiz() const=0;
     virtual bool doQuiz() const=0;
-    virtual int ShowCourseStatistics(Course& c) const=0; //implementazione diverse per teacher o student
+    virtual int ShowCourseStatistics(const Course& c) const=0; //implementazione diverse per teacher o student
     virtual int ShowQuizStatistics(/*input Quiz*/) const=0; //implementazione diverse per teacher o student
     virtual User* clone() const=0;
-    virtual ~User() {}
+    virtual ~User();
 
 
     bool operator == (const User& u) const; //da aggiungere i corsi

@@ -2,7 +2,7 @@
 
 
 
-ScoreHomework::ScoreHomework(int ts, string t, string i,string a): Homework(t,i,a), total_score(ts){}
+ScoreHomework::ScoreHomework(int ts,const string& t,const string& i,const string& a): Homework(t,i,a), total_score(ts){}
 
 int ScoreHomework::getScore() const{
     return total_score;

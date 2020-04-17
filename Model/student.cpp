@@ -1,6 +1,6 @@
 #include "student.h"
 
-Student::Student(string n, string s, string u, string p, string e): User(n,s,u,p,e){}
+Student::Student(const string& n,const string& s,const string& u,const string& p,const string& e): User(n,s,u,p,e){}
 
 bool Student::addCourse() const{
     return false;
@@ -30,7 +30,7 @@ bool Student::doQuiz() const{
     return true;
 }
 
-int Student::ShowCourseStatistics(Course& c) const{
+int Student::ShowCourseStatistics(const Course& c) const{
     //ritorna la statistisca su quello che è stato svolto da un SINGOLO studente sul corso
 }
 

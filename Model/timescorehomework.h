@@ -5,7 +5,7 @@
 
 class TimeScoreHomework : public TimeHomework, ScoreHomework{
 public:
-    TimeScoreHomework(const DateTime& d, int ts, string t, string i=string(),string a=string());
+    TimeScoreHomework(const DateTime& d, int ts, const string& t,const string& i=string(),const string& a=string());
 
     virtual int getResult() const;
     virtual TimeScoreHomework *clone() const;

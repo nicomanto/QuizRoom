@@ -1,6 +1,6 @@
 #include "homework.h"
 
-Homework::Homework(string t, string i, string a): title(t), instructions(i), arguments(a){}
+Homework::Homework(const string& t,const string& i,const string& a): title(t), instructions(i), arguments(a){}
 
 string Homework::getTitle() const{
     return title;
@@ -15,14 +15,16 @@ string Homework::getArguments() const{
     return arguments;
 }
 
-void Homework::setTitle(string t){
+void Homework::setTitle(const string& t){
     title=t;
 }
 
-void Homework::setInstructions(string i){
+void Homework::setInstructions(const string& i){
     instructions=i;
 }
 
-void Homework::setArguments(string a){
+void Homework::setArguments(const string& a){
     arguments=a;
 }
+
+Homework::~Homework(){}

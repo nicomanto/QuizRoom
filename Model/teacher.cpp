@@ -1,12 +1,12 @@
 #include "teacher.h"
 
-Teacher::Teacher(string n, string s, string u, string p, string e, string m): User(n,s,u,p,e), subject(m){}
+Teacher::Teacher(const string& n,const string& s,const string& u,const string& p,const string& e,const string& m): User(n,s,u,p,e), subject(m){}
 
 string Teacher::getSubject() const{
     return subject;
 }
 
-void Teacher::setSubject(string m){
+void Teacher::setSubject(const string& m){
     subject=m;
 }
 
@@ -38,7 +38,7 @@ bool Teacher::doQuiz() const{
     return false;
 }
 
-int Teacher::ShowCourseStatistics(Course& c) const{
+int Teacher::ShowCourseStatistics(const Course& c) const{
     //ritorna la statistisca su quello che è stato svolto da TUTTI gli studenti del corso
 }
 

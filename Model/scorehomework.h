@@ -11,7 +11,7 @@ private:
     void setScore(int ts);
     //int calc_score() const;
 public:
-    ScoreHomework(int ts, string t, string i=string(),string a=string());
+    ScoreHomework(int ts,const string& t,const string& i=string(),const string& a=string());
 
     int getScore() const;
 

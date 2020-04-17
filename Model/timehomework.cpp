@@ -4,7 +4,7 @@ void TimeHomework::setDeadline(const DateTime &d){
     deadline=d;
 }
 
-TimeHomework::TimeHomework(const DateTime& d, std::string t, std::string i, std::string a): Homework(t,i,a), deadline(d){}
+TimeHomework::TimeHomework(const DateTime& d,const std::string& t,const std::string& i,const std::string& a): Homework(t,i,a), deadline(d){}
 
 DateTime TimeHomework::getDeadline() const{
 return deadline;

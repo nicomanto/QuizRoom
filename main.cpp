@@ -4,6 +4,7 @@
 #include "Model/myvector.h" //per testare
 #include <iostream>
 #include "Model/datetime.h"
+#include "Model/course.h"
 int main(int argc, char *argv[])
 {
     DateTime d(23,2,2018,13,45), k(21,2,2018,17,59);
@@ -15,6 +16,9 @@ int main(int argc, char *argv[])
     //Date z
     if(*o<*w)
     std::cout<<*w;
+
+    Course c("ciao");
+    std::cout<<c.getTitle();
     /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);
 

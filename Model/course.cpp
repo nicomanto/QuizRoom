@@ -1,6 +1,6 @@
 #include "course.h"
 
-Course::Course(string t, string s, string d): title(t), code(random_code()), subject(s), description(d){
+Course::Course(const string& t, const string& s, const string& d): title(t), code(random_code()), subject(s), description(d){
     //settare classroom dal file
 }
 
@@ -23,15 +23,15 @@ string Course::getDescription() const
     return description;
 }
 
-void Course::setTitle(string t){
+void Course::setTitle(const string& t){
     title=t;
 }
 
-void Course::setSubject(string s){
+void Course::setSubject(const string& s){
     subject=s;
 }
 
-void Course::setDescription(string d){
+void Course::setDescription(const string& d){
     description=d;
 }
 

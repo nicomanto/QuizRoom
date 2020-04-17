@@ -9,7 +9,7 @@ private:
 
     void setDeadline (const DateTime& d);
 public:
-    TimeHomework(const DateTime& d, string t, string i=string(),string a=string());
+    TimeHomework(const DateTime& d,const string& t,const string& i=string(),const string& a=string());
 
     DateTime getDeadline() const;
 

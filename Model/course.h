@@ -24,15 +24,15 @@ private:
     void setCode();
     static string random_code();
 public:
-    Course(string t, string s=string(), string d=string());
+    Course(const string& t, const string& s=string(), const string& d=string());
     string getTitle() const;
     string getCode() const;
     string getSubject() const;
     string getDescription() const;
 
-    void setTitle(string t);
-    void setSubject(string s);
-    void setDescription(string d);
+    void setTitle(const string& t);
+    void setSubject(const string& s);
+    void setDescription(const string& d);
 
 
     int ShowStatistics() const;  // da implementare
