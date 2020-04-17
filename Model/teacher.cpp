@@ -46,6 +46,6 @@ int Teacher::ShowQuizStatistics(/*input Quiz*/) const{
     //ritorna la statistica su quello che è stato svolto da TUTTI gli studenti su un quiz
 }
 
-Teacher *Teacher::clone() const{
+Teacher* Teacher::clone() const{
     return new Teacher(*this);
 }
