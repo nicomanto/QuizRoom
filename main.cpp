@@ -3,13 +3,18 @@
 #include <QApplication>
 #include "Model/myvector.h" //per testare
 #include <iostream>
-#include "Model/date.h"
+#include "Model/datetime.h"
 int main(int argc, char *argv[])
 {
+    DateTime d(23,2,2018,13,45), k(21,2,2018,17,59);
+    Time* o= &d;
+    Time *w=&k;
 
-
-    Date d(29,2,2019);
-    std::cout<<d;
+    Time p(17,59),i(12,45);
+    Time t(12,3);
+    //Date z
+    if(*o<*w)
+    std::cout<<*w;
     /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);
 

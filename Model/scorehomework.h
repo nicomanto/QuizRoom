@@ -2,17 +2,22 @@
 #define SCOREHOMEWORK_H
 #include "homework.h"
 
-class ScoreHomework : public Homework{
+class ScoreHomework : virtual public Homework{
 private:
-    int score;
+    int total_score;
 
 
-    static int calc_score();  // da implementare
-    int setScore();
+      // da implementare
+    void setScore(int ts);
+    //int calc_score() const;
 public:
-    ScoreHomework(string t, string i=string(),string a=string());
+    ScoreHomework(int ts, string t, string i=string(),string a=string());
 
     int getScore() const;
+
+    virtual int getResult() const;
+    virtual ScoreHomework *clone() const;
+    //virtual ~ScoreHomework() {}
 };
 
 #endif // SCOREHOMEWORK_H

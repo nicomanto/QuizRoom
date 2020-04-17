@@ -23,6 +23,7 @@ SOURCES += \
     Model/scorehomework.cpp \
     Model/time.cpp \
     Model/timehomework.cpp \
+    Model/timescorehomework.cpp \
     main.cpp \
     Model/quizroom.cpp \
     Model/user.cpp \
@@ -39,6 +40,7 @@ HEADERS += \
     Model/scorehomework.h \
     Model/time.h \
     Model/timehomework.h \
+    Model/timescorehomework.h \
     Model/user.h \
     Model/student.h \
     Model/teacher.h

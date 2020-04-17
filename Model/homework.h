@@ -22,6 +22,11 @@ public:
     void setTitle(string t);
     void setInstructions(string i);
     void setArguments(string a);
+
+
+    virtual int getResult() const=0;
+    virtual Homework* clone() const=0;
+    virtual ~Homework() {}
 };
 
 #endif // HOMEWORK_H
