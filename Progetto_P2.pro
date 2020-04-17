@@ -20,6 +20,8 @@ SOURCES += \
     Model/date.cpp \
     Model/datetime.cpp \
     Model/homework.cpp \
+    Model/quiz.cpp \
+    Model/quizcontainer.cpp \
     Model/scorehomework.cpp \
     Model/time.cpp \
     Model/timehomework.cpp \
