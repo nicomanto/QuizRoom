@@ -87,8 +87,8 @@ public:
 
     };
 
-    iterator begin(){return iterator(punt,0,my_size);}
-    iterator end();
+    iterator begin() const{return iterator(punt,0,my_size);}
+    iterator end() const;
     iterator erase(iterator it);
     iterator erase(iterator it1, iterator it2);
     iterator insert(iterator it, const T& t);
@@ -294,7 +294,7 @@ typename MyVector<T>::const_iterator MyVector<T>::const_iterator::operator--(int
 
 
 template<class T>
-typename MyVector<T>::iterator MyVector<T>::end(){
+typename MyVector<T>::iterator MyVector<T>::end() const{
     if(punt==nullptr)
         return nullptr;
 
