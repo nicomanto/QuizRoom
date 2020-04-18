@@ -5,20 +5,22 @@
 #include <iostream>
 #include "Model/datetime.h"
 #include "Model/course.h"
+
+#include "Model/combinequiz.h"
 int main(int argc, char *argv[])
 {
-    DateTime d(23,2,2018,13,45), k(21,2,2018,17,59);
-    Time* o= &d;
-    Time *w=&k;
 
-    Time p(17,59),i(12,45);
-    Time t(12,3);
-    //Date z
-    if(*o<*w)
-    std::cout<<*w;
+    CombineQuiz a("ciao",100);
 
-    Course c("ciao");
-    std::cout<<c.getTitle();
+
+    a.addCorrectCombine("scimmia", "mammifero");
+    a.addCorrectCombine("ragno", "insetto");
+    a.addCorrectCombine("scimmi", "mammifero");
+
+    a.addPoint("ragno", "insetto");
+
+        std::cout<<a.getMyPoint();
+
     /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);
 
