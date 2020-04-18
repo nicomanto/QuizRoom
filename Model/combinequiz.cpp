@@ -4,6 +4,7 @@ CombineQuiz::CombineQuiz(const std::string &q, int p): Quiz(q,p){}
 
 void CombineQuiz::addCorrectCombine(const std::string &a1, const std::string &a2){
     correct_combine[a1]=a2;
+    setPointCAnswer();
 }
 
 bool CombineQuiz::isCorrectCombine(const std::string &a1, const std::string &a2) const{
