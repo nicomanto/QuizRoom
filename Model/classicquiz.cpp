@@ -1,6 +1,6 @@
 #include "classicquiz.h"
 
-ClassicQuiz::ClassicQuiz(const std::string &q, int p, int m): Quiz(q,p,m){}
+ClassicQuiz::ClassicQuiz(const std::string& q, double tp, double mp, double tm): MalusQuiz(q,tp,mp,tm){}
 
 void ClassicQuiz::addAnswer(const std::string &a){
     if(!isAnswer(a))
@@ -28,27 +28,25 @@ bool ClassicQuiz::isAnswer(const std::string &a) const{
 bool ClassicQuiz::isCorrectAnswer(const std::string &ca){
     for(MyVector<std::string>::const_iterator it=correct_answer.begin(); it!=correct_answer.end(); ++it)
         if(*it==ca)
+            return true;
 
-            return false;
+    return false;
 }
 
 void ClassicQuiz::addPoint(const std::string &ca){
     if (isCorrectAnswer(ca))
-        setMyPoint();
+        addMyPoint(point_correct_answer);
     else
-        setMalus(10);
+        addTotalMalus(CalcMalus());
 }
 
-void ClassicQuiz::setMyPoint(){
-    my_point+=point_correct_answer;
+double ClassicQuiz::CalcMalus() const //percentuale sui punti della domanda
+{
+    return (point_correct_answer*malus_point)/100;
 }
 
-void ClassicQuiz::setMalus(int m){
-    malus+=total_point/m;
-}
-
-int ClassicQuiz::CalcPointQuiz() const{
-    return (my_point/total_point)*9+1-malus;
+double ClassicQuiz::CalcPointQuiz() const{
+    return (my_point/total_point)*9+1-total_malus;
 }
 
 void ClassicQuiz::setPointCAnswer(){
@@ -56,7 +54,8 @@ void ClassicQuiz::setPointCAnswer(){
 }
 
 void ClassicQuiz::showSolution() const{
-
+    for(MyVector<std::string>::const_iterator it=correct_answer.begin(); it!=correct_answer.end(); ++it)
+        std::cout<<*it<<std::endl;
 }
 
 ClassicQuiz* ClassicQuiz::clone() const{

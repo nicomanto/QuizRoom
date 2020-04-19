@@ -1,8 +1,8 @@
 #include "combinequiz.h"
 
-CombineQuiz::CombineQuiz(const std::string &q, int p): Quiz(q,p){}
+CombineQuiz::CombineQuiz(const std::string &q, double t): Quiz(q,t){}
 
-void CombineQuiz::addCorrectCombine(const std::string &a1, const std::string &a2){
+void CombineQuiz::addCorrectCombine(std::string a1, std::string a2){
     correct_combine[a1]=a2;
     setPointCAnswer();
 }
@@ -15,20 +15,16 @@ bool CombineQuiz::isCorrectCombine(const std::string &a1, const std::string &a2)
 
 void CombineQuiz::addPoint(const std::string &a1, const std::string &a2){
     if (isCorrectCombine(a1,a2))
-        setMyPoint();
+        addMyPoint(point_correct_answer);
 
 }
 
-void CombineQuiz::setMyPoint(){
-    my_point+=point_correct_answer;
+bool CombineQuiz::HaveMalus() const{
+    return false;
 }
 
-void CombineQuiz::setMalus(int m){
-    malus+=total_point/m;
-}
-
-int CombineQuiz::CalcPointQuiz() const{
-    return (my_point/total_point)*9+1-malus;
+double CombineQuiz::CalcPointQuiz() const{ // calcolo risultato diverso
+    return (my_point/total_point)*10;
 }
 
 void CombineQuiz::setPointCAnswer(){
@@ -36,7 +32,8 @@ void CombineQuiz::setPointCAnswer(){
 }
 
 void CombineQuiz::showSolution() const{
-
+    for(std::map<std::string,std::string>::const_iterator it=correct_combine.begin(); it!=correct_combine.end(); ++it)
+        std::cout<<it->first<<" "<<it->second<<std::endl;
 }
 
 CombineQuiz *CombineQuiz::clone() const{

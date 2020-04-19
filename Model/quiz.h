@@ -8,26 +8,26 @@
 class Quiz{
 protected:
     std::string question;
-    int total_point;
-    int point_correct_answer;
-    int malus;
-    int my_point;
+    double total_point;
+    double point_correct_answer;
+    double my_point;
 public:
-    Quiz(const std::string& q,int t=0, int pc=0, int m=0);
+    Quiz(const std::string& q,double t);
 
     std::string getQuestion() const;
-    int getTotalPoint() const;
-    int getPointAnswer() const;
-    int getMalus() const;
-    int getMyPoint() const;
+    double getTotalPoint() const;
+    double getPointAnswer() const;
+    double getMyPoint() const;
 
     void setQuestion(const std::string& q);
     void setTotalPoint(int p);
+    void addMyPoint(double p);
+    void addPointCorrectAnswer(double m);
 
 
-    virtual void setMyPoint()=0;
-    virtual void setMalus(int m)=0;
-    virtual int CalcPointQuiz()const=0;
+
+    virtual bool HaveMalus() const=0;
+    virtual double CalcPointQuiz()const=0;
 
     virtual void setPointCAnswer()=0;
     virtual void showSolution()const=0;

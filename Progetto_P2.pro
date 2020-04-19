@@ -22,6 +22,7 @@ SOURCES += \
     Model/date.cpp \
     Model/datetime.cpp \
     Model/homework.cpp \
+    Model/malusquiz.cpp \
     Model/quiz.cpp \
     Model/quizcontainer.cpp \
     Model/scorehomework.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     Model/date.h \
     Model/datetime.h \
     Model/homework.h \
+    Model/malusquiz.h \
     Model/myvector.h \
     Model/quiz.h \
     Model/quizcontainer.h \

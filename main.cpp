@@ -7,19 +7,38 @@
 #include "Model/course.h"
 
 #include "Model/combinequiz.h"
+#include "Model/classicquiz.h"
+#include "Model/quizcontainer.h"
 int main(int argc, char *argv[])
 {
 
-    CombineQuiz a("ciao",100);
 
 
-    a.addCorrectCombine("scimmia", "mammifero");
-    a.addCorrectCombine("ragno", "insetto");
-    a.addCorrectCombine("scimmi", "mammifero");
+    CombineQuiz a("ciao",10);
+    ClassicQuiz c("classic",10,30);
 
-    a.addPoint("ragno", "insetto");
 
-        std::cout<<a.getMyPoint();
+    c.addCorrectAnswer("cavallo");
+    c.addPoint("cavallo");
+    a.addCorrectCombine("ciao","2");
+    a.addCorrectCombine("ciao1","1");
+    a.addCorrectCombine("ciao2","0");
+
+
+    QuizContainer b("titolo","descrizione");
+    b.addQuiz(&a);
+    b.addQuiz(&c);
+    b.showQuizSolution("ciao");
+    std::cout<<"ris: "<<b.QuizPoint("ciao")<<std::endl;
+
+    a.addPoint("ciao","2");
+    a.addPoint("ciao1","1");
+    a.addPoint("ciao2","2");
+        std::cout<<a.CalcPointQuiz();
+
+        std::cout<<"Title: "<<a.getQuestion();
+
+    std::cout<<"ris: "<<b.allPoint()<<std::endl;
 
     /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);

@@ -2,19 +2,19 @@
 #define COMBINEQUIZ_H
 #include "quiz.h"
 #include <map>
-class CombineQuiz : public Quiz{
+class CombineQuiz : public Quiz{ //NO-Malus
 private:
     std::map<std::string,std::string> correct_combine;
 public:
-    CombineQuiz(const std::string& q, int p=0);
+    CombineQuiz(const std::string& q, double t);
 
-    void addCorrectCombine(const std::string& a1, const std::string& a2);
+    void addCorrectCombine(std::string a1,std::string a2);
     bool isCorrectCombine(const std::string& a1, const std::string& a2) const;
     void addPoint(const std::string &a1, const std::string &a2);
 
-    virtual void setMyPoint();
-    virtual void setMalus(int m);
-    virtual int CalcPointQuiz()const;
+
+    virtual bool HaveMalus() const;
+    virtual double CalcPointQuiz()const;
     virtual void setPointCAnswer();
 
     virtual void showSolution() const;
