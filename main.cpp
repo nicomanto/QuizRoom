@@ -9,6 +9,7 @@
 #include "Model/combinequiz.h"
 #include "Model/classicquiz.h"
 #include "Model/quizcontainer.h"
+#include "Model/timescorehomework.h"
 int main(int argc, char *argv[])
 {
 
@@ -39,6 +40,19 @@ int main(int argc, char *argv[])
         std::cout<<"Title: "<<a.getQuestion();
 
     std::cout<<"ris: "<<b.allPoint()<<std::endl;
+
+
+    DateTime data(25,03,2020,00);
+    TimeScoreHomework sh(data, "Prova compito");
+
+    std::cout<<"Total score before: "<<sh.getTotalScore()<<std::endl;
+    sh.addQuizContainer(b);
+
+    if(sh.isTimeHomework() && sh.isScoreHomework())
+        std::cout<<sh.getDeadline();
+        //sh.removeQuizContainer(b);
+    std::cout<<"Total score after: "<<sh.getTotalScore()<<std::endl;
+    std::cout<<"result: "<<sh.getResult()<<std::endl;
 
     /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);

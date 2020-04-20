@@ -3,7 +3,7 @@
 #include "scorehomework.h"
 #include "timehomework.h"
 
-class TimeScoreHomework : public TimeHomework, ScoreHomework{
+class TimeScoreHomework : public TimeHomework, public ScoreHomework{
 private:
     static int day_max_malus;
 public:
@@ -16,6 +16,6 @@ public:
     virtual TimeScoreHomework *clone() const;
 };
 
-int TimeScoreHomework::day_max_malus=2;
+
 
 #endif // TIMESCOREHOMEWORK_H

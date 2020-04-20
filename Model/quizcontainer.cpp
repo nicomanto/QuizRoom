@@ -28,12 +28,11 @@ void QuizContainer::addQuiz(Quiz* q){
 }
 
 void QuizContainer::removeQuiz(Quiz *q){
-    for(MyVector<Quiz*>::iterator it=quiz.begin(); it!=quiz.end(); ++it){
-        if((*it)->getQuestion()==q->getQuestion())
-            quiz.erase(it);
+    MyVector<Quiz*>::iterator it=quiz.begin();
+    while(it!=quiz.end() || (*it)->getQuestion()==q->getQuestion()){++it;}
 
-
-    }
+    if(it!=quiz.end())
+        quiz.erase(it);
 }
 
 void QuizContainer::showAllSolution() const{
@@ -84,8 +83,8 @@ double QuizContainer::getTotalAllPoint() const
     return somma;
 }
 
-QuizContainer::~QuizContainer(){
+/*QuizContainer::~QuizContainer(){
     for(MyVector<Quiz*>::iterator it=quiz.begin(); it!=quiz.end(); ++it){
         delete (*it);
     }
-}
+}*/

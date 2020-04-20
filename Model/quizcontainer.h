@@ -30,7 +30,7 @@ public:
     double getTotalAllPoint() const;
 
 
-    ~QuizContainer();
+    //~QuizContainer();
 };
 
 

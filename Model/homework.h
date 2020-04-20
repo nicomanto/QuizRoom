@@ -10,7 +10,7 @@ protected:
     string title;
     string instructions;
     string arguments;
-    MyVector <QuizContainer> container_q;      // modulo per quiz (struttura del contenitore dei quiz)
+    MyVector<QuizContainer> container_q;      // modulo per quiz (struttura del contenitore dei quiz)
 
 public:
     Homework(const string& t, const string& i=string(),const string& a=string());
