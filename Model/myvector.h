@@ -18,7 +18,6 @@ private:
     unsigned int my_size;
     unsigned int my_capacity;
 public:
-
     MyVector(unsigned int s=0, const T& t=T());  //convertitore da unsigned int => MyVector
     MyVector(const MyVector& v);
     ~MyVector(){delete[] punt;}

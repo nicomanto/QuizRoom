@@ -1,5 +1,7 @@
 #include "quizcontainer.h"
 
+QuizContainer::QuizContainer():title(std::string("Blank")), description(std::string()){}
+
 QuizContainer::QuizContainer(const std::string &t, const std::string &d): title(t), description(d){}
 
 
@@ -23,6 +25,15 @@ void QuizContainer::setDescription(const std::string &d){
 
 void QuizContainer::addQuiz(Quiz* q){
     quiz.push_back(q);
+}
+
+void QuizContainer::removeQuiz(Quiz *q){
+    for(MyVector<Quiz*>::iterator it=quiz.begin(); it!=quiz.end(); ++it){
+        if((*it)->getQuestion()==q->getQuestion())
+            quiz.erase(it);
+
+
+    }
 }
 
 void QuizContainer::showAllSolution() const{
@@ -60,4 +71,21 @@ double QuizContainer::allPoint() const{
     }
 
     return somma;
+}
+
+double QuizContainer::getTotalAllPoint() const
+{
+    double somma=0;
+
+    for(MyVector<Quiz*>::const_iterator it=quiz.begin(); it!=quiz.end(); ++it){
+        somma+=(*it)->getTotalPoint();
+    }
+
+    return somma;
+}
+
+QuizContainer::~QuizContainer(){
+    for(MyVector<Quiz*>::iterator it=quiz.begin(); it!=quiz.end(); ++it){
+        delete (*it);
+    }
 }

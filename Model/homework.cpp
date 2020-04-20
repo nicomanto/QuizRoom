@@ -15,6 +15,10 @@ string Homework::getArguments() const{
     return arguments;
 }
 
+MyVector<QuizContainer> Homework::getContainerQuiz() const{
+    return container_q;
+}
+
 void Homework::setTitle(const string& t){
     title=t;
 }
@@ -25,6 +29,17 @@ void Homework::setInstructions(const string& i){
 
 void Homework::setArguments(const string& a){
     arguments=a;
+}
+
+void Homework::addQuizContainer(const QuizContainer &q){
+    container_q.push_back(q);
+}
+
+void Homework::removeQuizContainer(const QuizContainer &q){
+    for(MyVector<QuizContainer>::iterator it=container_q.begin(); it!=container_q.end(); ++it){
+        if((*it).getTitle()==q.getTitle())
+            container_q.erase(it);
+    }
 }
 
 Homework::~Homework(){}

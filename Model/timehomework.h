@@ -4,7 +4,7 @@
 #include "homework.h"
 #include "datetime.h"
 class TimeHomework : virtual public Homework{
-private:
+protected:
     DateTime deadline;
 
     void setDeadline (const DateTime& d);
@@ -13,7 +13,9 @@ public:
 
     DateTime getDeadline() const;
 
-    virtual int getResult() const;
+    virtual bool isScoreHomework() const;
+    virtual bool isTimeHomework() const;
+    virtual double getResult() const;  //ritorna 1 se la consegna è stata fatta prima o == alla deadline, 0 altrimenti
     virtual TimeHomework *clone() const;
 
 };

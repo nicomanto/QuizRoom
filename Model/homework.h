@@ -2,15 +2,15 @@
 #define HOMEWORK_H
 
 #include <string>
-
+#include "quizcontainer.h"
 using std::string;
 
 class Homework{
-private:
+protected:
     string title;
     string instructions;
     string arguments;
-    // MyVector <*QuizModule> module_q;       modulo per quiz (struttura del contenitore dei quiz)
+    MyVector <QuizContainer> container_q;      // modulo per quiz (struttura del contenitore dei quiz)
 
 public:
     Homework(const string& t, const string& i=string(),const string& a=string());
@@ -18,13 +18,18 @@ public:
     string getTitle() const;
     string getInstructions() const;
     string getArguments() const;
+    MyVector<QuizContainer> getContainerQuiz() const;
+
 
     void setTitle(const string& t);
     void setInstructions(const string& i);
     void setArguments(const string& a);
 
-
-    virtual int getResult() const=0;
+    virtual void addQuizContainer(const QuizContainer& q);
+    virtual void removeQuizContainer(const QuizContainer& q);
+    virtual bool isScoreHomework() const=0;
+    virtual bool isTimeHomework() const=0;
+    virtual double getResult() const=0;
     virtual Homework* clone() const=0;
     virtual ~Homework();
 };
