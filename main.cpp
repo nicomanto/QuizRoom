@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     std::cout<<"Titolo container: "<<b.getTitle();
     b.addQuiz(&a);
     b.addQuiz(&c);
-    b.removeQuiz(&c);
+    //b.removeQuiz(&c);
     b.showQuizSolution("cavallo");
     std::cout<<"ris: "<<b.QuizPoint("ciao")<<std::endl;
 
@@ -66,6 +66,12 @@ int main(int argc, char *argv[])
         std::cout<<it->getTitle()<<std::endl;
 
     }
+
+
+    std::cout<<std::endl<<std::endl<<"Show al solution Quiz"<<std::endl;
+    sh.getContainerQuiz()[0].showAllSolution();
+
+
 
     /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);
