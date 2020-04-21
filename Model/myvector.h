@@ -346,6 +346,7 @@ typename MyVector<T>::iterator MyVector<T>::insert(MyVector<T>::iterator it, con
     while (return_iterator.past_the_end != it.past_the_end)
         *copy_iterator--=*--return_iterator;
 
+
     *return_iterator=t;
 
     return return_iterator;

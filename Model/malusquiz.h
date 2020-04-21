@@ -7,6 +7,7 @@ protected:
     double total_malus;
     double malus_point;
 public:
+    MalusQuiz();
     MalusQuiz(const std::string& q, double tp, double mp, double tm=0);
 
 

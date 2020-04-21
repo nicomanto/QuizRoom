@@ -9,6 +9,7 @@ protected:
 
     void setDeadline (const DateTime& d);
 public:
+    TimeHomework();
     TimeHomework(const DateTime& d,const string& t,const string& i=string(),const string& a=string());
 
     DateTime getDeadline() const;

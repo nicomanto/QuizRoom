@@ -1,5 +1,7 @@
 #include "homework.h"
 
+Homework::Homework(){}
+
 Homework::Homework(const string& t, const string& i,const string& a): title(t), instructions(i), arguments(a){}
 
 string Homework::getTitle() const{
@@ -15,7 +17,7 @@ string Homework::getArguments() const{
     return arguments;
 }
 
-MyVector<QuizContainer> Homework::getContainerQuiz() const{
+const MyVector<QuizContainer>& Homework::getContainerQuiz() const{
     return container_q;
 }
 
@@ -37,11 +39,19 @@ void Homework::addQuizContainer(const QuizContainer &q){
 
 void Homework::removeQuizContainer(const QuizContainer &q){
 
-    MyVector<QuizContainer>::iterator it=container_q.begin();
-    while(it!=container_q.end() || it->getTitle()==q.getTitle()){++it;}
+    /*MyVector<QuizContainer>::iterator it=container_q.begin();
+    bool temp=true;
+    while(it!=container_q.end() && temp){
+          if(it->getTitle()==q.getTitle())
+            temp = false;
+          else
+            ++it;
+    }
 
-    if(it!=container_q.end())
+    if(!temp)
         container_q.erase(it);
+*/
+
 }
 
 Homework::~Homework(){}

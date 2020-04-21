@@ -4,7 +4,6 @@
 #include "myvector.h"
 #include "quiz.h"
 
-
 class QuizContainer{
 private:
   std::string  title;
@@ -14,10 +13,12 @@ public:
     QuizContainer();
     QuizContainer(const std::string& t, const std::string & d=std::string());
 
+
     std::string getTitle() const;
     std::string getDescription() const;
+    const MyVector<Quiz*>& getQuiz() const;
 
-    void setdTitle(const std::string& t);
+    void setTitle(const std::string& t);
     void setDescription(const std::string& d);
 
     void addQuiz(Quiz* q);

@@ -1,8 +1,8 @@
 #include "quizcontainer.h"
 
-QuizContainer::QuizContainer():title(std::string("Blank")), description(std::string()){}
+QuizContainer::QuizContainer(){}
 
-QuizContainer::QuizContainer(const std::string &t, const std::string &d): title(t), description(d){}
+QuizContainer::QuizContainer(const std::string& t, const std::string &d): title(t), description(d){}
 
 
 std::string QuizContainer::getTitle() const{
@@ -14,7 +14,11 @@ std::string QuizContainer::getDescription() const{
     return description;
 }
 
-void QuizContainer::setdTitle(const std::string &t){
+const MyVector<Quiz *> &QuizContainer::getQuiz() const{
+    return quiz;
+}
+
+void QuizContainer::setTitle(const std::string &t){
     title=t;
 }
 
@@ -28,11 +32,20 @@ void QuizContainer::addQuiz(Quiz* q){
 }
 
 void QuizContainer::removeQuiz(Quiz *q){
-    MyVector<Quiz*>::iterator it=quiz.begin();
-    while(it!=quiz.end() || (*it)->getQuestion()==q->getQuestion()){++it;}
+    /*MyVector<Quiz*>::iterator it=quiz.begin();
+    bool temp=true;
+    while(it!=quiz.end() && temp){
 
-    if(it!=quiz.end())
+        if((*it)->getQuestion()==q->getQuestion())
+            temp = false;
+          else
+            ++it;
+    }
+
+    if(!temp)
         quiz.erase(it);
+
+    */
 }
 
 void QuizContainer::showAllSolution() const{

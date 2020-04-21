@@ -13,12 +13,13 @@ protected:
     MyVector<QuizContainer> container_q;      // modulo per quiz (struttura del contenitore dei quiz)
 
 public:
+    Homework();
     Homework(const string& t, const string& i=string(),const string& a=string());
 
     string getTitle() const;
     string getInstructions() const;
     string getArguments() const;
-    MyVector<QuizContainer> getContainerQuiz() const;
+    const MyVector<QuizContainer>& getContainerQuiz() const;
 
 
     void setTitle(const string& t);

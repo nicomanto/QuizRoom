@@ -1,10 +1,16 @@
 #include "combinequiz.h"
 
+CombineQuiz::CombineQuiz(){}
+
 CombineQuiz::CombineQuiz(const std::string &q, double t): Quiz(q,t){}
 
 void CombineQuiz::addCorrectCombine(std::string a1, std::string a2){
     correct_combine[a1]=a2;
     setPointCAnswer();
+}
+
+void CombineQuiz::removeCorrectCombine(std::string a1){
+    correct_combine.erase(a1);
 }
 
 bool CombineQuiz::isCorrectCombine(const std::string &a1, const std::string &a2) const{

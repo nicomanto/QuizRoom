@@ -9,6 +9,7 @@ private:
     void addTotalScore(double p);
     void removeTotalScore(double p);
 public:
+    ScoreHomework();
     ScoreHomework(const string& t,const string& i=string(),const string& a=string());
 
     double getTotalScore() const;

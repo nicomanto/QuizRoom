@@ -1,5 +1,8 @@
 #include "quiz.h"
 
+
+Quiz::Quiz():question(std::string()), total_point(0), point_correct_answer(0), my_point(0) {}
+
 Quiz::Quiz(const std::string& q,double t): question(q), total_point(t), point_correct_answer(0), my_point(0) {}
 
 std::string Quiz::getQuestion() const{

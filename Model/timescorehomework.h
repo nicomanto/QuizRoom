@@ -7,6 +7,7 @@ class TimeScoreHomework : public TimeHomework, public ScoreHomework{
 private:
     static int day_max_malus;
 public:
+    TimeScoreHomework();
     TimeScoreHomework(const DateTime& d, const string& t,const string& i=string(),const string& a=string());
 
 

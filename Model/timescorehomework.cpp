@@ -1,5 +1,7 @@
 #include "timescorehomework.h"
 
+TimeScoreHomework::TimeScoreHomework(){}
+
 TimeScoreHomework::TimeScoreHomework(const DateTime& d,const string& t,const string& i,const string& a) : Homework(t,i,a) , TimeHomework(d,t,i,a), ScoreHomework(t,i,a){}
 
 bool TimeScoreHomework::isScoreHomework() const{

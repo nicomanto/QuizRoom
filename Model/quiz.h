@@ -12,6 +12,7 @@ protected:
     double point_correct_answer;
     double my_point;
 public:
+    Quiz();
     Quiz(const std::string& q,double t);
 
     std::string getQuestion() const;

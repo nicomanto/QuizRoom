@@ -1,5 +1,7 @@
 #include "classicquiz.h"
 
+ClassicQuiz::ClassicQuiz(){}
+
 ClassicQuiz::ClassicQuiz(const std::string& q, double tp, double mp, double tm): MalusQuiz(q,tp,mp,tm){}
 
 void ClassicQuiz::addAnswer(const std::string &a){
@@ -16,6 +18,24 @@ void ClassicQuiz::addCorrectAnswer(const std::string &ca){
     }
 
 
+}
+
+void ClassicQuiz::removeAnswer(const std::string &a){
+    removeCorrectAnswer(a);
+
+    MyVector<std::string>::iterator it=answer.begin();
+    while(it!=answer.end() || *it==a){++it;}
+
+    if(it!=answer.end())
+        answer.erase(it);
+}
+
+void ClassicQuiz::removeCorrectAnswer(const std::string &ca){
+    MyVector<std::string>::iterator it=correct_answer.begin();
+    while(it!=correct_answer.end() || *it==ca){++it;}
+
+    if(it!=correct_answer.end())
+        correct_answer.erase(it);
 }
 
 bool ClassicQuiz::isAnswer(const std::string &a) const{

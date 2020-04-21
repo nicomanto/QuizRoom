@@ -9,11 +9,15 @@ private:
     MyVector<std::string> answer;
 
 public:
+    ClassicQuiz();
     ClassicQuiz(const std::string& q, double tp, double mp, double tm=0);
+
+
 
     void addAnswer(const std::string& a);
     void addCorrectAnswer(const std::string& ca);
-
+    void removeAnswer(const std::string& a);
+    void removeCorrectAnswer(const std::string& ca);
     bool isAnswer(const std::string& a) const;
     bool isCorrectAnswer(const std::string& ca);
 

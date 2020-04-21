@@ -26,7 +26,8 @@ int main(int argc, char *argv[])
     a.addCorrectCombine("ciao2","0");
 
 
-    QuizContainer b("titolo","descrizione");
+    QuizContainer b("bello","descrizione");
+    std::cout<<"Titolo container: "<<b.getTitle();
     b.addQuiz(&a);
     b.addQuiz(&c);
     b.showQuizSolution("ciao");
@@ -46,13 +47,24 @@ int main(int argc, char *argv[])
     TimeScoreHomework sh(data, "Prova compito");
 
     std::cout<<"Total score before: "<<sh.getTotalScore()<<std::endl;
-    sh.addQuizContainer(b);
 
-    if(sh.isTimeHomework() && sh.isScoreHomework())
-        std::cout<<sh.getDeadline();
+    sh.addQuizContainer(b);
+    //if(sh.isTimeHomework() && sh.isScoreHomework())
+        std::cout<<sh.getDeadline()<<std::endl;
         //sh.removeQuizContainer(b);
-    std::cout<<"Total score after: "<<sh.getTotalScore()<<std::endl;
-    std::cout<<"result: "<<sh.getResult()<<std::endl;
+    //std::cout<<"Total score after: "<<sh.getTotalScore()<<std::endl;
+    //std::cout<<"result: "<<sh.getResult()<<std::endl;
+
+    std::cout<<"test blank"<<std::endl;
+
+
+    //sh.addQuizContainer(b);
+    //sh.removeQuizContainer(b);
+    for(MyVector<QuizContainer>::iterator it=sh.getContainerQuiz().begin(); it!=sh.getContainerQuiz().end(); ++it){
+        std::cout<<"1";
+        std::cout<<it->getTitle()<<std::endl;
+
+    }
 
     /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);
