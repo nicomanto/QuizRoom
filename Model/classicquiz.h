@@ -12,8 +12,6 @@ public:
     ClassicQuiz();
     ClassicQuiz(const std::string& q, double tp, double mp, double tm=0);
 
-
-
     void addAnswer(const std::string& a);
     void addCorrectAnswer(const std::string& ca);
     void removeAnswer(const std::string& a);
@@ -21,9 +19,7 @@ public:
     bool isAnswer(const std::string& a) const;
     bool isCorrectAnswer(const std::string& ca);
 
-
-    void addPoint(const std::string &ca);
-
+    void addPoint(const std::string &ca); //aggiunge il punteggio in base se la risposta è esatta, oppure aggiunge un malus
 
     virtual double CalcMalus() const;
     virtual double CalcPointQuiz()const;

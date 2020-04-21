@@ -10,7 +10,6 @@ public:
     MalusQuiz();
     MalusQuiz(const std::string& q, double tp, double mp, double tm=0);
 
-
     double getTotalMalus() const;
     double getMalusPoint() const;
 

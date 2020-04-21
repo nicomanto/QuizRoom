@@ -19,8 +19,7 @@ public:
     string getTitle() const;
     string getInstructions() const;
     string getArguments() const;
-    const MyVector<QuizContainer>& getContainerQuiz() const;
-
+    const MyVector<QuizContainer>& getContainerQuiz() const; //ritorna il vettore che contiene i container dei quiz
 
     void setTitle(const string& t);
     void setInstructions(const string& i);
@@ -30,7 +29,7 @@ public:
     virtual void removeQuizContainer(const QuizContainer& q);
     virtual bool isScoreHomework() const=0;
     virtual bool isTimeHomework() const=0;
-    virtual double getResult() const=0;
+    virtual double getResult() const=0; //ritorna il risultato del quiz
     virtual Homework* clone() const=0;
     virtual ~Homework();
 };

@@ -39,7 +39,7 @@ void Homework::addQuizContainer(const QuizContainer &q){
 
 void Homework::removeQuizContainer(const QuizContainer &q){
 
-    /*MyVector<QuizContainer>::iterator it=container_q.begin();
+    MyVector<QuizContainer>::iterator it=container_q.begin();
     bool temp=true;
     while(it!=container_q.end() && temp){
           if(it->getTitle()==q.getTitle())
@@ -50,7 +50,7 @@ void Homework::removeQuizContainer(const QuizContainer &q){
 
     if(!temp)
         container_q.erase(it);
-*/
+
 
 }
 

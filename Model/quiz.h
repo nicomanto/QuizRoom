@@ -25,8 +25,6 @@ public:
     void addMyPoint(double p);
     void addPointCorrectAnswer(double m);
 
-
-
     virtual bool HaveMalus() const=0;
     virtual double CalcPointQuiz()const=0;
 

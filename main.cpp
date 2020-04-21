@@ -30,7 +30,8 @@ int main(int argc, char *argv[])
     std::cout<<"Titolo container: "<<b.getTitle();
     b.addQuiz(&a);
     b.addQuiz(&c);
-    b.showQuizSolution("ciao");
+    b.removeQuiz(&c);
+    b.showQuizSolution("cavallo");
     std::cout<<"ris: "<<b.QuizPoint("ciao")<<std::endl;
 
     a.addPoint("ciao","2");
