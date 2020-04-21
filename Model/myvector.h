@@ -131,7 +131,7 @@ void MyVector<T>::resize(unsigned int n, const T& t){
 
     if(n<=my_size){
         for(unsigned int i=n;i<my_size;++i)
-            punt[i].~T();
+            punt[i]=T();
     }
     else{
 
