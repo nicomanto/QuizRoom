@@ -8,6 +8,7 @@ class QuizContainer{
 private:
   std::string  title;
   std::string description;
+  bool done;
   MyVector<Quiz*> quiz;
 public:
     QuizContainer();
@@ -15,9 +16,11 @@ public:
 
     std::string getTitle() const;
     std::string getDescription() const;
+    bool isDone() const;
     const MyVector<Quiz*>& getQuiz() const; //ritorna il vettore ai quiz
 
     void setTitle(const std::string& t);
+    void setDone(bool t);
     void setDescription(const std::string& d);
 
     void addQuiz(Quiz* q); //aggiunge un quiz

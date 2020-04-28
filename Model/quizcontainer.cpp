@@ -1,8 +1,8 @@
 #include "quizcontainer.h"
 
-QuizContainer::QuizContainer(){}
+QuizContainer::QuizContainer(): done(false){}
 
-QuizContainer::QuizContainer(const std::string& t, const std::string &d): title(t), description(d){}
+QuizContainer::QuizContainer(const std::string& t, const std::string &d): title(t), description(d), done(false){}
 
 
 std::string QuizContainer::getTitle() const{
@@ -14,12 +14,20 @@ std::string QuizContainer::getDescription() const{
     return description;
 }
 
+bool QuizContainer::isDone() const{
+    return done;
+}
+
 const MyVector<Quiz *> &QuizContainer::getQuiz() const{
     return quiz;
 }
 
 void QuizContainer::setTitle(const std::string &t){
     title=t;
+}
+
+void QuizContainer::setDone(bool t){
+    done=t;
 }
 
 void QuizContainer::setDescription(const std::string &d){

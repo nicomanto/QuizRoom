@@ -24,6 +24,7 @@ public:
     void setTitle(const string& t);
     void setInstructions(const string& i);
     void setArguments(const string& a);
+    bool isDone() const;
 
     virtual void addQuizContainer(const QuizContainer& q);
     virtual void removeQuizContainer(const QuizContainer& q);

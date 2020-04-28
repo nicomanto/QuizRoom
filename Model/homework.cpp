@@ -33,6 +33,15 @@ void Homework::setArguments(const string& a){
     arguments=a;
 }
 
+bool Homework::isDone() const{
+    bool temp=true;
+    for(MyVector<QuizContainer>::const_iterator it=container_q.begin(); it!=container_q.end() && temp; ++it)
+        if(!(it->isDone()))
+            temp=false;
+
+    return temp;
+}
+
 void Homework::addQuizContainer(const QuizContainer &q){
     container_q.push_back(q);
 }
