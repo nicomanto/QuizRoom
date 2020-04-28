@@ -50,6 +50,7 @@ int main(int argc, char *argv[])
     std::cout<<"Total score before: "<<sh.getTotalScore()<<std::endl;
 
     sh.addQuizContainer(b);
+    sh.addQuizContainer(b);
     //if(sh.isTimeHomework() && sh.isScoreHomework())
         std::cout<<sh.getDeadline()<<std::endl;
         //sh.removeQuizContainer(b);
@@ -72,7 +73,12 @@ int main(int argc, char *argv[])
     sh.getContainerQuiz()[0].showAllSolution();
 
 
-
+    sh.getContainerQuiz()[0].setDone(true);
+    sh.getContainerQuiz()[1].setDone(true);
+    if(sh.isDone())
+        std::cout<<std::endl<<std::endl<<"isDone"<<std::endl;
+    else
+        std::cout<<std::endl<<std::endl<<"isNotDone"<<std::endl;
     /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);
 
