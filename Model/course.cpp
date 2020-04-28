@@ -23,6 +23,14 @@ string Course::getDescription() const
     return description;
 }
 
+const MyVector<Homework *> &Course::getHomeworks() const{
+    return homew;
+}
+
+const MyVector<User *> &Course::getClassroom() const{
+    return classroom;
+}
+
 void Course::setTitle(const string& t){
     title=t;
 }
@@ -35,8 +43,32 @@ void Course::setDescription(const string& d){
     description=d;
 }
 
-int Course::ShowStatistics() const{
+void Course::addHomework(Homework *h){
+    homew.push_back(h);
+}
+
+void Course::removeHomework(Homework *h){
+    MyVector<Homework*>::iterator it=homew.begin();
+    bool temp=true;
+    while(it!=homew.end() && temp){
+
+        if((*it)->getTitle()==h->getTitle())
+            temp = false;
+          else
+            ++it;
+    }
+
+    if(!temp)
+        homew.erase(it);
+}
+
+double Course::ShowAllHomeworkStatistics() const{
     //da implementare
+    double statistics=0; //percentuale homework completati
+    for(MyVector<Homework*>::const_iterator it = homew.begin(); it!=homew.end(); ++it)
+        statistics+=(*it)->isDone();
+
+    return statistics/homew.size()*100;
 }
 
 

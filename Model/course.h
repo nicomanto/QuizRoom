@@ -16,26 +16,33 @@ private:
     string code;
     string subject; //può essere null
     string description; //può essere null
-    MyVector<User*> classroom;
-    MyVector<Homework*> homew;  //da aggiunere i compiti
+    MyVector<User*> classroom;  // si setta dal file (fa una ricerca nel file XML chiamata con il codice
+                                //del corso e scarica tutti gli utenti che hanno aggiunto questo corso      FORSE DA METTERE COSTANTE
+    MyVector<Homework*> homew;
 
 
 
     void setCode();
     static string random_code();
 public:
-    Course(const string& t, const string& s=string(), const string& d=string());
+    Course(const string& t=string(), const string& s=string(), const string& d=string());
     string getTitle() const;
     string getCode() const;
     string getSubject() const;
     string getDescription() const;
+    const MyVector<Homework*>& getHomeworks() const;
+    const MyVector<User*>& getClassroom() const;
 
     void setTitle(const string& t);
     void setSubject(const string& s);
     void setDescription(const string& d);
 
 
-    int ShowStatistics() const;  // da implementare
+    void addHomework(Homework* h);
+    void removeHomework(Homework* h);
+
+
+    double ShowAllHomeworkStatistics() const;  //La statistica è la percentuale di homework completati.
 
 
 };
