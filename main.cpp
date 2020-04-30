@@ -10,6 +10,11 @@
 #include "Model/classicquiz.h"
 #include "Model/quizcontainer.h"
 #include "Model/timescorehomework.h"
+
+#include "Model/student.h"
+#include "Model/teacher.h"
+
+
 int main(int argc, char *argv[])
 {
 
@@ -50,7 +55,6 @@ int main(int argc, char *argv[])
     std::cout<<"Total score before: "<<sh.getTotalScore()<<std::endl;
 
     sh.addQuizContainer(b);
-    sh.addQuizContainer(b);
     //if(sh.isTimeHomework() && sh.isScoreHomework())
         std::cout<<sh.getDeadline()<<std::endl;
         //sh.removeQuizContainer(b);
@@ -74,11 +78,37 @@ int main(int argc, char *argv[])
 
 
     sh.getContainerQuiz()[0].setDone(true);
-    sh.getContainerQuiz()[1].setDone(true);
     if(sh.isDone())
         std::cout<<std::endl<<std::endl<<"isDone"<<std::endl;
     else
         std::cout<<std::endl<<std::endl<<"isNotDone"<<std::endl;
+
+
+
+
+
+
+    Course y("Corso ciao");
+
+    y.addHomework(&sh);
+
+    Teacher mezzadrelli("Alessadro","Mezzadrelli","alemezza","pass","email");
+    Student s1("Alessadro","Mezzadrelli","alemezza","pass","email");
+    Student s2("Alessadro","Mezzadrelli","alemezza","pass","email");
+
+    y.addUser(&mezzadrelli);
+    y.addUser(&s1);
+    y.addUser(&s2);
+    mezzadrelli.addCourse(y);
+    s1.addCourse(y);
+    s2.addCourse(y);
+
+    std::cout<<"statistics teacher: "<<mezzadrelli.ShowCourseStatistics(y)<<std::endl;
+    std::cout<<"statistics student 1: "<<s1.ShowCourseStatistics(y)<<std::endl;
+    std::cout<<"statistics student 2: "<<s2.ShowCourseStatistics(y)<<std::endl;
+
+
+
     /*int y=8;
     MyVector<int> temp(2,y), f(temp),z(5,7);
 
