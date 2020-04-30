@@ -1,41 +1,58 @@
 #include "student.h"
 
+Student::Student(){}
+
 Student::Student(const string& n,const string& s,const string& u,const string& p,const string& e): User(n,s,u,p,e){}
 
-bool Student::addCourse() const{
+bool Student::CanAddHomework() const{
+  return false;
+}
+
+bool Student::CanDeleteHomework() const{
     return false;
 }
 
-bool Student::deleteCourse() const{
+bool Student::CanEditHomework() const{
     return false;
 }
 
-bool Student::editCourse() const{
+bool Student::CanAddCourse() const{
     return false;
 }
 
-bool Student::addQuiz() const{
+bool Student::CanDeleteCourse() const{
     return false;
 }
 
-bool Student::deleteQuiz() const{
+bool Student::CanEditCourse() const{
     return false;
 }
 
-bool Student::editQuiz() const{
+bool Student::CanAddQuiz() const{
     return false;
 }
 
-bool Student::doQuiz() const{
+bool Student::CanDeleteQuiz() const{
+    return false;
+}
+
+bool Student::CanEditQuiz() const{
+    return false;
+}
+
+bool Student::CanDoQuiz() const{
     return true;
 }
 
-int Student::ShowCourseStatistics(const Course& c) const{
-    //ritorna la statistisca su quello che è stato svolto da un SINGOLO studente sul corso
-}
+double Student::ShowCourseStatistics(const Course &c) const{
+    for(int i=0; i<course.size();++i){
+        if(course[i].getTitle()==c.getTitle())
+            return course[i].ShowAllHomeworkStatistics();
 
-int Student::ShowQuizStatistics(/*input Quiz*/) const{
-    //ritorna la statistica su quello che è stato svolto da un SINGOLO studente su un quiz
+
+    }
+
+    return 0;
 }
 
 Student* Student::clone() const{

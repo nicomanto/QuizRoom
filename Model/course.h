@@ -5,10 +5,10 @@
 #include <time.h>
 #include "myvector.h"
 #include "homework.h"
+#include "user.h"
 using std::string;
 
 class User;
-
 
 class Course{
 private:
@@ -40,6 +40,9 @@ public:
 
     void addHomework(Homework* h);
     void removeHomework(Homework* h);
+
+    void addUser(User* h);
+    void removeUser(User* h);
 
 
     double ShowAllHomeworkStatistics() const;  //La statistica è la percentuale di homework completati.

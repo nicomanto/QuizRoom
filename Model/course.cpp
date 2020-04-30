@@ -1,5 +1,5 @@
 #include "course.h"
-
+#include "user.h"
 Course::Course(const string& t, const string& s, const string& d): title(t), code(random_code()), subject(s), description(d){
     //settare classroom dal file
 }
@@ -60,6 +60,24 @@ void Course::removeHomework(Homework *h){
 
     if(!temp)
         homew.erase(it);
+}
+
+void Course::addUser(User *h){
+    classroom.push_back(h);
+}
+
+void Course::removeUser(User *h){
+    MyVector<User*>::iterator it=classroom.begin();
+    bool temp=true;
+    while(it!=classroom.end() && temp){
+        if((*(*it))==*h)
+            temp = false;
+          else
+            ++it;
+    }
+
+    if(!temp)
+        classroom.erase(it);
 }
 
 double Course::ShowAllHomeworkStatistics() const{
