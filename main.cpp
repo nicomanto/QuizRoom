@@ -1,4 +1,4 @@
-#include "Model/quizroom.h"
+#include "View/login.h"
 #include <iostream>
 #include <QApplication>
 #include "Model/myvector.h" //per testare
@@ -18,7 +18,7 @@
 int main(int argc, char *argv[])
 {
 
-
+/*
 
     CombineQuiz a("ciao",10);
     ClassicQuiz c("classic",10,30);
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
     std::cout<<"statistics teacher: "<<mezzadrelli.ShowCourseStatistics(y)<<std::endl;
     std::cout<<"statistics student 1: "<<s1.ShowCourseStatistics(y)<<std::endl;
     std::cout<<"statistics student 2: "<<s2.ShowCourseStatistics(y)<<std::endl;
-
+    */
 
 
     /*int y=8;
@@ -222,10 +222,10 @@ int main(int argc, char *argv[])
 
 
 
-    /*QApplication a(argc, argv);
-    QuizRoom w;
+    QApplication a(argc, argv);
+    Login w;
     w.show();
-    return a.exec();*/
+    return a.exec();
 
 
 }

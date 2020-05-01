@@ -29,6 +29,7 @@ SOURCES += \
     Model/time.cpp \
     Model/timehomework.cpp \
     Model/timescorehomework.cpp \
+    View/login.cpp \
     main.cpp \
     Model/quizroom.cpp \
     Model/user.cpp \
@@ -53,7 +54,8 @@ HEADERS += \
     Model/timescorehomework.h \
     Model/user.h \
     Model/student.h \
-    Model/teacher.h
+    Model/teacher.h \
+    View/login.h
 
 FORMS += \
     quizroom.ui
@@ -62,3 +64,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc
