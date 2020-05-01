@@ -5,6 +5,7 @@ Il progetto è diviso in cartelle contenenti i file raggruppati per diversa cate
 *  **Model**: contiene i modelli (struttura) del nostro software
 *  **Control**: contiene il controllore (colui che gestisce le azioni) del nostro software
 *  **View**: contiene la GUI (interfaccia grafica) del nostro software 
+*  **Resources**: contiene il foglio di stile (**style.css**) per gli elementi dell'app e le immagini dell'app
 
 Ogni cartella della divisione MCV contiene file **.h** e file **.cpp** inerenti a quella cartella
 
