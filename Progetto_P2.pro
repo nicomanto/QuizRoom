@@ -29,6 +29,8 @@ SOURCES += \
     Model/time.cpp \
     Model/timehomework.cpp \
     Model/timescorehomework.cpp \
+    View/courseform.cpp \
+    View/formvirtual.cpp \
     View/loginform.cpp \
     main.cpp \
     Model/quizroom.cpp \
@@ -55,6 +57,8 @@ HEADERS += \
     Model/user.h \
     Model/student.h \
     Model/teacher.h \
+    View/courseform.h \
+    View/formvirtual.h \
     View/loginform.h
 
 FORMS += \
