@@ -1,13 +1,10 @@
 #include "loginform.h"
 
-LoginForm::LoginForm(QWidget *parent) : QWidget(parent){
+LoginForm::LoginForm(QWidget *parent) : FormVirtual(parent){
 
     main_layout = new QVBoxLayout(this);
 
-    //addMenu();
-
     addForm();
-
 
     setStyle();
 
@@ -17,8 +14,8 @@ LoginForm::LoginForm(QWidget *parent) : QWidget(parent){
 
 }
 
-/*void LoginForm::addMenu()
-{
+void LoginForm::addMenu(){}
+/*{
     menubar = new QMenuBar(this);
     QMenu* menu = new QMenu("Options",menubar);
     QAction* exit = new QAction("Exit to login",menu);
@@ -51,20 +48,14 @@ void LoginForm::addForm()
 }
 
 void LoginForm::setStyle(){
+    FormVirtual::setStyle();
+
     password_form->setEchoMode(QLineEdit::Password);
-    //menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
     setFixedSize(QSize(600,200));
     setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
 
-    setWindowTitle("ClassRoom");
-
-
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,size(),qApp->desktop()->availableGeometry()));
 
-    QFile file(":/Resources/style.css");
-    file.open(QFile::ReadOnly);
-    QString styleSheet = QLatin1String(file.readAll());
 
-    setStyleSheet(styleSheet);
 
 }

@@ -1,41 +1,35 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include <QMainWindow>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QApplication>
 #include <QDesktopWidget>
-#include <QVBoxLayout>
-#include <QMenuBar>
 #include <QFile>
 #include <QStyle>
 #include <QScreen>
 #include <QLabel>
+#include "formvirtual.h"
 
 
-class LoginForm : public QWidget{
+class LoginForm : public FormVirtual{
     Q_OBJECT
 
 private:
-    QVBoxLayout *main_layout;
-    //QMenuBar* menubar;
-
     QPushButton *login_button;
-
     QLineEdit *username_form;
     QLineEdit *password_form;
     QLabel* username;
     QLabel* password;
 public:
     explicit LoginForm(QWidget *parent = nullptr);
-    ~LoginForm() = default;
+    ~LoginForm()= default;
 
-    //void addMenu();
+    virtual void addMenu();
 
-    void addForm();
+    virtual void addForm();
 
-    void setStyle();
+    virtual void setStyle();
 
 
 
@@ -44,6 +38,9 @@ public:
 signals:
 
 public slots:
+    void open(){
+        show();
+    }
 };
 
 #endif // LOGIN_H
