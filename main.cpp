@@ -1,4 +1,4 @@
-#include "View/login.h"
+#include "View/loginform.h"
 #include <iostream>
 #include <QApplication>
 #include "Model/myvector.h" //per testare
@@ -223,7 +223,7 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-    Login w;
+    LoginForm w;
     w.show();
     return a.exec();
 

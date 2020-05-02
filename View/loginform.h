@@ -12,16 +12,14 @@
 #include <QStyle>
 #include <QScreen>
 #include <QLabel>
-namespace Ui {
-    class Login;
-}
 
-class Login : public QWidget{
+
+class LoginForm : public QWidget{
     Q_OBJECT
 
 private:
     QVBoxLayout *main_layout;
-    QMenuBar* menubar;
+    //QMenuBar* menubar;
 
     QPushButton *login_button;
 
@@ -30,10 +28,10 @@ private:
     QLabel* username;
     QLabel* password;
 public:
-    explicit Login(QWidget *parent = nullptr);
-    ~Login() = default;
+    explicit LoginForm(QWidget *parent = nullptr);
+    ~LoginForm() = default;
 
-    void addMenu();
+    //void addMenu();
 
     void addForm();
 

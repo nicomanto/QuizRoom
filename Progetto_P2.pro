@@ -29,7 +29,7 @@ SOURCES += \
     Model/time.cpp \
     Model/timehomework.cpp \
     Model/timescorehomework.cpp \
-    View/login.cpp \
+    View/loginform.cpp \
     main.cpp \
     Model/quizroom.cpp \
     Model/user.cpp \
@@ -55,7 +55,7 @@ HEADERS += \
     Model/user.h \
     Model/student.h \
     Model/teacher.h \
-    View/login.h
+    View/loginform.h
 
 FORMS += \
     quizroom.ui

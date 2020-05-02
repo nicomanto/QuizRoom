@@ -1,10 +1,10 @@
-#include "login.h"
+#include "loginform.h"
 
-Login::Login(QWidget *parent) : QWidget(parent){
+LoginForm::LoginForm(QWidget *parent) : QWidget(parent){
 
     main_layout = new QVBoxLayout(this);
 
-    addMenu();
+    //addMenu();
 
     addForm();
 
@@ -17,7 +17,7 @@ Login::Login(QWidget *parent) : QWidget(parent){
 
 }
 
-void Login::addMenu()
+/*void LoginForm::addMenu()
 {
     menubar = new QMenuBar(this);
     QMenu* menu = new QMenu("Options",menubar);
@@ -31,9 +31,9 @@ void Login::addMenu()
     menubar->addMenu(menu);
 
     main_layout->addWidget(menubar);
-}
+}*/
 
-void Login::addForm()
+void LoginForm::addForm()
 {
     login_button = new QPushButton("Login",this);
     username_form= new QLineEdit(this);
@@ -50,9 +50,9 @@ void Login::addForm()
     main_layout->addWidget(login_button);
 }
 
-void Login::setStyle(){
+void LoginForm::setStyle(){
     password_form->setEchoMode(QLineEdit::Password);
-    menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+    //menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
     setFixedSize(QSize(600,200));
     setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
 
