@@ -4,6 +4,10 @@
 #include <QMenuBar>
 #include <QWidget>
 #include <QFile>
+#include <QStyle>
+#include <QScreen>
+#include <QApplication>
+#include <QDesktopWidget>
 
 class FormVirtual: public QWidget{
     Q_OBJECT

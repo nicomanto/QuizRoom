@@ -50,11 +50,20 @@ void LoginForm::addForm()
 void LoginForm::setStyle(){
     FormVirtual::setStyle();
 
+
+    username->setAlignment(Qt::AlignCenter);
+    password->setAlignment(Qt::AlignCenter);
+
+
+    username_form->setFixedWidth(300);
+    password_form->setFixedWidth(300);
+    login_button->setFixedWidth(300);
+    login_button->setFixedHeight(50);
+
     password_form->setEchoMode(QLineEdit::Password);
     setFixedSize(QSize(600,200));
     setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
 
-    setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,size(),qApp->desktop()->availableGeometry()));
 
 
 

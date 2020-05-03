@@ -41,15 +41,18 @@ void CourseForm::addForm(){
     scroll->setWidgetResizable(true);
 
     main_layout->addWidget(scroll);
-    QWidget * container = new QWidget();
+    QWidget * container = new QWidget(scroll);
     scroll->setWidget( container );
 
     QVBoxLayout* container_layout = new QVBoxLayout(container);
-
+    container_layout->setAlignment(Qt::AlignCenter);
     for(unsigned int i=0; i <50; ++i){
         QString s= "Corso " + QString::number(i);
         course.push_back(new QPushButton(s,this));
         container_layout->addWidget(course[i]);
+        course[i]->setMinimumSize(QSize(300,100));
+        course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+        course[i]->setMaximumSize(QSize(1000,600));
     }
 
 }
@@ -57,6 +60,7 @@ void CourseForm::addForm(){
 void CourseForm::setStyle(){
     FormVirtual::setStyle();
 
+    setMinimumSize(QSize(600,200));
 
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 

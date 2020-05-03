@@ -3,11 +3,6 @@
 
 #include <QLineEdit>
 #include <QPushButton>
-#include <QApplication>
-#include <QDesktopWidget>
-#include <QFile>
-#include <QStyle>
-#include <QScreen>
 #include <QLabel>
 #include "formvirtual.h"
 
