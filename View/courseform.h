@@ -8,6 +8,7 @@
 #include <QFile>
 #include "formvirtual.h"
 #include "loginform.h"
+#include <QScrollArea>
 
 class CourseForm : public FormVirtual{
     Q_OBJECT

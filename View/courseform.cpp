@@ -37,16 +37,27 @@ void CourseForm::addMenu(){
 void CourseForm::addForm(){
     //test inserimento push_button
 
-    for(unsigned int i=0; i <4; ++i){
+    QScrollArea* scroll= new QScrollArea(this);
+    scroll->setWidgetResizable(true);
+
+    main_layout->addWidget(scroll);
+    QWidget * container = new QWidget();
+    scroll->setWidget( container );
+
+    QVBoxLayout* container_layout = new QVBoxLayout(container);
+
+    for(unsigned int i=0; i <50; ++i){
         QString s= "Corso " + QString::number(i);
         course.push_back(new QPushButton(s,this));
-        main_layout->addWidget(course[i]);
+        container_layout->addWidget(course[i]);
     }
 
 }
 
 void CourseForm::setStyle(){
     FormVirtual::setStyle();
+
+
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
 }
