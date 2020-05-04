@@ -29,8 +29,9 @@ SOURCES += \
     Model/time.cpp \
     Model/timehomework.cpp \
     Model/timescorehomework.cpp \
+    View/baseform.cpp \
     View/courseform.cpp \
-    View/formvirtual.cpp \
+    View/homeworkform.cpp \
     View/loginform.cpp \
     main.cpp \
     Model/quizroom.cpp \
@@ -57,8 +58,9 @@ HEADERS += \
     Model/user.h \
     Model/student.h \
     Model/teacher.h \
+    View/baseform.h \
     View/courseform.h \
-    View/formvirtual.h \
+    View/homeworkform.h \
     View/loginform.h
 
 FORMS += \
@@ -70,4 +72,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    resources.qrc
+    resource.qrc

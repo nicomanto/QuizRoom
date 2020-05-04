@@ -1,9 +1,9 @@
 #include "courseform.h"
 
-CourseForm::CourseForm(QWidget *parent) : FormVirtual(parent){
+CourseForm::CourseForm(QWidget *parent) : BaseForm(parent),scroll(new QScrollArea(this)){
 
-    main_layout = new QVBoxLayout(this);
-
+    main_layout=new QVBoxLayout(this);
+    menubar=new QMenuBar(this);
     addMenu();
     addForm();
 
@@ -13,7 +13,6 @@ CourseForm::CourseForm(QWidget *parent) : FormVirtual(parent){
 }
 
 void CourseForm::addMenu(){
-    menubar = new QMenuBar(this);
     QMenu* options = new QMenu("Opzioni",menubar);
     QMenu*  course= new QMenu("Corso",menubar);
 
@@ -37,31 +36,40 @@ void CourseForm::addMenu(){
 void CourseForm::addForm(){
     //test inserimento push_button
 
-    QScrollArea* scroll= new QScrollArea(this);
-    scroll->setWidgetResizable(true);
+
 
     main_layout->addWidget(scroll);
+
     QWidget * container = new QWidget(scroll);
     scroll->setWidget( container );
 
     QVBoxLayout* container_layout = new QVBoxLayout(container);
     container_layout->setAlignment(Qt::AlignCenter);
+
     for(unsigned int i=0; i <50; ++i){
         QString s= "Corso " + QString::number(i);
         course.push_back(new QPushButton(s,this));
         container_layout->addWidget(course[i]);
-        course[i]->setMinimumSize(QSize(300,100));
-        course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-        course[i]->setMaximumSize(QSize(1000,600));
     }
 
 }
 
 void CourseForm::setStyle(){
-    FormVirtual::setStyle();
+    BaseForm::setStyle();
 
-    setMinimumSize(QSize(600,200));
+    for(unsigned int i=0; i <50; ++i){
+        course[i]->setMinimumSize(QSize(width()/2,height()/5));
+        course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+        course[i]->setMaximumSize(QSize(1000,600));
+    }
+
+    scroll->setWidgetResizable(true);
 
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
+    QFile file(":/Resources/style_course.css");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
+
+    setStyleSheet(styleSheet);
 }

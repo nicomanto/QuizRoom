@@ -1,24 +1,24 @@
 #ifndef FORMVIRTUAL_H
 #define FORMVIRTUAL_H
-#include <QVBoxLayout>
+#include <QBoxLayout>
 #include <QMenuBar>
 #include <QWidget>
-#include <QFile>
 #include <QStyle>
 #include <QScreen>
 #include <QApplication>
 #include <QDesktopWidget>
 
-class FormVirtual: public QWidget{
+class BaseForm: public QWidget{
     Q_OBJECT
 protected:
-    QVBoxLayout *main_layout;
+    QBoxLayout *main_layout;
     QMenuBar* menubar;
-
+    int height_screen;
+    int width_screen;
 public:
-    explicit FormVirtual(QWidget *parent = nullptr);
+    explicit BaseForm(QWidget *parent = nullptr, QBoxLayout* main_l=nullptr, QMenuBar* bar=nullptr);
 
-    virtual ~FormVirtual();
+    virtual ~BaseForm();
 
     virtual void addMenu()=0;
 

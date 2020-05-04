@@ -4,10 +4,13 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QLabel>
-#include "formvirtual.h"
+#include <QFile>
+#include <QStyle>
+
+#include "baseform.h"
 
 
-class LoginForm : public FormVirtual{
+class LoginForm : public BaseForm{
     Q_OBJECT
 
 private:

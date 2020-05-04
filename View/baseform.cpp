@@ -1,10 +1,17 @@
-#include "formvirtual.h"
+#include "baseform.h"
 
-FormVirtual::FormVirtual(QWidget *parent) : QWidget(parent), main_layout(nullptr), menubar(nullptr){}
+BaseForm::BaseForm(QWidget *parent,QBoxLayout* main_l, QMenuBar* bar) : QWidget(parent), main_layout(main_l), menubar(bar){
 
-FormVirtual::~FormVirtual(){}
+    QScreen *screen = QGuiApplication::primaryScreen();
+    QRect  screenGeometry = screen->geometry();
 
-void FormVirtual::setStyle()
+    height_screen = screenGeometry.height();
+    width_screen = screenGeometry.width();
+}
+
+BaseForm::~BaseForm(){}
+
+void BaseForm::setStyle()
 {
     setWindowTitle("ClassRoom");
     main_layout->setAlignment(Qt::AlignCenter);
@@ -12,9 +19,7 @@ void FormVirtual::setStyle()
     //setta la paggina al centro dello schermo
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,size(),qApp->desktop()->availableGeometry()));
 
-    QFile file(":/Resources/style.css");
-    file.open(QFile::ReadOnly);
-    QString styleSheet = QLatin1String(file.readAll());
 
-    setStyleSheet(styleSheet);
+    setMinimumSize(QSize(width_screen/3,height_screen/4));
+
 }

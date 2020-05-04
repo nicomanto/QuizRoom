@@ -1,8 +1,6 @@
 #include "loginform.h"
-
-LoginForm::LoginForm(QWidget *parent) : FormVirtual(parent){
-
-    main_layout = new QVBoxLayout(this);
+LoginForm::LoginForm(QWidget *parent) : BaseForm(parent), login_button(new QPushButton("Login",this)),username_form(new QLineEdit(this)), password_form(new QLineEdit(this)),username(new QLabel("Username", this)),password(new QLabel("Password", this)){
+    main_layout= new QVBoxLayout(this);
 
     addForm();
 
@@ -30,14 +28,7 @@ void LoginForm::addMenu(){}
     main_layout->addWidget(menubar);
 }*/
 
-void LoginForm::addForm()
-{
-    login_button = new QPushButton("Login",this);
-    username_form= new QLineEdit(this);
-    password_form= new QLineEdit(this);
-    username= new QLabel("Username", this);
-    password= new QLabel("Password",this);
-
+void LoginForm::addForm(){
     main_layout->addWidget(username);
     main_layout->addWidget(username_form);
 
@@ -48,23 +39,28 @@ void LoginForm::addForm()
 }
 
 void LoginForm::setStyle(){
-    FormVirtual::setStyle();
+    BaseForm::setStyle();
 
 
     username->setAlignment(Qt::AlignCenter);
     password->setAlignment(Qt::AlignCenter);
 
+    setFixedSize(QSize(width_screen/2.5,height_screen/3));
 
-    username_form->setFixedWidth(300);
-    password_form->setFixedWidth(300);
-    login_button->setFixedWidth(300);
-    login_button->setFixedHeight(50);
+    username_form->setFixedWidth(width()/2);
+    password_form->setFixedWidth(width()/2);
+    login_button->setFixedWidth(width()/2);
+    login_button->setFixedHeight(height()/5);
 
     password_form->setEchoMode(QLineEdit::Password);
-    setFixedSize(QSize(600,200));
+
     setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
 
 
+    QFile file(":/Resources/style_login.css");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
 
+    setStyleSheet(styleSheet);
 
 }
