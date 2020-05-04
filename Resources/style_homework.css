@@ -1,0 +1,17 @@
+QMenuBar {
+}
+
+QVboxLayout{
+
+}
+
+QLabel{
+    font: 12pt Times New Roman;
+}
+
+
+QPushButton{
+    margin-top: 10;
+    margin-bottom: 10;
+    font: 11pt Times New Roman;
+}
