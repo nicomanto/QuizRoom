@@ -33,6 +33,8 @@ SOURCES += \
     View/courseform.cpp \
     View/homeworkform.cpp \
     View/loginform.cpp \
+    View/menubutton.cpp \
+    View/principalform.cpp \
     main.cpp \
     Model/quizroom.cpp \
     Model/user.cpp \
@@ -61,7 +63,9 @@ HEADERS += \
     View/baseform.h \
     View/courseform.h \
     View/homeworkform.h \
-    View/loginform.h
+    View/loginform.h \
+    View/menubutton.h \
+    View/principalform.h
 
 FORMS += \
     quizroom.ui

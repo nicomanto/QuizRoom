@@ -23,8 +23,6 @@ public:
     explicit LoginForm(QWidget *parent = nullptr);
     ~LoginForm()= default;
 
-    virtual void addMenu();
-
     virtual void addForm();
 
     virtual void setStyle();

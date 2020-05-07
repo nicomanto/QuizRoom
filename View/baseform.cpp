@@ -1,6 +1,6 @@
 #include "baseform.h"
 
-BaseForm::BaseForm(QWidget *parent,QBoxLayout* main_l, QMenuBar* bar) : QWidget(parent), main_layout(main_l), menubar(bar){
+BaseForm::BaseForm(QWidget *parent) : QWidget(parent), main_layout(nullptr){
 
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect  screenGeometry = screen->geometry();

@@ -1,7 +1,6 @@
 #ifndef FORMVIRTUAL_H
 #define FORMVIRTUAL_H
 #include <QBoxLayout>
-#include <QMenuBar>
 #include <QWidget>
 #include <QStyle>
 #include <QScreen>
@@ -12,15 +11,12 @@ class BaseForm: public QWidget{
     Q_OBJECT
 protected:
     QBoxLayout *main_layout;
-    QMenuBar* menubar;
     int height_screen;
     int width_screen;
 public:
-    explicit BaseForm(QWidget *parent = nullptr, QBoxLayout* main_l=nullptr, QMenuBar* bar=nullptr);
+    explicit BaseForm(QWidget *parent = nullptr);
 
     virtual ~BaseForm();
-
-    virtual void addMenu()=0;
 
     virtual void addForm()=0;
 

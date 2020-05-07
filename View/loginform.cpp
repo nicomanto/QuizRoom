@@ -1,6 +1,7 @@
 #include "loginform.h"
 LoginForm::LoginForm(QWidget *parent) : BaseForm(parent), login_button(new QPushButton("Login",this)),username_form(new QLineEdit(this)), password_form(new QLineEdit(this)),username(new QLabel("Username", this)),password(new QLabel("Password", this)){
-    main_layout= new QVBoxLayout(this);
+
+    main_layout=new QVBoxLayout(this);
 
     addForm();
 
@@ -11,22 +12,6 @@ LoginForm::LoginForm(QWidget *parent) : BaseForm(parent), login_button(new QPush
 
 
 }
-
-void LoginForm::addMenu(){}
-/*{
-    menubar = new QMenuBar(this);
-    QMenu* menu = new QMenu("Options",menubar);
-    QAction* exit = new QAction("Exit to login",menu);
-
-    menu->addAction(exit);
-
-    connect(exit,SIGNAL(triggered()),this,SLOT(close()));
-
-
-    menubar->addMenu(menu);
-
-    main_layout->addWidget(menubar);
-}*/
 
 void LoginForm::addForm(){
     main_layout->addWidget(username);

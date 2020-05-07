@@ -6,14 +6,14 @@
 #include <QScrollArea>
 
 #include "Model/myvector.h"
-#include "baseform.h"
+#include "principalform.h"
 #include "loginform.h"
+#include "menubutton.h"
 
-class CourseForm : public BaseForm{
+class CourseForm : public PrincipalForm{
     Q_OBJECT
 private:
     MyVector <QPushButton *> course;
-    QScrollArea* scroll;
 public:
     explicit CourseForm(QWidget *parent = nullptr);
     ~CourseForm()= default;
@@ -24,6 +24,7 @@ public:
 
     virtual void setStyle();
 
+    virtual void addMenuButton(QPushButton* b);
 
 signals:
 

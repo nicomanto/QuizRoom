@@ -1,12 +1,13 @@
 #include "courseform.h"
 
-CourseForm::CourseForm(QWidget *parent) : BaseForm(parent),scroll(new QScrollArea(this)){
+CourseForm::CourseForm(QWidget *parent) : PrincipalForm(parent){
 
     main_layout=new QVBoxLayout(this);
     menubar=new QMenuBar(this);
+    scroll= new QScrollArea(this);
+
     addMenu();
     addForm();
-
     setStyle();
 
     setLayout(main_layout);
@@ -17,12 +18,18 @@ void CourseForm::addMenu(){
     QMenu*  course= new QMenu("Corso",menubar);
 
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
-    QAction* add_course = new QAction("crea corso",course);
     QAction* subscribe_course = new QAction("iscriviti al corso",course);
 
-    options->addAction(exit_login);
-    course->addAction(add_course);
+
+
+    if(true){ //controllare se l'utente può aggiungere corsi
+        QAction* add_course = new QAction("crea corso",course);
+        course->addAction(add_course);
+    }
+
     course->addAction(subscribe_course);
+
+    options->addAction(exit_login);
 
     connect(exit_login,SIGNAL(triggered()),this,SLOT(close()));
     connect(exit_login,SIGNAL(triggered()),new LoginForm,SLOT(open())); //tests
@@ -35,8 +42,6 @@ void CourseForm::addMenu(){
 
 void CourseForm::addForm(){
     //test inserimento push_button
-
-
 
     main_layout->addWidget(scroll);
 
@@ -61,6 +66,7 @@ void CourseForm::setStyle(){
         course[i]->setMinimumSize(QSize(width()/2,height()/5));
         course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         course[i]->setMaximumSize(QSize(1000,600));
+        addMenuButton(course[i]);
     }
 
     scroll->setWidgetResizable(true);
@@ -72,4 +78,24 @@ void CourseForm::setStyle(){
     QString styleSheet = QLatin1String(file.readAll());
 
     setStyleSheet(styleSheet);
+}
+
+
+void CourseForm::addMenuButton(QPushButton *b){
+    MenuButton* button_options = new MenuButton(b,this);
+
+    //controllare se l'utente può modificare un corso
+    if(true){
+        QAction* change = new QAction("Modifica",button_options);
+        button_options->addAction(change);
+    }
+
+    //controllare se un utente può eliminare un corso
+    if(true){
+        QAction* del = new QAction("Elimina",button_options);
+        button_options->addAction(del);
+    }
+
+    b->setMenu(button_options);
+
 }

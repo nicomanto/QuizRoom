@@ -1,13 +1,15 @@
 #include "homeworkform.h"
 
 
-HomeworkForm::HomeworkForm(QWidget *parent): BaseForm(parent), scroll(new QScrollArea(this)){
+HomeworkForm::HomeworkForm(const QString& title, QWidget *parent): PrincipalForm(parent){
     main_layout=new QVBoxLayout(this);
+    scroll= new QScrollArea(this);
     menubar=new QMenuBar(this);
+
+    course_title= new QLabel(title,this);
 
     addMenu();
     addForm();
-
     setStyle();
 
     setLayout(main_layout);
@@ -20,10 +22,16 @@ void HomeworkForm::addMenu(){
 
     QAction* course_page= new QAction("<-",menubar);
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
-    QAction* add_homework = new QAction("crea compito",homework);
+
+
+
+    if(true){ //controllare se l'utente può aggiungere homework
+        QAction* add_homework = new QAction("crea compito",homework);
+        homework->addAction(add_homework);
+    }
 
     options->addAction(exit_login);
-    homework->addAction(add_homework);
+
 
 
     connect(exit_login,SIGNAL(triggered()),this,SLOT(close()));
@@ -31,7 +39,9 @@ void HomeworkForm::addMenu(){
 
     menubar->addAction(course_page);
     menubar->addMenu(options);
-    menubar->addMenu(homework);
+
+    if(true)
+        menubar->addMenu(homework);
 
     main_layout->addWidget(menubar);
 }
@@ -39,7 +49,6 @@ void HomeworkForm::addMenu(){
 void HomeworkForm::addForm(){
     QHBoxLayout* center = new QHBoxLayout(this);
 
-    course_title= new QLabel("Titolo corso",this);
     center->addWidget(course_title);
 
 
@@ -56,6 +65,7 @@ void HomeworkForm::addForm(){
         QString s= "Compito " + QString::number(i);
         homework.push_back(new QPushButton(s,this));
         container_layout->addWidget(homework[i]);
+        addMenuButton(homework[i]);
     }
 
 
@@ -82,3 +92,28 @@ void HomeworkForm::setStyle(){
     setStyleSheet(styleSheet);
 
 }
+
+
+void HomeworkForm::addMenuButton(QPushButton *b){
+
+    //devo crearlo solo se posso fare qualcosa, nel caso dello studente no
+    MenuButton* button_options = new MenuButton(b,this);
+
+    //controllare se l'utente può modificare un compito
+    if(true){
+        QAction* change = new QAction("Modifica",button_options);
+        button_options->addAction(change);
+    }
+
+    //controllare se un utente può eliminare un compito
+    if(true){
+        QAction* del = new QAction("Elimina",button_options);
+        button_options->addAction(del);
+    }
+
+    //true sse ho creato il button_options
+    if(true)
+        b->setMenu(button_options);
+
+}
+

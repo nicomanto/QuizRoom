@@ -4,20 +4,20 @@
 #include <QLabel>
 #include <QFile>
 #include <QScrollArea>
-
+#include <QString>
+#include "menubutton.h"
 #include "Model/myvector.h"
-#include "baseform.h"
+#include "principalform.h"
 #include "loginform.h"
 
-class HomeworkForm : public BaseForm{
+class HomeworkForm : public PrincipalForm{
     Q_OBJECT
 private:
     MyVector <QPushButton *> homework;
     QLabel* course_title;
-    QScrollArea* scroll;
 
 public:
-    explicit HomeworkForm(QWidget *parent = nullptr);
+    explicit HomeworkForm(const QString& title, QWidget *parent = nullptr);
     ~HomeworkForm()= default;
 
     virtual void addMenu();
@@ -25,6 +25,8 @@ public:
     virtual void addForm();
 
     virtual void setStyle();
+
+    virtual void addMenuButton(QPushButton* b);
 
 
 signals:
