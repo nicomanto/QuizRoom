@@ -48,13 +48,21 @@ void CourseForm::addForm(){
     QWidget * container = new QWidget(scroll);
     scroll->setWidget( container );
 
-    QVBoxLayout* container_layout = new QVBoxLayout(container);
-    container_layout->setAlignment(Qt::AlignCenter);
+    container_grid = new QGridLayout(container);
 
     for(unsigned int i=0; i <50; ++i){
         QString s= "Corso " + QString::number(i);
         course.push_back(new QPushButton(s,this));
-        container_layout->addWidget(course[i]);
+
+        if(true) //controllo se posso modificare in qualche modo il compito
+            course_menu.push_back(new QPushButton(course[i]));
+
+        container_grid->addWidget(course[i],i,0);
+
+        if(true){ //controllo se posso modificare in qualche modo il compito
+            addMenuButton(course_menu[i]);
+            container_grid->addWidget(course_menu[i],i,1);
+        }
     }
 
 }
@@ -66,12 +74,18 @@ void CourseForm::setStyle(){
         course[i]->setMinimumSize(QSize(width()/2,height()/5));
         course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         course[i]->setMaximumSize(QSize(1000,600));
-        addMenuButton(course[i]);
+
+        if(true)//controllo se è creato
+            course_menu[i]->setFixedSize(22,height()/5);
     }
 
     scroll->setWidgetResizable(true);
 
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+
+
+    container_grid->setAlignment(Qt::AlignCenter);
+    container_grid->setSpacing(0);
 
     QFile file(":/Resources/style_course.css");
     file.open(QFile::ReadOnly);

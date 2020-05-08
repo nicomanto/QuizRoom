@@ -14,6 +14,9 @@ class CourseForm : public PrincipalForm{
     Q_OBJECT
 private:
     MyVector <QPushButton *> course;
+    MyVector <QPushButton *> course_menu;
+
+    QGridLayout* container_grid;
 public:
     explicit CourseForm(QWidget *parent = nullptr);
     ~CourseForm()= default;
