@@ -20,6 +20,6 @@ void BaseForm::setStyle()
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,size(),qApp->desktop()->availableGeometry()));
 
 
-    setMinimumSize(QSize(width_screen/3,height_screen/4));
+    setMinimumSize(QSize(width_screen/2,height_screen/4));
 
 }

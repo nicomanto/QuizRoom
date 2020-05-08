@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QScrollArea>
 #include <QString>
+
 #include "menubutton.h"
 #include "Model/myvector.h"
 #include "principalform.h"
@@ -14,8 +15,15 @@ class HomeworkForm : public PrincipalForm{
     Q_OBJECT
 private:
     MyVector <QPushButton *> homework;
-    QLabel* course_title;
+    MyVector <QPushButton *> homework_menu;
 
+    QVBoxLayout* info_course;
+    QHBoxLayout* center;
+    QGridLayout* container_grid;
+
+    QLabel* course_title;
+    QLabel* course_description;
+    QLabel* course_code;
 public:
     explicit HomeworkForm(const QString& title, QWidget *parent = nullptr);
     ~HomeworkForm()= default;
@@ -27,7 +35,6 @@ public:
     virtual void setStyle();
 
     virtual void addMenuButton(QPushButton* b);
-
 
 signals:
 
