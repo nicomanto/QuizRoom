@@ -24,9 +24,10 @@ CourseForm::CourseForm(const QString& title, QWidget *parent): PrincipalForm(par
 void CourseForm::addMenu(){
 
     QMenu* options = new QMenu("Opzioni",menubar);
+    QMenu* course= new QMenu("Corso",menubar);
     QMenu*  homework= new QMenu("Compito",menubar);
 
-    QAction* course_page= new QAction("<-",menubar);
+    QAction* main_page= new QAction("<-",menubar);
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
 
@@ -36,6 +37,16 @@ void CourseForm::addMenu(){
         homework->addAction(add_homework);
     }
 
+    if(true){ //controllare se l'utente può modificare il corso
+        QAction* modify_course = new QAction("modifica",homework);
+        course->addAction(modify_course);
+    }
+
+    if(true){ //controllare se l'utente può eliminare il corso
+        QAction* delete_course = new QAction("elimina",homework);
+        course->addAction(delete_course);
+    }
+
     options->addAction(exit_login);
 
 
@@ -43,8 +54,11 @@ void CourseForm::addMenu(){
     connect(exit_login,SIGNAL(triggered()),this,SLOT(close()));
     //connect(exit_login,SIGNAL(triggered()),new LoginForm,SLOT(open())); //tests
 
-    menubar->addAction(course_page);
+    menubar->addAction(main_page);
     menubar->addMenu(options);
+
+    if(true)
+        menubar->addMenu(course);
 
     if(true)
         menubar->addMenu(homework);
@@ -97,12 +111,12 @@ void CourseForm::addForm(){
 }
 
 void CourseForm::setStyle(){
-    BaseForm::setStyle();
+    PrincipalForm::setStyle();
 
     for(unsigned int i=0; i <50; ++i){
         homework[i]->setMinimumSize(width()/3,height()/5);
         homework[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-        homework[i]->setMaximumSize(QSize(1000,600));
+        homework[i]->setMaximumSize(QSize(1000,height()/5));
 
         if(true)//controllo se è creato
             homework_menu[i]->setFixedSize(22,height()/5);
@@ -144,7 +158,7 @@ void CourseForm::setStyle(){
 
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
-    QFile file(":/Resources/style_homework.css");
+    QFile file(":/Resources/style_course.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 

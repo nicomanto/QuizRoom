@@ -31,6 +31,7 @@ SOURCES += \
     Model/timescorehomework.cpp \
     View/baseform.cpp \
     View/courseform.cpp \
+    View/homeworkform.cpp \
     View/loginform.cpp \
     View/mainform.cpp \
     View/menubutton.cpp \
@@ -62,6 +63,7 @@ HEADERS += \
     Model/teacher.h \
     View/baseform.h \
     View/courseform.h \
+    View/homeworkform.h \
     View/loginform.h \
     View/mainform.h \
     View/menubutton.h \
@@ -76,4 +78,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    resource.qrc
+    resources.qrc

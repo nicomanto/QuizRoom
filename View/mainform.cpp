@@ -50,7 +50,7 @@ void MainForm::addForm(){
 
     container_grid = new QGridLayout(container);
 
-    for(unsigned int i=0; i <50; ++i){
+    for(unsigned int i=0; i <2; ++i){
         QString s= "Corso " + QString::number(i);
         course.push_back(new QPushButton(s,this));
 
@@ -68,12 +68,12 @@ void MainForm::addForm(){
 }
 
 void MainForm::setStyle(){
-    BaseForm::setStyle();
+    PrincipalForm::setStyle();
 
-    for(unsigned int i=0; i <50; ++i){
+    for(unsigned int i=0; i <2; ++i){
         course[i]->setMinimumSize(QSize(width()/2,height()/5));
         course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-        course[i]->setMaximumSize(QSize(1000,600));
+        course[i]->setMaximumSize(QSize(1000,height()/5));
 
         if(true)//controllo se è creato
             course_menu[i]->setFixedSize(22,height()/5);
@@ -87,7 +87,7 @@ void MainForm::setStyle(){
     container_grid->setAlignment(Qt::AlignCenter);
     container_grid->setSpacing(0);
 
-    QFile file(":/Resources/style_course.css");
+    QFile file(":/Resources/style_main.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 
