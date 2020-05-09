@@ -1,24 +1,31 @@
 #ifndef COURSEFORM_H
 #define COURSEFORM_H
-
 #include <QPushButton>
+#include <QLabel>
 #include <QFile>
 #include <QScrollArea>
+#include <QString>
 
+#include "menubutton.h"
 #include "Model/myvector.h"
 #include "principalform.h"
 #include "loginform.h"
-#include "menubutton.h"
 
 class CourseForm : public PrincipalForm{
     Q_OBJECT
 private:
-    MyVector <QPushButton *> course;
-    MyVector <QPushButton *> course_menu;
+    MyVector <QPushButton *> homework;
+    MyVector <QPushButton *> homework_menu;
 
+    QVBoxLayout* info_course;
+    QHBoxLayout* center;
     QGridLayout* container_grid;
+
+    QLabel* course_title;
+    QLabel* course_description;
+    QLabel* course_code;
 public:
-    explicit CourseForm(QWidget *parent = nullptr);
+    explicit CourseForm(const QString& title, QWidget *parent = nullptr);
     ~CourseForm()= default;
 
     virtual void addMenu();

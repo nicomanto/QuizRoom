@@ -1,10 +1,18 @@
 #include "courseform.h"
 
-CourseForm::CourseForm(QWidget *parent) : PrincipalForm(parent){
 
+CourseForm::CourseForm(const QString& title, QWidget *parent): PrincipalForm(parent){
     main_layout=new QVBoxLayout(this);
-    menubar=new QMenuBar(this);
     scroll= new QScrollArea(this);
+    menubar=new QMenuBar(this);
+
+    center = new QHBoxLayout(this);
+
+    course_title= new QLabel(title,this);
+    course_description= new QLabel("Quiz del corso Letteratuta italiana 2018/2019",this);
+    QString s("xvois8"); //codice;
+    course_code=new QLabel("Codice corso: "+s,this);
+
 
     addMenu();
     addForm();
@@ -14,80 +22,129 @@ CourseForm::CourseForm(QWidget *parent) : PrincipalForm(parent){
 }
 
 void CourseForm::addMenu(){
+
     QMenu* options = new QMenu("Opzioni",menubar);
-    QMenu*  course= new QMenu("Corso",menubar);
+    QMenu*  homework= new QMenu("Compito",menubar);
 
+    QAction* course_page= new QAction("<-",menubar);
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
-    QAction* subscribe_course = new QAction("iscriviti al corso",course);
 
 
 
-    if(true){ //controllare se l'utente può aggiungere corsi
-        QAction* add_course = new QAction("crea corso",course);
-        course->addAction(add_course);
+    if(true){ //controllare se l'utente può aggiungere homework
+        QAction* add_homework = new QAction("crea compito",homework);
+        homework->addAction(add_homework);
     }
-
-    course->addAction(subscribe_course);
 
     options->addAction(exit_login);
 
-    connect(exit_login,SIGNAL(triggered()),this,SLOT(close()));
-    connect(exit_login,SIGNAL(triggered()),new LoginForm,SLOT(open())); //tests
 
+
+    connect(exit_login,SIGNAL(triggered()),this,SLOT(close()));
+    //connect(exit_login,SIGNAL(triggered()),new LoginForm,SLOT(open())); //tests
+
+    menubar->addAction(course_page);
     menubar->addMenu(options);
-    menubar->addMenu(course);
+
+    if(true)
+        menubar->addMenu(homework);
 
     main_layout->addWidget(menubar);
 }
 
 void CourseForm::addForm(){
-    //test inserimento push_button
 
-    main_layout->addWidget(scroll);
+    QWidget* container= new QWidget(this);
+    info_course=new QVBoxLayout(container);
 
-    QWidget * container = new QWidget(scroll);
+    info_course->addWidget(course_title);
+    info_course->addWidget(course_description);
+    info_course->addWidget(course_code);
+
+    container->setMaximumWidth(width());
+
+
+
+    center->addWidget(container);
+
+    container= new QWidget(this);
+    container_grid=new QGridLayout(container);
+    center->addWidget(scroll);
+
     scroll->setWidget( container );
 
-    container_grid = new QGridLayout(container);
+
 
     for(unsigned int i=0; i <50; ++i){
-        QString s= "Corso " + QString::number(i);
-        course.push_back(new QPushButton(s,this));
+        QString s= "Compito " + QString::number(i);
+        homework.push_back(new QPushButton(s,this));
 
         if(true) //controllo se posso modificare in qualche modo il compito
-            course_menu.push_back(new QPushButton(course[i]));
+            homework_menu.push_back(new QPushButton(homework[i]));
 
-        container_grid->addWidget(course[i],i,0);
+        container_grid->addWidget(homework[i],i,0);
 
         if(true){ //controllo se posso modificare in qualche modo il compito
-            addMenuButton(course_menu[i]);
-            container_grid->addWidget(course_menu[i],i,1);
+            addMenuButton(homework_menu[i]);
+            container_grid->addWidget(homework_menu[i],i,1);
         }
+
+
     }
 
+
+    main_layout->addLayout(center);
 }
 
 void CourseForm::setStyle(){
     BaseForm::setStyle();
 
     for(unsigned int i=0; i <50; ++i){
-        course[i]->setMinimumSize(QSize(width()/2,height()/5));
-        course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-        course[i]->setMaximumSize(QSize(1000,600));
+        homework[i]->setMinimumSize(width()/3,height()/5);
+        homework[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+        homework[i]->setMaximumSize(QSize(1000,600));
 
         if(true)//controllo se è creato
-            course_menu[i]->setFixedSize(22,height()/5);
+            homework_menu[i]->setFixedSize(22,height()/5);
     }
 
-    scroll->setWidgetResizable(true);
+    course_title->setAlignment(Qt::AlignCenter);
+    course_title->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    course_title->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
+    course_title->setWordWrap(true);
 
-    menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+    course_description->setAlignment(Qt::AlignCenter);
+    course_description->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    course_description->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    course_description->setWordWrap(true);
 
+    course_code->setAlignment(Qt::AlignCenter);
+    course_code->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    course_code->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    course_code->setWordWrap(true);
+
+
+    info_course->setAlignment(Qt::AlignCenter);
+    info_course->setSpacing(50);
 
     container_grid->setAlignment(Qt::AlignCenter);
     container_grid->setSpacing(0);
 
-    QFile file(":/Resources/style_course.css");
+    QFont font( "Arial", 18, QFont::Bold);
+    course_title->setFont(font);
+
+    font=QFont( "Arial", 14);
+    course_description->setFont(font);
+
+    font=QFont( "Arial", 12);
+    course_code->setFont(font);
+
+    scroll->setMaximumWidth(width()*2);
+    scroll->setWidgetResizable(true);
+
+    menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+
+    QFile file(":/Resources/style_homework.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 
@@ -96,20 +153,29 @@ void CourseForm::setStyle(){
 
 
 void CourseForm::addMenuButton(QPushButton *b){
+
+    //devo crearlo solo se posso fare qualcosa, nel caso dello studente no
     MenuButton* button_options = new MenuButton(b,this);
 
-    //controllare se l'utente può modificare un corso
+    //controllare se l'utente può modificare un compito
     if(true){
         QAction* change = new QAction("Modifica",button_options);
         button_options->addAction(change);
     }
 
-    //controllare se un utente può eliminare un corso
+    //controllare se un utente può eliminare un compito
     if(true){
         QAction* del = new QAction("Elimina",button_options);
         button_options->addAction(del);
     }
 
-    b->setMenu(button_options);
+    //true sse ho creato il button_options
+    if(true)
+        b->setMenu(button_options);
 
 }
+
+
+
+
+

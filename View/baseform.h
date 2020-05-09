@@ -1,5 +1,5 @@
-#ifndef FORMVIRTUAL_H
-#define FORMVIRTUAL_H
+#ifndef BASEFORM_H
+#define BASEFORM_H
 #include <QBoxLayout>
 #include <QWidget>
 #include <QStyle>
@@ -26,4 +26,4 @@ signals:
 public slots:
 };
 
-#endif // FORMVIRTUAL_H
+#endif // BASEFORM_H

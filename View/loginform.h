@@ -7,6 +7,8 @@
 #include <QFile>
 #include <QStyle>
 
+#include <QGroupBox>
+
 #include "baseform.h"
 
 

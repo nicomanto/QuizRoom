@@ -1,6 +1,6 @@
 #include "View/loginform.h"
+#include "View/mainform.h"
 #include "View/courseform.h"
-#include "View/homeworkform.h"
 #include <iostream>
 #include <QApplication>
 #include "Model/myvector.h" //per testare
@@ -225,7 +225,7 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-    HomeworkForm w("ciao");
+    LoginForm w;
     w.showMaximized();
     return a.exec();
 
