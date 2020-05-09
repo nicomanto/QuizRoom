@@ -50,7 +50,7 @@ void MainForm::addForm(){
 
     container_grid = new QGridLayout(container);
 
-    for(unsigned int i=0; i <2; ++i){
+    for(unsigned int i=0; i <50; ++i){
         QString s= "Corso " + QString::number(i);
         course.push_back(new QPushButton(s,this));
 
@@ -70,7 +70,7 @@ void MainForm::addForm(){
 void MainForm::setStyle(){
     PrincipalForm::setStyle();
 
-    for(unsigned int i=0; i <2; ++i){
+    for(unsigned int i=0; i <50; ++i){
         course[i]->setMinimumSize(QSize(width()/2,height()/5));
         course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         course[i]->setMaximumSize(QSize(1000,height()/5));

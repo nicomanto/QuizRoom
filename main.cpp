@@ -226,7 +226,7 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-    CourseForm w("ciao");
+    MainForm w;
     w.showMaximized();
     return a.exec();
 
