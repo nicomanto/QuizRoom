@@ -1,8 +1,2 @@
-<RCC>
-    <qresource prefix="/">
-        <file>Resources/style_course.css</file>
-        <file>Resources/style_homework.css</file>
-        <file>Resources/style_login.css</file>
-        <file>Resources/style_main.css</file>
-    </qresource>
-</RCC>
+<!DOCTYPE RCC>
+<RCC version="1.0"/>
