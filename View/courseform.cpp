@@ -2,11 +2,15 @@
 
 
 CourseForm::CourseForm(const QString& title, QWidget *parent): PrincipalForm(parent){
+
     main_layout=new QVBoxLayout(this);
     scroll= new QScrollArea(this);
     menubar=new QMenuBar(this);
 
-    center = new QHBoxLayout(this);
+    center_layout = new QHBoxLayout(this);
+
+    container_course= new QGroupBox(this);
+    container_homework= new QGroupBox(this);
 
     course_title= new QLabel(title,this);
     course_description= new QLabel("Quiz del corso Letteratuta italiana 2018/2019",this);
@@ -68,24 +72,22 @@ void CourseForm::addMenu(){
 
 void CourseForm::addForm(){
 
-    QWidget* container= new QWidget(this);
-    info_course=new QVBoxLayout(container);
+    info_course_layout=new QVBoxLayout(container_course);
 
-    info_course->addWidget(course_title);
-    info_course->addWidget(course_description);
-    info_course->addWidget(course_code);
+    info_course_layout->addWidget(course_title);
+    info_course_layout->addWidget(course_description);
+    info_course_layout->addWidget(course_code);
 
-    container->setMaximumWidth(width());
-
+    container_course->setMaximumWidth(width());
 
 
-    center->addWidget(container);
 
-    container= new QWidget(this);
-    container_grid=new QGridLayout(container);
-    center->addWidget(scroll);
+    center_layout->addWidget(container_course);
 
-    scroll->setWidget( container );
+    scroll_layout=new QGridLayout(container_homework);
+    center_layout->addWidget(scroll);
+
+    scroll->setWidget( container_homework );
 
 
 
@@ -96,18 +98,18 @@ void CourseForm::addForm(){
         if(true) //controllo se posso modificare in qualche modo il compito
             homework_menu.push_back(new QPushButton(homework[i]));
 
-        container_grid->addWidget(homework[i],i,0);
+        scroll_layout->addWidget(homework[i],i,0);
 
         if(true){ //controllo se posso modificare in qualche modo il compito
             addMenuButton(homework_menu[i]);
-            container_grid->addWidget(homework_menu[i],i,1);
+            scroll_layout->addWidget(homework_menu[i],i,1);
         }
 
 
     }
 
 
-    main_layout->addLayout(center);
+    main_layout->addLayout(center_layout);
 }
 
 void CourseForm::setStyle(){
@@ -138,11 +140,11 @@ void CourseForm::setStyle(){
     course_code->setWordWrap(true);
 
 
-    info_course->setAlignment(Qt::AlignCenter);
-    info_course->setSpacing(50);
+    info_course_layout->setAlignment(Qt::AlignCenter);
+    info_course_layout->setSpacing(50);
 
-    container_grid->setAlignment(Qt::AlignCenter);
-    container_grid->setSpacing(0);
+    scroll_layout->setAlignment(Qt::AlignCenter);
+    scroll_layout->setSpacing(0);
 
     QFont font( "Arial", 18, QFont::Bold);
     course_title->setFont(font);
@@ -188,6 +190,7 @@ void CourseForm::addMenuButton(QPushButton *b){
         b->setMenu(button_options);
 
 }
+
 
 
 

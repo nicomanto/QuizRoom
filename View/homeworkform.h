@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QFile>
+#include <QGroupBox>
 
 #include "principalform.h"
 
@@ -13,8 +14,10 @@ private:
     QLabel* homework_title;
     QLabel* homework_instructions;
 
-    QLabel* score;
+    QGroupBox* container_info_quiz;
+    QVBoxLayout* layout_container_info_quiz;
 
+    QLabel* score;
     QLabel* deadline;
 
     QPushButton* quiz;

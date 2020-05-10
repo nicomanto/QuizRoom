@@ -21,6 +21,7 @@ public:
     virtual void addForm()=0;
 
     virtual void setStyle();
+
 signals:
 
 public slots:

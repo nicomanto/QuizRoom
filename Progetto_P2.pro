@@ -30,12 +30,15 @@ SOURCES += \
     Model/timehomework.cpp \
     Model/timescorehomework.cpp \
     View/baseform.cpp \
+    View/classicquizform.cpp \
+    View/combinequizform.cpp \
     View/courseform.cpp \
     View/homeworkform.cpp \
     View/loginform.cpp \
     View/mainform.cpp \
     View/menubutton.cpp \
     View/principalform.cpp \
+    View/quizbaseform.cpp \
     main.cpp \
     Model/quizroom.cpp \
     Model/user.cpp \
@@ -62,12 +65,15 @@ HEADERS += \
     Model/student.h \
     Model/teacher.h \
     View/baseform.h \
+    View/classicquizform.h \
+    View/combinequizform.h \
     View/courseform.h \
     View/homeworkform.h \
     View/loginform.h \
     View/mainform.h \
     View/menubutton.h \
-    View/principalform.h
+    View/principalform.h \
+    View/quizbaseform.h
 
 FORMS += \
     quizroom.ui

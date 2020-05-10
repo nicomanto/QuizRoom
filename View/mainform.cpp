@@ -1,10 +1,11 @@
 #include "mainform.h"
 
-MainForm::MainForm(QWidget *parent) : PrincipalForm(parent){
+MainForm::MainForm(QWidget *parent) : PrincipalForm(parent), container_scroll(new QGroupBox(scroll)),scroll_layout(new QGridLayout(container_scroll)){
 
     main_layout=new QVBoxLayout(this);
     menubar=new QMenuBar(this);
     scroll= new QScrollArea(this);
+
 
     addMenu();
     addForm();
@@ -45,10 +46,8 @@ void MainForm::addForm(){
 
     main_layout->addWidget(scroll);
 
-    QWidget * container = new QWidget(scroll);
-    scroll->setWidget( container );
+    scroll->setWidget( container_scroll );
 
-    container_grid = new QGridLayout(container);
 
     for(unsigned int i=0; i <50; ++i){
         QString s= "Corso " + QString::number(i);
@@ -57,11 +56,11 @@ void MainForm::addForm(){
         if(true) //controllo se posso modificare in qualche modo il compito
             course_menu.push_back(new QPushButton(course[i]));
 
-        container_grid->addWidget(course[i],i,0);
+        scroll_layout->addWidget(course[i],i,0);
 
         if(true){ //controllo se posso modificare in qualche modo il compito
             addMenuButton(course_menu[i]);
-            container_grid->addWidget(course_menu[i],i,1);
+            scroll_layout->addWidget(course_menu[i],i,1);
         }
     }
 
@@ -84,8 +83,8 @@ void MainForm::setStyle(){
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
 
-    container_grid->setAlignment(Qt::AlignCenter);
-    container_grid->setSpacing(0);
+    scroll_layout->setAlignment(Qt::AlignCenter);
+    scroll_layout->setSpacing(0);
 
     QFile file(":/Resources/style_main.css");
     file.open(QFile::ReadOnly);

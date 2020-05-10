@@ -17,9 +17,12 @@ private:
     MyVector <QPushButton *> homework;
     MyVector <QPushButton *> homework_menu;
 
-    QVBoxLayout* info_course;
-    QHBoxLayout* center;
-    QGridLayout* container_grid;
+    QGroupBox* container_course;
+    QGroupBox* container_homework;
+
+    QVBoxLayout* info_course_layout;
+    QHBoxLayout* center_layout;
+    QGridLayout* scroll_layout;
 
     QLabel* course_title;
     QLabel* course_description;
@@ -35,6 +38,7 @@ public:
     virtual void setStyle();
 
     virtual void addMenuButton(QPushButton* b);
+
 
 signals:
 

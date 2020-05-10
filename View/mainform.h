@@ -16,7 +16,8 @@ private:
     MyVector <QPushButton *> course;
     MyVector <QPushButton *> course_menu;
 
-    QGridLayout* container_grid;
+    QGroupBox* container_scroll;
+    QGridLayout* scroll_layout;
 public:
     explicit MainForm(QWidget *parent = nullptr);
     ~MainForm()= default;
