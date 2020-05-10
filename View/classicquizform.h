@@ -2,10 +2,31 @@
 #define CLASSICQUIZFORM_H
 
 
-class ClassicQuizForm
-{
+#include <QFile>
+#include <QCheckBox>
+
+#include "Model/myvector.h"
+#include "quizbaseform.h"
+
+class ClassicQuizForm: public QuizBaseForm{
+     Q_OBJECT
+private:
+
+
+    MyVector<QCheckBox*> answers;
+
+
 public:
-    ClassicQuizForm();
+    explicit ClassicQuizForm(QWidget *parent = nullptr);
+    ~ClassicQuizForm()= default;
+
+    virtual void addForm();
+
+    virtual void setStyle();
+
+signals:
+
+public slots:
 };
 
 #endif // CLASSICQUIZFORM_H
