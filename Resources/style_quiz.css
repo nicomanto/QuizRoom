@@ -1,13 +1,13 @@
 
 QLabel{
-    font: 18pt Times New Roman;
+    font: 12pt Times New Roman;
 }
-
-
-
 QCheckBox{
     font: 12pt Times New Roman;
     padding:30;
 }
 
 
+QComboBox{
+    font: 12pt Times New Roman;
+}

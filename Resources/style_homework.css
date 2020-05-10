@@ -5,7 +5,9 @@ QVboxLayout{
 
 }
 
-
+QGroupBox{
+    border:none;
+}
 
 
 QPushButton{
