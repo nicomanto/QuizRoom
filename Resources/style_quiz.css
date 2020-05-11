@@ -4,7 +4,11 @@ QLabel{
 }
 QCheckBox{
     font: 12pt Times New Roman;
-    padding:30;
+    /*padding:30;*/
+}
+
+QGroupBox{
+    border:none;
 }
 
 

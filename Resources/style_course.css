@@ -7,5 +7,10 @@ QPushButton{
 }
 
 
+QGroupBox{
+    border: none;
+}
+
+
 
 
