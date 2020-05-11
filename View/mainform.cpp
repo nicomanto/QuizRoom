@@ -1,11 +1,9 @@
 #include "mainform.h"
 
-MainForm::MainForm(QWidget *parent) : PrincipalForm(parent), container_scroll(new QGroupBox(scroll)),scroll_layout(new QGridLayout(container_scroll)){
-
+MainForm::MainForm(QWidget *parent) : PrincipalForm(parent), scroll_layout(new QGridLayout(container_scroll)){
     main_layout=new QVBoxLayout(this);
     menubar=new QMenuBar(this);
     scroll= new QScrollArea(this);
-
 
     addMenu();
     addForm();
@@ -44,11 +42,11 @@ void MainForm::addMenu(){
 void MainForm::addForm(){
     //test inserimento push_button
 
-    main_layout->addWidget(scroll);
+    main_layout->addWidget(scroll);  //aggiungo la scroll area al layout principale
 
-    scroll->setWidget( container_scroll );
+    scroll->setWidget( container_scroll );  //il contenitore degli elemnti all'interno della scroll area
 
-
+    //for che aggiunge i bottoni
     for(unsigned int i=0; i <50; ++i){
         QString s= "Corso " + QString::number(i);
         course.push_back(new QPushButton(s,this));
@@ -69,6 +67,7 @@ void MainForm::addForm(){
 void MainForm::setStyle(){
     PrincipalForm::setStyle();
 
+    //setto lo stile dei vari bottoni
     for(unsigned int i=0; i <50; ++i){
         course[i]->setMinimumSize(QSize(width()/2,height()/5));
         course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
@@ -78,13 +77,14 @@ void MainForm::setStyle(){
             course_menu[i]->setFixedSize(22,height()/5);
     }
 
+    //area di scroll resizable
     scroll->setWidgetResizable(true);
 
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
 
     scroll_layout->setAlignment(Qt::AlignCenter);
-    scroll_layout->setSpacing(0);
+    scroll_layout->setSpacing(0);  //setto lo spazio fra gli elementi di scroll a 0
 
     QFile file(":/Resources/style_main.css");
     file.open(QFile::ReadOnly);
@@ -94,6 +94,7 @@ void MainForm::setStyle(){
 }
 
 
+//aggiungo il menu a tendina al bottone
 void MainForm::addMenuButton(QPushButton *b){
     MenuButton* button_options = new MenuButton(b,this);
 

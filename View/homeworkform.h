@@ -14,13 +14,13 @@ private:
     QLabel* homework_title;
     QLabel* homework_instructions;
 
-    QGroupBox* container_info_quiz;
-    QVBoxLayout* layout_container_info_quiz;
+    QGroupBox* container_info_quiz;  //informazioni del quiz (score,deadline)
+    QVBoxLayout* layout_container_info_quiz;  //layout di container_info_quiz
 
     QLabel* score;
     QLabel* deadline;
 
-    QPushButton* quiz;
+    QPushButton* start_quiz;
 public:
     explicit HomeworkForm(QWidget *parent = nullptr);
     ~HomeworkForm()= default;
@@ -30,8 +30,6 @@ public:
     virtual void addForm();
 
     virtual void setStyle();
-
-    virtual void addMenuButton(QPushButton *b);
 signals:
 
 public slots:

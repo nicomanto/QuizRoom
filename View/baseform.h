@@ -10,9 +10,9 @@
 class BaseForm: public QWidget{
     Q_OBJECT
 protected:
-    QBoxLayout *main_layout;
-    int height_screen;
-    int width_screen;
+    QBoxLayout *main_layout;  //layout principale
+    int height_screen;  //altezza dello screen del pc
+    int width_screen;  //larghezza dello screen del pc
 public:
     explicit BaseForm(QWidget *parent = nullptr);
 
@@ -21,6 +21,8 @@ public:
     virtual void addForm()=0;
 
     virtual void setStyle();
+
+
 
 signals:
 

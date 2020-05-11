@@ -9,8 +9,6 @@ LoginForm::LoginForm(QWidget *parent) : BaseForm(parent), login_button(new QPush
 
     setLayout(main_layout);
 
-
-
 }
 
 void LoginForm::addForm(){
@@ -27,21 +25,28 @@ void LoginForm::setStyle(){
     BaseForm::setStyle();
 
 
-    username->setAlignment(Qt::AlignCenter);
-    password->setAlignment(Qt::AlignCenter);
+    username->setAlignment(Qt::AlignCenter);  //setta al centro la scritta 'username'
+    password->setAlignment(Qt::AlignCenter); //setta al centro la scritta 'password'
 
-    setFixedSize(QSize(width_screen/2.5,height_screen/3));
+    setFixedSize(QSize(width_screen/2.5,height_screen/3));  //setta la taglia della window
 
+
+    //setto le dimensioni fisse dei vari form
     username_form->setFixedWidth(width()/2);
     password_form->setFixedWidth(width()/2);
     login_button->setFixedWidth(width()/2);
     login_button->setFixedHeight(height()/5);
 
+    //imposta la modalitò 'testo oscurato'
     password_form->setEchoMode(QLineEdit::Password);
 
+
+    //imposta la dimensione fissa dalla window
     setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
 
 
+
+    //imposto il foglio di stile
     QFile file(":/Resources/style_login.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());

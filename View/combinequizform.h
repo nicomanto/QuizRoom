@@ -12,8 +12,8 @@ class CombineQuizForm : public QuizBaseForm{
     Q_OBJECT
 private:
 
-   MyVector<QLabel*> elements;
-   MyVector<QComboBox*> answers;
+   MyVector<QLabel*> elements;  //elementi da combinare
+   MyVector<QComboBox*> answers; //possibili risposte (menu a tendina)
 
 public:
    explicit CombineQuizForm(QWidget *parent = nullptr);

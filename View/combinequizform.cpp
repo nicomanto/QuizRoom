@@ -37,9 +37,7 @@ CombineQuizForm::CombineQuizForm(QWidget *parent): QuizBaseForm(parent){
 void CombineQuizForm::addForm(){
     main_layout->addWidget(question);
 
-
-
-
+    //aggiungo elementi da combinare e possibili risposte
     for(unsigned int i=0; i<4;++i){
 
             answers_layout->addWidget(elements[i],i,0,Qt::AlignCenter);
@@ -47,6 +45,7 @@ void CombineQuizForm::addForm(){
 
            answers_layout->addWidget(answers[i],i,1,Qt::AlignCenter);
     }
+
 
     answers_layout->setSpacing(20);
     main_layout->addWidget(container_answers);

@@ -4,6 +4,7 @@
 #include "View/homeworkform.h"
 #include "View/classicquizform.h"
 #include "View/combinequizform.h"
+#include "View/containerquizform.h"
 
 #include <iostream>
 #include <QApplication>

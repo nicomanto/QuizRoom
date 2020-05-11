@@ -13,7 +13,7 @@ class ClassicQuizForm: public QuizBaseForm{
 private:
 
 
-    MyVector<QCheckBox*> answers;
+    MyVector<QCheckBox*> answers;  //possibili risposte
 
 
 public:
@@ -22,7 +22,6 @@ public:
 
     virtual void addForm();
 
-    virtual void setStyle();
 
 signals:
 

@@ -25,7 +25,7 @@ void ClassicQuizForm::addForm(){
     main_layout->addWidget(question);
 
 
-
+    //aggiunta delle possibili risposte
     int j=-1;
     for(unsigned int i=0; i<4;++i){
         if(i%2==0){
@@ -42,13 +42,5 @@ void ClassicQuizForm::addForm(){
 
 }
 
-void ClassicQuizForm::setStyle(){
-    QuizBaseForm::setStyle();
-
-
-    for(unsigned int i=0; i <4; ++i)
-        answers[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-
-}
 
 

@@ -1,18 +1,13 @@
 #include "courseform.h"
 
 
-CourseForm::CourseForm(const QString& title, QWidget *parent): PrincipalForm(parent){
+CourseForm::CourseForm(const QString& title, QWidget *parent): PrincipalForm(parent), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
+    center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(title,this)){
 
     main_layout=new QVBoxLayout(this);
     scroll= new QScrollArea(this);
     menubar=new QMenuBar(this);
 
-    center_layout = new QHBoxLayout(this);
-
-    container_course= new QGroupBox(this);
-    container_homework= new QGroupBox(this);
-
-    course_title= new QLabel(title,this);
     course_description= new QLabel("Quiz del corso Letteratuta italiana 2018/2019",this);
     QString s("xvois8"); //codice;
     course_code=new QLabel("Codice corso: "+s,this);
@@ -31,7 +26,7 @@ void CourseForm::addMenu(){
     QMenu* course= new QMenu("Corso",menubar);
     QMenu*  homework= new QMenu("Compito",menubar);
 
-    QAction* main_page= new QAction("<-",menubar);
+    QAction* previous_page= new QAction("<-",menubar); //torno alla pagina precedente
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
 
@@ -58,7 +53,7 @@ void CourseForm::addMenu(){
     connect(exit_login,SIGNAL(triggered()),this,SLOT(close()));
     //connect(exit_login,SIGNAL(triggered()),new LoginForm,SLOT(open())); //tests
 
-    menubar->addAction(main_page);
+    menubar->addAction(previous_page);
     menubar->addMenu(options);
 
     if(true)
@@ -72,7 +67,6 @@ void CourseForm::addMenu(){
 
 void CourseForm::addForm(){
 
-    info_course_layout=new QVBoxLayout(container_course);
 
     info_course_layout->addWidget(course_title);
     info_course_layout->addWidget(course_description);
@@ -80,17 +74,13 @@ void CourseForm::addForm(){
 
     container_course->setMaximumWidth(width());
 
-
-
     center_layout->addWidget(container_course);
-
-    scroll_layout=new QGridLayout(container_homework);
     center_layout->addWidget(scroll);
 
-    scroll->setWidget( container_homework );
+    scroll->setWidget( container_scroll );
 
 
-
+    //aggiungo i compiti del corso
     for(unsigned int i=0; i <50; ++i){
         QString s= "Compito " + QString::number(i);
         homework.push_back(new QPushButton(s,this));
@@ -109,12 +99,13 @@ void CourseForm::addForm(){
     }
 
 
-    main_layout->addLayout(center_layout);
+    main_layout->addWidget(container_center);
 }
 
 void CourseForm::setStyle(){
     PrincipalForm::setStyle();
 
+    //stile dei bottoni homework e homework_menu
     for(unsigned int i=0; i <50; ++i){
         homework[i]->setMinimumSize(width()/3,height()/5);
         homework[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
@@ -124,16 +115,20 @@ void CourseForm::setStyle(){
             homework_menu[i]->setFixedSize(22,height()/5);
     }
 
+
+    //stile del course title
     course_title->setAlignment(Qt::AlignCenter);
     course_title->setTextInteractionFlags(Qt::TextSelectableByMouse);
     course_title->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
     course_title->setWordWrap(true);
 
+    //stile del course description
     course_description->setAlignment(Qt::AlignCenter);
     course_description->setTextInteractionFlags(Qt::TextSelectableByMouse);
     course_description->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     course_description->setWordWrap(true);
 
+    //stile del coruse code
     course_code->setAlignment(Qt::AlignCenter);
     course_code->setTextInteractionFlags(Qt::TextSelectableByMouse);
     course_code->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
@@ -143,9 +138,12 @@ void CourseForm::setStyle(){
     info_course_layout->setAlignment(Qt::AlignCenter);
     info_course_layout->setSpacing(50);
 
+
     scroll_layout->setAlignment(Qt::AlignCenter);
     scroll_layout->setSpacing(0);
 
+
+    //aggiunta dei font di alcuni elementi
     QFont font( "Arial", 18, QFont::Bold);
     course_title->setFont(font);
 
@@ -155,11 +153,16 @@ void CourseForm::setStyle(){
     font=QFont( "Arial", 12);
     course_code->setFont(font);
 
+
+    //stile scroll area
     scroll->setMaximumWidth(width()*2);
     scroll->setWidgetResizable(true);
 
+    //stile menubar
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
+
+    //aggiunta foglio di stile
     QFile file(":/Resources/style_course.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());

@@ -10,14 +10,15 @@
 #include "loginform.h"
 #include "menubutton.h"
 
+
+
 class MainForm : public PrincipalForm{
     Q_OBJECT
 private:
-    MyVector <QPushButton *> course;
-    MyVector <QPushButton *> course_menu;
+    MyVector <QPushButton *> course; //vettore dei pulsanti corsi
+    MyVector <QPushButton *> course_menu; //vettore dei pulsanti per modificare i corsi
 
-    QGroupBox* container_scroll;
-    QGridLayout* scroll_layout;
+    QGridLayout* scroll_layout;  //layou a tabella per i due vettori di bottni
 public:
     explicit MainForm(QWidget *parent = nullptr);
     ~MainForm()= default;

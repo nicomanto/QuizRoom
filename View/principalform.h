@@ -3,6 +3,7 @@
 
 #include <QMenuBar>
 #include <QScrollArea>
+#include <QGroupBox>
 #include <QPushButton>
 
 #include "baseform.h"
@@ -12,6 +13,8 @@ class PrincipalForm : public BaseForm{
 protected:
     QMenuBar* menubar;
     QScrollArea* scroll;
+
+    QGroupBox* container_scroll;  //contenitore della scroll area
 public:
     explicit PrincipalForm(QWidget *parent = nullptr);
     virtual ~PrincipalForm();
@@ -19,8 +22,6 @@ public:
     virtual void addMenu()=0;
 
     virtual void addForm()=0;
-
-    virtual void addMenuButton(QPushButton* b)=0;
 
 };
 

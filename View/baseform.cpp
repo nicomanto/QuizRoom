@@ -11,15 +11,18 @@ BaseForm::BaseForm(QWidget *parent) : QWidget(parent), main_layout(nullptr){
 
 BaseForm::~BaseForm(){}
 
-void BaseForm::setStyle()
-{
-    setWindowTitle("ClassRoom");
+void BaseForm::setStyle(){
+
+    //titolo delle finestre
+    setWindowTitle("QuizRoom");
+
+    //stile layout principale
     main_layout->setAlignment(Qt::AlignCenter);
 
     //setta la paggina al centro dello schermo
     setGeometry(QStyle::alignedRect(Qt::LeftToRight,Qt::AlignCenter,size(),qApp->desktop()->availableGeometry()));
 
-
+    //dimensione minima delle pagine
     setMinimumSize(QSize(width_screen/2,height_screen/4));
 
 }
