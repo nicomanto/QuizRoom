@@ -1,6 +1,54 @@
 #include "modifycourseform.h"
 
-ModifyCourseForm::ModifyCourseForm()
-{
+ModifyCourseForm::ModifyCourseForm(QWidget *parent): BaseForm(parent),box_title(new QGroupBox("Titolo",this)),box_description(new QGroupBox("Descrizione",this)),layout_box_title(new QVBoxLayout(box_title)), layout_box_description(new QVBoxLayout(box_description)),
+    title_form(new QLineEdit(box_title)), description_form(new QTextEdit(box_description)), confirm_button(new QPushButton("Conferma",this)){
 
+    main_layout=new QVBoxLayout(this);
+
+    addForm();
+
+    setStyle();
+
+    setLayout(main_layout);
+
+}
+
+
+void ModifyCourseForm::addForm(){
+    main_layout->addWidget(box_title);
+    main_layout->addWidget(box_description);
+
+    layout_box_title->addWidget(title_form);
+    layout_box_description->addWidget(description_form);
+
+    main_layout->addWidget(confirm_button);
+}
+
+void ModifyCourseForm::setStyle(){
+    BaseForm::setStyle();
+
+    //larghezza del title_form fissa
+    title_form->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
+
+
+    //imposto la scritto dei box al centro
+    box_title->setAlignment(Qt::AlignCenter);
+    box_description->setAlignment((Qt::AlignCenter));
+
+    //setta la taglia della window
+    setFixedSize(QSize(width_screen/2,height_screen/2));
+
+    //imposta la dimensione fissa dalla window
+    setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
+
+    //imposto l'altezza fissa del bottone
+    confirm_button->setFixedHeight(height()/6);
+
+
+    //imposto il foglio di stile
+    QFile file(":/Resources/style_modifycourse.css");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
+
+    setStyleSheet(styleSheet);
 }

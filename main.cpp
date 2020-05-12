@@ -5,6 +5,7 @@
 #include "View/classicquizform.h"
 #include "View/combinequizform.h"
 #include "View/containerquizform.h"
+#include "View/modifycourseform.h"
 
 #include <iostream>
 #include <QApplication>
@@ -230,8 +231,8 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-    CourseForm w("ciao");
-    w.showMaximized();
+    ModifyCourseForm w;
+    w.show();
     return a.exec();
 
 

@@ -38,6 +38,7 @@ SOURCES += \
     View/loginform.cpp \
     View/mainform.cpp \
     View/menubutton.cpp \
+    View/modifycourseform.cpp \
     View/principalform.cpp \
     View/quizbaseform.cpp \
     main.cpp \
@@ -74,6 +75,7 @@ HEADERS += \
     View/loginform.h \
     View/mainform.h \
     View/menubutton.h \
+    View/modifycourseform.h \
     View/principalform.h \
     View/quizbaseform.h
 
