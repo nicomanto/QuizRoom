@@ -3,7 +3,7 @@
 
 
 #include <QFile>
-#include <QCheckBox>
+#include <QPushButton>
 
 #include "Model/myvector.h"
 #include "quizbaseform.h"
@@ -13,7 +13,7 @@ class ClassicQuizForm: public QuizBaseForm{
 private:
 
 
-    MyVector<QCheckBox*> answers;  //possibili risposte
+    MyVector<QPushButton*> answers;  //possibili risposte
 
 
 public:
@@ -21,6 +21,8 @@ public:
     ~ClassicQuizForm()= default;
 
     virtual void addForm();
+
+    virtual void setStyle();
 
 
 signals:

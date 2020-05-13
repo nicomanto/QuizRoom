@@ -8,10 +8,11 @@ ClassicQuizForm::ClassicQuizForm(QWidget *parent): QuizBaseForm(parent){
     container_answers= new QGroupBox(this);
     answers_layout= new QGridLayout(container_answers);
 
-    answers.push_back(new QCheckBox("risposta 1",this));
-    answers.push_back(new QCheckBox("risposta 2",this));
-    answers.push_back(new QCheckBox("risposta 3",this));
-    answers.push_back(new QCheckBox("risposta 4",this));
+    answers.push_back(new QPushButton("risposta 1",this));
+    answers.push_back(new QPushButton("risposta 2",this));
+    answers.push_back(new QPushButton("risposta 3",this));
+    answers.push_back(new QPushButton("risposta 4",this));
+
 
     addForm();
 
@@ -40,6 +41,15 @@ void ClassicQuizForm::addForm(){
 
     main_layout->addWidget(container_answers);
 
+}
+
+
+void ClassicQuizForm::setStyle(){
+    QuizBaseForm::setStyle();
+
+    for(unsigned int i=0;i<4;++i){
+        answers[i]->setCheckable(true);
+    }
 }
 
 

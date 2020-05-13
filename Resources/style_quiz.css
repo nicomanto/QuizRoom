@@ -2,7 +2,8 @@
 QLabel{
     font: 12pt Times New Roman;
 }
-QCheckBox{
+
+QPushButton{
     font: 12pt Times New Roman;
     /*padding:30;*/
 }

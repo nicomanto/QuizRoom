@@ -29,6 +29,7 @@ SOURCES += \
     Model/time.cpp \
     Model/timehomework.cpp \
     Model/timescorehomework.cpp \
+    View/addhomeworkform.cpp \
     View/baseform.cpp \
     View/classicquizform.cpp \
     View/combinequizform.cpp \
@@ -38,7 +39,7 @@ SOURCES += \
     View/loginform.cpp \
     View/mainform.cpp \
     View/menubutton.cpp \
-    View/modifycourseform.cpp \
+    View/modifyaddform.cpp \
     View/principalform.cpp \
     View/quizbaseform.cpp \
     main.cpp \
@@ -66,6 +67,7 @@ HEADERS += \
     Model/user.h \
     Model/student.h \
     Model/teacher.h \
+    View/addhomeworkform.h \
     View/baseform.h \
     View/classicquizform.h \
     View/combinequizform.h \
@@ -75,7 +77,7 @@ HEADERS += \
     View/loginform.h \
     View/mainform.h \
     View/menubutton.h \
-    View/modifycourseform.h \
+    View/modifyaddform.h \
     View/principalform.h \
     View/quizbaseform.h
 

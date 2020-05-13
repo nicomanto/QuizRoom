@@ -1,6 +1,7 @@
 #include "containerquizform.h"
 
-ContainerQuizForm::ContainerQuizForm(QWidget *parent): PrincipalForm(parent),scroll_layout(new QVBoxLayout(container_scroll)), end_quiz(new QPushButton("termina il quiz",this)){
+ContainerQuizForm::ContainerQuizForm(QWidget *parent): PrincipalForm(parent),scroll_layout(new QVBoxLayout(container_scroll)),end_quiz(new QPushButton("termina il quiz",this)),
+    container_button(new QWidget(this)), layout_button(new QVBoxLayout(container_button)){
     main_layout=new QVBoxLayout(this);
     menubar=new QMenuBar(this);
     scroll= new QScrollArea(this);
@@ -45,8 +46,8 @@ void ContainerQuizForm::addForm(){
 
     }
 
-
-    scroll_layout->addWidget(end_quiz,Qt::AlignCenter);
+    layout_button->addWidget(end_quiz);
+    scroll_layout->addWidget(container_button);
 
 }
 
@@ -72,9 +73,12 @@ void ContainerQuizForm::setStyle(){
     scroll_layout->setSpacing(10);
 
     //stile bottone end_quiz
-    end_quiz->setFixedHeight(height()/5);
+    end_quiz->setFixedWidth(width()/3);
+    end_quiz->setFixedHeight(50);
+    layout_button->setAlignment(Qt::AlignCenter);
 
-
+    //setto la dimensione minima della finistra
+    setMinimumSize(QSize(width_screen/2,height_screen/2));
 
     //aggiunta foglio di stile
     QFile file(":/Resources/style_containerquiz.css");

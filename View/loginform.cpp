@@ -35,7 +35,9 @@ void LoginForm::setStyle(){
     username_form->setFixedWidth(width()/2);
     password_form->setFixedWidth(width()/2);
     login_button->setFixedWidth(width()/2);
-    login_button->setFixedHeight(height()/5);
+    login_button->setFixedHeight(height()/7);
+
+    main_layout->setSpacing(30);
 
     //imposta la modalitò 'testo oscurato'
     password_form->setEchoMode(QLineEdit::Password);

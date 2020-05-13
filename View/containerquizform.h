@@ -18,6 +18,12 @@ private:
     QVBoxLayout* scroll_layout;  //layout della scroll area
 
     QPushButton* end_quiz; //bottone per terminare il quiz ed inviare le risposte
+
+
+    QWidget* container_button; //contenitore del bottone
+    QVBoxLayout* layout_button; //layout del widget del bottone
+
+
 public:
     explicit ContainerQuizForm(QWidget *parent = nullptr);
     ~ContainerQuizForm()= default;

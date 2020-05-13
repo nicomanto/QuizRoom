@@ -1,7 +1,7 @@
 #include "homeworkform.h"
 
 HomeworkForm::HomeworkForm(QWidget *parent): PrincipalForm(parent),homework_title(new QLabel("Titolo",this)),homework_instructions(new QLabel("Esegui questo quiz e bla bla blajcdsqijbucqbiocnoinqiconeonqeicnioqcnioqen webchbeqj e e e e e e e e e ee  e e e e e  e e e ec",this)),
-    container_info_quiz(new QGroupBox(this)),layout_container_info_quiz(new QVBoxLayout(container_info_quiz)), score(nullptr),deadline(nullptr){
+    container_info_quiz(new QGroupBox(this)),layout_container_info_quiz(new QVBoxLayout(container_info_quiz)), score(nullptr),deadline(nullptr),start_quiz(new QPushButton("start quiz",this)){
 
     main_layout=new QVBoxLayout(this);
 
@@ -18,9 +18,6 @@ HomeworkForm::HomeworkForm(QWidget *parent): PrincipalForm(parent),homework_titl
         QString s("09/05/2020");
         deadline= new QLabel("Deadline: "+s,this);
     }
-
-
-    start_quiz=new QPushButton("start quiz",this);
 
     addMenu();
     addForm();
