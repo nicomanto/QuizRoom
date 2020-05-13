@@ -7,10 +7,10 @@ QVboxLayout{
 
 QLabel{
     font: 12pt Times New Roman;
+
 }
 
 
 QPushButton{
-    margin-top: 30;
     font: 11pt Times New Roman;
 }
