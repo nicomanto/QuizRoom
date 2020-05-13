@@ -1,7 +1,7 @@
-#include "modifycourseform.h"
+#include "modifyaddform.h"
 
-ModifyCourseForm::ModifyCourseForm(QWidget *parent): BaseForm(parent),box_title(new QGroupBox("Titolo",this)),box_description(new QGroupBox("Descrizione",this)),layout_box_title(new QVBoxLayout(box_title)), layout_box_description(new QVBoxLayout(box_description)),
-    title_form(new QLineEdit(box_title)), description_form(new QTextEdit(box_description)), confirm_button(new QPushButton("Conferma",this)){
+ModifyAddForm::ModifyAddForm(QWidget *parent): BaseForm(parent),box_title(new QGroupBox("Titolo",this)),box_description(new QGroupBox("Descrizione",this)),layout_box_title(new QVBoxLayout(box_title)), layout_box_description(new QVBoxLayout(box_description)),
+    title_form(new QLineEdit(box_title)), description_form(new QTextEdit(box_description)),confirm_button(new QPushButton("Conferma",this)),container_button(new QWidget(this)), layout_button(new QVBoxLayout(container_button)){
 
     main_layout=new QVBoxLayout(this);
 
@@ -14,17 +14,20 @@ ModifyCourseForm::ModifyCourseForm(QWidget *parent): BaseForm(parent),box_title(
 }
 
 
-void ModifyCourseForm::addForm(){
+void ModifyAddForm::addForm(){
+
     main_layout->addWidget(box_title);
     main_layout->addWidget(box_description);
 
     layout_box_title->addWidget(title_form);
     layout_box_description->addWidget(description_form);
 
-    main_layout->addWidget(confirm_button);
+    layout_button->addWidget(confirm_button);
+    main_layout->addWidget(container_button);
+
 }
 
-void ModifyCourseForm::setStyle(){
+void ModifyAddForm::setStyle(){
     BaseForm::setStyle();
 
     //larghezza del title_form fissa
@@ -42,7 +45,9 @@ void ModifyCourseForm::setStyle(){
     setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
 
     //imposto l'altezza fissa del bottone
-    confirm_button->setFixedHeight(height()/6);
+    confirm_button->setFixedHeight(height()/13);
+    confirm_button->setFixedWidth(width()/3);
+    layout_button->setAlignment(Qt::AlignRight);
 
 
     //imposto il foglio di stile

@@ -1,5 +1,5 @@
-#ifndef MODIFYCOURSEFORM_H
-#define MODIFYCOURSEFORM_H
+#ifndef MODIFYADDFORM_H
+#define MODIFYADDFORM_H
 
 #include <QLineEdit>
 #include <QTextEdit>
@@ -10,10 +10,10 @@
 #include "baseform.h"
 
 
-class ModifyCourseForm : public BaseForm{
+class ModifyAddForm : public BaseForm{
     Q_OBJECT
 
-private:
+protected:
     QGroupBox* box_title;
     QGroupBox* box_description;
 
@@ -25,17 +25,16 @@ private:
 
     QPushButton *confirm_button;
 
+    QWidget* container_button; //container del button
+    QVBoxLayout* layout_button; //layout del container del button
+
 public:
-    explicit ModifyCourseForm(QWidget *parent = nullptr);
-    ~ModifyCourseForm()= default;
+    explicit ModifyAddForm(QWidget *parent = nullptr);
+    ~ModifyAddForm()= default;
 
     virtual void addForm();
 
     virtual void setStyle();
-
-
-
-
 
 signals:
 
@@ -43,4 +42,4 @@ public slots:
 
 };
 
-#endif // MODIFYCOURSEFORM_H
+#endif // MODIFYADDFORM_H
