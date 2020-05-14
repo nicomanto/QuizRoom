@@ -1,2 +1,12 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/style_addquizform.css</file>
+        <file>Resources/style_containerquiz.css</file>
+        <file>Resources/style_course.css</file>
+        <file>Resources/style_homework.css</file>
+        <file>Resources/style_login.css</file>
+        <file>Resources/style_main.css</file>
+        <file>Resources/style_modifyaddform.css</file>
+        <file>Resources/style_quiz.css</file>
+    </qresource>
+</RCC>
