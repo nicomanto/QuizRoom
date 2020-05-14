@@ -18,16 +18,19 @@ private:
     QLineEdit* max_score;  //dove scrivere il punteggio massimo
     QLineEdit* deadline;  //dove scrivere la deadline
 
-    QWidget* score_time_information;  //widget dell'infomrazioni sul tipo di compito(score/time)
+    QWidget* score_time_information;  //widget dell'informazioni sul tipo di compito(score/time)
     QGridLayout* layout_ST_infomation;  //layout del widget contenitore delle informazioni
+
+
+    virtual void addForm();
+
+    virtual void setStyle();
 
 public:
     explicit AddHomeworkForm(QWidget *parent = nullptr);
     ~AddHomeworkForm()= default;
 
-    virtual void addForm();
 
-    virtual void setStyle();
 
 signals:
 

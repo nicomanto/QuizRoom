@@ -11,9 +11,11 @@ class MenuButton : public QMenu{
 private:
     QPushButton* button;
 
+    void showEvent(QShowEvent* event);
+
 public:
     explicit MenuButton(QPushButton* button, QWidget* parent = nullptr);
-    void showEvent(QShowEvent* event);
+
 
 };
 

@@ -15,11 +15,13 @@ private:
    MyVector<QLabel*> elements;  //elementi da combinare
    MyVector<QComboBox*> answers; //possibili risposte (menu a tendina)
 
+   virtual void addForm();
+
 public:
    explicit CombineQuizForm(QWidget *parent = nullptr);
    ~CombineQuizForm()= default;
 
-   virtual void addForm();
+
 
 
 signals:

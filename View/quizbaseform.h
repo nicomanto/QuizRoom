@@ -19,13 +19,15 @@ protected:
 
     QGroupBox* container_answers;
     QGridLayout* answers_layout;
-public:
-    explicit QuizBaseForm(QWidget *parent = nullptr);
-    virtual ~QuizBaseForm();
 
     virtual void addForm()=0;
 
     virtual void setStyle();
+public:
+    explicit QuizBaseForm(QWidget *parent = nullptr);
+    virtual ~QuizBaseForm();
+
+
 };
 
 #endif // QUIZBASEFORM_H

@@ -24,15 +24,18 @@ private:
     QVBoxLayout* layout_button; //layout del widget del bottone
 
 
-public:
-    explicit ContainerQuizForm(QWidget *parent = nullptr);
-    ~ContainerQuizForm()= default;
-
     virtual void addMenu();
 
     virtual void addForm();
 
     virtual void setStyle();
+
+
+public:
+    explicit ContainerQuizForm(QWidget *parent = nullptr);
+    ~ContainerQuizForm()= default;
+
+
 signals:
 
 public slots:

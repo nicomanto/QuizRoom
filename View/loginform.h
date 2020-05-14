@@ -21,13 +21,15 @@ private:
     QLineEdit *password_form;
     QLabel* username;
     QLabel* password;
-public:
-    explicit LoginForm(QWidget *parent = nullptr);
-    ~LoginForm()= default;
 
     virtual void addForm();
 
     virtual void setStyle();
+
+
+public:
+    explicit LoginForm(QWidget *parent = nullptr);
+    ~LoginForm()= default;
 
 
 

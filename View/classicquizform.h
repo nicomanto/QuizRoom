@@ -15,14 +15,16 @@ private:
 
     MyVector<QPushButton*> answers;  //possibili risposte
 
+    virtual void addForm();
+
+    virtual void setStyle();
+
 
 public:
     explicit ClassicQuizForm(QWidget *parent = nullptr);
     ~ClassicQuizForm()= default;
 
-    virtual void addForm();
 
-    virtual void setStyle();
 
 
 signals:

@@ -19,9 +19,7 @@ private:
     MyVector <QPushButton *> course_menu; //vettore dei pulsanti per modificare i corsi
 
     QGridLayout* scroll_layout;  //layou a tabella per i due vettori di bottni
-public:
-    explicit MainForm(QWidget *parent = nullptr);
-    ~MainForm()= default;
+
 
     virtual void addMenu();
 
@@ -30,6 +28,11 @@ public:
     virtual void setStyle();
 
     virtual void addMenuButton(QPushButton* b);
+public:
+    explicit MainForm(QWidget *parent = nullptr);
+    ~MainForm()= default;
+
+
 
 signals:
 

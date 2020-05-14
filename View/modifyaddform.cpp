@@ -51,7 +51,7 @@ void ModifyAddForm::setStyle(){
 
 
     //imposto il foglio di stile
-    QFile file(":/Resources/style_modifycourse.css");
+    QFile file(":/Resources/style_modifyaddform.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 

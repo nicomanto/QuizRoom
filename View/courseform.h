@@ -27,9 +27,7 @@ private:
     QLabel* course_title;
     QLabel* course_description;
     QLabel* course_code;
-public:
-    explicit CourseForm(const QString& title, QWidget *parent = nullptr);
-    ~CourseForm()= default;
+
 
     virtual void addMenu();
 
@@ -38,6 +36,11 @@ public:
     virtual void setStyle();
 
     virtual void addMenuButton(QPushButton* b);
+public:
+    explicit CourseForm(const QString& title, QWidget *parent = nullptr);
+    ~CourseForm()= default;
+
+
 
 
 signals:

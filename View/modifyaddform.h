@@ -28,13 +28,14 @@ protected:
     QWidget* container_button; //container del button
     QVBoxLayout* layout_button; //layout del container del button
 
+    virtual void addForm();
+
+    virtual void setStyle();
+
 public:
     explicit ModifyAddForm(QWidget *parent = nullptr);
     ~ModifyAddForm()= default;
 
-    virtual void addForm();
-
-    virtual void setStyle();
 
 signals:
 

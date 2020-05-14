@@ -7,6 +7,8 @@
 #include "View/containerquizform.h"
 #include "View/modifyaddform.h"
 #include "View/addhomeworkform.h"
+#include "View/addclassicquizform.h"
+#include "View/addcombinequizform.h"
 
 #include <iostream>
 #include <QApplication>
@@ -232,7 +234,7 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-    AddHomeworkForm w;
+    AddCombineQuizForm w;
     w.show();
     return a.exec();
 

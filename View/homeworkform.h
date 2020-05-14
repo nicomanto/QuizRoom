@@ -21,15 +21,18 @@ private:
     QLabel* deadline;
 
     QPushButton* start_quiz;
-public:
-    explicit HomeworkForm(QWidget *parent = nullptr);
-    ~HomeworkForm()= default;
+
 
     virtual void addMenu();
 
     virtual void addForm();
 
     virtual void setStyle();
+public:
+    explicit HomeworkForm(QWidget *parent = nullptr);
+    ~HomeworkForm()= default;
+
+
 signals:
 
 public slots:
