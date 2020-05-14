@@ -22,7 +22,7 @@ private:
 
 
 
-    void setCode();
+
     static string random_code();
 public:
     Course(const string& t=string(), const string& s=string(), const string& d=string());
@@ -36,7 +36,7 @@ public:
     void setTitle(const string& t);
     void setSubject(const string& s);
     void setDescription(const string& d);
-
+    void setCode();
 
     void addHomework(Homework* h);
     void removeHomework(Homework* h);
