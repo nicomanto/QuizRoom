@@ -13,6 +13,7 @@ ContainerQuizForm::ContainerQuizForm(QWidget *parent): PrincipalForm(parent),scr
     setLayout(main_layout);
 }
 
+
 void ContainerQuizForm::addMenu(){
 
     QAction* previous_page = new QAction("<-",menubar); //ritorno alla pagina precedent
@@ -20,6 +21,9 @@ void ContainerQuizForm::addMenu(){
     menubar->addAction(previous_page);
 
     main_layout->addWidget(menubar);
+
+    //connect della previous_page
+    connect(previous_page, SIGNAL(triggered()),this,SLOT(previous_page()));
 }
 
 void ContainerQuizForm::addForm(){
@@ -86,4 +90,16 @@ void ContainerQuizForm::setStyle(){
     QString styleSheet = QLatin1String(file.readAll());
 
     setStyleSheet(styleSheet);
+}
+
+
+
+//SLOTS
+void ContainerQuizForm::previous_page()
+{
+    HomeworkForm* homework= new HomeworkForm();
+
+    homework->showMaximized();
+
+    close();
 }

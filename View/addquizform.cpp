@@ -1,6 +1,6 @@
 #include "addquizform.h"
 
-AddQuizForm::AddQuizForm(QWidget *parent): BaseForm(parent),box_question(new QGroupBox("Domanda",this)),box_answer(new QGroupBox("Risposte",this)),layout_box_question(new QVBoxLayout(box_question)), layout_box_answer(new QGridLayout(box_answer)),
+AddQuizForm::AddQuizForm(int number_question,QWidget *parent): BaseForm(parent),box_question(new QGroupBox("Domanda "+QString::number(number_question),this)),box_answer(new QGroupBox("Risposte",this)),layout_box_question(new QVBoxLayout(box_question)), layout_box_answer(new QGridLayout(box_answer)),
     question_form(new QLineEdit(box_question)){}
 
 AddQuizForm::~AddQuizForm(){}
@@ -11,6 +11,7 @@ void AddQuizForm::setStyle(){
     //larghezza della question_form fissa
     question_form->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
     question_form->setMaximumWidth(width()/2);
+
 
     //centro la QLineDella domanda al centro
     layout_box_question->setAlignment(Qt::AlignCenter);

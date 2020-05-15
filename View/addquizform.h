@@ -27,7 +27,7 @@ protected:
     virtual void setStyle();
 
 public:
-    explicit AddQuizForm(QWidget *parent = nullptr);
+    explicit AddQuizForm(int number_question, QWidget *parent = nullptr);
     virtual ~AddQuizForm();
 
 

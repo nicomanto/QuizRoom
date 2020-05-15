@@ -2,6 +2,7 @@
 #define CONTAINERQUIZFORM_H
 
 #include "principalform.h"
+#include "homeworkform.h"
 #include "quizbaseform.h"
 #include "Model/myvector.h"
 #include "classicquizform.h"
@@ -38,7 +39,8 @@ public:
 
 signals:
 
-public slots:
+private slots:
+    virtual void previous_page();
 };
 
 #endif // CONTAINERQUIZFORM_H

@@ -1,7 +1,7 @@
 #include "homeworkform.h"
 
 HomeworkForm::HomeworkForm(QWidget *parent): PrincipalForm(parent),homework_title(new QLabel("Titolo",this)),homework_instructions(new QLabel("Esegui questo quiz e bla bla blajcdsqijbucqbiocnoinqiconeonqeicnioqcnioqen webchbeqj e e e e e e e e e ee  e e e e e  e e e ec",this)),
-    container_info_quiz(new QGroupBox(this)),layout_container_info_quiz(new QVBoxLayout(container_info_quiz)), score(nullptr),deadline(nullptr),start_quiz(new QPushButton("start quiz",this)){
+    container_info_quiz(new QWidget(this)),layout_container_info_quiz(new QVBoxLayout(container_info_quiz)), score(nullptr),deadline(nullptr),start_quiz(new QPushButton("start quiz",this)),add_quiz(new QPushButton("aggiungi quiz",this)), container_button(new QWidget(this)), layout_button(new QHBoxLayout(container_button)){
 
     main_layout=new QVBoxLayout(this);
 
@@ -26,7 +26,6 @@ HomeworkForm::HomeworkForm(QWidget *parent): PrincipalForm(parent),homework_titl
     setLayout(main_layout);
 }
 
-
 void HomeworkForm::addMenu(){
 
     QMenu* options = new QMenu("Opzioni",menubar);
@@ -40,6 +39,9 @@ void HomeworkForm::addMenu(){
     if(true){ //controllare se l'utente può modificare l'homework
         QAction* modify_homework = new QAction("modifica",homework);
         homework->addAction(modify_homework);
+
+        //connect del bottone modifica
+        connect(modify_homework,SIGNAL(triggered()),this,SLOT(to_addform()));
     }
 
     if(true){ //controllare se l'utente può eliminare l'homework
@@ -49,11 +51,6 @@ void HomeworkForm::addMenu(){
 
     options->addAction(exit_login);
 
-
-
-    connect(exit_login,SIGNAL(triggered()),this,SLOT(close()));
-    //connect(exit_login,SIGNAL(triggered()),new LoginForm,SLOT(open())); //tests
-
     menubar->addAction(previous_page);
     menubar->addMenu(options);
 
@@ -61,6 +58,13 @@ void HomeworkForm::addMenu(){
         menubar->addMenu(homework);
 
     main_layout->addWidget(menubar);
+
+
+    //connect della previous_page
+    connect(previous_page, SIGNAL(triggered()),this,SLOT(previous_page()));
+
+    //connect della exit_to_login
+    connect(exit_login,SIGNAL(triggered()),this,SLOT(to_login())); //tests
 }
 
 void HomeworkForm::addForm(){
@@ -74,9 +78,21 @@ void HomeworkForm::addForm(){
    if(true) //controllo se è timehomework
         layout_container_info_quiz->addWidget(deadline);
 
-   layout_container_info_quiz->addWidget(start_quiz);
+   if(true) //controllo se è timehomework o scorehomework
+       main_layout->addWidget(container_info_quiz, Qt::AlignCenter);
 
-    main_layout->addWidget(container_info_quiz, Qt::AlignCenter);
+
+
+   layout_button->addWidget(start_quiz);
+   layout_button->addWidget(add_quiz);
+
+   main_layout->addWidget(container_button);
+
+   //connect dei bottoni
+   connect(start_quiz,SIGNAL(clicked()),this,SLOT(to_quiz())); //tests
+   connect(add_quiz,SIGNAL(clicked()),this,SLOT(to_addquiz())); //tests
+
+
 }
 
 void HomeworkForm::setStyle(){
@@ -100,7 +116,6 @@ void HomeworkForm::setStyle(){
     //stile menubar
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
-
     if(true) //controllo se è scorehomework
         score->setAlignment(Qt::AlignCenter);
 
@@ -108,8 +123,13 @@ void HomeworkForm::setStyle(){
         deadline->setAlignment(Qt::AlignCenter);
 
 
-    //stile del bottone start_quiz
-    start_quiz->setFixedSize(QSize(width()/2,height()/7));
+    //stile dei bottoni
+    start_quiz->setFixedSize(QSize(width()/3,height()/7));
+    add_quiz->setFixedSize(QSize(width()/3,height()/7));
+    add_quiz->setVisible(false);
+
+    if(true)//controllo se ha già un quiz o se ne è sprovvisto, in quel caso se ne può aggiungere uno
+        add_quiz->setVisible(true);
 
     //aggiunta dei alcuni font
     QFont font( "Arial", 18, QFont::Bold);
@@ -138,5 +158,36 @@ void HomeworkForm::setStyle(){
     setStyleSheet(styleSheet);
 
 
+}
+
+
+
+
+
+//SLOTS
+
+void HomeworkForm::to_quiz(){
+    ContainerQuizForm* quiz= new ContainerQuizForm();
+
+    quiz->showMaximized();
+
+    close();
+}
+
+void HomeworkForm::to_addquiz(){
+    ContainerAddQuizForm* quiz= new ContainerAddQuizForm();
+
+    quiz->showMaximized();
+
+    close();
+}
+
+void HomeworkForm::previous_page(){
+    CourseForm* course= new CourseForm("ciao");
+
+
+    course->showMaximized();
+
+    close();
 }
 

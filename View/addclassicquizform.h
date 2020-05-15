@@ -20,7 +20,7 @@ private:
     virtual void setStyle();
 
 public:
-    explicit AddClassicQuizForm(QWidget *parent = nullptr);
+    explicit AddClassicQuizForm(int number_question,QWidget *parent = nullptr);
     ~AddClassicQuizForm()=default;
 
 signals:

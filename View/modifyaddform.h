@@ -26,7 +26,7 @@ protected:
     QPushButton *confirm_button;
 
     QWidget* container_button; //container del button
-    QVBoxLayout* layout_button; //layout del container del button
+    QBoxLayout* layout_button; //layout del container del button
 
     virtual void addForm();
 
@@ -40,7 +40,6 @@ public:
 signals:
 
 public slots:
-
 };
 
 #endif // MODIFYADDFORM_H

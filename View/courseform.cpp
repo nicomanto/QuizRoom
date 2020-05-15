@@ -34,11 +34,13 @@ void CourseForm::addMenu(){
     if(true){ //controllare se l'utente può aggiungere homework
         QAction* add_homework = new QAction("crea compito",homework);
         homework->addAction(add_homework);
+        connect(add_homework,SIGNAL(triggered()),this,SLOT(to_addhomework()));
     }
 
     if(true){ //controllare se l'utente può modificare il corso
         QAction* modify_course = new QAction("modifica",homework);
         course->addAction(modify_course);
+        connect(modify_course,SIGNAL(triggered()),this,SLOT(to_addform()));
     }
 
     if(true){ //controllare se l'utente può eliminare il corso
@@ -48,10 +50,6 @@ void CourseForm::addMenu(){
 
     options->addAction(exit_login);
 
-
-
-    connect(exit_login,SIGNAL(triggered()),this,SLOT(close()));
-    //connect(exit_login,SIGNAL(triggered()),new LoginForm,SLOT(open())); //tests
 
     menubar->addAction(previous_page);
     menubar->addMenu(options);
@@ -63,6 +61,13 @@ void CourseForm::addMenu(){
         menubar->addMenu(homework);
 
     main_layout->addWidget(menubar);
+
+
+    //connect della previous_page
+    connect(previous_page, SIGNAL(triggered()),this,SLOT(previous_page()));
+
+    //connect della exit_to_login
+    connect(exit_login,SIGNAL(triggered()),this,SLOT(to_login())); //tests
 }
 
 void CourseForm::addForm(){
@@ -84,6 +89,9 @@ void CourseForm::addForm(){
     for(unsigned int i=0; i <50; ++i){
         QString s= "Compito " + QString::number(i);
         homework.push_back(new QPushButton(s,this));
+
+        //connect del bottone compito
+         connect(homework[i],SIGNAL(clicked()),this,SLOT(to_homeworkform()));
 
         if(true) //controllo se posso modificare in qualche modo il compito
             homework_menu.push_back(new QPushButton(homework[i]));
@@ -180,6 +188,9 @@ void CourseForm::addMenuButton(QPushButton *b){
     if(true){
         QAction* change = new QAction("Modifica",button_options);
         button_options->addAction(change);
+
+        //connect del bottone modifica
+        connect(change,SIGNAL(triggered()),this,SLOT(to_addform()));
     }
 
     //controllare se un utente può eliminare un compito
@@ -196,6 +207,36 @@ void CourseForm::addMenuButton(QPushButton *b){
 
 
 
+//SLOTS
+void CourseForm::previous_page(){
+    MainForm* m= new MainForm();
 
+    m->showMaximized();
+
+    close();
+}
+
+
+void CourseForm::to_homeworkform(){
+    HomeworkForm* work= new HomeworkForm();
+
+    work->showMaximized();
+
+    close();
+}
+
+
+
+void CourseForm::to_addhomework(){
+    QDialog* dialog = new QDialog(this);
+    QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
+
+
+    layout_dialog->addWidget(new AddHomeworkForm(dialog));
+
+    layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
+
+    dialog->show();
+}
 
 

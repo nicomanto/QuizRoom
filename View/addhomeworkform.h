@@ -21,6 +21,7 @@ private:
     QWidget* score_time_information;  //widget dell'informazioni sul tipo di compito(score/time)
     QGridLayout* layout_ST_infomation;  //layout del widget contenitore delle informazioni
 
+    QPushButton* add_quiz;
 
     virtual void addForm();
 

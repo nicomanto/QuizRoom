@@ -45,9 +45,12 @@ void ModifyAddForm::setStyle(){
     setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
 
     //imposto l'altezza fissa del bottone
-    confirm_button->setFixedHeight(height()/13);
-    confirm_button->setFixedWidth(width()/3);
+    confirm_button->setFixedHeight(height()/8);
+    confirm_button->setFixedWidth(width()/4);
+    confirm_button->setAutoDefault(false);
     layout_button->setAlignment(Qt::AlignRight);
+
+
 
 
     //imposto il foglio di stile
@@ -57,3 +60,8 @@ void ModifyAddForm::setStyle(){
 
     setStyleSheet(styleSheet);
 }
+
+
+
+
+//SLOTS

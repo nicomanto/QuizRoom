@@ -22,7 +22,7 @@ private:
 
     virtual void setStyle();
 public:
-    explicit AddCombineQuizForm(QWidget *parent = nullptr);
+    explicit AddCombineQuizForm(int number_question, QWidget *parent = nullptr);
     ~AddCombineQuizForm()=default;
 
 

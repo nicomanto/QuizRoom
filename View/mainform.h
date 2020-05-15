@@ -7,7 +7,7 @@
 
 #include "Model/myvector.h"
 #include "principalform.h"
-#include "loginform.h"
+#include "courseform.h"
 #include "menubutton.h"
 
 
@@ -36,7 +36,9 @@ public:
 
 signals:
 
-public slots:
+private slots:
+    void to_courseform();
+    virtual void previous_page();
 };
 
 #endif // MAINFORM_H

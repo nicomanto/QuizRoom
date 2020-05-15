@@ -9,6 +9,7 @@
 #include "View/addhomeworkform.h"
 #include "View/addclassicquizform.h"
 #include "View/addcombinequizform.h"
+#include "View/containeraddquizform.h"
 
 #include <iostream>
 #include <QApplication>
@@ -234,7 +235,7 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-    AddCombineQuizForm w;
+    LoginForm w;
     w.show();
     return a.exec();
 

@@ -1,6 +1,6 @@
 #include "addcombinequizform.h"
 
-AddCombineQuizForm::AddCombineQuizForm(QWidget *parent): AddQuizForm(parent){
+AddCombineQuizForm::AddCombineQuizForm(int number_question, QWidget *parent): AddQuizForm(number_question, parent){
     main_layout=new QVBoxLayout(this);
 
     for(unsigned int i=0; i<4; ++i){

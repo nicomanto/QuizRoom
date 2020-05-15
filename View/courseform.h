@@ -8,8 +8,9 @@
 
 #include "menubutton.h"
 #include "Model/myvector.h"
-#include "principalform.h"
-#include "loginform.h"
+#include "mainform.h"
+#include "homeworkform.h"
+#include "addhomeworkform.h"
 
 class CourseForm : public PrincipalForm{
     Q_OBJECT
@@ -45,7 +46,11 @@ public:
 
 signals:
 
-public slots:
+private slots:
+    void to_homeworkform();
+    void to_addhomework();
+    virtual void previous_page();
+
 };
 
 #endif // COURSEFORM_H
