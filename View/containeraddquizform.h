@@ -45,7 +45,8 @@ private slots:
     void addCombineWidget();
     void addClassicWidget();
 
-    void previous_page();
+    virtual void to_next_page();
+    virtual void to_previous_page();
 };
 
 #endif // CONTAINERADDQUIZFORM_H

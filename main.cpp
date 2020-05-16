@@ -10,6 +10,7 @@
 #include "View/addclassicquizform.h"
 #include "View/addcombinequizform.h"
 #include "View/containeraddquizform.h"
+#include "View/containerprincipalform.h"
 
 #include <iostream>
 #include <QApplication>

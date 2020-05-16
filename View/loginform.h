@@ -10,6 +10,7 @@
 #include <QGroupBox>
 
 #include "baseform.h"
+
 class LoginForm : public BaseForm{
     Q_OBJECT
 
@@ -36,7 +37,7 @@ public:
 signals:
 
 private slots:
-    void to_main();
+    void to_principalform();
 };
 
 #endif // LOGIN_H

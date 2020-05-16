@@ -24,15 +24,22 @@ protected:
     virtual void addMenu()=0;
 
     virtual void addForm()=0;
+
+    virtual void setStyle();
 public:
     explicit PrincipalForm(QWidget *parent = nullptr);
     virtual ~PrincipalForm();
 
 
+protected: signals:
+    void to_new_page(PrincipalForm*);
+
 protected slots:
     void to_login();
     void to_addform();
-    virtual void previous_page()=0;
+
+    virtual void to_next_page()=0;
+    virtual void to_previous_page()=0;
 };
 
 #endif // PRINCIPALFORM_H

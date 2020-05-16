@@ -42,14 +42,11 @@ public:
     ~CourseForm()= default;
 
 
-
-
-signals:
-
 private slots:
-    void to_homeworkform();
     void to_addhomework();
-    virtual void previous_page();
+
+    virtual void to_next_page();
+    virtual void to_previous_page();
 
 };
 

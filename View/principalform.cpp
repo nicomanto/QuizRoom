@@ -6,7 +6,12 @@ PrincipalForm::PrincipalForm(QWidget *parent): BaseForm(parent), menubar(nullptr
 
 PrincipalForm::~PrincipalForm(){}
 
+void PrincipalForm::setStyle(){
+    //BaseForm::setStyle();
 
+    setMinimumSize(QSize(width()*10,height()*10));
+
+}
 
 
 //SLOTS
@@ -15,7 +20,7 @@ void PrincipalForm::to_login(){
 
     log->show();
 
-    close();
+    parentWidget()->close();
 }
 
 void PrincipalForm::to_addform(){

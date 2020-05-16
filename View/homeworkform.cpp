@@ -61,7 +61,7 @@ void HomeworkForm::addMenu(){
 
 
     //connect della previous_page
-    connect(previous_page, SIGNAL(triggered()),this,SLOT(previous_page()));
+    connect(previous_page, SIGNAL(triggered()),this,SLOT(to_previous_page()));
 
     //connect della exit_to_login
     connect(exit_login,SIGNAL(triggered()),this,SLOT(to_login())); //tests
@@ -89,7 +89,7 @@ void HomeworkForm::addForm(){
    main_layout->addWidget(container_button);
 
    //connect dei bottoni
-   connect(start_quiz,SIGNAL(clicked()),this,SLOT(to_quiz())); //tests
+   connect(start_quiz,SIGNAL(clicked()),this,SLOT(to_next_page())); //tests
    connect(add_quiz,SIGNAL(clicked()),this,SLOT(to_addquiz())); //tests
 
 
@@ -166,27 +166,21 @@ void HomeworkForm::setStyle(){
 
 //SLOTS
 
-void HomeworkForm::to_quiz(){
-    ContainerQuizForm* quiz= new ContainerQuizForm();
-
-    quiz->showMaximized();
-
-    close();
-}
 
 void HomeworkForm::to_addquiz(){
-    ContainerAddQuizForm* quiz= new ContainerAddQuizForm();
-
-    quiz->showMaximized();
+    emit to_new_page(new ContainerAddQuizForm(parentWidget()));
 
     close();
 }
 
-void HomeworkForm::previous_page(){
-    CourseForm* course= new CourseForm("ciao");
+void HomeworkForm::to_next_page(){
+    emit to_new_page(new ContainerQuizForm(parentWidget()));
 
+    close();
+}
 
-    course->showMaximized();
+void HomeworkForm::to_previous_page(){
+    emit to_new_page(new CourseForm("ciao",parentWidget()));
 
     close();
 }

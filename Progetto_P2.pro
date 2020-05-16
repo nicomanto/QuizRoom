@@ -37,6 +37,7 @@ SOURCES += \
     View/classicquizform.cpp \
     View/combinequizform.cpp \
     View/containeraddquizform.cpp \
+    View/containerprincipalform.cpp \
     View/containerquizform.cpp \
     View/courseform.cpp \
     View/homeworkform.cpp \
@@ -79,6 +80,7 @@ HEADERS += \
     View/classicquizform.h \
     View/combinequizform.h \
     View/containeraddquizform.h \
+    View/containerprincipalform.h \
     View/containerquizform.h \
     View/courseform.h \
     View/homeworkform.h \

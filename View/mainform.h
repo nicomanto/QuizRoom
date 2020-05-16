@@ -18,7 +18,7 @@ private:
     MyVector <QPushButton *> course; //vettore dei pulsanti corsi
     MyVector <QPushButton *> course_menu; //vettore dei pulsanti per modificare i corsi
 
-    QGridLayout* scroll_layout;  //layou a tabella per i due vettori di bottni
+    QGridLayout* scroll_layout;  //layout a tabella per i due vettori di bottni
 
 
     virtual void addMenu();
@@ -33,12 +33,9 @@ public:
     ~MainForm()= default;
 
 
-
-signals:
-
 private slots:
-    void to_courseform();
-    virtual void previous_page();
+    virtual void to_next_page();
+    virtual void to_previous_page();
 };
 
 #endif // MAINFORM_H

@@ -64,7 +64,7 @@ void CourseForm::addMenu(){
 
 
     //connect della previous_page
-    connect(previous_page, SIGNAL(triggered()),this,SLOT(previous_page()));
+    connect(previous_page, SIGNAL(triggered()),this,SLOT(to_previous_page()));
 
     //connect della exit_to_login
     connect(exit_login,SIGNAL(triggered()),this,SLOT(to_login())); //tests
@@ -91,7 +91,7 @@ void CourseForm::addForm(){
         homework.push_back(new QPushButton(s,this));
 
         //connect del bottone compito
-         connect(homework[i],SIGNAL(clicked()),this,SLOT(to_homeworkform()));
+         connect(homework[i],SIGNAL(clicked()),this,SLOT(to_next_page()));
 
         if(true) //controllo se posso modificare in qualche modo il compito
             homework_menu.push_back(new QPushButton(homework[i]));
@@ -143,11 +143,15 @@ void CourseForm::setStyle(){
     course_code->setWordWrap(true);
 
 
+    //stile info corso
     info_course_layout->setAlignment(Qt::AlignCenter);
+    container_course->setMaximumWidth(width()/2);
     info_course_layout->setSpacing(50);
 
 
+    //stile scroll
     scroll_layout->setAlignment(Qt::AlignCenter);
+    scroll->setMinimumWidth(width()/2);
     scroll_layout->setSpacing(0);
 
 
@@ -163,7 +167,7 @@ void CourseForm::setStyle(){
 
 
     //stile scroll area
-    scroll->setMaximumWidth(width()*2);
+    //scroll->setMaximumWidth(width()*2);
     scroll->setWidgetResizable(true);
 
     //stile menubar
@@ -208,19 +212,15 @@ void CourseForm::addMenuButton(QPushButton *b){
 
 
 //SLOTS
-void CourseForm::previous_page(){
-    MainForm* m= new MainForm();
-
-    m->showMaximized();
+void CourseForm::to_previous_page(){
+    emit to_new_page(new MainForm(parentWidget()));
 
     close();
 }
 
 
-void CourseForm::to_homeworkform(){
-    HomeworkForm* work= new HomeworkForm();
-
-    work->showMaximized();
+void CourseForm::to_next_page(){
+    emit to_new_page(new HomeworkForm(parentWidget()));
 
     close();
 }

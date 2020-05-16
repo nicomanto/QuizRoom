@@ -1,5 +1,5 @@
 #include "loginform.h"
-#include "mainform.h"
+#include "containerprincipalform.h"
 LoginForm::LoginForm(QWidget *parent) : BaseForm(parent), login_button(new QPushButton("Login",this)),username_form(new QLineEdit(this)), password_form(new QLineEdit(this)),username(new QLabel("Username", this)),password(new QLabel("Password", this)){
 
     main_layout=new QVBoxLayout(this);
@@ -24,7 +24,7 @@ void LoginForm::addForm(){
     main_layout->addWidget(login_button);
 
     //connect per il login
-    connect(login_button, SIGNAL(clicked()),this,SLOT(to_main()));
+    connect(login_button, SIGNAL(clicked()),this,SLOT(to_principalform()));
 }
 
 void LoginForm::setStyle(){
@@ -66,8 +66,8 @@ void LoginForm::setStyle(){
 
 
 //SLOTS
-void LoginForm::to_main(){
-    MainForm* m= new MainForm();
+void LoginForm::to_principalform(){
+    ContainerPrincipalForm* m= new ContainerPrincipalForm();
 
     m->showMaximized();
 

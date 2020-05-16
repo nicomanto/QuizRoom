@@ -23,7 +23,7 @@ void ContainerQuizForm::addMenu(){
     main_layout->addWidget(menubar);
 
     //connect della previous_page
-    connect(previous_page, SIGNAL(triggered()),this,SLOT(previous_page()));
+    connect(previous_page, SIGNAL(triggered()),this,SLOT(to_previous_page()));
 }
 
 void ContainerQuizForm::addForm(){
@@ -82,7 +82,10 @@ void ContainerQuizForm::setStyle(){
     layout_button->setAlignment(Qt::AlignCenter);
 
     //setto la dimensione minima della finistra
-    setMinimumSize(QSize(width_screen/2,height_screen/2));
+    //etMinimumSize(QSize(width_screen/2,height_screen/2));
+
+
+    scroll->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
     //aggiunta foglio di stile
     QFile file(":/Resources/style_containerquiz.css");
@@ -95,11 +98,13 @@ void ContainerQuizForm::setStyle(){
 
 
 //SLOTS
-void ContainerQuizForm::previous_page()
-{
-    HomeworkForm* homework= new HomeworkForm();
 
-    homework->showMaximized();
+
+void ContainerQuizForm::to_next_page(){}
+
+void ContainerQuizForm::to_previous_page(){
+    emit to_new_page(new HomeworkForm(parentWidget()));
 
     close();
+
 }

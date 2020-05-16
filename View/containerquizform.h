@@ -40,7 +40,8 @@ public:
 signals:
 
 private slots:
-    virtual void previous_page();
+    virtual void to_next_page();
+    virtual void to_previous_page();
 };
 
 #endif // CONTAINERQUIZFORM_H

@@ -58,7 +58,7 @@ void MainForm::addForm(){
         course.push_back(new QPushButton(s,this));
 
         //connect del bottone corso
-        connect(course[i],SIGNAL(clicked()),this,SLOT(to_courseform()));
+        connect(course[i],SIGNAL(clicked()),this,SLOT(to_next_page()));
 
         if(true) //controllo se posso modificare in qualche modo il compito
             course_menu.push_back(new QPushButton(course[i]));
@@ -78,6 +78,9 @@ void MainForm::addForm(){
 
 void MainForm::setStyle(){
     PrincipalForm::setStyle();
+
+
+
 
     //setto lo stile dei vari bottoni
     for(unsigned int i=0; i <50; ++i){
@@ -131,20 +134,18 @@ void MainForm::addMenuButton(QPushButton *b){
 
 
 //SLOTS
-void MainForm::to_courseform(){
-    CourseForm* course= new CourseForm("ciao");
-
-    course->showMaximized();
+void MainForm::to_next_page(){
+    emit to_new_page(new CourseForm("ciao",parentWidget()));
 
     close();
 }
 
-void MainForm::previous_page(){
+void MainForm::to_previous_page(){
     LoginForm* login= new LoginForm();
 
 
     login->show();
 
-    close();
+    parentWidget()->close();
 }
 

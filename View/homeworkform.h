@@ -44,9 +44,10 @@ public:
 signals:
 
 private slots:
-    void to_quiz();
     void to_addquiz();
-    virtual void previous_page();
+
+    virtual void to_next_page();
+    virtual void to_previous_page();
 };
 
 #endif // HOMEWORKFORM_H
