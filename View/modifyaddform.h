@@ -6,6 +6,8 @@
 #include <QPushButton>
 #include <QGroupBox>
 #include <QFile>
+#include <QDialog>
+#include <QLabel>
 
 #include "baseform.h"
 
@@ -33,13 +35,16 @@ protected:
     virtual void setStyle();
 
 public:
-    explicit ModifyAddForm(QWidget *parent = nullptr);
+    explicit ModifyAddForm(QWidget *parent);
     ~ModifyAddForm()= default;
 
 
 signals:
+    void information(const QString& ,const QString&);
+    void toClose();
 
-public slots:
+private slots:
+    void send_information();
 };
 
 #endif // MODIFYADDFORM_H

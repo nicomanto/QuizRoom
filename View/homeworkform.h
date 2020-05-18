@@ -46,6 +46,7 @@ signals:
 private slots:
     void to_addquiz();
 
+    virtual void confirm_addform(const QString&, const QString&){};
     virtual void to_next_page();
     virtual void to_previous_page();
 };

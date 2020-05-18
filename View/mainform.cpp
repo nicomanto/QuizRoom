@@ -156,3 +156,16 @@ void MainForm::to_previous_page(){
     parentWidget()->close();
 }
 
+
+void MainForm::confirm_addform(const QString& t, const QString& d){
+    if(t=="")
+         throw std::runtime_error("Titolo mancante");
+
+    Course temp(t.toStdString(),d.toStdString());
+    user->addCourse(temp);
+
+
+    emit to_new_page(new MainForm(user,relogin,parentWidget()));
+    delete this;
+}
+

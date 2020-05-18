@@ -14,6 +14,8 @@ ModifyAddForm::ModifyAddForm(QWidget *parent): BaseForm(parent),box_title(new QG
 }
 
 
+
+
 void ModifyAddForm::addForm(){
 
     main_layout->addWidget(box_title);
@@ -24,6 +26,8 @@ void ModifyAddForm::addForm(){
 
     layout_button->addWidget(confirm_button);
     main_layout->addWidget(container_button);
+
+    connect(confirm_button,SIGNAL(clicked()),this,SLOT(send_information()));
 
 }
 
@@ -65,3 +69,22 @@ void ModifyAddForm::setStyle(){
 
 
 //SLOTS
+
+void ModifyAddForm::send_information(){
+    try {
+        emit information(title_form->text(),description_form->toPlainText());
+        emit toClose();
+    } catch(std::runtime_error exc){
+        QDialog* error = new QDialog(this);
+        QVBoxLayout* layout_error = new QVBoxLayout(error);
+
+
+        layout_error->addWidget(new QLabel(exc.what(),error));
+
+        layout_error->setSizeConstraint( QLayout::SetFixedSize );
+
+        error->show();
+    }
+
+
+}
