@@ -12,7 +12,7 @@ private:
     MyVector<User*> users;
 public:
     VectorUsers();
-    ~VectorUsers()=default;
+    ~VectorUsers();
 
     User* getUser(const string& u, const string& p) const;
 };

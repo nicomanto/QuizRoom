@@ -1,10 +1,6 @@
 #include "vectorusers.h"
 
 VectorUsers::VectorUsers(){
-    Teacher p("professor","professor");
-    Student s1("student1","student1");
-    Student s2("student2","student2");
-
     users.push_back(new Teacher("professor","professor"));
     users.push_back(new Student ("student1","student1"));
     users.push_back(new Student ("student2","student2"));
@@ -15,6 +11,11 @@ VectorUsers::VectorUsers(){
     users[0]->addCourse(z);
     users[1]->addCourse(y);
     users[2]->addCourse(y);
+}
+
+VectorUsers::~VectorUsers(){
+    for(unsigned int i=0;i<users.size();++i)
+        delete users[i];
 }
 
 User *VectorUsers::getUser(const std::string &u, const std::string &p) const{
