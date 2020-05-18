@@ -7,6 +7,12 @@ VectorUsers::VectorUsers(){
 
     Course y("Titolo","Descrizione");
     Course z("Corso2","ciaooo");
+
+    DateTime data(25,03,2020,00);
+
+    y.addHomework(new TimeScoreHomework(data, "Prova compito"));
+    z.addHomework(new ScoreHomework("Prova compito","istruzioni"));
+
     users[0]->addCourse(y);
     users[0]->addCourse(z);
     users[1]->addCourse(y);

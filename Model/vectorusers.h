@@ -6,6 +6,7 @@
 #include "teacher.h"
 #include "student.h"
 #include "myvector.h"
+#include "timescorehomework.h"
 
 class VectorUsers{
 private:
