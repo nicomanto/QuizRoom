@@ -2,7 +2,7 @@
 
 Homework::Homework(){}
 
-Homework::Homework(const string& t, const string& i,const string& a): title(t), instructions(i), arguments(a){}
+Homework::Homework(const string& t, const string& i): title(t), instructions(i){}
 
 string Homework::getTitle() const{
     return title;
@@ -11,10 +11,6 @@ string Homework::getTitle() const{
 std::string Homework::getInstructions() const
 {
     return instructions;
-}
-
-string Homework::getArguments() const{
-    return arguments;
 }
 
 const MyVector<QuizContainer>& Homework::getContainerQuiz() const{
@@ -29,9 +25,6 @@ void Homework::setInstructions(const string& i){
     instructions=i;
 }
 
-void Homework::setArguments(const string& a){
-    arguments=a;
-}
 
 bool Homework::isDone() const{
     bool temp=true;

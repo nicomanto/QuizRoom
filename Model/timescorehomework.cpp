@@ -2,7 +2,7 @@
 
 TimeScoreHomework::TimeScoreHomework(){}
 
-TimeScoreHomework::TimeScoreHomework(const DateTime& d,const string& t,const string& i,const string& a) : Homework(t,i,a) , TimeHomework(d,t,i,a), ScoreHomework(t,i,a){}
+TimeScoreHomework::TimeScoreHomework(const DateTime& d,const string& t,const string& i) : Homework(t,i) , TimeHomework(d,t,i), ScoreHomework(t,i){}
 
 bool TimeScoreHomework::isScoreHomework() const{
     return true;

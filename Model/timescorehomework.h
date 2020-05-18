@@ -8,7 +8,7 @@ private:
     static int day_max_malus;
 public:
     TimeScoreHomework();
-    TimeScoreHomework(const DateTime& d, const string& t,const string& i=string(),const string& a=string());
+    TimeScoreHomework(const DateTime& d, const string& t,const string& i=string());
 
     virtual bool isScoreHomework() const;
     virtual bool isTimeHomework() const;

@@ -9,21 +9,18 @@ class Homework{
 protected:
     string title;
     string instructions;
-    string arguments;
     MyVector<QuizContainer> container_q;      // modulo per quiz (struttura del contenitore dei quiz)
 
 public:
     Homework();
-    Homework(const string& t, const string& i=string(),const string& a=string());
+    Homework(const string& t, const string& i=string());
 
     string getTitle() const;
     string getInstructions() const;
-    string getArguments() const;
     const MyVector<QuizContainer>& getContainerQuiz() const; //ritorna il vettore che contiene i container dei quiz
 
     void setTitle(const string& t);
     void setInstructions(const string& i);
-    void setArguments(const string& a);
     bool isDone() const;
 
     virtual void addQuizContainer(const QuizContainer& q);

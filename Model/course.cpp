@@ -1,6 +1,6 @@
 #include "course.h"
 #include "user.h"
-Course::Course(const string& t, const string& s, const string& d): title(t), code(random_code()), subject(s), description(d){
+Course::Course(const string& t, const string& d): title(t), code(random_code()), description(d){
     //settare classroom dal file
 }
 
@@ -11,11 +11,6 @@ string Course::getTitle() const{
 string Course::getCode() const
 {
     return code;
-}
-
-string Course::getSubject() const
-{
-    return subject;
 }
 
 string Course::getDescription() const
@@ -33,10 +28,6 @@ const MyVector<User *> &Course::getClassroom() const{
 
 void Course::setTitle(const string& t){
     title=t;
-}
-
-void Course::setSubject(const string& s){
-    subject=s;
 }
 
 void Course::setDescription(const string& d){

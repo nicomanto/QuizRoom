@@ -10,7 +10,7 @@ private:
     void removeTotalScore(double p);
 public:
     ScoreHomework();
-    ScoreHomework(const string& t,const string& i=string(),const string& a=string());
+    ScoreHomework(const string& t,const string& i=string());
 
     double getTotalScore() const;
     virtual bool isScoreHomework() const;
