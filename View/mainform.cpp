@@ -166,6 +166,6 @@ void MainForm::confirm_addform(const QString& t, const QString& d){
 
 
     emit to_new_page(new MainForm(user,relogin,parentWidget()));
-    delete this;
+    close();
 }
 
