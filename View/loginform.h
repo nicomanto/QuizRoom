@@ -16,7 +16,8 @@ class LoginForm : public BaseForm{
     Q_OBJECT
 
 private:
-    const VectorUsers Users;
+    VectorUsers& Users;
+    bool & relogin;
 
     QPushButton *login_button;
     QLineEdit *username_form;
@@ -30,7 +31,7 @@ private:
 
 
 public:
-    explicit LoginForm(QWidget *parent = nullptr);
+    explicit LoginForm(VectorUsers& u,bool &r,QWidget *parent = nullptr);
     ~LoginForm()= default;
 
 

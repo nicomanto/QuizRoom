@@ -33,7 +33,7 @@ private:
 
 
 public:
-    explicit ContainerAddQuizForm(User* u,QWidget *parent = nullptr);
+    explicit ContainerAddQuizForm(User* u,bool & r,QWidget *parent = nullptr);
     ~ContainerAddQuizForm()= default;
 
 

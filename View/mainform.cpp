@@ -1,6 +1,6 @@
 #include "mainform.h"
 
-MainForm::MainForm(User* u,QWidget *parent) : PrincipalForm(u,parent), scroll_layout(new QGridLayout(container_scroll)){
+MainForm::MainForm(User* u,bool &r,QWidget *parent) : PrincipalForm(u,r,parent), scroll_layout(new QGridLayout(container_scroll)){
     main_layout=new QVBoxLayout(this);
     menubar=new QMenuBar(this);
     scroll= new QScrollArea(this);
@@ -145,16 +145,13 @@ bool MainForm::addMenuButton(QPushButton *b){
 
 //SLOTS
 void MainForm::to_next_page(){
-    emit to_new_page(new CourseForm(user, "ciao",parentWidget()));
+    emit to_new_page(new CourseForm(user, relogin,"ciao",parentWidget()));
 
     close();
 }
 
 void MainForm::to_previous_page(){
-    LoginForm* login= new LoginForm();
-
-
-    login->show();
+    relogin=true;
 
     parentWidget()->close();
 }

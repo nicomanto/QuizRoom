@@ -30,7 +30,7 @@ private:
 
     virtual bool addMenuButton(QPushButton* b);
 public:
-    explicit MainForm(User* u,QWidget *parent = nullptr);
+    explicit MainForm(User* u,bool &r,QWidget *parent = nullptr);
     ~MainForm()= default;
 
 

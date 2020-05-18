@@ -236,10 +236,15 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-    LoginForm w;
+    VectorUsers user;
+    bool relogin;
+    do{
+        relogin=false;
+        LoginForm w(user,relogin);
 
-    w.show();
-    return a.exec();
+        w.show();
+        a.exec();
+    }while(relogin);
 
-
+    return 0;
 }

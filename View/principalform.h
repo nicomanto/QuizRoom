@@ -22,6 +22,7 @@ protected:
     QGroupBox* container_scroll;  //contenitore della scroll area
 
     User* user;
+    bool & relogin;
 
     virtual void addMenu()=0;
 
@@ -29,7 +30,7 @@ protected:
 
     virtual void setStyle();
 public:
-    explicit PrincipalForm(User* u, QWidget *parent = nullptr);
+    explicit PrincipalForm(User* u,bool &r,QWidget *parent = nullptr);
     virtual ~PrincipalForm();
 
 

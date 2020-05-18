@@ -1,6 +1,6 @@
 #include "loginform.h"
 #include "containerprincipalform.h"
-LoginForm::LoginForm(QWidget *parent) : BaseForm(parent), login_button(new QPushButton("Login")),username_form(new QLineEdit(this)), password_form(new QLineEdit(this)),username(new QLabel("Username", this)),password(new QLabel("Password", this)){
+LoginForm::LoginForm(VectorUsers& u,bool & r,QWidget *parent) : BaseForm(parent), login_button(new QPushButton("Login")),username_form(new QLineEdit(this)), password_form(new QLineEdit(this)),username(new QLabel("Username", this)),password(new QLabel("Password", this)),Users(u),relogin(r){
 
     main_layout=new QVBoxLayout(this);
 
@@ -73,18 +73,18 @@ void LoginForm::setStyle(){
 void LoginForm::to_principalform(){
 
     try{
-        ContainerPrincipalForm* m= new ContainerPrincipalForm(Users.getUser((username_form->text()).toStdString(),(password_form->text()).toStdString()));
+        ContainerPrincipalForm* m= new ContainerPrincipalForm(Users.getUser((username_form->text()).toStdString(),(password_form->text()).toStdString()),relogin);
 
         m->showMaximized();
 
         close();
     }
-    catch(std::runtime_error* exc){
+    catch(std::runtime_error exc){
         QDialog* error = new QDialog(this);
         QVBoxLayout* layout_error = new QVBoxLayout(error);
 
 
-        layout_error->addWidget(new QLabel(exc->what(),error));
+        layout_error->addWidget(new QLabel(exc.what(),error));
 
         layout_error->setSizeConstraint( QLayout::SetFixedSize );
 

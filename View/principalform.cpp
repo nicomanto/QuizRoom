@@ -1,6 +1,6 @@
 #include "principalform.h"
 
-PrincipalForm::PrincipalForm(User* u,QWidget *parent): BaseForm(parent), menubar(nullptr), scroll(nullptr), container_scroll(new QGroupBox(scroll)),user(u){
+PrincipalForm::PrincipalForm(User* u,bool & r,QWidget *parent): BaseForm(parent), menubar(nullptr), scroll(nullptr), container_scroll(new QGroupBox(scroll)),user(u),relogin(r){
 
 }
 
@@ -16,9 +16,7 @@ void PrincipalForm::setStyle(){
 
 //SLOTS
 void PrincipalForm::to_login(){
-    LoginForm* log= new LoginForm();
-
-    log->show();
+    relogin=true;
 
     parentWidget()->close();
 }
