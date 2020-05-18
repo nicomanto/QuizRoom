@@ -6,30 +6,22 @@
 
 class Course;
 using std::string;
+
 class User {
 protected:
-    string name;
-    string surname;
     string username;
     string password;
-    string email;
     MyVector<Course> course; // da mettere dopo che è stata creata l'opportuna classe;
 public:
     User();
-    User(const string& n,const string& s,const string& u,const string& p,const string& e); //da aggiungere i corsi
+    User(const string& u,const string& p); //da aggiungere i corsi
 
-    string getName() const;
-    string getSurname() const;
     string getUsername() const;
     string getPassword() const;
-    string getEmail() const;
     const MyVector<Course>& getCourse() const;  //da implementare
 
-    void setName(const string& n);
-    void setSurname(const string& s);
     void setUsername(const string& u);
     void setPassword(const string& p);
-    void setEmail(const string& e);
 
     virtual bool CanAddCourse()const =0;
     virtual void addCourse(const Course& c);

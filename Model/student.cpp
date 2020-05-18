@@ -2,7 +2,7 @@
 
 Student::Student(){}
 
-Student::Student(const string& n,const string& s,const string& u,const string& p,const string& e): User(n,s,u,p,e){}
+Student::Student(const string& u,const string& p): User(u,p){}
 
 bool Student::CanAddHomework() const{
   return false;

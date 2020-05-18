@@ -1,6 +1,6 @@
 #include "loginform.h"
 #include "containerprincipalform.h"
-LoginForm::LoginForm(QWidget *parent) : BaseForm(parent), login_button(new QPushButton("Login",this)),username_form(new QLineEdit(this)), password_form(new QLineEdit(this)),username(new QLabel("Username", this)),password(new QLabel("Password", this)){
+LoginForm::LoginForm(QWidget *parent) : BaseForm(parent), login_button(new QPushButton("Login")),username_form(new QLineEdit(this)), password_form(new QLineEdit(this)),username(new QLabel("Username", this)),password(new QLabel("Password", this)){
 
     main_layout=new QVBoxLayout(this);
 
@@ -10,6 +10,7 @@ LoginForm::LoginForm(QWidget *parent) : BaseForm(parent), login_button(new QPush
 
     setLayout(main_layout);
 
+
 }
 
 
@@ -18,6 +19,7 @@ void LoginForm::addForm(){
     main_layout->addWidget(username);
     main_layout->addWidget(username_form);
 
+
     main_layout->addWidget(password);
     main_layout->addWidget(password_form);
 
@@ -25,6 +27,8 @@ void LoginForm::addForm(){
 
     //connect per il login
     connect(login_button, SIGNAL(clicked()),this,SLOT(to_principalform()));
+    connect(username_form,SIGNAL(returnPressed()),login_button,SIGNAL(clicked()));
+    connect(password_form,SIGNAL(returnPressed()),login_button,SIGNAL(clicked()));
 }
 
 void LoginForm::setStyle(){
@@ -67,9 +71,23 @@ void LoginForm::setStyle(){
 
 //SLOTS
 void LoginForm::to_principalform(){
-    ContainerPrincipalForm* m= new ContainerPrincipalForm();
 
-    m->showMaximized();
+    try{
+        ContainerPrincipalForm* m= new ContainerPrincipalForm(Users.getUser((username_form->text()).toStdString(),(password_form->text()).toStdString()));
 
-    close();
+        m->showMaximized();
+
+        close();
+    }
+    catch(std::runtime_error* exc){
+        QDialog* error = new QDialog(this);
+        QVBoxLayout* layout_error = new QVBoxLayout(error);
+
+
+        layout_error->addWidget(new QLabel(exc->what(),error));
+
+        layout_error->setSizeConstraint( QLayout::SetFixedSize );
+
+        error->show();
+    }
 }

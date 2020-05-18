@@ -2,15 +2,7 @@
 #include "student.h"
 Teacher::Teacher(){}
 
-Teacher::Teacher(const string& n,const string& s,const string& u,const string& p,const string& e,const string& m): User(n,s,u,p,e), subject(m){}
-
-string Teacher::getSubject() const{
-    return subject;
-}
-
-void Teacher::setSubject(const string& m){
-    subject=m;
-}
+Teacher::Teacher(const string& u,const string& p): User(u,p){}
 
 bool Teacher::CanAddHomework() const{
     return true;

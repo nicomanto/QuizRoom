@@ -10,11 +10,14 @@
 #include <QGroupBox>
 
 #include "baseform.h"
+#include "Model/vectorusers.h"
 
 class LoginForm : public BaseForm{
     Q_OBJECT
 
 private:
+    const VectorUsers Users;
+
     QPushButton *login_button;
     QLineEdit *username_form;
     QLineEdit *password_form;

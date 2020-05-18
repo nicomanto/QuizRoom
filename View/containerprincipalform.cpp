@@ -1,6 +1,6 @@
 #include "containerprincipalform.h"
 
-ContainerPrincipalForm::ContainerPrincipalForm(QWidget *parent) : BaseForm(parent),main_window(new MainForm(this)){
+ContainerPrincipalForm::ContainerPrincipalForm(User* u,QWidget *parent) : BaseForm(parent),main_window(new MainForm(u,this)){
 
     main_layout= new QVBoxLayout(this);
 

@@ -1,6 +1,6 @@
 #include "containeraddquizform.h"
 
-ContainerAddQuizForm::ContainerAddQuizForm(QWidget *parent): PrincipalForm(parent),container_quiz(new QWidget(this)), layout_container_quiz(new QVBoxLayout(container_quiz)), scroll_layout(new QVBoxLayout(container_scroll)),end(new QPushButton("termina",this)), add_combine(new QPushButton("Quiz a combinazione",this)),
+ContainerAddQuizForm::ContainerAddQuizForm(User* u,QWidget *parent): PrincipalForm(u,parent),container_quiz(new QWidget(this)), layout_container_quiz(new QVBoxLayout(container_quiz)), scroll_layout(new QVBoxLayout(container_scroll)),end(new QPushButton("termina",this)), add_combine(new QPushButton("Quiz a combinazione",this)),
     add_classic(new QPushButton("Quiz classico",this)),container_button(new QWidget(this)), layout_button(new QHBoxLayout(container_button)){
 
     main_layout=new QVBoxLayout(this);
@@ -99,7 +99,7 @@ void ContainerAddQuizForm::addClassicWidget(){
 void ContainerAddQuizForm::to_next_page(){}
 
 void ContainerAddQuizForm::to_previous_page(){
-    emit to_new_page(new HomeworkForm(parentWidget()));
+    emit to_new_page(new HomeworkForm(user,parentWidget()));
 
     close();
 }

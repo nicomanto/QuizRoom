@@ -21,15 +21,16 @@ private:
     QGridLayout* scroll_layout;  //layout a tabella per i due vettori di bottni
 
 
+
     virtual void addMenu();
 
     virtual void addForm();
 
     virtual void setStyle();
 
-    virtual void addMenuButton(QPushButton* b);
+    virtual bool addMenuButton(QPushButton* b);
 public:
-    explicit MainForm(QWidget *parent = nullptr);
+    explicit MainForm(User* u,QWidget *parent = nullptr);
     ~MainForm()= default;
 
 

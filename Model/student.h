@@ -5,7 +5,7 @@
 class Student: public User{
 public:
     Student();
-    Student(const string& n,const string& s,const string& u,const string& p,const string& e);
+    Student(const string& u,const string& p);
 
     virtual bool CanAddCourse() const;
     virtual bool CanDeleteCourse() const;

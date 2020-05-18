@@ -1,6 +1,6 @@
 #include "mainform.h"
 
-MainForm::MainForm(QWidget *parent) : PrincipalForm(parent), scroll_layout(new QGridLayout(container_scroll)){
+MainForm::MainForm(User* u,QWidget *parent) : PrincipalForm(u,parent), scroll_layout(new QGridLayout(container_scroll)){
     main_layout=new QVBoxLayout(this);
     menubar=new QMenuBar(this);
     scroll= new QScrollArea(this);
@@ -17,18 +17,19 @@ void MainForm::addMenu(){
     QMenu* options = new QMenu("Opzioni",menubar);
     QMenu*  course= new QMenu("Corso",menubar);
 
+
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
     QAction* subscribe_course = new QAction("iscriviti al corso",course);
 
 
 
-    if(true){ //controllare se l'utente può aggiungere corsi
+    if(user->CanAddCourse()){
         QAction* add_course = new QAction("crea corso",course);
         course->addAction(add_course);
-
         //connect del bottone aggiungi
         connect(add_course,SIGNAL(triggered()),this,SLOT(to_addform()));
     }
+
 
     course->addAction(subscribe_course);
 
@@ -53,25 +54,27 @@ void MainForm::addForm(){
     scroll->setWidget( container_scroll );  //il contenitore degli elemnti all'interno della scroll area
 
     //for che aggiunge i bottoni
-    for(unsigned int i=0; i <50; ++i){
-        QString s= "Corso " + QString::number(i);
-        course.push_back(new QPushButton(s,this));
+    for(unsigned int i=0; i <user->getCourse().size(); ++i){
+        //QString s= "Corso " + QString::number(i);
+        course.push_back(new QPushButton(QString::fromStdString((user->getCourse()[i].getTitle())),this));
 
         //connect del bottone corso
         connect(course[i],SIGNAL(clicked()),this,SLOT(to_next_page()));
 
-        if(true) //controllo se posso modificare in qualche modo il compito
-            course_menu.push_back(new QPushButton(course[i]));
 
+        course_menu.push_back(new QPushButton(course[i]));
+        course_menu[i]->setVisible(false); //setto invisibile perchè non so se può modificarlo
 
         scroll_layout->addWidget(course[i],i,0);
 
 
 
-        if(true){ //controllo se posso modificare in qualche modo il compito
-            addMenuButton(course_menu[i]);
-            scroll_layout->addWidget(course_menu[i],i,1);
-        }
+
+        if(addMenuButton(course_menu[i]))
+            course_menu[i]->setVisible(true);
+
+        scroll_layout->addWidget(course_menu[i],i,1);
+
     }
 
 }
@@ -83,7 +86,7 @@ void MainForm::setStyle(){
 
 
     //setto lo stile dei vari bottoni
-    for(unsigned int i=0; i <50; ++i){
+    for(unsigned int i=0; i <user->getCourse().size(); ++i){
         course[i]->setMinimumSize(QSize(width()/2,height()/5));
         course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         course[i]->setMaximumSize(QSize(1000,height()/5));
@@ -109,25 +112,32 @@ void MainForm::setStyle(){
 
 
 //aggiungo il menu a tendina al bottone
-void MainForm::addMenuButton(QPushButton *b){
+bool MainForm::addMenuButton(QPushButton *b){
     MenuButton* button_options = new MenuButton(b,this);
+    bool temp=false;
 
     //controllare se l'utente può modificare un corso
-    if(true){
+    if(user->CanEditHomework()){
         QAction* change = new QAction("Modifica",button_options);
         button_options->addAction(change);
 
         //connect del bottone modifica
         connect(change,SIGNAL(triggered()),this,SLOT(to_addform()));
+        temp=true;
     }
 
     //controllare se un utente può eliminare un corso
-    if(true){
+    if(user->CanDeleteHomework()){
         QAction* del = new QAction("Elimina",button_options);
         button_options->addAction(del);
+        temp=true;
     }
 
+
+
     b->setMenu(button_options);
+
+    return temp;
 
 }
 
@@ -135,7 +145,7 @@ void MainForm::addMenuButton(QPushButton *b){
 
 //SLOTS
 void MainForm::to_next_page(){
-    emit to_new_page(new CourseForm("ciao",parentWidget()));
+    emit to_new_page(new CourseForm(user, "ciao",parentWidget()));
 
     close();
 }

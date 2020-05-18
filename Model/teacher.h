@@ -3,14 +3,9 @@
 #include "user.h"
 
 class Teacher : public User{
-private:
-    string subject;
-
 public:
     Teacher();
-    Teacher(const string& n,const string& s,const string& u,const string& p,const string& e,const string& m=string());
-    string getSubject() const;
-    void setSubject(const string& m);
+    Teacher(const string& u,const string& p);
 
     virtual bool CanAddCourse() const;
     virtual bool CanDeleteCourse() const;

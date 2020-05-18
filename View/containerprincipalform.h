@@ -3,10 +3,15 @@
 
 #include "mainform.h"
 
+#include "Model/teacher.h"
+#include "Model/student.h"
+
 class ContainerPrincipalForm : public BaseForm{
     Q_OBJECT
 
 private:
+
+
     PrincipalForm* main_window;
 
     virtual void addForm();
@@ -15,7 +20,7 @@ private:
 
 
 public:
-    explicit ContainerPrincipalForm(QWidget *parent = nullptr);
+    explicit ContainerPrincipalForm(User* u, QWidget *parent = nullptr);
     ~ContainerPrincipalForm()= default;
 
 

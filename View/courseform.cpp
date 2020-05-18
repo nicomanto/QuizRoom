@@ -1,7 +1,7 @@
 #include "courseform.h"
 
 
-CourseForm::CourseForm(const QString& title, QWidget *parent): PrincipalForm(parent), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
+CourseForm::CourseForm(User* u, const QString& title, QWidget *parent): PrincipalForm(u,parent), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
     center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(title,this)){
 
     main_layout=new QVBoxLayout(this);
@@ -213,14 +213,14 @@ void CourseForm::addMenuButton(QPushButton *b){
 
 //SLOTS
 void CourseForm::to_previous_page(){
-    emit to_new_page(new MainForm(parentWidget()));
+    emit to_new_page(new MainForm(user, parentWidget()));
 
     close();
 }
 
 
 void CourseForm::to_next_page(){
-    emit to_new_page(new HomeworkForm(parentWidget()));
+    emit to_new_page(new HomeworkForm(user,parentWidget()));
 
     close();
 }
