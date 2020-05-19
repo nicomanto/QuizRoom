@@ -28,7 +28,7 @@ private:
     virtual void setStyle();
 
 public:
-    explicit AddHomeworkForm(QWidget *parent = nullptr);
+    explicit AddHomeworkForm(const QString& title, const QString& description, QWidget *parent = nullptr);
     ~AddHomeworkForm()= default;
 
 

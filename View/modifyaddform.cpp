@@ -1,7 +1,7 @@
 #include "modifyaddform.h"
 
-ModifyAddForm::ModifyAddForm(QWidget *parent): BaseForm(parent),box_title(new QGroupBox("Titolo",this)),box_description(new QGroupBox("Descrizione",this)),layout_box_title(new QVBoxLayout(box_title)), layout_box_description(new QVBoxLayout(box_description)),
-    title_form(new QLineEdit(box_title)), description_form(new QTextEdit(box_description)),confirm_button(new QPushButton("Conferma",this)),container_button(new QWidget(this)), layout_button(new QVBoxLayout(container_button)){
+ModifyAddForm::ModifyAddForm(const QString& title, const QString& description, QWidget *parent): BaseForm(parent),box_title(new QGroupBox("Titolo",this)),box_description(new QGroupBox("Descrizione",this)),layout_box_title(new QVBoxLayout(box_title)), layout_box_description(new QVBoxLayout(box_description)),
+    title_form(new QLineEdit(title,box_title)), description_form(new QTextEdit(description,box_description)),confirm_button(new QPushButton("Conferma",this)),container_button(new QWidget(this)), layout_button(new QVBoxLayout(container_button)){
 
     main_layout=new QVBoxLayout(this);
 

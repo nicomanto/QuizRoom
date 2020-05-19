@@ -100,7 +100,7 @@ void ContainerQuizForm::setStyle(){
 //SLOTS
 
 
-void ContainerQuizForm::to_next_page(){}
+void ContainerQuizForm::to_next_page(int index){}
 
 void ContainerQuizForm::to_previous_page(){
     emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));

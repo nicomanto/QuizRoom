@@ -1,16 +1,13 @@
 #include "courseform.h"
 
 
-CourseForm::CourseForm(User* u,Controller& c,bool & r ,const QString& title, QWidget *parent): PrincipalForm(u,c,r,parent), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
-    center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(title,this)){
+CourseForm::CourseForm(User* u,Controller& c,Course* course, bool & r,QWidget *parent): PrincipalForm(u,c,r,parent), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
+    center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(QString::fromStdString(course->getTitle()),this)),
+    course_description(new QLabel(QString::fromStdString(course->getDescription()),this)),course_code(new QLabel(QString::fromStdString(course->getCode()),this)){
 
     main_layout=new QVBoxLayout(this);
     scroll= new QScrollArea(this);
     menubar=new QMenuBar(this);
-
-    course_description= new QLabel("Quiz del corso Letteratuta italiana 2018/2019",this);
-    QString s("xvois8"); //codice;
-    course_code=new QLabel("Codice corso: "+s,this);
 
 
     addMenu();
@@ -40,7 +37,7 @@ void CourseForm::addMenu(){
     if(true){ //controllare se l'utente può modificare il corso
         QAction* modify_course = new QAction("modifica",homework);
         course->addAction(modify_course);
-        connect(modify_course,SIGNAL(triggered()),this,SLOT(to_addform()));
+        connect(modify_course,SIGNAL(triggered()),this,SLOT(to_course_info()));
     }
 
     if(true){ //controllare se l'utente può eliminare il corso
@@ -194,7 +191,7 @@ void CourseForm::addMenuButton(QPushButton *b,unsigned int i){
         button_options->addAction(change);
 
         //connect del bottone modifica
-        connect(change,SIGNAL(triggered()),this,SLOT(to_addform()));
+        connect(change,SIGNAL(triggered()),this,SLOT(course_info()));
     }
 
     //controllare se un utente può eliminare un compito
@@ -219,7 +216,7 @@ void CourseForm::to_previous_page(){
 }
 
 
-void CourseForm::to_next_page(){
+void CourseForm::to_next_page(int index){
     emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));
 
     close();
@@ -232,11 +229,15 @@ void CourseForm::to_addhomework(){
     QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
 
 
-    layout_dialog->addWidget(new AddHomeworkForm(dialog));
+    layout_dialog->addWidget(new AddHomeworkForm("","",dialog));
 
     layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
 
     dialog->show();
+}
+
+void CourseForm::to_course_info(){
+    to_addform(course_title->text(),course_description->text());
 }
 
 

@@ -36,7 +36,7 @@ protected:
     virtual void setStyle();
 
 public:
-    explicit ModifyAddForm(QWidget *parent);
+    explicit ModifyAddForm(const QString& title, const QString& description, QWidget *parent);
     ~ModifyAddForm()= default;
 
 

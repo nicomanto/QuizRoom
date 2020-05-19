@@ -56,6 +56,8 @@ void MainForm::addForm(){
 
     scroll->setWidget( container_scroll );  //il contenitore degli elemnti all'interno della scroll area
 
+    QSignalMapper* signalMapperCourse = new QSignalMapper (this);
+
     //for che aggiunge i bottoni
     for(unsigned int i=0; i <user->getCourse().size(); ++i){
         //QString s= "Corso " + QString::number(i);
@@ -63,7 +65,9 @@ void MainForm::addForm(){
         course.push_back(new QPushButton(QString::fromStdString((user->getCourse()[i]->getTitle())),this));
 
         //connect del bottone corso
-        connect(course[i],SIGNAL(clicked()),this,SLOT(to_next_page()));
+        connect(course[i],SIGNAL(clicked()),signalMapperCourse,SLOT(map()));
+        signalMapperCourse->setMapping(course[i], i);
+
 
 
         course_menu.push_back(new QPushButton(course[i]));
@@ -80,6 +84,8 @@ void MainForm::addForm(){
         scroll_layout->addWidget(course_menu[i],i,1);
 
     }
+
+    connect (signalMapperCourse, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
 
 }
 
@@ -144,8 +150,8 @@ bool MainForm::addMenuButton(QPushButton *b,unsigned int i){
 
 
 //SLOTS
-void MainForm::to_next_page(){
-    emit to_new_page(new CourseForm(user, control,relogin,"ciao",parentWidget()));
+void MainForm::to_next_page(int index){
+    emit to_new_page(new CourseForm(user, control,user->getCourse()[index],relogin,parentWidget()));
 
     close();
 }

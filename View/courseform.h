@@ -38,15 +38,16 @@ private:
 
     virtual void addMenuButton(QPushButton* ,unsigned int i);
 public:
-    explicit CourseForm(User* u, Controller& c,bool & r,const QString& title, QWidget *parent = nullptr);
+    explicit CourseForm(User* u, Controller& c,Course* course,bool & r, QWidget *parent = nullptr);
     ~CourseForm()= default;
 
 
 private slots:
     void to_addhomework();
+    void to_course_info();
 
     virtual void confirm_addform(const QString&, const QString&){}
-    virtual void to_next_page();
+    virtual void to_next_page(int index);
     virtual void to_previous_page();
 
 };

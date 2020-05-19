@@ -96,7 +96,7 @@ void ContainerAddQuizForm::addClassicWidget(){
     layout_container_quiz->addWidget(quiz.back());
 }
 
-void ContainerAddQuizForm::to_next_page(){}
+void ContainerAddQuizForm::to_next_page(int index){}
 
 void ContainerAddQuizForm::to_previous_page(){
     emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));

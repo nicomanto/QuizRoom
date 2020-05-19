@@ -1,6 +1,6 @@
 #include "addhomeworkform.h"
 
-AddHomeworkForm::AddHomeworkForm(QWidget *parent): ModifyAddForm(parent), is_score(new QCheckBox("Compito con punteggio",this)),is_time(new QCheckBox("Compito con deadline",this))
+AddHomeworkForm::AddHomeworkForm(const QString& title, const QString& description, QWidget *parent): ModifyAddForm(title,description,parent), is_score(new QCheckBox("Compito con punteggio",this)),is_time(new QCheckBox("Compito con deadline",this))
   ,max_score(new QLineEdit(this)),deadline(new QLineEdit(this)),score_time_information(new QWidget(this)), layout_ST_infomation(new QGridLayout(score_time_information)){
 
 

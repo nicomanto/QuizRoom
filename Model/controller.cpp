@@ -13,12 +13,16 @@ Controller::Controller(){
 
 
     Course* z= new Course("Corso2","ciaooo");
-    Course* y=new Course("Titolo","Descrizione");
+    Course* y   =new Course("Titolo","Descrizione");
 
+    while(z->getCode()==y->getCode())
+        y->setCode();
     DateTime data(25,03,2020,00);
 
     y->addHomework(new TimeScoreHomework(data, "Prova compito"));
     z->addHomework(new ScoreHomework("Prova compito","istruzioni"));
+
+
 
     users[0]->addCourse(y);
     users[0]->addCourse(z);
@@ -52,6 +56,12 @@ void Controller::deleteCourse(User* s,unsigned int index){
 }
 
 void Controller::addCourse(User* s, std::string t, std::string d){
+    Course* temp=new Course(t,d);
+
+    for(int i=0;i<s->getCourse().size();++i)
+        if(s->getCourse()[i]->getCode()==temp->getCode())
+            temp->setCode();
+
     s->addCourse(new Course(t,d));
 }
 

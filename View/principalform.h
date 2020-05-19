@@ -31,6 +31,8 @@ protected:
     virtual void addForm()=0;
 
     virtual void setStyle();
+
+
 public:
     explicit PrincipalForm(User* u,Controller& c,bool &r,QWidget *parent = nullptr);
     virtual ~PrincipalForm();
@@ -41,10 +43,10 @@ protected: signals:
 
 protected slots:
     void to_login();
-    void to_addform();
+    void to_addform(const QString& title="", const QString& description="");
     virtual void confirm_addform(const QString&, const QString&)=0;
 
-    virtual void to_next_page()=0;
+    virtual void to_next_page(int i)=0;
     virtual void to_previous_page()=0;
 };
 

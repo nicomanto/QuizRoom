@@ -21,12 +21,12 @@ void PrincipalForm::to_login(){
     parentWidget()->close();
 }
 
-void PrincipalForm::to_addform(){
+void PrincipalForm::to_addform(const QString& title, const QString& description){
 
     QDialog* dialog = new QDialog(this);
     QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
 
-    ModifyAddForm* temp= new ModifyAddForm(dialog);
+    ModifyAddForm* temp= new ModifyAddForm(title,description,dialog);
     layout_dialog->addWidget(temp);
 
 

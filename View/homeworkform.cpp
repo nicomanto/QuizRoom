@@ -173,14 +173,14 @@ void HomeworkForm::to_addquiz(){
     close();
 }
 
-void HomeworkForm::to_next_page(){
+void HomeworkForm::to_next_page(int index){
     emit to_new_page(new ContainerQuizForm(user,control,relogin,parentWidget()));
 
     close();
 }
 
 void HomeworkForm::to_previous_page(){
-    emit to_new_page(new CourseForm(user,control,relogin,"ciao",parentWidget()));
+    //emit to_new_page(new CourseForm(user,control,relogin,,parentWidget()));
 
     close();
 }
