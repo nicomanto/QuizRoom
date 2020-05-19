@@ -55,6 +55,21 @@ void Controller::deleteCourse(User* s,unsigned int index){
 
 }
 
+void Controller::deleteCourse(Course* c){
+
+    for(unsigned int i=0;i<users.size();++i){
+        for(unsigned int j=0;j<users[i]->getCourse().size();++j){
+                if(users[i]->getCourse()[j]==c)
+                    users[i]->deleteCourse(c);
+        }
+
+
+    }
+
+
+
+}
+
 void Controller::addCourse(User* s, std::string t, std::string d){
     Course* temp=new Course(t,d);
 

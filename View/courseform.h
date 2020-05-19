@@ -29,6 +29,8 @@ private:
     QLabel* course_description;
     QLabel* course_code;
 
+    Course* this_course;
+
 
     virtual void addMenu();
 
@@ -45,6 +47,7 @@ public:
 private slots:
     void to_addhomework();
     void to_course_info();
+    void to_delete_course();
 
     virtual void confirm_addform(const QString&, const QString&){}
     virtual void to_next_page(int index);

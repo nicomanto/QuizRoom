@@ -3,7 +3,7 @@
 
 CourseForm::CourseForm(User* u,Controller& c,Course* course, bool & r,QWidget *parent): PrincipalForm(u,c,r,parent), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
     center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(QString::fromStdString(course->getTitle()),this)),
-    course_description(new QLabel(QString::fromStdString(course->getDescription()),this)),course_code(new QLabel(QString::fromStdString(course->getCode()),this)){
+    course_description(new QLabel(QString::fromStdString(course->getDescription()),this)),course_code(new QLabel(QString::fromStdString(course->getCode()),this)),this_course(course){
 
     main_layout=new QVBoxLayout(this);
     scroll= new QScrollArea(this);
@@ -43,6 +43,7 @@ void CourseForm::addMenu(){
     if(true){ //controllare se l'utente può eliminare il corso
         QAction* delete_course = new QAction("elimina",homework);
         course->addAction(delete_course);
+        connect(delete_course,SIGNAL(triggered()),this,SLOT(to_delete_course()));
     }
 
     options->addAction(exit_login);
@@ -238,6 +239,12 @@ void CourseForm::to_addhomework(){
 
 void CourseForm::to_course_info(){
     to_addform(course_title->text(),course_description->text());
+}
+
+void CourseForm::to_delete_course(){
+    control.deleteCourse(this_course);
+
+    to_previous_page();
 }
 
 

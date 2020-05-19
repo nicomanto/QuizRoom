@@ -17,6 +17,7 @@ public:
     ~Controller();
 
     void deleteCourse(User* s, unsigned int i);
+    void deleteCourse(Course* c);
 
     void addCourse(User* s, string t, string d);
 
