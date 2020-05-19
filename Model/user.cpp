@@ -6,22 +6,22 @@ User::User(const string& u,const string& p): username(u), password(p){} //da agg
 string User::getUsername() const {return username;}
 string User::getPassword() const {return password;}
 
-const MyVector<Course>& User::getCourse() const{
+const MyVector<Course*>& User::getCourse() const{
     return course;
 }
 //da aggiungere i corsi
 void User::setUsername(const string& u) {username=u;}
 void User::setPassword(const string& p) {password=p;}
 
-void User::addCourse(const Course &c){
+void User::addCourse(Course* c){
     course.push_back(c);
 }
 
-void User::deleteCourse(const Course &c){
-    MyVector<Course>::iterator it=course.begin();
+void User::deleteCourse(Course* c){
+    MyVector<Course*>::iterator it=course.begin();
     bool temp=true;
     while(it!=course.end() && temp){
-          if(it->getTitle()==c.getTitle())
+          if((*it)->getTitle()==c->getTitle())
             temp = false;
           else
             ++it;

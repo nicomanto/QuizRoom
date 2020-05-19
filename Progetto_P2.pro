@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Model/classicquiz.cpp \
     Model/combinequiz.cpp \
+    Model/controller.cpp \
     Model/course.cpp \
     Model/date.cpp \
     Model/datetime.cpp \
@@ -29,7 +30,6 @@ SOURCES += \
     Model/time.cpp \
     Model/timehomework.cpp \
     Model/timescorehomework.cpp \
-    Model/vectorusers.cpp \
     View/addclassicquizform.cpp \
     View/addcombinequizform.cpp \
     View/addhomeworkform.cpp \
@@ -41,6 +41,7 @@ SOURCES += \
     View/containerprincipalform.cpp \
     View/containerquizform.cpp \
     View/courseform.cpp \
+    View/errordialog.cpp \
     View/homeworkform.cpp \
     View/loginform.cpp \
     View/mainform.cpp \
@@ -57,6 +58,7 @@ SOURCES += \
 HEADERS += \
     Model/classicquiz.h \
     Model/combinequiz.h \
+    Model/controller.h \
     Model/course.h \
     Model/date.h \
     Model/datetime.h \
@@ -73,7 +75,6 @@ HEADERS += \
     Model/user.h \
     Model/student.h \
     Model/teacher.h \
-    Model/vectorusers.h \
     View/addclassicquizform.h \
     View/addcombinequizform.h \
     View/addhomeworkform.h \
@@ -85,6 +86,7 @@ HEADERS += \
     View/containerprincipalform.h \
     View/containerquizform.h \
     View/courseform.h \
+    View/errordialog.h \
     View/homeworkform.h \
     View/loginform.h \
     View/mainform.h \

@@ -8,12 +8,17 @@
 #include "myvector.h"
 #include "timescorehomework.h"
 
-class VectorUsers{
+class Controller{
 private:
     MyVector<User*> users;
+
 public:
-    VectorUsers();
-    ~VectorUsers();
+    Controller();
+    ~Controller();
+
+    void deleteCourse(User* s, unsigned int i);
+
+    void addCourse(User* s, string t, string d);
 
     User* getUser(const string& u, const string& p) const;
 };

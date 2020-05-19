@@ -75,13 +75,8 @@ void ModifyAddForm::send_information(){
         emit information(title_form->text(),description_form->toPlainText());
         emit toClose();
     } catch(std::runtime_error exc){
-        QDialog* error = new QDialog(this);
-        QVBoxLayout* layout_error = new QVBoxLayout(error);
+        ErrorDialog* error = new ErrorDialog(exc.what(),this);
 
-
-        layout_error->addWidget(new QLabel(exc.what(),error));
-
-        layout_error->setSizeConstraint( QLayout::SetFixedSize );
 
         error->show();
     }

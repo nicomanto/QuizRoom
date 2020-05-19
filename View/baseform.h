@@ -14,6 +14,8 @@ protected:
     int height_screen;  //altezza dello screen del pc
     int width_screen;  //larghezza dello screen del pc
 
+
+
     virtual void addForm()=0;
 
     virtual void setStyle();

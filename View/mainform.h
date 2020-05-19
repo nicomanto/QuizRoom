@@ -4,6 +4,7 @@
 #include <QPushButton>
 #include <QFile>
 #include <QScrollArea>
+#include <QSignalMapper>
 
 #include "Model/myvector.h"
 #include "principalform.h"
@@ -28,13 +29,15 @@ private:
 
     virtual void setStyle();
 
-    virtual bool addMenuButton(QPushButton* b);
+    virtual bool addMenuButton(QPushButton* b, unsigned int i);
 public:
-    explicit MainForm(User* u,bool &r,QWidget *parent = nullptr);
+    explicit MainForm(User* u,Controller& c,bool &r,QWidget *parent = nullptr);
     ~MainForm()= default;
 
 
 private slots:
+    void del_course(int i);
+
     virtual void confirm_addform(const QString &, const QString &);
     virtual void to_next_page();
     virtual void to_previous_page();

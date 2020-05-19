@@ -1,6 +1,6 @@
 #include "homeworkform.h"
 
-HomeworkForm::HomeworkForm(User* u,bool & r,QWidget *parent): PrincipalForm(u,r,parent),homework_title(new QLabel("Titolo",this)),homework_instructions(new QLabel("Esegui questo quiz e bla bla blajcdsqijbucqbiocnoinqiconeonqeicnioqcnioqen webchbeqj e e e e e e e e e ee  e e e e e  e e e ec",this)),
+HomeworkForm::HomeworkForm(User* u,Controller& c,bool & r,QWidget *parent): PrincipalForm(u,c,r,parent),homework_title(new QLabel("Titolo",this)),homework_instructions(new QLabel("Esegui questo quiz e bla bla blajcdsqijbucqbiocnoinqiconeonqeicnioqcnioqen webchbeqj e e e e e e e e e ee  e e e e e  e e e ec",this)),
     container_info_quiz(new QWidget(this)),layout_container_info_quiz(new QVBoxLayout(container_info_quiz)), score(nullptr),deadline(nullptr),start_quiz(new QPushButton("start quiz",this)),add_quiz(new QPushButton("aggiungi quiz",this)), container_button(new QWidget(this)), layout_button(new QHBoxLayout(container_button)){
 
     main_layout=new QVBoxLayout(this);
@@ -168,19 +168,19 @@ void HomeworkForm::setStyle(){
 
 
 void HomeworkForm::to_addquiz(){
-    emit to_new_page(new ContainerAddQuizForm(user,relogin,parentWidget()));
+    emit to_new_page(new ContainerAddQuizForm(user,control,relogin,parentWidget()));
 
     close();
 }
 
 void HomeworkForm::to_next_page(){
-    emit to_new_page(new ContainerQuizForm(user,relogin,parentWidget()));
+    emit to_new_page(new ContainerQuizForm(user,control,relogin,parentWidget()));
 
     close();
 }
 
 void HomeworkForm::to_previous_page(){
-    emit to_new_page(new CourseForm(user,relogin,"ciao",parentWidget()));
+    emit to_new_page(new CourseForm(user,control,relogin,"ciao",parentWidget()));
 
     close();
 }

@@ -1,6 +1,6 @@
 #include "menubutton.h"
 
-MenuButton::MenuButton(QPushButton* b, QWidget* parent) : QMenu(parent), button(b){
+MenuButton::MenuButton(unsigned int i, QPushButton* b, QWidget* parent) : QMenu(parent), index(i),button(b){
 }
 
 void MenuButton::showEvent(QShowEvent* event){

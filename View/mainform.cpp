@@ -1,6 +1,7 @@
 #include "mainform.h"
 
-MainForm::MainForm(User* u,bool &r,QWidget *parent) : PrincipalForm(u,r,parent), scroll_layout(new QGridLayout(container_scroll)){
+MainForm::MainForm(User* u,Controller& c,bool &r,QWidget *parent) : PrincipalForm(u,c,r,parent), scroll_layout(new QGridLayout(container_scroll)){
+
     main_layout=new QVBoxLayout(this);
     menubar=new QMenuBar(this);
     scroll= new QScrollArea(this);
@@ -49,6 +50,8 @@ void MainForm::addMenu(){
 void MainForm::addForm(){
     //test inserimento push_button
 
+
+
     main_layout->addWidget(scroll);  //aggiungo la scroll area al layout principale
 
     scroll->setWidget( container_scroll );  //il contenitore degli elemnti all'interno della scroll area
@@ -56,7 +59,8 @@ void MainForm::addForm(){
     //for che aggiunge i bottoni
     for(unsigned int i=0; i <user->getCourse().size(); ++i){
         //QString s= "Corso " + QString::number(i);
-        course.push_back(new QPushButton(QString::fromStdString((user->getCourse()[i].getTitle())),this));
+
+        course.push_back(new QPushButton(QString::fromStdString((user->getCourse()[i]->getTitle())),this));
 
         //connect del bottone corso
         connect(course[i],SIGNAL(clicked()),this,SLOT(to_next_page()));
@@ -70,7 +74,7 @@ void MainForm::addForm(){
 
 
 
-        if(addMenuButton(course_menu[i]))
+        if(addMenuButton(course_menu[i],i))
             course_menu[i]->setVisible(true);
 
         scroll_layout->addWidget(course_menu[i],i,1);
@@ -112,28 +116,24 @@ void MainForm::setStyle(){
 
 
 //aggiungo il menu a tendina al bottone
-bool MainForm::addMenuButton(QPushButton *b){
-    MenuButton* button_options = new MenuButton(b,this);
+bool MainForm::addMenuButton(QPushButton *b,unsigned int i){
+    MenuButton* button_options = new MenuButton(i,b,this);
     bool temp=false;
 
-    //controllare se l'utente può modificare un corso
-    if(user->CanEditHomework()){
-        QAction* change = new QAction("Modifica",button_options);
-        button_options->addAction(change);
+    QSignalMapper* signalMapperDelete = new QSignalMapper (this);
 
-        //connect del bottone modifica
-        connect(change,SIGNAL(triggered()),this,SLOT(to_addform()));
-        temp=true;
-    }
 
     //controllare se un utente può eliminare un corso
     if(user->CanDeleteHomework()){
         QAction* del = new QAction("Elimina",button_options);
         button_options->addAction(del);
         temp=true;
+
+        connect(del,SIGNAL(triggered()),signalMapperDelete,SLOT(map()));
+        signalMapperDelete -> setMapping (del, i) ;
     }
 
-
+    connect (signalMapperDelete, SIGNAL(mapped(int)), this, SLOT(del_course(int)));
 
     b->setMenu(button_options);
 
@@ -145,7 +145,7 @@ bool MainForm::addMenuButton(QPushButton *b){
 
 //SLOTS
 void MainForm::to_next_page(){
-    emit to_new_page(new CourseForm(user, relogin,"ciao",parentWidget()));
+    emit to_new_page(new CourseForm(user, control,relogin,"ciao",parentWidget()));
 
     close();
 }
@@ -161,11 +161,20 @@ void MainForm::confirm_addform(const QString& t, const QString& d){
     if(t=="")
          throw std::runtime_error("Titolo mancante");
 
-    Course temp(t.toStdString(),d.toStdString());
-    user->addCourse(temp);
+
+    control.addCourse(user,t.toStdString(),d.toStdString());
 
 
-    emit to_new_page(new MainForm(user,relogin,parentWidget()));
+    emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
+    close();
+}
+
+
+void MainForm::del_course(int i){
+
+    control.deleteCourse(user,i);
+
+    emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
     close();
 }
 

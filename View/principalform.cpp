@@ -1,6 +1,6 @@
 #include "principalform.h"
 
-PrincipalForm::PrincipalForm(User* u,bool & r,QWidget *parent): BaseForm(parent), menubar(nullptr), scroll(nullptr), container_scroll(new QGroupBox(scroll)),user(u),relogin(r){
+PrincipalForm::PrincipalForm(User* u,Controller& c,bool & r,QWidget *parent): BaseForm(parent), menubar(nullptr), scroll(nullptr), container_scroll(new QGroupBox(scroll)),user(u),relogin(r),control(c){
 
 }
 

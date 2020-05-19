@@ -1,6 +1,6 @@
 #include "loginform.h"
 #include "containerprincipalform.h"
-LoginForm::LoginForm(VectorUsers& u,bool & r,QWidget *parent) : BaseForm(parent), login_button(new QPushButton("Login")),username_form(new QLineEdit(this)), password_form(new QLineEdit(this)),username(new QLabel("Username", this)),password(new QLabel("Password", this)),Users(u),relogin(r){
+LoginForm::LoginForm(Controller& c,bool & r,QWidget *parent) : BaseForm(parent), login_button(new QPushButton("Login")),username_form(new QLineEdit(this)), password_form(new QLineEdit(this)),username(new QLabel("Username", this)),password(new QLabel("Password", this)),control(c),relogin(r){
 
     main_layout=new QVBoxLayout(this);
 
@@ -73,7 +73,7 @@ void LoginForm::setStyle(){
 void LoginForm::to_principalform(){
 
     try{
-        ContainerPrincipalForm* m= new ContainerPrincipalForm(Users.getUser((username_form->text()).toStdString(),(password_form->text()).toStdString()),relogin);
+        ContainerPrincipalForm* m= new ContainerPrincipalForm(control.getUser((username_form->text()).toStdString(),(password_form->text()).toStdString()),control,relogin);
 
         m->showMaximized();
 

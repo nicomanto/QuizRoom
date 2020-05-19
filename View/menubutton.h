@@ -9,12 +9,14 @@ class MenuButton : public QMenu{
     Q_OBJECT
 
 private:
+    unsigned int index;
+
     QPushButton* button;
 
     void showEvent(QShowEvent* event);
 
 public:
-    explicit MenuButton(QPushButton* button, QWidget* parent = nullptr);
+    explicit MenuButton(unsigned int i, QPushButton* button, QWidget* parent = nullptr);
 
 
 };

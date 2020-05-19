@@ -36,9 +36,9 @@ private:
 
     virtual void setStyle();
 
-    virtual void addMenuButton(QPushButton* b);
+    virtual void addMenuButton(QPushButton* ,unsigned int i);
 public:
-    explicit CourseForm(User* u, bool & r,const QString& title, QWidget *parent = nullptr);
+    explicit CourseForm(User* u, Controller& c,bool & r,const QString& title, QWidget *parent = nullptr);
     ~CourseForm()= default;
 
 

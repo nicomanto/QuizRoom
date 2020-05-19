@@ -54,8 +54,8 @@ double Teacher::ShowCourseStatistics(const Course& c) const{
         if(dynamic_cast<Student*>(classroom[i])){
             num_student++;
             for(int j=0;j<classroom[i]->getCourse().size();++j)
-                if(classroom[i]->getCourse()[j].getTitle()==c.getTitle())
-                    statistics+=classroom[i]->getCourse()[j].ShowAllHomeworkStatistics();
+                if(classroom[i]->getCourse()[j]->getTitle()==c.getTitle())
+                    statistics+=classroom[i]->getCourse()[j]->ShowAllHomeworkStatistics();
         }
     }
 

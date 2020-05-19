@@ -20,7 +20,7 @@ private:
 
 
 public:
-    explicit ContainerPrincipalForm(User* u,bool &r,QWidget *parent = nullptr);
+    explicit ContainerPrincipalForm(User* u,Controller& c,bool &r,QWidget *parent = nullptr);
     ~ContainerPrincipalForm()= default;
 
 

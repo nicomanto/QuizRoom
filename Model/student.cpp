@@ -46,8 +46,8 @@ bool Student::CanDoQuiz() const{
 
 double Student::ShowCourseStatistics(const Course &c) const{
     for(int i=0; i<course.size();++i){
-        if(course[i].getTitle()==c.getTitle())
-            return course[i].ShowAllHomeworkStatistics();
+        if(course[i]->getTitle()==c.getTitle())
+            return course[i]->ShowAllHomeworkStatistics();
 
 
     }

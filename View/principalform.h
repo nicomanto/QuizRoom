@@ -8,6 +8,7 @@
 #include <QScrollArea>
 #include <QGroupBox>
 #include <QPushButton>
+#include "Model/controller.h"
 
 #include <QDialogButtonBox>
 
@@ -21,6 +22,7 @@ protected:
 
     QGroupBox* container_scroll;  //contenitore della scroll area
 
+    Controller& control;
     User* user;
     bool & relogin;
 
@@ -30,7 +32,7 @@ protected:
 
     virtual void setStyle();
 public:
-    explicit PrincipalForm(User* u,bool &r,QWidget *parent = nullptr);
+    explicit PrincipalForm(User* u,Controller& c,bool &r,QWidget *parent = nullptr);
     virtual ~PrincipalForm();
 
 

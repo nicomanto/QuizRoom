@@ -11,22 +11,22 @@ class User {
 protected:
     string username;
     string password;
-    MyVector<Course> course; // da mettere dopo che è stata creata l'opportuna classe;
+    MyVector<Course*> course; // da mettere dopo che è stata creata l'opportuna classe;
 public:
     User();
     User(const string& u,const string& p); //da aggiungere i corsi
 
     string getUsername() const;
     string getPassword() const;
-    const MyVector<Course>& getCourse() const;  //da implementare
+    const MyVector<Course*>& getCourse() const;  //da implementare
 
     void setUsername(const string& u);
     void setPassword(const string& p);
 
     virtual bool CanAddCourse()const =0;
-    virtual void addCourse(const Course& c);
+    virtual void addCourse(Course* c);
     virtual bool CanDeleteCourse() const=0;
-    virtual void deleteCourse(const Course& c);
+    virtual void deleteCourse(Course* c);
     virtual bool CanEditCourse() const=0;
 
     virtual bool CanAddHomework()const =0;

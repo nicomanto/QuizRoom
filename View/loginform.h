@@ -10,13 +10,13 @@
 #include <QGroupBox>
 
 #include "baseform.h"
-#include "Model/vectorusers.h"
+#include "Model/controller.h"
 
 class LoginForm : public BaseForm{
     Q_OBJECT
 
 private:
-    VectorUsers& Users;
+    Controller& control;
     bool & relogin;
 
     QPushButton *login_button;
@@ -31,7 +31,7 @@ private:
 
 
 public:
-    explicit LoginForm(VectorUsers& u,bool &r,QWidget *parent = nullptr);
+    explicit LoginForm(Controller& c,bool &r,QWidget *parent = nullptr);
     ~LoginForm()= default;
 
 

@@ -1,6 +1,6 @@
 #include "containerquizform.h"
 
-ContainerQuizForm::ContainerQuizForm(User* u,bool & r,QWidget *parent): PrincipalForm(u,r, parent),scroll_layout(new QVBoxLayout(container_scroll)),end_quiz(new QPushButton("termina il quiz",this)),
+ContainerQuizForm::ContainerQuizForm(User* u,Controller& c,bool & r,QWidget *parent): PrincipalForm(u,c,r, parent),scroll_layout(new QVBoxLayout(container_scroll)),end_quiz(new QPushButton("termina il quiz",this)),
     container_button(new QWidget(this)), layout_button(new QVBoxLayout(container_button)){
     main_layout=new QVBoxLayout(this);
     menubar=new QMenuBar(this);
@@ -103,7 +103,7 @@ void ContainerQuizForm::setStyle(){
 void ContainerQuizForm::to_next_page(){}
 
 void ContainerQuizForm::to_previous_page(){
-    emit to_new_page(new HomeworkForm(user,relogin,parentWidget()));
+    emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));
 
     close();
 

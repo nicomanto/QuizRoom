@@ -37,7 +37,7 @@ private:
 
     virtual void setStyle();
 public:
-    explicit HomeworkForm(User* u,bool & r,QWidget *parent = nullptr);
+    explicit HomeworkForm(User* u,Controller& c,bool & r,QWidget *parent = nullptr);
     ~HomeworkForm()= default;
 
 

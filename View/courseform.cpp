@@ -1,7 +1,7 @@
 #include "courseform.h"
 
 
-CourseForm::CourseForm(User* u,bool & r ,const QString& title, QWidget *parent): PrincipalForm(u,r,parent), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
+CourseForm::CourseForm(User* u,Controller& c,bool & r ,const QString& title, QWidget *parent): PrincipalForm(u,c,r,parent), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
     center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(title,this)){
 
     main_layout=new QVBoxLayout(this);
@@ -99,7 +99,7 @@ void CourseForm::addForm(){
         scroll_layout->addWidget(homework[i],i,0);
 
         if(true){ //controllo se posso modificare in qualche modo il compito
-            addMenuButton(homework_menu[i]);
+            addMenuButton(homework_menu[i],i);
             scroll_layout->addWidget(homework_menu[i],i,1);
         }
 
@@ -183,10 +183,10 @@ void CourseForm::setStyle(){
 }
 
 
-void CourseForm::addMenuButton(QPushButton *b){
+void CourseForm::addMenuButton(QPushButton *b,unsigned int i){
 
     //devo crearlo solo se posso fare qualcosa, nel caso dello studente no
-    MenuButton* button_options = new MenuButton(b,this);
+    MenuButton* button_options = new MenuButton(i,b,this);
 
     //controllare se l'utente può modificare un compito
     if(true){
@@ -213,14 +213,14 @@ void CourseForm::addMenuButton(QPushButton *b){
 
 //SLOTS
 void CourseForm::to_previous_page(){
-    emit to_new_page(new MainForm(user,relogin, parentWidget()));
+    emit to_new_page(new MainForm(user,control,relogin, parentWidget()));
 
     close();
 }
 
 
 void CourseForm::to_next_page(){
-    emit to_new_page(new HomeworkForm(user,relogin,parentWidget()));
+    emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));
 
     close();
 }

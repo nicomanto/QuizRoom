@@ -236,15 +236,17 @@ int main(int argc, char *argv[])
 
 
     QApplication a(argc, argv);
-    VectorUsers user;
+    Controller user;
     bool relogin;
     do{
         relogin=false;
-        LoginForm w(user,relogin);
+        LoginForm* form= new LoginForm(user,relogin);
 
-        w.show();
+        form->show();
         a.exec();
     }while(relogin);
+
+
 
     return 0;
 }

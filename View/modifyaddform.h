@@ -10,6 +10,7 @@
 #include <QLabel>
 
 #include "baseform.h"
+#include "errordialog.h"
 
 
 class ModifyAddForm : public BaseForm{
