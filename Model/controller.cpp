@@ -95,6 +95,10 @@ void Controller::deleteHomework(Course *c, unsigned int i){
     c->removeHomework(c->getHomeworks()[i]);
 }
 
+void Controller::deleteHomework(Course *c, Homework* h){
+    c->removeHomework(h);
+}
+
 void Controller::modifyCourse(Course *c, const string& t, const string& d){
     c->setTitle(t);
     c->setDescription(d);

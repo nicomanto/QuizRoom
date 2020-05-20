@@ -228,7 +228,7 @@ void CourseForm::to_previous_page(){
 
 
 void CourseForm::to_next_page(int index){
-    emit to_new_page(new HomeworkForm(user,control,this_course->getHomeworks()[index],relogin,parentWidget()));
+    emit to_new_page(new HomeworkForm(user,control,this_course->getHomeworks()[index],this_course,relogin,parentWidget()));
 
     close();
 }

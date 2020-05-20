@@ -27,6 +27,7 @@ public:
 
     void AddHomework(Course* c, const string& t, const string& d, bool time, bool score, const DateTime& deadline);
     void deleteHomework(Course* c, unsigned int i);
+    void deleteHomework(Course *c, Homework* h);
 
 
 

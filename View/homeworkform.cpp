@@ -52,7 +52,7 @@ void HomeworkForm::addMenu(){
     if(true){ //controllare se l'utente può eliminare l'homework
         QAction* delete_homework = new QAction("elimina",homework);
         homework->addAction(delete_homework);
-        //connect()
+        connect(delete_homework,SIGNAL(triggered()),this,SLOT(del_homework()));
     }
 
     options->addAction(exit_login);
@@ -190,5 +190,11 @@ void HomeworkForm::to_previous_page(){
     emit to_new_page(new CourseForm(user,control,course_father,relogin,parentWidget()));
 
     close();
+}
+
+void HomeworkForm::del_homework(){
+    control.deleteHomework(course_father,this_homework);
+
+    to_previous_page();
 }
 
