@@ -3,8 +3,13 @@
 
 #include <QCheckBox>
 #include <QIntValidator>
-
+#include <QDateTimeEdit>
+#include <QTimeZone>
 #include "modifyaddform.h"
+
+
+#include "Model/datetime.h"
+
 
 
 class AddHomeworkForm : public ModifyAddForm{
@@ -16,7 +21,7 @@ private:
     QCheckBox* is_time;
 
     //QLineEdit* max_score;  //dove scrivere il punteggio massimo
-    QLineEdit* deadline;  //dove scrivere la deadline
+    QDateTimeEdit* deadline;  //dove scrivere la deadline
 
     QWidget* score_time_information;  //widget dell'informazioni sul tipo di compito(score/time)
     QGridLayout* layout_ST_infomation;  //layout del widget contenitore delle informazioni
@@ -34,7 +39,7 @@ public:
 
 
 signals:
-    void addHomeworkinformation(const QString& ,const QString&, bool Time, bool Score, const QString&);
+    void addHomeworkinformation(const QString& ,const QString&, bool Time, bool Score, const DateTime&);
 
 public slots:
     void send_homework_information();

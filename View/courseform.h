@@ -60,7 +60,7 @@ public slots:
     //void confirm_modifyform(Course* ,const QString&, const QString&);
 
     virtual void confirm_addform(const QString&, const QString&);
-    void confirm_addhomework(const QString& ,const QString&, bool Time, bool Score, const QString&);
+    void confirm_addhomework(const QString& ,const QString&, bool Time, bool Score, const DateTime&);
 
     virtual void to_next_page(int index);
     virtual void to_previous_page();

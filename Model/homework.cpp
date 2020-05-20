@@ -68,4 +68,8 @@ double Homework::getResult() const{
     return 0;
 }
 
+Homework *Homework::clone() const{
+    return new Homework(*this);
+}
+
 Homework::~Homework(){}

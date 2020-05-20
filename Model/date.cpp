@@ -1,20 +1,7 @@
 #include "date.h"
-Date::Date(unsigned d, unsigned m,unsigned int y){
-    if(d<=0 || m<=0 || y<=0 || m>12 || d>31)
+Date::Date(unsigned int d, unsigned int m,unsigned int y){
+    if(!isDate(d,m,y))
         throw::std::out_of_range (std::to_string(d)+"/"+std::to_string(m)+"/"+std::to_string(y)+" non rappresenta una data.");
-
-
-    if((m==4 || m==6 || m==9 || m==11) && d==31)
-        throw::std::out_of_range (std::to_string(d)+"/"+std::to_string(m)+"/"+std::to_string(y)+" non rappresenta una data.");
-
-    if(isBisestile(y)){ // bisestile
-        if(m==2 && d>29)
-            throw::std::out_of_range (std::to_string(d)+"/"+std::to_string(m)+"/"+std::to_string(y)+" non rappresenta una data.");
-    }
-    else{
-        if(m==2 && d>28)
-            throw::std::out_of_range (std::to_string(d)+"/"+std::to_string(m)+"/"+std::to_string(y)+" non rappresenta una data.");
-    }
 
     day=d;
     month=m;
@@ -78,6 +65,26 @@ std::string Date::ToString() const{
     temp+= d+std::to_string(day)+"/"+m+std::to_string(month)+"/"+y+std::to_string(year);
 
     return temp;
+}
+
+
+bool Date::isDate(unsigned d, unsigned m,unsigned int y)const {
+    if(d<=0 || m<=0 || y<=0 || m>12 || d>31)
+        return false;
+
+    if((m==4 || m==6 || m==9 || m==11) && d==31)
+        return false;
+
+    if(isBisestile(y)){ // bisestile
+        if(m==2 && d>29)
+            return false;
+    }
+    else{
+        if(m==2 && d>28)
+            return false;
+    }
+
+    return true;
 }
 
 Date Date::getCurrentDate(){

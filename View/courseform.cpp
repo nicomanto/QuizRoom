@@ -244,7 +244,7 @@ void CourseForm::to_addhomework(){
 
     layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
 
-    connect(temp,SIGNAL(addHomeworkinformation(const QString& ,const QString&, bool, bool, const QString&)),this,SLOT(confirm_addhomework(const QString& ,const QString&, bool, bool, const QString&)));
+    connect(temp,SIGNAL(addHomeworkinformation(const QString& ,const QString&, bool, bool, const DateTime&)),this,SLOT(confirm_addhomework(const QString& ,const QString&, bool, bool, const DateTime&)));
     connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
 
     dialog->show();
@@ -311,16 +311,13 @@ void CourseForm::confirm_addform(const QString& t, const QString& d){
 }
 
 
-void CourseForm::confirm_addhomework(const QString& t,const QString& d, bool Time, bool Score, const QString& deadline){
+void CourseForm::confirm_addhomework(const QString& t,const QString& d, bool Time, bool Score, const DateTime& deadline){
     if(t=="")
          throw std::logic_error("Titolo mancante");
-    else if(Time && deadline=="")
-        throw std::logic_error("Deadline mancante");
 
 
 
-    std::cout<<"ciao"<<std::endl;
-    control.AddHomework(this_course,t.toStdString(),d.toStdString(),Time,Score,deadline.toStdString());
+    control.AddHomework(this_course,t.toStdString(),d.toStdString(),Time,Score,deadline);
 
 
 

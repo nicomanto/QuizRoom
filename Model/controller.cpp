@@ -70,18 +70,17 @@ void Controller::deleteCourse(Course* c){
 
 }
 
-void Controller::AddHomework(Course* c, const std::string &t, const std::string &d, bool time, bool score, const std::string &deadline){
+void Controller::AddHomework(Course* c, const std::string &t, const std::string &d, bool time, bool score, const DateTime &deadline){
     Homework* temp;
-    if(time && score){
-        DateTime data(25,03,2020,00);
-        temp = new TimeScoreHomework(data,t,d);
-    }
-    else if(time){
-        DateTime data(25,03,2020,00);
-        temp = new TimeHomework(data,t,d);
-    }
+    if(time && score)
+        temp = new TimeScoreHomework(deadline,t,d);
+
+    else if(time)
+        temp = new TimeHomework(deadline,t,d);
+
     else if(score)
         temp= new ScoreHomework(t,d);
+
     else
         temp= new Homework(t,d);
 

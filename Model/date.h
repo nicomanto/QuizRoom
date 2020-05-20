@@ -2,6 +2,7 @@
 #define DATE_H
 #include <iostream>
 #include <chrono>
+#include <string>
 
 class Date{
 private:
@@ -10,6 +11,7 @@ private:
     unsigned int year;
 
     bool isBisestile(unsigned int y) const;
+    bool isDate(unsigned d, unsigned m,unsigned int y) const;
 public:
     Date();
     Date(unsigned int d, unsigned int m, unsigned int y);
@@ -17,6 +19,7 @@ public:
     unsigned int Day() const;
     unsigned int Month() const;
     unsigned int Year() const;
+
 
     bool operator<(const Date& t) const;
     bool operator>(const Date& t) const;

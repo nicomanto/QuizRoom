@@ -28,6 +28,7 @@ public:
     virtual bool isScoreHomework() const;
     virtual bool isTimeHomework() const;
     virtual double getResult() const; //ritorna il risultato del quiz
+    virtual Homework *clone() const;
     virtual ~Homework();
 };
 
