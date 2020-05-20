@@ -1,22 +1,25 @@
 #include "homeworkform.h"
 
-HomeworkForm::HomeworkForm(User* u,Controller& c,bool & r,QWidget *parent): PrincipalForm(u,c,r,parent),homework_title(new QLabel("Titolo",this)),homework_instructions(new QLabel("Esegui questo quiz e bla bla blajcdsqijbucqbiocnoinqiconeonqeicnioqcnioqen webchbeqj e e e e e e e e e ee  e e e e e  e e e ec",this)),
+HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *parent): PrincipalForm(u,c,r,parent),this_homework(h),homework_title(new QLabel(QString::fromStdString(this_homework->getTitle()),this)),homework_instructions(new QLabel(QString::fromStdString(this_homework->getInstructions()),this)),
     container_info_quiz(new QWidget(this)),layout_container_info_quiz(new QVBoxLayout(container_info_quiz)), score(nullptr),deadline(nullptr),start_quiz(new QPushButton("start quiz",this)),add_quiz(new QPushButton("aggiungi quiz",this)), container_button(new QWidget(this)), layout_button(new QHBoxLayout(container_button)){
 
     main_layout=new QVBoxLayout(this);
 
     menubar=new QMenuBar(this);
 
-    if(true){ //se è uno scorehomework;
-        int my_score=10;
-        int total_score=200;
-        QString s(QString::number(my_score)+'/'+QString::number(total_score));
+    if(this_homework->isScoreHomework()){ //se è uno scorehomework;
+
+        ScoreHomework* t= dynamic_cast < ScoreHomework* > ( this_homework );
+        int my_score=0;
+        //int total_score=200;
+        QString s(QString::number(my_score)+'/'+QString::number(t->getTotalScore()));
         score= new QLabel("Score: "+s,this);
     }
 
-    if(true){ //se è un timehomework
-        QString s("09/05/2020");
-        deadline= new QLabel("Deadline: "+s,this);
+    if(this_homework->isTimeHomework()){ //se è un timehomework
+        TimeHomework* t= dynamic_cast < TimeHomework* > ( this_homework );
+        //QString s("09/05/2020");
+        deadline= new QLabel("Deadline: "+QString::fromStdString(t->getDeadline().ToString()),this);
     }
 
     addMenu();
@@ -72,13 +75,13 @@ void HomeworkForm::addForm(){
    main_layout->addWidget(homework_title);
    main_layout->addWidget(homework_instructions);
 
-    if(true)//controllo se è scorehomework
+    if(this_homework->isScoreHomework())//controllo se è scorehomework
         layout_container_info_quiz->addWidget(score);
 
-   if(true) //controllo se è timehomework
+   if(this_homework->isTimeHomework()) //controllo se è timehomework
         layout_container_info_quiz->addWidget(deadline);
 
-   if(true) //controllo se è timehomework o scorehomework
+   if(this_homework->isTimeHomework() || this_homework->isScoreHomework()) //controllo se è timehomework o scorehomework
        main_layout->addWidget(container_info_quiz, Qt::AlignCenter);
 
 
@@ -116,10 +119,10 @@ void HomeworkForm::setStyle(){
     //stile menubar
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
-    if(true) //controllo se è scorehomework
+    if(this_homework->isScoreHomework()) //controllo se è scorehomework
         score->setAlignment(Qt::AlignCenter);
 
-    if(true) //controllo se è timehomework
+    if(this_homework->isTimeHomework()) //controllo se è timehomework
         deadline->setAlignment(Qt::AlignCenter);
 
 
@@ -136,11 +139,12 @@ void HomeworkForm::setStyle(){
     homework_title->setFont(font);
     font=QFont( "Arial", 14);
     homework_instructions->setFont(font);    
-    if(true){ //controllo se è scorehomework
+
+    if(this_homework->isScoreHomework()){ //controllo se è scorehomework
         font=QFont( "Arial", 12);
         score->setFont(font);
     }
-    if(true){ //controllo se è timehomework
+    if(this_homework->isTimeHomework()){ //controllo se è timehomework
         font=QFont( "Arial", 12);
         deadline->setFont(font);
     }
@@ -180,7 +184,7 @@ void HomeworkForm::to_next_page(int index){
 }
 
 void HomeworkForm::to_previous_page(){
-    //emit to_new_page(new CourseForm(user,control,relogin,,parentWidget()));
+    //emit to_new_page(new CourseForm(user,control,relogin,user->getCourse()[],parentWidget()));
 
     close();
 }

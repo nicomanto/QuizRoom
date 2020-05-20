@@ -72,7 +72,7 @@ void ModifyAddForm::setStyle(){
 
 void ModifyAddForm::send_information(){
     try {
-        emit information(title_form->text(),description_form->toPlainText());
+        emit addinformation(title_form->text(),description_form->toPlainText());
         emit toClose();
     } catch(std::runtime_error exc){
         ErrorDialog* error = new ErrorDialog(exc.what(),this);

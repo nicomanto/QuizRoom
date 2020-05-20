@@ -130,7 +130,7 @@ bool MainForm::addMenuButton(QPushButton *b,unsigned int i){
 
 
     //controllare se un utente può eliminare un corso
-    if(user->CanDeleteHomework()){
+    if(user->CanDeleteCourse()){
         QAction* del = new QAction("Elimina",button_options);
         button_options->addAction(del);
         temp=true;
@@ -172,6 +172,7 @@ void MainForm::confirm_addform(const QString& t, const QString& d){
 
 
     emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
+
     close();
 }
 

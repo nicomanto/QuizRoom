@@ -18,8 +18,11 @@ public:
 
     void deleteCourse(User* s, unsigned int i);
     void deleteCourse(Course* c);
+    void deleteHomework(Course* c, unsigned int i);
 
-    void addCourse(User* s, string t, string d);
+    void modifyCourse(Course* c,const string& t,const string& d);
+
+    void addCourse(User* s, const string& t, const string& d);
 
     User* getUser(const string& u, const string& p) const;
 };

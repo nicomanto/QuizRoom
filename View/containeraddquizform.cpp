@@ -99,7 +99,7 @@ void ContainerAddQuizForm::addClassicWidget(){
 void ContainerAddQuizForm::to_next_page(int index){}
 
 void ContainerAddQuizForm::to_previous_page(){
-    emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));
+    //emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));
 
     close();
 }

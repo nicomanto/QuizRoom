@@ -20,7 +20,7 @@ Controller::Controller(){
     DateTime data(25,03,2020,00);
 
     y->addHomework(new TimeScoreHomework(data, "Prova compito"));
-    z->addHomework(new ScoreHomework("Prova compito","istruzioni"));
+    z->addHomework(new ScoreHomework("Prova compito 2","istruzioni"));
 
 
 
@@ -70,7 +70,16 @@ void Controller::deleteCourse(Course* c){
 
 }
 
-void Controller::addCourse(User* s, std::string t, std::string d){
+void Controller::deleteHomework(Course *c, unsigned int i){
+    c->removeHomework(c->getHomeworks()[i]);
+}
+
+void Controller::modifyCourse(Course *c, const string& t, const string& d){
+    c->setTitle(t);
+    c->setDescription(d);
+}
+
+void Controller::addCourse(User* s, const string& t, const string& d){
     Course* temp=new Course(t,d);
 
     for(int i=0;i<s->getCourse().size();++i)

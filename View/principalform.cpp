@@ -29,8 +29,7 @@ void PrincipalForm::to_addform(const QString& title, const QString& description)
     ModifyAddForm* temp= new ModifyAddForm(title,description,dialog);
     layout_dialog->addWidget(temp);
 
-
-    connect(temp,SIGNAL(information(const QString&, const QString&)),this,SLOT(confirm_addform(const QString&, const QString&)));
+    connect(temp,SIGNAL(addinformation(const QString&, const QString&)),this,SLOT(confirm_addform(const QString&, const QString&)));
     connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
 
     layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
@@ -39,6 +38,8 @@ void PrincipalForm::to_addform(const QString& title, const QString& description)
 
 
 }
+
+
 
 
 

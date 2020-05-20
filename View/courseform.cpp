@@ -1,9 +1,9 @@
-#include "courseform.h"
+﻿#include "courseform.h"
 
 
-CourseForm::CourseForm(User* u,Controller& c,Course* course, bool & r,QWidget *parent): PrincipalForm(u,c,r,parent), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
-    center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(QString::fromStdString(course->getTitle()),this)),
-    course_description(new QLabel(QString::fromStdString(course->getDescription()),this)),course_code(new QLabel(QString::fromStdString(course->getCode()),this)),this_course(course){
+CourseForm::CourseForm(User* u,Controller& c,Course* course, bool & r,QWidget *parent): PrincipalForm(u,c,r,parent), this_course(course), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
+    center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(QString::fromStdString(this_course->getTitle()),this)),
+    course_description(new QLabel(QString::fromStdString(this_course->getDescription()),this)),course_code(new QLabel(QString::fromStdString(this_course->getCode()),this)){
 
     main_layout=new QVBoxLayout(this);
     scroll= new QScrollArea(this);
@@ -26,24 +26,28 @@ void CourseForm::addMenu(){
     QAction* previous_page= new QAction("<-",menubar); //torno alla pagina precedente
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
+    bool can_do_somethingC=false;
+    bool can_do_somethingH=false;
 
-
-    if(true){ //controllare se l'utente può aggiungere homework
+    if(user->CanAddHomework()){ //controllare se l'utente può aggiungere homework
         QAction* add_homework = new QAction("crea compito",homework);
         homework->addAction(add_homework);
         connect(add_homework,SIGNAL(triggered()),this,SLOT(to_addhomework()));
+        can_do_somethingH=true;
     }
 
-    if(true){ //controllare se l'utente può modificare il corso
+    if(user->CanEditCourse()){ //controllare se l'utente può modificare il corso
         QAction* modify_course = new QAction("modifica",homework);
         course->addAction(modify_course);
         connect(modify_course,SIGNAL(triggered()),this,SLOT(to_course_info()));
+        can_do_somethingC=true;
     }
 
-    if(true){ //controllare se l'utente può eliminare il corso
+    if(user->CanDeleteHomework()){ //controllare se l'utente può eliminare il corso
         QAction* delete_course = new QAction("elimina",homework);
         course->addAction(delete_course);
-        connect(delete_course,SIGNAL(triggered()),this,SLOT(to_delete_course()));
+        connect(delete_course,SIGNAL(triggered()),this,SLOT(del_course()));
+        can_do_somethingC=true;
     }
 
     options->addAction(exit_login);
@@ -52,10 +56,10 @@ void CourseForm::addMenu(){
     menubar->addAction(previous_page);
     menubar->addMenu(options);
 
-    if(true)
+    if(can_do_somethingC)
         menubar->addMenu(course);
 
-    if(true)
+    if(can_do_somethingH)
         menubar->addMenu(homework);
 
     main_layout->addWidget(menubar);
@@ -82,28 +86,35 @@ void CourseForm::addForm(){
 
     scroll->setWidget( container_scroll );
 
+    QSignalMapper* signalMapperHomework = new QSignalMapper (this);
 
     //aggiungo i compiti del corso
-    for(unsigned int i=0; i <50; ++i){
+    for(unsigned int i=0; i <this_course->getHomeworks().size(); ++i){
         QString s= "Compito " + QString::number(i);
-        homework.push_back(new QPushButton(s,this));
+        homework.push_back(new QPushButton(QString::fromStdString(this_course->getHomeworks()[i]->getTitle()),this));
 
         //connect del bottone compito
-         connect(homework[i],SIGNAL(clicked()),this,SLOT(to_next_page()));
+        connect(homework[i],SIGNAL(clicked()),signalMapperHomework,SLOT(map()));
+        signalMapperHomework->setMapping(homework[i], i);
 
-        if(true) //controllo se posso modificare in qualche modo il compito
-            homework_menu.push_back(new QPushButton(homework[i]));
+
+        homework_menu.push_back(new QPushButton(homework[i]));
+        homework_menu[i]->setVisible(false); //setto invisibile perchè non so se può modificarlo
 
         scroll_layout->addWidget(homework[i],i,0);
 
-        if(true){ //controllo se posso modificare in qualche modo il compito
-            addMenuButton(homework_menu[i],i);
-            scroll_layout->addWidget(homework_menu[i],i,1);
-        }
+
+
+
+        if(addMenuButton(homework_menu[i],i))
+            homework_menu[i]->setVisible(true);
+
+        scroll_layout->addWidget(homework_menu[i],i,1);
 
 
     }
 
+    connect (signalMapperHomework, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
 
     main_layout->addWidget(container_center);
 }
@@ -112,7 +123,7 @@ void CourseForm::setStyle(){
     PrincipalForm::setStyle();
 
     //stile dei bottoni homework e homework_menu
-    for(unsigned int i=0; i <50; ++i){
+    for(unsigned int i=0; i <this_course->getHomeworks().size(); ++i){
         homework[i]->setMinimumSize(width()/3,height()/5);
         homework[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         homework[i]->setMaximumSize(QSize(1000,height()/5));
@@ -181,29 +192,28 @@ void CourseForm::setStyle(){
 }
 
 
-void CourseForm::addMenuButton(QPushButton *b,unsigned int i){
-
-    //devo crearlo solo se posso fare qualcosa, nel caso dello studente no
+bool CourseForm::addMenuButton(QPushButton *b,unsigned int i){
     MenuButton* button_options = new MenuButton(i,b,this);
+    bool temp=false;
 
-    //controllare se l'utente può modificare un compito
-    if(true){
-        QAction* change = new QAction("Modifica",button_options);
-        button_options->addAction(change);
+    QSignalMapper* signalMapperDelete = new QSignalMapper (this);
 
-        //connect del bottone modifica
-        connect(change,SIGNAL(triggered()),this,SLOT(course_info()));
-    }
 
-    //controllare se un utente può eliminare un compito
-    if(true){
+    //controllare se un utente può eliminare un corso
+    if(user->CanDeleteHomework()){
         QAction* del = new QAction("Elimina",button_options);
         button_options->addAction(del);
+        temp=true;
+
+        connect(del,SIGNAL(triggered()),signalMapperDelete,SLOT(map()));
+        signalMapperDelete -> setMapping (del, i) ;
     }
 
-    //true sse ho creato il button_options
-    if(true)
-        b->setMenu(button_options);
+    connect (signalMapperDelete, SIGNAL(mapped(int)), this, SLOT(del_homework(int)));
+
+    b->setMenu(button_options);
+
+    return temp;
 
 }
 
@@ -218,7 +228,7 @@ void CourseForm::to_previous_page(){
 
 
 void CourseForm::to_next_page(int index){
-    emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));
+    emit to_new_page(new HomeworkForm(user,control,this_course->getHomeworks()[index],relogin,parentWidget()));
 
     close();
 }
@@ -229,10 +239,13 @@ void CourseForm::to_addhomework(){
     QDialog* dialog = new QDialog(this);
     QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
 
-
-    layout_dialog->addWidget(new AddHomeworkForm("","",dialog));
+    ModifyAddForm* temp= new ModifyAddForm("","",dialog);
+    layout_dialog->addWidget(temp);
 
     layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
+
+    connect(temp,SIGNAL(addinformation(const QString&, const QString&)),this,SLOT(confirm_addform(const QString&, const QString&)));
+    connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
 
     dialog->show();
 }
@@ -241,10 +254,76 @@ void CourseForm::to_course_info(){
     to_addform(course_title->text(),course_description->text());
 }
 
-void CourseForm::to_delete_course(){
+void CourseForm::del_course(){
     control.deleteCourse(this_course);
 
     to_previous_page();
 }
+
+void CourseForm::del_homework(int i){
+
+    control.deleteHomework(this_course,i);
+
+    emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
+    close();
+}
+
+
+/*void CourseForm::to_modifyform(Course *c, const QString &title, const QString &description){
+    QDialog* dialog = new QDialog(this);
+    QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
+
+    ModifyAddForm* temp= new ModifyAddForm(title,description,dialog);
+    layout_dialog->addWidget(temp);
+
+    connect(temp,SIGNAL(addinformationcourse(Course*, const QString&, const QString&)),this,SLOT(confirm_modifyform(Course* ,const QString&, const QString&)));
+    connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
+
+    layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
+
+    dialog->show();
+}
+
+void CourseForm::confirm_modifyform(Course * c, const QString &, const QString &){
+    if(t=="")
+         throw std::runtime_error("Titolo mancante");
+
+
+    control.addCourse(user,t.toStdString(),d.toStdString());
+
+
+    emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
+
+    close();
+}*/
+
+
+void CourseForm::confirm_addform(const QString& t, const QString& d){
+    if(t=="")
+         throw std::runtime_error("Titolo mancante");
+
+
+   control.modifyCourse(this_course,t.toStdString(),d.toStdString());
+
+
+    emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
+
+    close();
+}
+
+
+void CourseForm::confirm_addhomework(const QString& t, const QString& d){
+    if(t=="")
+         throw std::runtime_error("Titolo mancante");
+
+
+   control.modifyCourse(this_course,t.toStdString(),d.toStdString());
+
+
+    emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
+
+    close();
+}
+
 
 

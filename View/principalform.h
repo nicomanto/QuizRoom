@@ -44,6 +44,8 @@ protected: signals:
 protected slots:
     void to_login();
     void to_addform(const QString& title="", const QString& description="");
+
+
     virtual void confirm_addform(const QString&, const QString&)=0;
 
     virtual void to_next_page(int i)=0;

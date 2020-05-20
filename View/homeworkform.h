@@ -11,9 +11,15 @@
 #include "containeraddquizform.h"
 #include "courseform.h"
 
+#include "Model/timescorehomework.h"
+
+
+
 class HomeworkForm : public PrincipalForm{
     Q_OBJECT
 private:
+
+    Homework* this_homework;
 
     QLabel* homework_title;
     QLabel* homework_instructions;
@@ -31,13 +37,15 @@ private:
     QHBoxLayout* layout_button; //layout del widget dei bottoni
 
 
+
+
     virtual void addMenu();
 
     virtual void addForm();
 
     virtual void setStyle();
 public:
-    explicit HomeworkForm(User* u,Controller& c,bool & r,QWidget *parent = nullptr);
+    explicit HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *parent = nullptr);
     ~HomeworkForm()= default;
 
 

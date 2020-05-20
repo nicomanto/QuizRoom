@@ -12,6 +12,8 @@
 #include "baseform.h"
 #include "errordialog.h"
 
+#include "Model/course.h"
+
 
 class ModifyAddForm : public BaseForm{
     Q_OBJECT
@@ -41,7 +43,8 @@ public:
 
 
 signals:
-    void information(const QString& ,const QString&);
+    void addinformation(const QString& ,const QString&);
+    void addinformationcourse(Course* c,const QString& title="", const QString& description="");
     void toClose();
 
 private slots:
