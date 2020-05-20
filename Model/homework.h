@@ -25,10 +25,9 @@ public:
 
     virtual void addQuizContainer(const QuizContainer& q);
     virtual void removeQuizContainer(const QuizContainer& q);
-    virtual bool isScoreHomework() const=0;
-    virtual bool isTimeHomework() const=0;
-    virtual double getResult() const=0; //ritorna il risultato del quiz
-    virtual Homework* clone() const=0;
+    virtual bool isScoreHomework() const;
+    virtual bool isTimeHomework() const;
+    virtual double getResult() const; //ritorna il risultato del quiz
     virtual ~Homework();
 };
 

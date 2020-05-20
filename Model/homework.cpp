@@ -56,4 +56,16 @@ void Homework::removeQuizContainer(const QuizContainer &q){
 
 }
 
+bool Homework::isScoreHomework() const{
+    return false;
+}
+
+bool Homework::isTimeHomework() const{
+    return false;
+}
+
+double Homework::getResult() const{
+    return 0;
+}
+
 Homework::~Homework(){}
