@@ -16,13 +16,18 @@ public:
     Controller();
     ~Controller();
 
-    void deleteCourse(User* s, unsigned int i);
-    void deleteCourse(Course* c);
-    void deleteHomework(Course* c, unsigned int i);
-
-    void modifyCourse(Course* c,const string& t,const string& d);
 
     void addCourse(User* s, const string& t, const string& d);
+    void modifyCourse(Course* c,const string& t,const string& d);
+    void deleteCourse(User* s, unsigned int i);
+    void deleteCourse(Course* c);
+
+    void AddHomework(Course* c, const string& t, const string& d, bool time, bool score, const string& deadline);
+    void deleteHomework(Course* c, unsigned int i);
+
+
+
+
 
     User* getUser(const string& u, const string& p) const;
 };

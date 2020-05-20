@@ -74,7 +74,7 @@ void ModifyAddForm::send_information(){
     try {
         emit addinformation(title_form->text(),description_form->toPlainText());
         emit toClose();
-    } catch(std::runtime_error exc){
+    } catch(std::logic_error exc){
         ErrorDialog* error = new ErrorDialog(exc.what(),this);
 
 

@@ -165,7 +165,7 @@ void MainForm::to_previous_page(){
 
 void MainForm::confirm_addform(const QString& t, const QString& d){
     if(t=="")
-         throw std::runtime_error("Titolo mancante");
+         throw std::logic_error("Titolo mancante");
 
 
     control.addCourse(user,t.toStdString(),d.toStdString());

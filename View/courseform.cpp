@@ -239,12 +239,12 @@ void CourseForm::to_addhomework(){
     QDialog* dialog = new QDialog(this);
     QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
 
-    ModifyAddForm* temp= new ModifyAddForm("","",dialog);
+    AddHomeworkForm* temp= new AddHomeworkForm("","",dialog);
     layout_dialog->addWidget(temp);
 
     layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
 
-    connect(temp,SIGNAL(addinformation(const QString&, const QString&)),this,SLOT(confirm_addform(const QString&, const QString&)));
+    connect(temp,SIGNAL(addHomeworkinformation(const QString& ,const QString&, bool, bool, const QString&)),this,SLOT(confirm_addhomework(const QString& ,const QString&, bool, bool, const QString&)));
     connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
 
     dialog->show();
@@ -300,24 +300,28 @@ void CourseForm::confirm_modifyform(Course * c, const QString &, const QString &
 
 void CourseForm::confirm_addform(const QString& t, const QString& d){
     if(t=="")
-         throw std::runtime_error("Titolo mancante");
+         throw std::logic_error("Titolo mancante");
 
 
    control.modifyCourse(this_course,t.toStdString(),d.toStdString());
 
-
-    emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
+   emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
 
     close();
 }
 
 
-void CourseForm::confirm_addhomework(const QString& t, const QString& d){
+void CourseForm::confirm_addhomework(const QString& t,const QString& d, bool Time, bool Score, const QString& deadline){
     if(t=="")
-         throw std::runtime_error("Titolo mancante");
+         throw std::logic_error("Titolo mancante");
+    else if(Time && deadline=="")
+        throw std::logic_error("Deadline mancante");
 
 
-   control.modifyCourse(this_course,t.toStdString(),d.toStdString());
+
+    std::cout<<"ciao"<<std::endl;
+    control.AddHomework(this_course,t.toStdString(),d.toStdString(),Time,Score,deadline.toStdString());
+
 
 
     emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));

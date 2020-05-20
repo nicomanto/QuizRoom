@@ -15,7 +15,7 @@ private:
     QCheckBox* is_score;
     QCheckBox* is_time;
 
-    QLineEdit* max_score;  //dove scrivere il punteggio massimo
+    //QLineEdit* max_score;  //dove scrivere il punteggio massimo
     QLineEdit* deadline;  //dove scrivere la deadline
 
     QWidget* score_time_information;  //widget dell'informazioni sul tipo di compito(score/time)
@@ -34,8 +34,11 @@ public:
 
 
 signals:
+    void addHomeworkinformation(const QString& ,const QString&, bool Time, bool Score, const QString&);
 
 public slots:
+    void send_homework_information();
+
 
 };
 

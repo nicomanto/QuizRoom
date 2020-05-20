@@ -7,6 +7,8 @@ HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *p
 
     menubar=new QMenuBar(this);
 
+
+
     if(this_homework->isScoreHomework()){ //se è uno scorehomework;
 
         ScoreHomework* t= dynamic_cast < ScoreHomework* > ( this_homework );

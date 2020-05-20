@@ -44,7 +44,6 @@ public:
 
 signals:
     void addinformation(const QString& ,const QString&);
-    void addinformationcourse(Course* c,const QString& title="", const QString& description="");
     void toClose();
 
 private slots:

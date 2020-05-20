@@ -70,6 +70,26 @@ void Controller::deleteCourse(Course* c){
 
 }
 
+void Controller::AddHomework(Course* c, const std::string &t, const std::string &d, bool time, bool score, const std::string &deadline){
+    Homework* temp;
+    if(time && score){
+        DateTime data(25,03,2020,00);
+        temp = new TimeScoreHomework(data,t,d);
+    }
+    else if(time){
+        DateTime data(25,03,2020,00);
+        temp = new TimeHomework(data,t,d);
+    }
+    else if(score)
+        temp= new ScoreHomework(t,d);
+    else
+        temp= new Homework(t,d);
+
+
+    c->addHomework(temp);
+
+}
+
 void Controller::deleteHomework(Course *c, unsigned int i){
     c->removeHomework(c->getHomeworks()[i]);
 }
@@ -96,7 +116,7 @@ User *Controller::getUser(const std::string &u, const std::string &p) const{
         }
     }
 
-    throw std::runtime_error("Username o password errati");
+    throw std::logic_error("Username o password errati");
 }
 
 

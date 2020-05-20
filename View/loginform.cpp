@@ -79,7 +79,7 @@ void LoginForm::to_principalform(){
 
         close();
     }
-    catch(std::runtime_error exc){
+    catch(std::logic_error exc){
         QDialog* error = new QDialog(this);
         QVBoxLayout* layout_error = new QVBoxLayout(error);
 
