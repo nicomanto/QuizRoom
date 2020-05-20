@@ -8,6 +8,9 @@
 #include "myvector.h"
 #include "timescorehomework.h"
 
+
+class PrincipalForm;
+
 class Controller{
 private:
     MyVector<User*> users;

@@ -1,5 +1,6 @@
 #include "controller.h"
 
+
 Controller::Controller(){
     Teacher* t= new Teacher("professor","professor");
     Student* s1= new Student("student1","student1");
@@ -35,6 +36,7 @@ Controller::~Controller(){
     for(unsigned int i=0;i<users.size();++i)
         delete users[i];
 }
+
 
 void Controller::deleteCourse(User* s,unsigned int index){
 
@@ -117,5 +119,7 @@ User *Controller::getUser(const std::string &u, const std::string &p) const{
 
     throw std::logic_error("Username o password errati");
 }
+
+
 
 

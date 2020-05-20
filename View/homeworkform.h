@@ -12,6 +12,7 @@
 #include "courseform.h"
 
 #include "Model/timescorehomework.h"
+#include "Model/course.h"
 
 
 
@@ -20,6 +21,7 @@ class HomeworkForm : public PrincipalForm{
 private:
 
     Homework* this_homework;
+    Course* course_father;
 
     QLabel* homework_title;
     QLabel* homework_instructions;
@@ -45,7 +47,7 @@ private:
 
     virtual void setStyle();
 public:
-    explicit HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *parent = nullptr);
+    explicit HomeworkForm(User* u,Controller& c,Homework* h,Course* course,bool & r,QWidget *parent = nullptr);
     ~HomeworkForm()= default;
 
 
@@ -54,7 +56,7 @@ signals:
 private slots:
     void to_addquiz();
 
-    virtual void confirm_addform(const QString&, const QString&){};
+    virtual void confirm_addform(const QString&, const QString&){}
     virtual void to_next_page(int index);
     virtual void to_previous_page();
 };
