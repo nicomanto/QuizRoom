@@ -17,14 +17,14 @@ class PrincipalForm : public BaseForm{
     Q_OBJECT
 protected:
 
+    User* user;
+    Controller& control;
+    bool & relogin;
+
     QMenuBar* menubar;
     QScrollArea* scroll;
 
     QGroupBox* container_scroll;  //contenitore della scroll area
-
-    Controller& control;
-    User* user;
-    bool & relogin;
 
     virtual void addMenu()=0;
 
