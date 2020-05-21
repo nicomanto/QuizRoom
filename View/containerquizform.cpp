@@ -13,6 +13,10 @@ ContainerQuizForm::ContainerQuizForm(User* u,Controller& c,bool & r,QWidget *par
     setLayout(main_layout);
 }
 
+ContainerQuizForm *ContainerQuizForm::clone() const{
+
+}
+
 
 void ContainerQuizForm::addMenu(){
 
@@ -102,9 +106,9 @@ void ContainerQuizForm::setStyle(){
 
 void ContainerQuizForm::to_next_page(int index){}
 
-void ContainerQuizForm::to_previous_page(){
+/*void ContainerQuizForm::to_previous_page(){
     //emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));
 
     close();
 
-}
+}*/

@@ -47,7 +47,7 @@ public:
     explicit CourseForm(User* u, Controller& c,Course* course,bool & r, QWidget *parent = nullptr);
     ~CourseForm()= default;
 
-
+    virtual CourseForm *clone() const;
 
 
 public slots:
@@ -63,7 +63,7 @@ public slots:
     void confirm_addhomework(const QString& ,const QString&, bool Time, bool Score, const DateTime&);
 
     virtual void to_next_page(int index);
-    virtual void to_previous_page();
+    //virtual void to_previous_page();
 
 };
 

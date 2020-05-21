@@ -34,6 +34,8 @@ public:
     explicit MainForm(User* u,Controller& c,bool &r,QWidget *parent = nullptr);
     ~MainForm()= default;
 
+    virtual MainForm *clone() const;
+
 
 private slots:
     void del_course(int i);

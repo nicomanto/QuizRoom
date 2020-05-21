@@ -36,7 +36,7 @@ public:
     explicit ContainerAddQuizForm(User* u,Controller& c,bool & r,QWidget *parent = nullptr);
     ~ContainerAddQuizForm()= default;
 
-
+    virtual ContainerAddQuizForm *clone() const;
 
 signals:
 

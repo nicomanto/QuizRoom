@@ -16,6 +16,7 @@ Controller::Controller(){
     Course* z= new Course("Corso2","ciaooo");
     Course* y   =new Course("Titolo","Descrizione");
 
+
     while(z->getCode()==y->getCode())
         y->setCode();
     DateTime data(25,03,2020,00);
@@ -36,6 +37,26 @@ Controller::~Controller(){
     for(unsigned int i=0;i<users.size();++i)
         delete users[i];
 }
+
+void Controller::addStackView(PrincipalForm *p){
+    stack_page.push_back(p);
+}
+
+PrincipalForm* Controller::removeStackView(){
+    PrincipalForm* temp=stack_page.back();
+    stack_page.pop_back();
+    return temp;
+}
+
+void Controller::cleanStack(){
+    stack_page.clear();
+}
+
+PrincipalForm *Controller::getPreviousPage(){
+    return *(--stack_page.end());
+}
+
+
 
 
 void Controller::deleteCourse(User* s,unsigned int index){
@@ -95,8 +116,16 @@ void Controller::deleteHomework(Course *c, unsigned int i){
     c->removeHomework(c->getHomeworks()[i]);
 }
 
-void Controller::deleteHomework(Course *c, Homework* h){
-    c->removeHomework(h);
+void Controller::deleteHomework(Homework* h){
+    for(unsigned int i=0;i<users.size();++i){
+        for(unsigned int j=0;j<users[i]->getCourse().size();++j){
+            for(unsigned int k=0;k<users[i]->getCourse()[j]->getHomeworks().size();++k)
+                if(users[i]->getCourse()[j]->getHomeworks()[k]==h)
+                    users[i]->getCourse()[j]->removeHomework(h);
+        }
+
+
+    }
 }
 
 void Controller::modifyCourse(Course *c, const string& t, const string& d){

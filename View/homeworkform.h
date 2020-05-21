@@ -21,7 +21,6 @@ class HomeworkForm : public PrincipalForm{
 private:
 
     Homework* this_homework;
-    Course* course_father;
 
     QLabel* homework_title;
     QLabel* homework_instructions;
@@ -47,9 +46,10 @@ private:
 
     virtual void setStyle();
 public:
-    explicit HomeworkForm(User* u,Controller& c,Homework* h,Course* course,bool & r,QWidget *parent = nullptr);
+    explicit HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *parent = nullptr);
     ~HomeworkForm()= default;
 
+    virtual HomeworkForm *clone() const;
 
 signals:
 
@@ -58,7 +58,7 @@ private slots:
 
     virtual void confirm_addform(const QString&, const QString&){}
     virtual void to_next_page(int index);
-    virtual void to_previous_page();
+    //virtual void to_previous_page();
 
     void del_homework();
 };

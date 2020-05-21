@@ -17,6 +17,10 @@ CourseForm::CourseForm(User* u,Controller& c,Course* course, bool & r,QWidget *p
     setLayout(main_layout);
 }
 
+CourseForm *CourseForm::clone() const{
+    return new CourseForm(user,control,this_course,relogin,parentWidget());
+}
+
 void CourseForm::addMenu(){
 
     QMenu* options = new QMenu("Opzioni",menubar);
@@ -220,15 +224,15 @@ bool CourseForm::addMenuButton(QPushButton *b,unsigned int i){
 
 
 //SLOTS
-void CourseForm::to_previous_page(){
+/*void CourseForm::to_previous_page(){
     emit to_new_page(new MainForm(user,control,relogin, parentWidget()));
 
     close();
-}
+}*/
 
 
 void CourseForm::to_next_page(int index){
-    emit to_new_page(new HomeworkForm(user,control,this_course->getHomeworks()[index],this_course,relogin,parentWidget()));
+    emit to_new_page(new HomeworkForm(user,control,this_course->getHomeworks()[index],relogin,parentWidget()));
 
     close();
 }
@@ -256,6 +260,8 @@ void CourseForm::to_course_info(){
 
 void CourseForm::del_course(){
     control.deleteCourse(this_course);
+    //emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
+    emit to_update_previous_page();
 
     to_previous_page();
 }
@@ -305,9 +311,16 @@ void CourseForm::confirm_addform(const QString& t, const QString& d){
 
    control.modifyCourse(this_course,t.toStdString(),d.toStdString());
 
-   emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
+   emit to_update_previous_page();
+   CourseForm* temp= new CourseForm(user,control,this_course,relogin,parentWidget());
+   emit to_new_page(temp);
 
-    close();
+
+
+   control.removeStackView();
+
+
+   //close();
 }
 
 
@@ -321,9 +334,13 @@ void CourseForm::confirm_addhomework(const QString& t,const QString& d, bool Tim
 
 
 
-    emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
+    emit to_update_previous_page();
+    CourseForm* temp= new CourseForm(user,control,this_course,relogin,parentWidget());
+    emit to_new_page(temp);
 
-    close();
+
+
+    control.removeStackView();
 }
 
 

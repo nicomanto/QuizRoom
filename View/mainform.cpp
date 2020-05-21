@@ -13,6 +13,10 @@ MainForm::MainForm(User* u,Controller& c,bool &r,QWidget *parent) : PrincipalFor
     setLayout(main_layout);
 }
 
+MainForm *MainForm::clone() const{
+    return new MainForm(user,control,relogin,parentWidget());
+}
+
 
 void MainForm::addMenu(){
     QMenu* options = new QMenu("Opzioni",menubar);

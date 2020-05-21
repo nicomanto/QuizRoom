@@ -18,6 +18,8 @@ void PrincipalForm::setStyle(){
 void PrincipalForm::to_login(){
     relogin=true;
 
+    control.cleanStack();
+
     parentWidget()->close();
 }
 
@@ -39,6 +41,14 @@ void PrincipalForm::to_addform(const QString& title, const QString& description)
 
 }
 
+//SLOTS
+void PrincipalForm::to_previous_page(){
+    emit previous_page();
+}
+
+void PrincipalForm::to_update_previous_page(){
+    emit update_previous_page();
+};
 
 
 

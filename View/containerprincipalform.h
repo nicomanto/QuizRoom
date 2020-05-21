@@ -10,7 +10,9 @@ class ContainerPrincipalForm : public BaseForm{
     Q_OBJECT
 
 private:
-
+    User* user;
+    bool& relogin;
+    Controller& control;
 
     PrincipalForm* main_window;
 
@@ -31,6 +33,8 @@ signals:
 
 private slots:
     void update_main_window(PrincipalForm* p);
+    void previous_main_window();
+    void update_previous_main_window();
 };
 
 #endif // CONTAINERPRINCIPALFORM_H

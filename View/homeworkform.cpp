@@ -1,6 +1,6 @@
 #include "homeworkform.h"
 
-HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,Course* course,bool & r,QWidget *parent): PrincipalForm(u,c,r,parent),this_homework(h),course_father(course),homework_title(new QLabel(QString::fromStdString(this_homework->getTitle()),this)),homework_instructions(new QLabel(QString::fromStdString(this_homework->getInstructions()),this)),
+HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *parent): PrincipalForm(u,c,r,parent),this_homework(h),homework_title(new QLabel(QString::fromStdString(this_homework->getTitle()),this)),homework_instructions(new QLabel(QString::fromStdString(this_homework->getInstructions()),this)),
     container_info_quiz(new QWidget(this)),layout_container_info_quiz(new QVBoxLayout(container_info_quiz)), score(nullptr),deadline(nullptr),start_quiz(new QPushButton("start quiz",this)),add_quiz(new QPushButton("aggiungi quiz",this)), container_button(new QWidget(this)), layout_button(new QHBoxLayout(container_button)){
 
     main_layout=new QVBoxLayout(this);
@@ -29,6 +29,10 @@ HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,Course* course,bool
     setStyle();
 
     setLayout(main_layout);
+}
+
+HomeworkForm *HomeworkForm::clone() const{
+    return new HomeworkForm(user,control,this_homework,relogin,parentWidget());
 }
 
 void HomeworkForm::addMenu(){
@@ -186,15 +190,39 @@ void HomeworkForm::to_next_page(int index){
     close();
 }
 
-void HomeworkForm::to_previous_page(){
+/*void HomeworkForm::to_previous_page(){
     emit to_new_page(new CourseForm(user,control,course_father,relogin,parentWidget()));
 
     close();
-}
+}*/
 
 void HomeworkForm::del_homework(){
-    control.deleteHomework(course_father,this_homework);
+    control.deleteHomework(this_homework);
+
+    emit to_update_previous_page();
 
     to_previous_page();
+
 }
+
+
+
+/*void HomeworkForm::confirm_addform(const QString& t, const QString& d){
+    if(t=="")
+         throw std::logic_error("Titolo mancante");
+
+
+   control.modifyCourse(this_course,t.toStdString(),d.toStdString());
+
+   emit to_update_previous_page();
+   CourseForm* temp= new CourseForm(user,control,this_course,relogin,parentWidget());
+   emit to_new_page(temp);
+
+
+
+   control.removeStackView();
+
+
+   //close();
+}*/
 

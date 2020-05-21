@@ -8,17 +8,26 @@
 #include "myvector.h"
 #include "timescorehomework.h"
 
+#include <QStackedWidget>
+
 
 class PrincipalForm;
 
 class Controller{
 private:
     MyVector<User*> users;
+    MyVector<Course* > course;
+    MyVector<PrincipalForm*> stack_page;
 
 public:
     Controller();
     ~Controller();
 
+    void addStackView(PrincipalForm* p);
+    PrincipalForm* removeStackView();
+    void cleanStack();
+
+    PrincipalForm* getPreviousPage();
 
     void addCourse(User* s, const string& t, const string& d);
     void modifyCourse(Course* c,const string& t,const string& d);
@@ -27,7 +36,7 @@ public:
 
     void AddHomework(Course* c, const string& t, const string& d, bool time, bool score, const DateTime& deadline);
     void deleteHomework(Course* c, unsigned int i);
-    void deleteHomework(Course *c, Homework* h);
+    void deleteHomework(Homework* h);
 
 
 

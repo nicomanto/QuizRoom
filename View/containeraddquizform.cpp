@@ -14,6 +14,10 @@ ContainerAddQuizForm::ContainerAddQuizForm(User* u,Controller& c,bool & r,QWidge
     setLayout(main_layout);
 }
 
+ContainerAddQuizForm *ContainerAddQuizForm::clone() const{
+
+}
+
 void ContainerAddQuizForm::addMenu(){
 
     QAction* previous_page = new QAction("<-",menubar); //ritorno alla pagina precedent

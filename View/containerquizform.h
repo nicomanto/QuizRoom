@@ -36,14 +36,14 @@ public:
     explicit ContainerQuizForm(User* u,Controller& c,bool & r,QWidget *parent = nullptr);
     ~ContainerQuizForm()= default;
 
-
+    virtual ContainerQuizForm *clone() const;
 signals:
 
 private slots:
 
     virtual void confirm_addform(const QString&, const QString&){}
     virtual void to_next_page(int index);
-    virtual void to_previous_page();
+    //virtual void to_previous_page();
 };
 
 #endif // CONTAINERQUIZFORM_H
