@@ -186,6 +186,8 @@ void MainForm::del_course(int i){
     control.deleteCourse(user,i);
 
     emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
+    control.removeStackView();
+
     close();
 }
 

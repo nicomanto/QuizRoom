@@ -271,6 +271,8 @@ void CourseForm::del_homework(int i){
     control.deleteHomework(this_course,i);
 
     emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
+    control.removeStackView();
+
     close();
 }
 
