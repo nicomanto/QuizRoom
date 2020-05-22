@@ -6,12 +6,14 @@
 #include <QPushButton>
 
 #include "Model/myvector.h"
+#include "Model/classicquiz.h"
 #include "quizbaseform.h"
 
 class ClassicQuizForm: public QuizBaseForm{
      Q_OBJECT
 private:
 
+    ClassicQuiz* this_quiz;
 
     MyVector<QPushButton*> answers;  //possibili risposte
 
@@ -19,9 +21,11 @@ private:
 
     virtual void setStyle();
 
+    virtual void randomize_answer();
+
 
 public:
-    explicit ClassicQuizForm(QWidget *parent = nullptr);
+    explicit ClassicQuizForm(ClassicQuiz* q,QWidget *parent = nullptr);
     ~ClassicQuizForm()= default;
 
 

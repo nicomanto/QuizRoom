@@ -84,6 +84,8 @@ void HomeworkForm::addForm(){
    main_layout->addWidget(homework_title);
    main_layout->addWidget(homework_instructions);
 
+   QSignalMapper* signalMapperQuiz = new QSignalMapper (this);
+
     if(this_homework->isScoreHomework())//controllo se è scorehomework
         layout_container_info_quiz->addWidget(score);
 
@@ -94,14 +96,17 @@ void HomeworkForm::addForm(){
        main_layout->addWidget(container_info_quiz, Qt::AlignCenter);
 
 
-
    layout_button->addWidget(start_quiz);
    layout_button->addWidget(add_quiz);
 
    main_layout->addWidget(container_button);
 
+   connect(start_quiz,SIGNAL(clicked()),signalMapperQuiz,SLOT(map()));
+   signalMapperQuiz->setMapping(start_quiz, 0);
+   connect (signalMapperQuiz, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
+
    //connect dei bottoni
-   connect(start_quiz,SIGNAL(clicked()),this,SLOT(to_next_page())); //tests
+   //connect(start_quiz,SIGNAL(clicked()),this,SLOT(to_next_page())); //tests
    connect(add_quiz,SIGNAL(clicked()),this,SLOT(to_addquiz())); //tests
 
 
@@ -140,7 +145,7 @@ void HomeworkForm::setStyle(){
     add_quiz->setFixedSize(QSize(width()/3,height()/7));
     add_quiz->setVisible(false);
 
-    if(true)//controllo se ha già un quiz o se ne è sprovvisto, in quel caso se ne può aggiungere uno
+    if(this_homework->getQuiz().empty())//controllo se ha già un quiz o se ne è sprovvisto, in quel caso se ne può aggiungere uno
         add_quiz->setVisible(true);
 
     //aggiunta dei alcuni font
@@ -187,7 +192,7 @@ void HomeworkForm::to_addquiz(){
 }
 
 void HomeworkForm::to_next_page(int index){
-    emit to_new_page(new ContainerQuizForm(user,control,relogin,parentWidget()));
+    emit to_new_page(new ContainerQuizForm(user,control,this_homework->getQuiz(),relogin,parentWidget()));
 
     close();
 }

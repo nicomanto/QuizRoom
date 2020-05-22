@@ -10,11 +10,15 @@
 
 #include "baseform.h"
 
+#include "Model/quiz.h"
+
 
 class QuizBaseForm : public BaseForm{
     Q_OBJECT
 
 protected:
+
+
     QLabel* question;
 
     QGroupBox* container_answers;
@@ -23,8 +27,11 @@ protected:
     virtual void addForm()=0;
 
     virtual void setStyle();
+
+
+    virtual void randomize_answer()=0;
 public:
-    explicit QuizBaseForm(QWidget *parent = nullptr);
+    explicit QuizBaseForm(const QString& q, QWidget *parent = nullptr);
     virtual ~QuizBaseForm();
 
 

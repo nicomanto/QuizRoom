@@ -13,6 +13,8 @@ class ContainerQuizForm : public PrincipalForm{
     Q_OBJECT
 private:
 
+    const MyVector<Quiz*>& quiz_model;
+
     MyVector<QuizBaseForm*> quiz; //vettore della vista dei quiz
     MyVector<QGroupBox*> quiz_box; //vettore della domanda (contenitore del quiz)
 
@@ -33,7 +35,7 @@ private:
 
 
 public:
-    explicit ContainerQuizForm(User* u,Controller& c,bool & r,QWidget *parent = nullptr);
+    explicit ContainerQuizForm(User* u,Controller& c,const MyVector<Quiz*>& q,bool & r,QWidget *parent = nullptr);
     ~ContainerQuizForm()= default;
 
     virtual ContainerQuizForm *clone() const;

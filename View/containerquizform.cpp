@@ -1,6 +1,6 @@
 #include "containerquizform.h"
 
-ContainerQuizForm::ContainerQuizForm(User* u,Controller& c,bool & r,QWidget *parent): PrincipalForm(u,c,r, parent),scroll_layout(new QVBoxLayout(container_scroll)),end_quiz(new QPushButton("termina il quiz",this)),
+ContainerQuizForm::ContainerQuizForm(User* u,Controller& c,const MyVector<Quiz*>& q,bool & r,QWidget *parent): PrincipalForm(u,c,r, parent),quiz_model(q),scroll_layout(new QVBoxLayout(container_scroll)),end_quiz(new QPushButton("termina il quiz",this)),
     container_button(new QWidget(this)), layout_button(new QVBoxLayout(container_button)){
     main_layout=new QVBoxLayout(this);
     menubar=new QMenuBar(this);
@@ -14,7 +14,7 @@ ContainerQuizForm::ContainerQuizForm(User* u,Controller& c,bool & r,QWidget *par
 }
 
 ContainerQuizForm *ContainerQuizForm::clone() const{
-
+    return new ContainerQuizForm(user,control,quiz_model,relogin,parentWidget());
 }
 
 
@@ -38,15 +38,15 @@ void ContainerQuizForm::addForm(){
 
 
    //aggiungo i quiz
-    for(unsigned int i=0; i <10; ++i){
+    for(unsigned int i=0; i <quiz_model.size(); ++i){
 
         quiz_box.push_back(new QGroupBox("Domanda "+QString::number(i+1),this));
         QVBoxLayout* temp= new QVBoxLayout(quiz_box[i]);
 
-        if(i%2==0)
-            quiz.push_back(new ClassicQuizForm(quiz_box[i]));
+        if(dynamic_cast<ClassicQuiz*>(quiz_model[i]))
+            quiz.push_back(new ClassicQuizForm(dynamic_cast<ClassicQuiz*>(quiz_model[i])));
         else
-            quiz.push_back(new CombineQuizForm(quiz_box[i]));
+            quiz.push_back(new CombineQuizForm(dynamic_cast<CombineQuiz*>(quiz_model[i])));
 
         temp->addWidget(quiz[i]);
 
@@ -63,7 +63,7 @@ void ContainerQuizForm::setStyle(){
     PrincipalForm::setStyle();
 
     //stile della vista dei quiz
-    for(unsigned int i=0; i <10; ++i){
+    for(unsigned int i=0; i <quiz_model.size(); ++i){
        quiz_box[i]->setMinimumSize(QSize(width()/2,height()));
         quiz_box[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         quiz[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
