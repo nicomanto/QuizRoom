@@ -132,7 +132,7 @@ void CourseForm::setStyle(){
         homework[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         homework[i]->setMaximumSize(QSize(1000,height()/5));
 
-        if(true)//controllo se è creato
+        //if(true)//controllo se è creato
             homework_menu[i]->setFixedSize(22,height()/5);
     }
 

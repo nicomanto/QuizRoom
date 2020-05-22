@@ -112,6 +112,11 @@ void Controller::AddHomework(Course* c, const std::string &t, const std::string 
 
 }
 
+void Controller::modifyHomework(Homework *h, const std::string &t, const std::string &d){
+    h->setTitle(t);
+    h->setInstructions(d);
+}
+
 void Controller::deleteHomework(Course *c, unsigned int i){
     c->removeHomework(c->getHomeworks()[i]);
 }

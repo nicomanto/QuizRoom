@@ -43,20 +43,22 @@ void HomeworkForm::addMenu(){
     QAction* previous_page= new QAction("<-",menubar);
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
+    bool can_do_somethingH=false;
 
-
-    if(true){ //controllare se l'utente può modificare l'homework
+    if(user->CanEditHomework()){ //controllare se l'utente può modificare l'homework
         QAction* modify_homework = new QAction("modifica",homework);
         homework->addAction(modify_homework);
 
         //connect del bottone modifica
-        connect(modify_homework,SIGNAL(triggered()),this,SLOT(to_addform()));
+        connect(modify_homework,SIGNAL(triggered()),this,SLOT(to_homework_info()));
+        can_do_somethingH=true;
     }
 
-    if(true){ //controllare se l'utente può eliminare l'homework
+    if(user->CanDeleteHomework()){ //controllare se l'utente può eliminare l'homework
         QAction* delete_homework = new QAction("elimina",homework);
         homework->addAction(delete_homework);
         connect(delete_homework,SIGNAL(triggered()),this,SLOT(del_homework()));
+        can_do_somethingH=true;
     }
 
     options->addAction(exit_login);
@@ -64,7 +66,7 @@ void HomeworkForm::addMenu(){
     menubar->addAction(previous_page);
     menubar->addMenu(options);
 
-    if(true)
+    if(can_do_somethingH)
         menubar->addMenu(homework);
 
     main_layout->addWidget(menubar);
@@ -190,6 +192,12 @@ void HomeworkForm::to_next_page(int index){
     close();
 }
 
+
+
+void HomeworkForm::to_homework_info(){
+    to_addform(homework_title->text(),homework_instructions->text());
+}
+
 /*void HomeworkForm::to_previous_page(){
     emit to_new_page(new CourseForm(user,control,course_father,relogin,parentWidget()));
 
@@ -207,15 +215,15 @@ void HomeworkForm::del_homework(){
 
 
 
-/*void HomeworkForm::confirm_addform(const QString& t, const QString& d){
+void HomeworkForm::confirm_addform(const QString& t, const QString& d){
     if(t=="")
          throw std::logic_error("Titolo mancante");
 
 
-   control.modifyCourse(this_course,t.toStdString(),d.toStdString());
+   control.modifyHomework(this_homework,t.toStdString(),d.toStdString());
 
    emit to_update_previous_page();
-   CourseForm* temp= new CourseForm(user,control,this_course,relogin,parentWidget());
+   HomeworkForm* temp= new HomeworkForm(user,control,this_homework,relogin,parentWidget());
    emit to_new_page(temp);
 
 
@@ -224,5 +232,5 @@ void HomeworkForm::del_homework(){
 
 
    //close();
-}*/
+}
 

@@ -55,8 +55,9 @@ signals:
 
 private slots:
     void to_addquiz();
+    void to_homework_info();
 
-    virtual void confirm_addform(const QString&, const QString&){}
+    virtual void confirm_addform(const QString&, const QString&);
     virtual void to_next_page(int index);
     //virtual void to_previous_page();
 
