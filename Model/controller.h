@@ -7,6 +7,8 @@
 #include "student.h"
 #include "myvector.h"
 #include "timescorehomework.h"
+#include "combinequiz.h"
+#include "classicquiz.h"
 
 #include <QStackedWidget>
 
@@ -16,7 +18,7 @@ class PrincipalForm;
 class Controller{
 private:
     MyVector<User*> users;
-    MyVector<Course* > course;
+
     MyVector<PrincipalForm*> stack_page;
 
 public:

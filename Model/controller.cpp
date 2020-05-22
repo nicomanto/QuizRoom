@@ -13,23 +13,47 @@ Controller::Controller(){
     users.push_back(s2);
 
 
-    Course* z= new Course("Corso2","ciaooo");
-    Course* y   =new Course("Titolo","Descrizione");
+    Course* course_1= new Course("Titolo","Descrizione");
+    Course* course_2 =new Course("Corso2","ciaooo");
 
-
-    while(z->getCode()==y->getCode())
-        y->setCode();
     DateTime data(25,03,2020,00);
 
-    y->addHomework(new TimeScoreHomework(data, "Prova compito"));
-    z->addHomework(new ScoreHomework("Prova compito 2","istruzioni"));
+    Homework* homework_1= new TimeScoreHomework(data, "Prova compito");
+    Homework* homework_2= new ScoreHomework("Prova compito 2","istruzioni");
+
+    ClassicQuiz* quiz_1= new ClassicQuiz("Di che color è il cavallo bianco di napoleone?",100,0);
+    quiz_1->addCorrectAnswer("Nero");
+    quiz_1->addCorrectAnswer("Rosso");
+    quiz_1->addCorrectAnswer("Bianco");
+    quiz_1->addCorrectAnswer("Verde");
+
+    CombineQuiz* quiz_2= new CombineQuiz("Abbina questi animali",100);
+    quiz_2->addCorrectCombine("scimmia","mammifero");
+    quiz_2->addCorrectCombine("cavallo","mammifero");
+    quiz_2->addCorrectCombine("lucertola","rettile");
+    quiz_2->addCorrectCombine("squalo","pesce");
 
 
 
-    users[0]->addCourse(y);
-    users[0]->addCourse(z);
-    users[1]->addCourse(y);
-    users[2]->addCourse(z);
+    while(course_1->getCode()==course_2->getCode())
+        course_2->setCode();
+
+    homework_1->addQuiz(quiz_1);
+    homework_1->addQuiz(quiz_1);
+
+    homework_2->addQuiz(quiz_1);
+    homework_2->addQuiz(quiz_2);
+
+
+    course_1->addHomework(homework_1);
+    course_2->addHomework(homework_2);
+
+
+
+    users[0]->addCourse(course_1);
+    users[0]->addCourse(course_2);
+    users[1]->addCourse(course_1);
+    users[2]->addCourse(course_2);
 
 }
 

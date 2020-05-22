@@ -4,6 +4,10 @@ ClassicQuiz::ClassicQuiz(){}
 
 ClassicQuiz::ClassicQuiz(const std::string& q, double tp, double mp, double tm): MalusQuiz(q,tp,mp,tm){}
 
+const MyVector<std::string> &ClassicQuiz::getCorrectAnswer() const{
+    return correct_answer;
+}
+
 void ClassicQuiz::addAnswer(const std::string &a){
     if(!isAnswer(a))
         answer.push_back(a);

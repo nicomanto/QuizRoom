@@ -2,11 +2,7 @@
 
 ScoreHomework::ScoreHomework(){}
 
-ScoreHomework::ScoreHomework(const string& t,const string& i): Homework(t,i), total_score(0){
-    for(MyVector<QuizContainer>::const_iterator it=container_q.begin(); it!=container_q.end(); ++it){
-        total_score+=(*it).getTotalAllPoint();
-    }
-}
+ScoreHomework::ScoreHomework(const string& t,const string& i): Homework(t,i), total_score(getTotalAllPoint()){}
 
 
 void ScoreHomework::addTotalScore(double p){
@@ -32,25 +28,22 @@ bool ScoreHomework::isTimeHomework() const{
     return false;
 }
 
-void ScoreHomework::addQuizContainer(const QuizContainer &q){
-    Homework::addQuizContainer(q);
+void ScoreHomework::addQuiz(Quiz* q){
+    Homework::addQuiz(q);
 
-    addTotalScore(q.getTotalAllPoint());
+    addTotalScore(getTotalAllPoint());
 }
 
-void ScoreHomework::removeQuizContainer(const QuizContainer &q){
-    Homework::removeQuizContainer(q);
+void ScoreHomework::removeQuiz(Quiz* q){
+    Homework::removeQuiz(q);
 
-    removeTotalScore(q.getTotalAllPoint());
+    removeTotalScore(getTotalAllPoint());
 }
 
 double ScoreHomework::getResult() const{
-    double somma=0;
-    for(MyVector<QuizContainer>::const_iterator it=container_q.begin(); it!=container_q.end(); ++it){
-        somma+=(*it).allPoint();
-    }
+    double somma=allPoint();
 
-    return somma/container_q.size();
+    return somma/quiz.size();
 }
 
 ScoreHomework *ScoreHomework::clone() const{

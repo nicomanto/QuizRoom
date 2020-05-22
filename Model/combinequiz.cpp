@@ -4,8 +4,14 @@ CombineQuiz::CombineQuiz(){}
 
 CombineQuiz::CombineQuiz(const std::string &q, double t): Quiz(q,t){}
 
+const std::map<std::string,std::string>& CombineQuiz::getCorrectAnswer() const{
+    return correct_combine;
+}
+
 void CombineQuiz::addCorrectCombine(std::string a1, std::string a2){
     correct_combine[a1]=a2;
+
+    //std::cout<<correct_combine[a1];
     setPointCAnswer();
 }
 

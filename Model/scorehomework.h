@@ -16,8 +16,8 @@ public:
     virtual bool isScoreHomework() const;
     virtual bool isTimeHomework() const;
 
-    virtual void addQuizContainer(const QuizContainer& q); //ridefinizione perchè calcola il nuovo totale con l'aggiunta del container quiz
-    virtual void removeQuizContainer(const QuizContainer& q); //ridefinizione perchè calcola il nuovo totale con la rimozione del container quiz
+    virtual void addQuiz(Quiz* q); //ridefinizione perchè calcola il nuovo totale con l'aggiunta del container quiz
+    virtual void removeQuiz(Quiz* q); //ridefinizione perchè calcola il nuovo totale con la rimozione del container quiz
 
     virtual double getResult() const;   //ritorna la media del punteggio dei quiz
     virtual ScoreHomework *clone() const;

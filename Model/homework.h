@@ -2,29 +2,42 @@
 #define HOMEWORK_H
 
 #include <string>
-#include "quizcontainer.h"
+
 using std::string;
+#include "quiz.h"
 
 class Homework{
 protected:
     string title;
     string instructions;
-    MyVector<QuizContainer> container_q;      // modulo per quiz (struttura del contenitore dei quiz)
 
+    bool done;
+    MyVector<Quiz*> quiz;
 public:
     Homework();
     Homework(const string& t, const string& i=string());
 
     string getTitle() const;
     string getInstructions() const;
-    const MyVector<QuizContainer>& getContainerQuiz() const; //ritorna il vettore che contiene i container dei quiz
+    bool isDone() const;
+    const MyVector<Quiz*>& getQuiz() const; //ritorna il vettore che contiene i container dei quiz
 
     void setTitle(const string& t);
     void setInstructions(const string& i);
-    bool isDone() const;
+    void setDone(bool t);
 
-    virtual void addQuizContainer(const QuizContainer& q);
-    virtual void removeQuizContainer(const QuizContainer& q);
+
+
+
+    void showAllSolution() const; //mostra tutte le soluzioni dei quiz
+    void showQuizSolution(const std::string& q) const; //mostra le soluzioni specifiche di un quiz
+    double QuizPoint(const std::string& q) const; //ritorna il punteggio di un singolo quiz
+    double allPoint() const; //ritorna il punteggio di tutti i quiz
+    double getTotalAllPoint() const; //ritorna la somma del punteggio massimo ottenibile
+
+    virtual void addQuiz(Quiz* q); //aggiunge un quiz
+    virtual void removeQuiz(Quiz* q); //rimuove un quiz
+
     virtual bool isScoreHomework() const;
     virtual bool isTimeHomework() const;
     virtual double getResult() const; //ritorna il risultato del quiz

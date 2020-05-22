@@ -5,9 +5,12 @@
 class CombineQuiz : public Quiz{ //NO-Malus
 private:
     std::map<std::string,std::string> correct_combine;
+
 public:
     CombineQuiz();
     CombineQuiz(const std::string& q, double t);
+
+    const std::map<std::string,std::string>& getCorrectAnswer() const;
 
     void addCorrectCombine(std::string a1,std::string a2);
     void removeCorrectCombine(std::string a1);

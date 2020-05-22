@@ -12,6 +12,8 @@ public:
     ClassicQuiz();
     ClassicQuiz(const std::string& q, double tp, double mp, double tm=0);
 
+    const MyVector<std::string>& getCorrectAnswer() const;
+
     void addAnswer(const std::string& a);
     void addCorrectAnswer(const std::string& ca);
     void removeAnswer(const std::string& a);
