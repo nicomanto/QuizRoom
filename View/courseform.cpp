@@ -307,9 +307,6 @@ void CourseForm::confirm_modifyform(Course * c, const QString &, const QString &
 
 
 void CourseForm::confirm_addform(const QString& t, const QString& d){
-    if(t=="")
-         throw std::logic_error("Titolo mancante");
-
 
    control.modifyCourse(this_course,t.toStdString(),d.toStdString());
 
@@ -327,8 +324,7 @@ void CourseForm::confirm_addform(const QString& t, const QString& d){
 
 
 void CourseForm::confirm_addhomework(const QString& t,const QString& d, bool Time, bool Score, const DateTime& deadline){
-    if(t=="")
-         throw std::logic_error("Titolo mancante");
+
 
 
 

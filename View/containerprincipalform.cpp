@@ -39,7 +39,7 @@ void ContainerPrincipalForm::previous_main_window(){
 }
 
 void ContainerPrincipalForm::update_previous_main_window(){
-    main_window->close();
+    //main_window->close();
 
     //control.removeStackView();
     //main_window->close();

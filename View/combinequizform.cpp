@@ -80,13 +80,14 @@ void CombineQuizForm::randomize_answer(){
     srand(time(NULL));
     bool exist;
 
-    MyVector<std::string>  already_included(1,"");
+    MyVector<int>  already_included(1,-1);
     unsigned int number;
 
     MyVector<std::string> elem;
 
-    for (std::map<std::string,std::string>::const_iterator it=this_quiz->getCorrectAnswer().begin(); it!=this_quiz->getCorrectAnswer().end(); ++it)
+    for (std::map<std::string,std::string>::const_iterator it=this_quiz->getCorrectAnswer().begin(); it!=this_quiz->getCorrectAnswer().end(); ++it){
         elem.push_back(it->first);
+    }
 
 
     while(count>0){
@@ -97,13 +98,13 @@ void CombineQuizForm::randomize_answer(){
             number=rand()%this_quiz->getCorrectAnswer().size();
 
             for(unsigned int i=0;i<already_included.size() && !exist;++i){
-                if(elem[number]==already_included[i])
+                if(number==already_included[i])
                     exist=true;
             }
 
         }while(exist);
 
-        already_included.push_back(elem[number]);
+        already_included.push_back(number);
 
         count--;
 

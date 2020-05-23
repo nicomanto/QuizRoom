@@ -8,11 +8,19 @@
 
 #include "baseform.h"
 
+#include "Model/myvector.h"
+
+#include "Model/homework.h"
+#include "Model/controller.h"
+
 
 class AddQuizForm : public BaseForm{
     Q_OBJECT
 
 protected:
+    Controller& control;
+    Homework* this_homework;
+
     QGroupBox* box_question;
     QGroupBox* box_answer;
 
@@ -27,14 +35,17 @@ protected:
     virtual void setStyle();
 
 public:
-    explicit AddQuizForm(int number_question, QWidget *parent = nullptr);
+    explicit AddQuizForm(Controller&  c, Homework* h,int number_question, QWidget *parent = nullptr);
     virtual ~AddQuizForm();
 
 
 
 signals:
+    void send_information(const std::string& ,const MyVector<std::string>& ,const MyVector<std::string>&);
 
 public slots:
+
+    virtual void setInformation()=0;
 
 };
 

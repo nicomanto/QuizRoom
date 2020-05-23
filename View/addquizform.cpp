@@ -1,6 +1,6 @@
 #include "addquizform.h"
 
-AddQuizForm::AddQuizForm(int number_question,QWidget *parent): BaseForm(parent),box_question(new QGroupBox("Domanda "+QString::number(number_question),this)),box_answer(new QGroupBox("Risposte",this)),layout_box_question(new QVBoxLayout(box_question)), layout_box_answer(new QGridLayout(box_answer)),
+AddQuizForm::AddQuizForm(Controller& c, Homework* h,int number_question,QWidget *parent): BaseForm(parent),control(c),this_homework(h), box_question(new QGroupBox("Domanda "+QString::number(number_question),this)),box_answer(new QGroupBox("Risposte",this)),layout_box_question(new QVBoxLayout(box_question)), layout_box_answer(new QGridLayout(box_answer)),
     question_form(new QLineEdit(box_question)){}
 
 AddQuizForm::~AddQuizForm(){}
@@ -35,5 +35,10 @@ void AddQuizForm::setStyle(){
 
     setStyleSheet(styleSheet);
 }
+
+/*AddQuizForm::AddQuizForm(Homework *h, int number_question, QWidget *parent)
+{
+
+}*/
 
 

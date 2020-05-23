@@ -1,6 +1,6 @@
 #include "addcombinequizform.h"
 
-AddCombineQuizForm::AddCombineQuizForm(int number_question, QWidget *parent): AddQuizForm(number_question, parent){
+AddCombineQuizForm::AddCombineQuizForm(Controller& c,Homework* h, int number_question, QWidget *parent): AddQuizForm(c,h, number_question, parent){
     main_layout=new QVBoxLayout(this);
 
     for(unsigned int i=0; i<4; ++i){
@@ -15,6 +15,36 @@ AddCombineQuizForm::AddCombineQuizForm(int number_question, QWidget *parent): Ad
     setStyle();
 
     setLayout(main_layout);
+
+    connect(parentWidget(),SIGNAL(setInformation()),this,SLOT(setInformation()));
+}
+
+void AddCombineQuizForm::setInformation(){
+    MyVector<std::string> elements;
+    MyVector<std::string> answers;
+
+    for(unsigned int i=0;i<options_form.size();i++){
+        elements.push_back(options_form[i]->text().toStdString());
+        answers.push_back(answers_form[i]->text().toStdString());
+    }
+
+
+
+    control.addCombineQuiz(this_homework,question_form->text().toStdString(),elements,answers);
+
+
+
+    //emit send_information(question_form->text().toStdString(),elements,answers);
+
+    /*try {
+        emit send_information(question_form->text().toStdString(),elements,answers);
+        //emit toClose();
+    } catch(std::logic_error exc){
+        ErrorDialog* error = new ErrorDialog(exc.what(),this);
+
+
+        error->show();
+    }*/
 }
 
 

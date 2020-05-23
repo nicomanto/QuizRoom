@@ -118,6 +118,9 @@ void Controller::deleteCourse(Course* c){
 }
 
 void Controller::AddHomework(Course* c, const std::string &t, const std::string &d, bool time, bool score, const DateTime &deadline){
+    if(t=="")
+         throw std::logic_error("Titolo mancante");
+
     Homework* temp;
     if(time && score)
         temp = new TimeScoreHomework(deadline,t,d);
@@ -137,6 +140,9 @@ void Controller::AddHomework(Course* c, const std::string &t, const std::string 
 }
 
 void Controller::modifyHomework(Homework *h, const std::string &t, const std::string &d){
+    if(t=="")
+         throw std::logic_error("Titolo mancante");
+
     h->setTitle(t);
     h->setInstructions(d);
 }
@@ -157,12 +163,149 @@ void Controller::deleteHomework(Homework* h){
     }
 }
 
+void Controller::addCombineQuiz(Homework *h, const std::string &question, const MyVector<std::string> &elements, const MyVector<std::string> &answers){
+    if(question=="")
+        throw std::logic_error("Domanda mancante");
+
+    for(unsigned int i=0; i<elements.size();++i){
+        if(elements[i]=="") throw std::logic_error("Elemento da abbinare mancante");
+        if(answers[i]=="") throw std::logic_error("Risposta da abbinare mancante");
+    }
+
+    for(unsigned int i=0; i<elements.size()-1;++i){
+        for(unsigned int j=i+1; j<elements.size();++j){
+            if(elements[i]==elements[j])
+                throw std::logic_error("Le opzioni da abbinare non possono essere uguali fra di loro");
+        }
+
+    }
+
+
+
+
+    bool not_exist=true;
+
+    //controllo se esiste un quiz con la domanda uguale e lo aggiorno
+    for(unsigned int i=0;i <h->getQuiz().size() && not_exist;++i){
+        if(dynamic_cast<CombineQuiz*>(h->getQuiz()[i])){
+            CombineQuiz* temp= dynamic_cast<CombineQuiz*>(h->getQuiz()[i]);
+
+            if(temp->getQuestion()==question){
+
+                temp->clear_all_answers();
+                not_exist=false;
+
+
+
+
+
+
+            }
+        }
+
+
+    }
+
+
+    if(not_exist){
+        CombineQuiz* quiz= new CombineQuiz(question);
+
+        for(unsigned int i=0; i<elements.size();++i){
+            //std::cout<<correct_answers[i]<<std::endl;
+            quiz->addCorrectCombine(elements[i],answers[i]);
+        }
+
+        h->addQuiz(quiz);
+    }
+}
+
+void Controller::addClassicQuiz(Homework *h, const std::string &question, const MyVector<std::string>& answers, const MyVector<std::string>& correct_answers){
+    if(question=="")
+            throw std::logic_error("Domanda mancante");
+
+
+    for(unsigned int i=0; i<answers.size();++i){
+        if(answers[i]=="") throw std::logic_error("Risposta mancante");
+    }
+
+
+
+    if(correct_answers.empty()){
+        throw std::logic_error("Aggiungi almeno una risposta corretta");
+    }
+
+
+
+
+
+    for(unsigned int i=0; i<answers.size()-1;++i){
+        for(unsigned int j=i+1; j<answers.size();++j){
+            if(answers[i]==answers[j])
+                throw std::logic_error("Le riposte devono essere diverse fra di loro");
+        }
+
+    }
+
+    bool not_exist=true;
+
+    //controllo se esiste un quiz con la domanda uguale e lo aggiorno
+    for(unsigned int i=0;i <h->getQuiz().size() && not_exist;++i){
+        if(dynamic_cast<ClassicQuiz*>(h->getQuiz()[i])){
+            ClassicQuiz* temp= dynamic_cast<ClassicQuiz*>(h->getQuiz()[i]);
+
+            if(temp->getQuestion()==question){
+
+                temp->clear_all_answers();
+                not_exist=false;
+
+
+
+                for(unsigned int i=0; i<answers.size();++i){
+                    //std::cout<<correct_answers[i]<<std::endl;
+                    temp->addAnswer(answers[i]);
+                }
+
+                for(unsigned int i=0; i<correct_answers.size();++i){
+                    //std::cout<<correct_answers[i]<<std::endl;
+                    temp->addCorrectAnswer(correct_answers[i]);
+                }
+            }
+        }
+
+
+    }
+
+
+    if(not_exist){
+        ClassicQuiz* quiz= new ClassicQuiz(question);
+
+        //std::cout<<"size answer: "<<answers.size()<<std::endl;
+        for(unsigned int i=0; i<answers.size();++i){
+            //std::cout<<correct_answers[i]<<std::endl;
+            quiz->addAnswer(answers[i]);
+        }
+
+        for(unsigned int i=0; i<correct_answers.size();++i){
+            //std::cout<<correct_answers[i]<<std::endl;
+            quiz->addCorrectAnswer(correct_answers[i]);
+        }
+
+        h->addQuiz(quiz);
+    }
+}
+
 void Controller::modifyCourse(Course *c, const string& t, const string& d){
+    if(t=="")
+         throw std::logic_error("Titolo mancante");
+
     c->setTitle(t);
     c->setDescription(d);
 }
 
 void Controller::addCourse(User* s, const string& t, const string& d){
+    if(t=="")
+        throw std::logic_error("Titolo mancante");
+
     Course* temp=new Course(t,d);
 
     for(int i=0;i<s->getCourse().size();++i)

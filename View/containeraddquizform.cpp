@@ -1,6 +1,6 @@
 #include "containeraddquizform.h"
 
-ContainerAddQuizForm::ContainerAddQuizForm(User* u,Controller& c,bool & r,QWidget *parent): PrincipalForm(u,c,r,parent),container_quiz(new QWidget(this)), layout_container_quiz(new QVBoxLayout(container_quiz)), scroll_layout(new QVBoxLayout(container_scroll)),end(new QPushButton("termina",this)), add_combine(new QPushButton("Quiz a combinazione",this)),
+ContainerAddQuizForm::ContainerAddQuizForm(User* u,Controller& c,Homework* h,bool & r,QWidget *parent): PrincipalForm(u,c,r,parent),this_homework(h),container_quiz(new QWidget(this)), layout_container_quiz(new QVBoxLayout(container_quiz)), scroll_layout(new QVBoxLayout(container_scroll)),end(new QPushButton("termina",this)), add_combine(new QPushButton("Quiz a combinazione",this)),
     add_classic(new QPushButton("Quiz classico",this)),container_button(new QWidget(this)), layout_button(new QHBoxLayout(container_button)){
 
     main_layout=new QVBoxLayout(this);
@@ -15,7 +15,7 @@ ContainerAddQuizForm::ContainerAddQuizForm(User* u,Controller& c,bool & r,QWidge
 }
 
 ContainerAddQuizForm *ContainerAddQuizForm::clone() const{
-
+    return new ContainerAddQuizForm(user,control,this_homework,relogin,parentWidget());
 }
 
 void ContainerAddQuizForm::addMenu(){
@@ -46,7 +46,7 @@ void ContainerAddQuizForm::addForm(){
 
    connect(add_classic,SIGNAL(clicked()),this,SLOT(addClassicWidget()));
    connect(add_combine,SIGNAL(clicked()),this,SLOT(addCombineWidget()));
-   //connect(end,SIGNAL(clicked()),this,SLOT(close()));
+   connect(end,SIGNAL(clicked()),this,SLOT(to_add_quiz()));
 
 
 
@@ -91,20 +91,50 @@ void ContainerAddQuizForm::setStyle(){
 
 //SLOTS
 void ContainerAddQuizForm::addCombineWidget(){
-    quiz.push_back(new AddCombineQuizForm(quiz.size()+1,container_quiz));
+    AddCombineQuizForm* temp= new AddCombineQuizForm(control,this_homework,quiz.size()+1,this);
+    quiz.push_back(temp);
+
     layout_container_quiz->addWidget(quiz.back());
 }
 
 void ContainerAddQuizForm::addClassicWidget(){
-    quiz.push_back(new AddClassicQuizForm(quiz.size()+1,container_quiz));
+    quiz.push_back(new AddClassicQuizForm(control,this_homework,quiz.size()+1,this));
     layout_container_quiz->addWidget(quiz.back());
 }
 
 void ContainerAddQuizForm::to_next_page(int index){}
 
-void ContainerAddQuizForm::to_previous_page(){
+/*void ContainerAddQuizForm::to_previous_page(){
     //emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));
 
     close();
+}*/
+
+
+
+void ContainerAddQuizForm::to_add_quiz(){
+
+
+    try{
+
+        emit setInformation();
+        emit to_update_previous_page();
+        //HomeworkForm* temp= new HomeworkForm(user,control,this_homework,relogin,parentWidget());
+        //emit to_new_page(temp);
+
+        to_previous_page();
+
+
+
+        //control.removeStackView();
+
+    }catch(std::logic_error exc){
+        ErrorDialog* error = new ErrorDialog(exc.what(),this);
+
+
+        error->show();
+    }
+
+
 }
 

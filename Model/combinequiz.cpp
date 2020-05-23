@@ -8,14 +8,14 @@ const std::map<std::string,std::string>& CombineQuiz::getCorrectAnswer() const{
     return correct_combine;
 }
 
-void CombineQuiz::addCorrectCombine(std::string a1, std::string a2){
+void CombineQuiz::addCorrectCombine(const std::string& a1, const std::string& a2){
     correct_combine[a1]=a2;
 
     //std::cout<<correct_combine[a1];
     setPointCAnswer();
 }
 
-void CombineQuiz::removeCorrectCombine(std::string a1){
+void CombineQuiz::removeCorrectCombine(const std::string& a1){
     correct_combine.erase(a1);
 }
 
@@ -46,6 +46,10 @@ void CombineQuiz::setPointCAnswer(){
 void CombineQuiz::showSolution() const{
     for(std::map<std::string,std::string>::const_iterator it=correct_combine.begin(); it!=correct_combine.end(); ++it)
         std::cout<<it->first<<" "<<it->second<<std::endl;
+}
+
+void CombineQuiz::clear_all_answers(){
+    correct_combine.clear();
 }
 
 CombineQuiz *CombineQuiz::clone() const{

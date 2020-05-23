@@ -42,6 +42,9 @@ public:
     void deleteHomework(Homework* h);
 
 
+    void addCombineQuiz(Homework* h, const string& question,const MyVector<std::string>& elements, const MyVector<std::string>& answers);
+    void addClassicQuiz(Homework* h, const string& question,const MyVector<std::string>& answers, const MyVector<std::string>& correct_answers);
+
 
 
 

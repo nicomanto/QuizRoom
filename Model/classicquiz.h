@@ -10,9 +10,11 @@ private:
 
 public:
     ClassicQuiz();
-    ClassicQuiz(const std::string& q, double tp, double mp, double tm=0);
+    ClassicQuiz(const std::string& q, double tp=100, double mp=0, double tm=0);
 
     const MyVector<std::string>& getCorrectAnswer() const;
+    const MyVector<std::string>& getAnswers() const;
+
 
     void addAnswer(const std::string& a);
     void addCorrectAnswer(const std::string& ca);
@@ -27,6 +29,8 @@ public:
     virtual double CalcPointQuiz()const;
     virtual void setPointCAnswer();
     virtual void showSolution()const;
+
+    virtual void clear_all_answers();
 
     virtual ClassicQuiz *clone() const;
 };

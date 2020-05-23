@@ -6,6 +6,7 @@
 
 #include "addquizform.h"
 #include "Model/myvector.h"
+#include "errordialog.h"
 
 
 class AddClassicQuizForm : public AddQuizForm{
@@ -20,12 +21,12 @@ private:
     virtual void setStyle();
 
 public:
-    explicit AddClassicQuizForm(int number_question,QWidget *parent = nullptr);
+    explicit AddClassicQuizForm(Controller& c, Homework* h, int number_question,QWidget *parent = nullptr);
     ~AddClassicQuizForm()=default;
 
-signals:
 
 public slots:
+    virtual void setInformation();
 };
 
 #endif // ADDCLASSICQUIZFORM_H

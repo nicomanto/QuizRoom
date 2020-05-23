@@ -1,6 +1,6 @@
 #include "addclassicquizform.h"
 
-AddClassicQuizForm::AddClassicQuizForm(int number_question, QWidget *parent): AddQuizForm(number_question, parent){
+AddClassicQuizForm::AddClassicQuizForm(Controller& c,Homework* h, int number_question, QWidget *parent): AddQuizForm(c,h,number_question, parent){
 
     main_layout=new QVBoxLayout(this);
 
@@ -16,6 +16,26 @@ AddClassicQuizForm::AddClassicQuizForm(int number_question, QWidget *parent): Ad
     setStyle();
 
     setLayout(main_layout);
+
+    connect(parentWidget(),SIGNAL(setInformation()),this,SLOT(setInformation()));
+
+}
+
+void AddClassicQuizForm::setInformation(){
+    MyVector<std::string> answers;
+    MyVector<std::string> correct_answers;
+
+    for(unsigned int i=0;i<answers_form.size();i++){
+        if(check_answers[i]->checkState()){
+            correct_answers.push_back(answers_form[i]->text().toStdString());
+        }
+
+        answers.push_back(answers_form[i]->text().toStdString());
+    }
+
+
+        control.addClassicQuiz(this_homework,question_form->text().toStdString(),answers,correct_answers);
+
 
 }
 

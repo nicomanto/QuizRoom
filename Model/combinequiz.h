@@ -8,12 +8,12 @@ private:
 
 public:
     CombineQuiz();
-    CombineQuiz(const std::string& q, double t);
+    CombineQuiz(const std::string& q, double t=100);
 
     const std::map<std::string,std::string>& getCorrectAnswer() const;
 
-    void addCorrectCombine(std::string a1,std::string a2);
-    void removeCorrectCombine(std::string a1);
+    void addCorrectCombine(const std::string& a1,const std::string& a2);
+    void removeCorrectCombine(const std::string& a1);
     bool isCorrectCombine(const std::string& a1, const std::string& a2) const;
     void addPoint(const std::string &a1, const std::string &a2);
 
@@ -23,6 +23,8 @@ public:
     virtual void setPointCAnswer();
 
     virtual void showSolution() const;
+
+    virtual void clear_all_answers();
 
     virtual CombineQuiz *clone() const;
 };

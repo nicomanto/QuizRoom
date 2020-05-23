@@ -30,7 +30,8 @@ void ClassicQuizForm::addForm(){
 
     //aggiunta delle possibili risposte
     int j=-1;
-    for(unsigned int i=0; i<4;++i){
+
+    for(unsigned int i=0; i<answers.size();++i){
         if(i%2==0){
             j++;
             answers_layout->addWidget(answers[i],j,0,Qt::AlignCenter);
@@ -55,7 +56,7 @@ void ClassicQuizForm::setStyle(){
 }
 
 void ClassicQuizForm::randomize_answer(){
-    unsigned int count= this_quiz->getCorrectAnswer().size();
+    unsigned int count= this_quiz->getAnswers().size();
     srand(time(NULL));
     bool exist;
     MyVector<int>  already_included(1,-1);
@@ -66,7 +67,7 @@ void ClassicQuizForm::randomize_answer(){
 
         do{
             exist=false;
-            number=rand()%this_quiz->getCorrectAnswer().size();
+            number=rand()%this_quiz->getAnswers().size();
 
             for(unsigned int i=0;i<already_included.size() && !exist;++i){
                 if(number==already_included[i])
@@ -78,7 +79,9 @@ void ClassicQuizForm::randomize_answer(){
         already_included.push_back(number);
 
         count--;
-        answers.push_back(new QPushButton(QString::fromStdString(this_quiz->getCorrectAnswer()[number]),this));
+        answers.push_back(new QPushButton(QString::fromStdString(this_quiz->getAnswers()[number]),this));
+
+
     }
 }
 

@@ -186,7 +186,7 @@ void HomeworkForm::setStyle(){
 
 
 void HomeworkForm::to_addquiz(){
-    emit to_new_page(new ContainerAddQuizForm(user,control,relogin,parentWidget()));
+    emit to_new_page(new ContainerAddQuizForm(user,control,this_homework,relogin,parentWidget()));
 
     close();
 }
@@ -221,8 +221,7 @@ void HomeworkForm::del_homework(){
 
 
 void HomeworkForm::confirm_addform(const QString& t, const QString& d){
-    if(t=="")
-         throw std::logic_error("Titolo mancante");
+
 
 
    control.modifyHomework(this_homework,t.toStdString(),d.toStdString());

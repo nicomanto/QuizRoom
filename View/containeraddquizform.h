@@ -11,6 +11,8 @@ class ContainerAddQuizForm : public PrincipalForm{
     Q_OBJECT
 private:
 
+    Homework* this_homework;
+
     MyVector<AddQuizForm*> quiz; //vettore della vista dei quiz da aggiungere
     QWidget* container_quiz;
     QVBoxLayout* layout_container_quiz;
@@ -33,21 +35,25 @@ private:
 
 
 public:
-    explicit ContainerAddQuizForm(User* u,Controller& c,bool & r,QWidget *parent = nullptr);
+    explicit ContainerAddQuizForm(User* u,Controller& c,Homework* h,bool & r,QWidget *parent = nullptr);
     ~ContainerAddQuizForm()= default;
 
     virtual ContainerAddQuizForm *clone() const;
 
 signals:
+    void setInformation();
 
 public slots:
 private slots:
     void addCombineWidget();
     void addClassicWidget();
 
+    void to_add_quiz();
+
+
     virtual void confirm_addform(const QString&, const QString&){}
     virtual void to_next_page(int index);
-    virtual void to_previous_page();
+    //virtual void to_previous_page();
 };
 
 #endif // CONTAINERADDQUIZFORM_H

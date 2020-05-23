@@ -31,6 +31,8 @@ public:
     virtual void setPointCAnswer()=0;
     virtual void showSolution()const=0;
 
+    virtual void clear_all_answers()=0;
+
     virtual Quiz *clone() const=0;
     virtual ~Quiz();
 };
