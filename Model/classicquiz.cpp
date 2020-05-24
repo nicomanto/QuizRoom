@@ -2,7 +2,7 @@
 
 ClassicQuiz::ClassicQuiz(){}
 
-ClassicQuiz::ClassicQuiz(const std::string& q, double tp, double mp, double tm): MalusQuiz(q,tp,mp,tm){}
+ClassicQuiz::ClassicQuiz(const std::string& q,double mp, double tm): MalusQuiz(q,mp,tm){}
 
 const MyVector<std::string> &ClassicQuiz::getCorrectAnswer() const{
     return correct_answer;
@@ -73,8 +73,11 @@ double ClassicQuiz::CalcMalus() const //percentuale sui punti della domanda
     return (point_correct_answer*malus_point)/100;
 }
 
-double ClassicQuiz::CalcPointQuiz() const{
-    return (my_point/total_point)*9+1-total_malus;
+double ClassicQuiz::CalcPointQuiz(){
+    double temp=(my_point/total_point)*9+1-total_malus;
+    my_point=0;
+    total_malus=0;
+    return temp;
 }
 
 void ClassicQuiz::setPointCAnswer(){
@@ -84,6 +87,15 @@ void ClassicQuiz::setPointCAnswer(){
 void ClassicQuiz::showSolution() const{
     for(MyVector<std::string>::const_iterator it=correct_answer.begin(); it!=correct_answer.end(); ++it)
         std::cout<<*it<<std::endl;
+}
+
+std::string ClassicQuiz::SolutionToString() const{
+    std::string temp="";
+    for(MyVector<std::string>::const_iterator it=correct_answer.begin(); it!=correct_answer.end(); ++it)
+        temp.append(*it+"\n");
+
+    return temp;
+
 }
 
 void ClassicQuiz::clear_all_answers(){

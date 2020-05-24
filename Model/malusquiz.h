@@ -8,7 +8,7 @@ protected:
     double malus_point;
 public:
     MalusQuiz();
-    MalusQuiz(const std::string& q, double tp, double mp, double tm=0);
+    MalusQuiz(const std::string& q,double mp, double tm=0);
 
     double getTotalMalus() const;
     double getMalusPoint() const;
@@ -19,10 +19,12 @@ public:
 
     virtual bool HaveMalus() const;
     virtual double CalcMalus() const=0;
-    virtual double CalcPointQuiz()const=0;
+    virtual double CalcPointQuiz()=0;
 
     virtual void setPointCAnswer()=0;
     virtual void showSolution()const=0;
+
+    virtual std::string SolutionToString()const=0;
 
     virtual Quiz *clone() const=0;
 

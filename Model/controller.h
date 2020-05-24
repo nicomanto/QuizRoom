@@ -46,7 +46,7 @@ public:
     void addClassicQuiz(Homework* h, const string& question,const MyVector<std::string>& answers, const MyVector<std::string>& correct_answers);
 
 
-
+    //void addPoint(Homework* k);
 
     User* getUser(const string& u, const string& p) const;
 };

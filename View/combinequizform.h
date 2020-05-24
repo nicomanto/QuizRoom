@@ -32,6 +32,7 @@ public:
 signals:
 
 public slots:
+   virtual void getAnswers();
 };
 
 #endif // COMBINEQUIZFORM_H

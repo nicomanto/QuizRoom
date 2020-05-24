@@ -28,6 +28,10 @@ bool ScoreHomework::isTimeHomework() const{
     return false;
 }
 
+bool ScoreHomework::haveResult() const{
+    return true;
+}
+
 void ScoreHomework::addQuiz(Quiz* q){
     Homework::addQuiz(q);
 

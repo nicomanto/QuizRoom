@@ -21,6 +21,14 @@ ClassicQuizForm::ClassicQuizForm(ClassicQuiz* q, QWidget *parent): QuizBaseForm(
     setStyle();
 
     setLayout(main_layout);
+
+    connect(parentWidget(),SIGNAL(getAnswers()),this,SLOT(getAnswers()));
+}
+
+void ClassicQuizForm::getAnswers(){
+    for(unsigned int i=0; i< answers.size();++i)
+        if(answers[i]->isChecked())
+            this_quiz->addPoint(answers[i]->text().toStdString());
 }
 
 
@@ -50,7 +58,7 @@ void ClassicQuizForm::addForm(){
 void ClassicQuizForm::setStyle(){
     QuizBaseForm::setStyle();
 
-    for(unsigned int i=0;i<4;++i){
+    for(unsigned int i=0;i<answers.size();++i){
         answers[i]->setCheckable(true);
     }
 }

@@ -2,7 +2,7 @@
 
 MalusQuiz::MalusQuiz(): Quiz(), total_malus(0), malus_point(0){}
 
-MalusQuiz::MalusQuiz(const std::string& q, double tp, double mp, double tm) : Quiz(q,tp), total_malus(tm), malus_point(mp){}
+MalusQuiz::MalusQuiz(const std::string& q,double mp, double tm) : Quiz(q), total_malus(tm), malus_point(mp){}
 
 double MalusQuiz::getTotalMalus() const{
     return total_malus;

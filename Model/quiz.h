@@ -13,7 +13,7 @@ protected:
     double my_point;
 public:
     Quiz();
-    Quiz(const std::string& q,double t);
+    Quiz(const std::string& q);
 
     std::string getQuestion() const;
     double getTotalPoint() const;
@@ -26,10 +26,12 @@ public:
     void addPointCorrectAnswer(double m);
 
     virtual bool HaveMalus() const=0;
-    virtual double CalcPointQuiz()const=0;
+    virtual double CalcPointQuiz()=0;
 
     virtual void setPointCAnswer()=0;
     virtual void showSolution()const=0;
+
+    virtual std::string SolutionToString()const=0;
 
     virtual void clear_all_answers()=0;
 

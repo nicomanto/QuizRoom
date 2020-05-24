@@ -33,6 +33,14 @@ CombineQuizForm::CombineQuizForm(CombineQuiz* q, QWidget *parent): QuizBaseForm(
     setStyle();
 
     setLayout(main_layout);
+
+
+    connect(parentWidget(),SIGNAL(getAnswers()),this,SLOT(getAnswers()));
+}
+
+void CombineQuizForm::getAnswers(){
+    for(unsigned int i=0; i< elements.size();++i)
+        this_quiz->addPoint(elements[i]->text().toStdString(),answers[i]->currentText().toStdString());
 }
 
 

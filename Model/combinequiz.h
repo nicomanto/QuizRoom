@@ -8,7 +8,7 @@ private:
 
 public:
     CombineQuiz();
-    CombineQuiz(const std::string& q, double t=100);
+    CombineQuiz(const std::string& q);
 
     const std::map<std::string,std::string>& getCorrectAnswer() const;
 
@@ -19,10 +19,12 @@ public:
 
 
     virtual bool HaveMalus() const;
-    virtual double CalcPointQuiz()const;
+    virtual double CalcPointQuiz();
     virtual void setPointCAnswer();
 
     virtual void showSolution() const;
+
+    virtual std::string SolutionToString()const;
 
     virtual void clear_all_answers();
 

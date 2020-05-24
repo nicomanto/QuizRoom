@@ -16,6 +16,10 @@ public:
 
     virtual bool isScoreHomework() const;
     virtual bool isTimeHomework() const;
+    virtual bool haveResult() const;
+
+
+
     virtual double getResult() const;  //ritorna 1 se la consegna è stata fatta prima o == alla deadline, 0 altrimenti
     virtual TimeHomework *clone() const;
 

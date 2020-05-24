@@ -20,6 +20,10 @@ bool TimeHomework::isTimeHomework() const{
     return true;
 }
 
+bool TimeHomework::haveResult() const{
+    return true;
+}
+
 double TimeHomework::getResult() const{
     DateTime now(DateTime::getCurrentDateTime());
 

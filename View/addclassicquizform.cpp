@@ -34,7 +34,7 @@ void AddClassicQuizForm::setInformation(){
     }
 
 
-        control.addClassicQuiz(this_homework,question_form->text().toStdString(),answers,correct_answers);
+    control.addClassicQuiz(this_homework,question_form->text().toStdString(),answers,correct_answers);
 
 
 }

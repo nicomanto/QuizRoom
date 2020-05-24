@@ -10,7 +10,7 @@ private:
 
 public:
     ClassicQuiz();
-    ClassicQuiz(const std::string& q, double tp=100, double mp=0, double tm=0);
+    ClassicQuiz(const std::string& q, double mp=1, double tm=0);
 
     const MyVector<std::string>& getCorrectAnswer() const;
     const MyVector<std::string>& getAnswers() const;
@@ -26,9 +26,11 @@ public:
     void addPoint(const std::string &ca); //aggiunge il punteggio in base se la risposta è esatta, oppure aggiunge un malus
 
     virtual double CalcMalus() const;
-    virtual double CalcPointQuiz()const;
+    virtual double CalcPointQuiz();
     virtual void setPointCAnswer();
     virtual void showSolution()const;
+
+    virtual std::string SolutionToString()const;
 
     virtual void clear_all_answers();
 

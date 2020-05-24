@@ -12,10 +12,10 @@ HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *p
     if(this_homework->isScoreHomework()){ //se è uno scorehomework;
 
         ScoreHomework* t= dynamic_cast < ScoreHomework* > ( this_homework );
-        int my_score=0;
+        //int my_score=0;
         //int total_score=200;
-        QString s(QString::number(my_score)+'/'+QString::number(t->getTotalScore()));
-        score= new QLabel("Score: "+s,this);
+        QString s(QString::number(t->getTotalAllPoint()));
+        score= new QLabel("Punteggio massimo: "+s,this);
     }
 
     if(this_homework->isTimeHomework()){ //se è un timehomework
@@ -192,7 +192,7 @@ void HomeworkForm::to_addquiz(){
 }
 
 void HomeworkForm::to_next_page(int index){
-    emit to_new_page(new ContainerQuizForm(user,control,this_homework->getQuiz(),relogin,parentWidget()));
+    emit to_new_page(new ContainerQuizForm(user,control,this_homework,relogin,parentWidget()));
 
     close();
 }

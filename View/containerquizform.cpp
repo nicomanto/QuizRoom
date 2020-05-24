@@ -1,6 +1,6 @@
 #include "containerquizform.h"
 
-ContainerQuizForm::ContainerQuizForm(User* u,Controller& c,const MyVector<Quiz*>& q,bool & r,QWidget *parent): PrincipalForm(u,c,r, parent),quiz_model(q),scroll_layout(new QVBoxLayout(container_scroll)),end_quiz(new QPushButton("termina il quiz",this)),
+ContainerQuizForm::ContainerQuizForm(User* u,Controller& c,Homework* h,bool & r,QWidget *parent): PrincipalForm(u,c,r, parent),this_homework(h),scroll_layout(new QVBoxLayout(container_scroll)),end_quiz(new QPushButton("termina il quiz",this)),
     container_button(new QWidget(this)), layout_button(new QVBoxLayout(container_button)){
     main_layout=new QVBoxLayout(this);
     menubar=new QMenuBar(this);
@@ -11,10 +11,12 @@ ContainerQuizForm::ContainerQuizForm(User* u,Controller& c,const MyVector<Quiz*>
     setStyle();
 
     setLayout(main_layout);
+
+    connect(end_quiz,SIGNAL(clicked()),this,SLOT(show_result()));
 }
 
 ContainerQuizForm *ContainerQuizForm::clone() const{
-    return new ContainerQuizForm(user,control,quiz_model,relogin,parentWidget());
+    return new ContainerQuizForm(user,control,this_homework,relogin,parentWidget());
 }
 
 
@@ -38,15 +40,15 @@ void ContainerQuizForm::addForm(){
 
 
    //aggiungo i quiz
-    for(unsigned int i=0; i <quiz_model.size(); ++i){
+    for(unsigned int i=0; i <this_homework->getQuiz().size(); ++i){
 
         quiz_box.push_back(new QGroupBox("Domanda "+QString::number(i+1),this));
         QVBoxLayout* temp= new QVBoxLayout(quiz_box[i]);
 
-        if(dynamic_cast<ClassicQuiz*>(quiz_model[i]))
-            quiz.push_back(new ClassicQuizForm(dynamic_cast<ClassicQuiz*>(quiz_model[i])));
+        if(dynamic_cast<ClassicQuiz*>(this_homework->getQuiz()[i]))
+            quiz.push_back(new ClassicQuizForm(dynamic_cast<ClassicQuiz*>(this_homework->getQuiz()[i]),this));
         else
-            quiz.push_back(new CombineQuizForm(dynamic_cast<CombineQuiz*>(quiz_model[i])));
+            quiz.push_back(new CombineQuizForm(dynamic_cast<CombineQuiz*>(this_homework->getQuiz()[i]),this));
 
         temp->addWidget(quiz[i]);
 
@@ -63,7 +65,7 @@ void ContainerQuizForm::setStyle(){
     PrincipalForm::setStyle();
 
     //stile della vista dei quiz
-    for(unsigned int i=0; i <quiz_model.size(); ++i){
+    for(unsigned int i=0; i <this_homework->getQuiz().size(); ++i){
        quiz_box[i]->setMinimumSize(QSize(width()/2,height()));
         quiz_box[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         quiz[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
@@ -105,6 +107,30 @@ void ContainerQuizForm::setStyle(){
 
 
 void ContainerQuizForm::to_next_page(int index){}
+
+void ContainerQuizForm::show_result(){
+
+    emit getAnswers();
+
+    // Creo la finestra col messaggio con QDialog
+    QDialog* dialog = new QDialog(this);
+    QVBoxLayout* layout = new QVBoxLayout(dialog);
+
+    // Inserisco il messaggio nella finestra con QLabel
+    QString temp("Ecco le risposte corrette: \n"+QString::fromStdString(this_homework->AllSolutionToString()));
+
+    if(this_homework->haveResult()){
+        temp.append("\nVoto ottenuto: "+QString::number(this_homework->getResult()));
+    }
+
+    QLabel* informations=new QLabel(temp,dialog);
+    informations->setFont(QFont( "Arial", 12));
+
+    layout->addWidget(informations);
+    layout->setAlignment(Qt::AlignCenter);
+    // Mostrare la finestra
+    dialog->show();
+}
 
 /*void ContainerQuizForm::to_previous_page(){
     //emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));

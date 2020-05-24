@@ -28,6 +28,7 @@ public:
 
 
 
+    std::string AllSolutionToString() const;
 
     void showAllSolution() const; //mostra tutte le soluzioni dei quiz
     void showQuizSolution(const std::string& q) const; //mostra le soluzioni specifiche di un quiz
@@ -40,6 +41,7 @@ public:
 
     virtual bool isScoreHomework() const;
     virtual bool isTimeHomework() const;
+    virtual bool haveResult() const;
     virtual double getResult() const; //ritorna il risultato del quiz
     virtual Homework *clone() const;
     virtual ~Homework();

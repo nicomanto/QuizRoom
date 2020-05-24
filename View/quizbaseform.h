@@ -35,6 +35,10 @@ public:
     virtual ~QuizBaseForm();
 
 
+public slots:
+    virtual void getAnswers() =0;
+
+
 };
 
 #endif // QUIZBASEFORM_H

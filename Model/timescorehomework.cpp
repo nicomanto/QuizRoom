@@ -12,6 +12,10 @@ bool TimeScoreHomework::isTimeHomework() const{
     return true;
 }
 
+bool TimeScoreHomework::haveResult() const{
+    return true;
+}
+
 double TimeScoreHomework::getResult() const{
     double somma=ScoreHomework::getResult();
 

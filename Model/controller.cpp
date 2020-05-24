@@ -21,17 +21,23 @@ Controller::Controller(){
     Homework* homework_1= new TimeScoreHomework(data, "Prova compito");
     Homework* homework_2= new ScoreHomework("Prova compito 2","istruzioni");
 
-    ClassicQuiz* quiz_1= new ClassicQuiz("Di che color è il cavallo bianco di napoleone?",100,0);
-    quiz_1->addCorrectAnswer("Nero");
-    quiz_1->addCorrectAnswer("Rosso");
+    ClassicQuiz* quiz_1= new ClassicQuiz("Di che color è il cavallo bianco di napoleone?");
+    quiz_1->addAnswer("Nero");
+    quiz_1->addAnswer("Rosso");
     quiz_1->addCorrectAnswer("Bianco");
-    quiz_1->addCorrectAnswer("Verde");
+    quiz_1->addAnswer("Verde");
 
-    CombineQuiz* quiz_2= new CombineQuiz("Abbina questi animali",100);
+    CombineQuiz* quiz_2= new CombineQuiz("Abbina questi animali");
     quiz_2->addCorrectCombine("scimmia","mammifero");
     quiz_2->addCorrectCombine("cavallo","mammifero");
     quiz_2->addCorrectCombine("lucertola","rettile");
     quiz_2->addCorrectCombine("squalo","pesce");
+
+    ClassicQuiz* quiz_3= new ClassicQuiz("Di che color è il cavallo nero di napoleone?");
+    quiz_3->addCorrectAnswer("Nero");
+    quiz_3->addAnswer("Rosso");
+    quiz_3->addAnswer("Bianco");
+    quiz_3->addAnswer("Verde");
 
 
 
@@ -39,7 +45,7 @@ Controller::Controller(){
         course_2->setCode();
 
     homework_1->addQuiz(quiz_1);
-    homework_1->addQuiz(quiz_1);
+    homework_1->addQuiz(quiz_3);
 
     homework_2->addQuiz(quiz_1);
     homework_2->addQuiz(quiz_2);
@@ -293,6 +299,9 @@ void Controller::addClassicQuiz(Homework *h, const std::string &question, const 
         h->addQuiz(quiz);
     }
 }
+
+/*void Controller::addPoint(Homework *k,){
+}*/
 
 void Controller::modifyCourse(Course *c, const string& t, const string& d){
     if(t=="")

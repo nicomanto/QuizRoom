@@ -2,7 +2,7 @@
 
 CombineQuiz::CombineQuiz(){}
 
-CombineQuiz::CombineQuiz(const std::string &q, double t): Quiz(q,t){}
+CombineQuiz::CombineQuiz(const std::string &q): Quiz(q){}
 
 const std::map<std::string,std::string>& CombineQuiz::getCorrectAnswer() const{
     return correct_combine;
@@ -35,8 +35,10 @@ bool CombineQuiz::HaveMalus() const{
     return false;
 }
 
-double CombineQuiz::CalcPointQuiz() const{ // calcolo risultato diverso
-    return (my_point/total_point)*10;
+double CombineQuiz::CalcPointQuiz(){ // calcolo risultato diverso
+    double temp=(my_point/total_point)*10;
+    my_point=0;
+    return temp;
 }
 
 void CombineQuiz::setPointCAnswer(){
@@ -46,6 +48,14 @@ void CombineQuiz::setPointCAnswer(){
 void CombineQuiz::showSolution() const{
     for(std::map<std::string,std::string>::const_iterator it=correct_combine.begin(); it!=correct_combine.end(); ++it)
         std::cout<<it->first<<" "<<it->second<<std::endl;
+}
+
+std::string CombineQuiz::SolutionToString() const{
+    std::string temp="";
+    for(std::map<std::string,std::string>::const_iterator it=correct_combine.begin(); it!=correct_combine.end(); ++it)
+        temp.append(it->first+" "+it->second+"\n");
+
+    return temp;
 }
 
 void CombineQuiz::clear_all_answers(){

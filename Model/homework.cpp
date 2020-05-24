@@ -29,6 +29,21 @@ void Homework::setDone(bool t){
     done=t;
 }
 
+std::string Homework::AllSolutionToString() const{
+
+    int i=1;
+    string temp="";
+    for(MyVector<Quiz*>::const_iterator it=quiz.begin(); it!=quiz.end(); ++it){
+        temp.append("\nQuiz ");
+        temp.append(std::to_string(i)+":\n");
+        temp.append((*it)->SolutionToString()+"\n");
+        temp.append("Punti ottenuti: "+std::to_string((*it)->getMyPoint())+"\n");
+        ++i;
+    }
+
+    return temp;
+}
+
 
 bool Homework::isDone() const{
     return done;
@@ -112,6 +127,10 @@ bool Homework::isScoreHomework() const{
 }
 
 bool Homework::isTimeHomework() const{
+    return false;
+}
+
+bool Homework::haveResult() const{
     return false;
 }
 
