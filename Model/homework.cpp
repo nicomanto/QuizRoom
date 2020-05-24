@@ -29,6 +29,10 @@ void Homework::setDone(bool t){
     done=t;
 }
 
+void Homework::clearQuiz(){
+    quiz.clear();
+}
+
 std::string Homework::AllSolutionToString() const{
 
     int i=1;

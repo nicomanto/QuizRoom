@@ -117,6 +117,9 @@ void ContainerAddQuizForm::to_add_quiz(){
 
     try{
 
+        if(!(this_homework->getQuiz().empty()))
+            this_homework->clearQuiz();
+
         emit setInformation();
         emit to_update_previous_page();
         //HomeworkForm* temp= new HomeworkForm(user,control,this_homework,relogin,parentWidget());

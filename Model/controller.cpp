@@ -189,7 +189,7 @@ void Controller::addCombineQuiz(Homework *h, const std::string &question, const 
 
 
 
-    bool not_exist=true;
+    /*bool not_exist=true;
 
     //controllo se esiste un quiz con la domanda uguale e lo aggiorno
     for(unsigned int i=0;i <h->getQuiz().size() && not_exist;++i){
@@ -210,10 +210,10 @@ void Controller::addCombineQuiz(Homework *h, const std::string &question, const 
         }
 
 
-    }
+    }*/
 
 
-    if(not_exist){
+
         CombineQuiz* quiz= new CombineQuiz(question);
 
         for(unsigned int i=0; i<elements.size();++i){
@@ -222,7 +222,7 @@ void Controller::addCombineQuiz(Homework *h, const std::string &question, const 
         }
 
         h->addQuiz(quiz);
-    }
+
 }
 
 void Controller::addClassicQuiz(Homework *h, const std::string &question, const MyVector<std::string>& answers, const MyVector<std::string>& correct_answers){
@@ -252,7 +252,7 @@ void Controller::addClassicQuiz(Homework *h, const std::string &question, const 
 
     }
 
-    bool not_exist=true;
+    /*bool not_exist=true;
 
     //controllo se esiste un quiz con la domanda uguale e lo aggiorno
     for(unsigned int i=0;i <h->getQuiz().size() && not_exist;++i){
@@ -279,10 +279,10 @@ void Controller::addClassicQuiz(Homework *h, const std::string &question, const 
         }
 
 
-    }
+    }*/
 
 
-    if(not_exist){
+
         ClassicQuiz* quiz= new ClassicQuiz(question);
 
         //std::cout<<"size answer: "<<answers.size()<<std::endl;
@@ -297,7 +297,7 @@ void Controller::addClassicQuiz(Homework *h, const std::string &question, const 
         }
 
         h->addQuiz(quiz);
-    }
+
 }
 
 /*void Controller::addPoint(Homework *k,){

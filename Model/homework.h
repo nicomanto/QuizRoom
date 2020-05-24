@@ -26,7 +26,7 @@ public:
     void setInstructions(const string& i);
     void setDone(bool t);
 
-
+    void clearQuiz();
 
     std::string AllSolutionToString() const;
 
