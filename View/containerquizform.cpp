@@ -34,6 +34,8 @@ void ContainerQuizForm::addMenu(){
 
 void ContainerQuizForm::addForm(){
 
+   end_quiz->setVisible(false);
+
    main_layout->addWidget(scroll);
 
    scroll->setWidget( container_scroll );
@@ -56,7 +58,15 @@ void ContainerQuizForm::addForm(){
 
     }
 
+
     layout_button->addWidget(end_quiz);
+
+    if(!this_homework->getQuiz().empty())
+        end_quiz->setVisible(true);
+    else{
+        layout_button->addWidget(new QLabel("Nessun quiz presente, ritorna più tardi"));
+    }
+
     scroll_layout->addWidget(container_button);
 
 }

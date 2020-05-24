@@ -145,7 +145,7 @@ void HomeworkForm::setStyle(){
     add_quiz->setFixedSize(QSize(width()/3,height()/7));
     add_quiz->setVisible(false);
 
-    if(this_homework->getQuiz().empty())//controllo se ha già un quiz o se ne è sprovvisto, in quel caso se ne può aggiungere uno
+    if(this_homework->getQuiz().empty() && user->CanAddQuiz())//controllo se ha già un quiz o se ne è sprovvisto, in quel caso se ne può aggiungere uno
         add_quiz->setVisible(true);
 
     //aggiunta dei alcuni font
