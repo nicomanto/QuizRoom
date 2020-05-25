@@ -86,6 +86,29 @@ PrincipalForm *Controller::getPreviousPage(){
     return *(--stack_page.end());
 }
 
+void Controller::addCourseFromCode(User *s, const std::string &code){
+    bool find=false;
+
+    for(unsigned int i=0;i<s->getCourse().size(); ++i){
+        if(s->getCourse()[i]->getCode()==code)
+            throw std::logic_error("Sei già iscritto a questo corso");
+    }
+
+    for(unsigned int i=0;i<users.size() && !find;++i){
+        for(unsigned int j=0;j<users[i]->getCourse().size() && !find;++j){
+                if(users[i]->getCourse()[j]->getCode()==code){
+                    s->addCourse(users[i]->getCourse()[j]);
+                    find=true;
+                }
+        }
+
+
+    }
+
+    if(!find)
+        throw std::logic_error("Corso "+code+"  non presente");
+}
+
 
 
 

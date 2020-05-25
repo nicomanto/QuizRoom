@@ -31,6 +31,8 @@ public:
 
     PrincipalForm* getPreviousPage();
 
+    void addCourseFromCode(User* s, const string& code);
+
     void addCourse(User* s, const string& t, const string& d);
     void modifyCourse(Course* c,const string& t,const string& d);
     void deleteCourse(User* s, unsigned int i);

@@ -10,6 +10,7 @@
 #include "principalform.h"
 #include "courseform.h"
 #include "menubutton.h"
+#include "addcoursecode.h"
 
 
 
@@ -40,6 +41,9 @@ public:
 private slots:
     void del_course(int i);
 
+    void addCourse();
+
+    void send_code(const QString&);
 
     virtual void confirm_addform(const QString &, const QString &);
 

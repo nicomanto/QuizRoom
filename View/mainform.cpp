@@ -26,6 +26,8 @@ void MainForm::addMenu(){
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
     QAction* subscribe_course = new QAction("iscriviti al corso",course);
 
+    connect(subscribe_course,SIGNAL(triggered()),this,SLOT(addCourse()));
+
 
 
     if(user->CanAddCourse()){
@@ -184,6 +186,30 @@ void MainForm::del_course(int i){
 
     emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
     control.removeStackView();
+
+    close();
+}
+
+void MainForm::addCourse(){
+    QDialog* dialog = new QDialog(this);
+    QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
+
+    AddCourseCode* temp= new AddCourseCode(dialog);
+    layout_dialog->addWidget(temp);
+
+    connect(temp,SIGNAL(addCourse(const QString&)),this,SLOT(send_code(const QString&)));
+    connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
+
+    layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
+
+    dialog->show();
+}
+
+void MainForm::send_code(const QString & code){
+    //invio il codice al controller;
+    control.addCourseFromCode(user,code.toStdString());
+
+    emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
 
     close();
 }
