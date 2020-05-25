@@ -106,7 +106,7 @@ void Controller::addCourseFromCode(User *s, const std::string &code){
     }
 
     if(!find)
-        throw std::logic_error("Corso "+code+"  non presente");
+        throw std::logic_error("Corso "+code+" non presente");
 }
 
 
