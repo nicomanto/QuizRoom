@@ -1,14 +1,14 @@
 #include "homework.h"
 
-Homework::Homework(): done(false){}
+Homework::Homework(){}
 
-Homework::Homework(const string& t, const string& i): title(t), instructions(i), done(false){}
+Homework::Homework(const string& t, const string& i): title(t), instructions(i){}
 
-string Homework::getTitle() const{
+const string& Homework::getTitle() const{
     return title;
 }
 
-std::string Homework::getInstructions() const
+const std::string& Homework::getInstructions() const
 {
     return instructions;
 }
@@ -25,15 +25,12 @@ void Homework::setInstructions(const string& i){
     instructions=i;
 }
 
-void Homework::setDone(bool t){
-    done=t;
-}
 
 void Homework::clearQuiz(){
     quiz.clear();
 }
 
-std::string Homework::AllSolutionToString() const{
+const std::string Homework::AllSolutionToString() const{
 
     int i=1;
     string temp="";
@@ -46,11 +43,6 @@ std::string Homework::AllSolutionToString() const{
     }
 
     return temp;
-}
-
-
-bool Homework::isDone() const{
-    return done;
 }
 
 

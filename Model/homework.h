@@ -11,24 +11,21 @@ protected:
     string title;
     string instructions;
 
-    bool done;
     MyVector<Quiz*> quiz;
 public:
     Homework();
     Homework(const string& t, const string& i=string());
 
-    string getTitle() const;
-    string getInstructions() const;
-    bool isDone() const;
+    const string& getTitle() const;
+    const string& getInstructions() const;
     const MyVector<Quiz*>& getQuiz() const; //ritorna il vettore che contiene i container dei quiz
 
     void setTitle(const string& t);
     void setInstructions(const string& i);
-    void setDone(bool t);
 
     void clearQuiz();
 
-    std::string AllSolutionToString() const;
+    const std::string AllSolutionToString() const;
 
     void showAllSolution() const; //mostra tutte le soluzioni dei quiz
     void showQuizSolution(const std::string& q) const; //mostra le soluzioni specifiche di un quiz
@@ -41,8 +38,10 @@ public:
 
     virtual bool isScoreHomework() const;
     virtual bool isTimeHomework() const;
+
     virtual bool haveResult() const;
     virtual double getResult() const; //ritorna il risultato del quiz
+
     virtual Homework *clone() const;
     virtual ~Homework();
 };

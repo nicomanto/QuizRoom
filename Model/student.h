@@ -18,10 +18,7 @@ public:
     virtual bool CanAddQuiz() const;
     virtual bool CanDeleteQuiz() const;
     virtual bool CanEditQuiz() const;
-    virtual bool CanDoQuiz()const;
-
-    virtual double ShowCourseStatistics(const Course& c) const; //da implementare
-
+    //virtual bool CanDoQuiz()const;
 
     Student *clone() const;
 };

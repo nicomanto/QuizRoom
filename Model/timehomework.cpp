@@ -8,7 +8,7 @@ void TimeHomework::setDeadline(const DateTime &d){
     deadline=d;
 }
 
-DateTime TimeHomework::getDeadline() const{
+const DateTime& TimeHomework::getDeadline() const{
     return deadline;
 }
 

@@ -8,6 +8,8 @@ private:
     MyVector<std::string> correct_answer;
     MyVector<std::string> answer;
 
+    virtual void setPointCAnswer();
+    virtual void resetPoint();
 public:
     ClassicQuiz();
     ClassicQuiz(const std::string& q, double mp=1, double tm=0);
@@ -21,16 +23,16 @@ public:
     void removeAnswer(const std::string& a);
     void removeCorrectAnswer(const std::string& ca);
     bool isAnswer(const std::string& a) const;
-    bool isCorrectAnswer(const std::string& ca);
+    bool isCorrectAnswer(const std::string& ca)const ;
 
     void addPoint(const std::string &ca); //aggiunge il punteggio in base se la risposta è esatta, oppure aggiunge un malus
 
     virtual double CalcMalus() const;
     virtual double CalcPointQuiz();
-    virtual void setPointCAnswer();
+
     virtual void showSolution()const;
 
-    virtual std::string SolutionToString()const;
+    virtual const std::string SolutionToString()const;
 
     virtual void clear_all_answers();
 

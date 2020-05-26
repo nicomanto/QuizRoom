@@ -12,7 +12,7 @@ public:
     TimeHomework();
     TimeHomework(const DateTime& d,const string& t,const string& i=string());
 
-    DateTime getDeadline() const;
+    const DateTime& getDeadline() const;
 
     virtual bool isScoreHomework() const;
     virtual bool isTimeHomework() const;

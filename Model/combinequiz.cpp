@@ -37,7 +37,7 @@ bool CombineQuiz::HaveMalus() const{
 
 double CombineQuiz::CalcPointQuiz(){ // calcolo risultato diverso
     double temp=(my_point/total_point)*10;
-    my_point=0;
+    resetPoint();
     return temp;
 }
 
@@ -50,7 +50,11 @@ void CombineQuiz::showSolution() const{
         std::cout<<it->first<<" "<<it->second<<std::endl;
 }
 
-std::string CombineQuiz::SolutionToString() const{
+void CombineQuiz::resetPoint(){
+    my_point=0;
+}
+
+const std::string CombineQuiz::SolutionToString() const{
     std::string temp="";
     for(std::map<std::string,std::string>::const_iterator it=correct_combine.begin(); it!=correct_combine.end(); ++it)
         temp.append(it->first+" "+it->second+"\n");
@@ -60,6 +64,7 @@ std::string CombineQuiz::SolutionToString() const{
 
 void CombineQuiz::clear_all_answers(){
     correct_combine.clear();
+    resetPoint();
 }
 
 CombineQuiz *CombineQuiz::clone() const{

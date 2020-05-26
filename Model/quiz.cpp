@@ -1,11 +1,11 @@
 #include "quiz.h"
 
 
-Quiz::Quiz():question(std::string()), total_point(10), point_correct_answer(0), my_point(0){}
+Quiz::Quiz():question(std::string()), point_correct_answer(0), my_point(0){}
 
-Quiz::Quiz(const std::string& q): question(q), total_point(10), point_correct_answer(0), my_point(0){}
+Quiz::Quiz(const std::string& q): question(q), point_correct_answer(0), my_point(0){}
 
-std::string Quiz::getQuestion() const{
+const std::string& Quiz::getQuestion() const{
     return question;
 }
 
@@ -25,17 +25,16 @@ void Quiz::setQuestion(const std::string& q){
     question=q;
 }
 
-void Quiz::setTotalPoint(int p){
-    total_point=p;
-}
-
 void Quiz::addMyPoint(double p){
     my_point+=p;
 }
 
-void Quiz::addPointCorrectAnswer(double m){
+/*void Quiz::addPointCorrectAnswer(double m){
     point_correct_answer+=m;
-}
+}*/
 
 
 Quiz::~Quiz(){}
+
+
+double Quiz::total_point=10;

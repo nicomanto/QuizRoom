@@ -6,6 +6,9 @@ class CombineQuiz : public Quiz{ //NO-Malus
 private:
     std::map<std::string,std::string> correct_combine;
 
+
+    virtual void setPointCAnswer();
+    virtual void resetPoint();
 public:
     CombineQuiz();
     CombineQuiz(const std::string& q);
@@ -15,16 +18,17 @@ public:
     void addCorrectCombine(const std::string& a1,const std::string& a2);
     void removeCorrectCombine(const std::string& a1);
     bool isCorrectCombine(const std::string& a1, const std::string& a2) const;
-    void addPoint(const std::string &a1, const std::string &a2);
 
 
     virtual bool HaveMalus() const;
     virtual double CalcPointQuiz();
-    virtual void setPointCAnswer();
 
+    void addPoint(const std::string &a1, const std::string &a2);
     virtual void showSolution() const;
 
-    virtual std::string SolutionToString()const;
+
+
+    virtual const std::string SolutionToString()const;
 
     virtual void clear_all_answers();
 

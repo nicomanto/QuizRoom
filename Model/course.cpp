@@ -4,26 +4,20 @@ Course::Course(const string& t, const string& d): title(t), code(random_code()),
     //settare classroom dal file
 }
 
-string Course::getTitle() const{
+const string& Course::getTitle() const{
     return title;
 }
 
-string Course::getCode() const
-{
+const string& Course::getCode() const{
     return code;
 }
 
-string Course::getDescription() const
-{
+const string& Course::getDescription() const{
     return description;
 }
 
 const MyVector<Homework *> &Course::getHomeworks() const{
     return homew;
-}
-
-const MyVector<User *> &Course::getClassroom() const{
-    return classroom;
 }
 
 void Course::setTitle(const string& t){
@@ -53,39 +47,12 @@ void Course::removeHomework(Homework *h){
         homew.erase(it);
 }
 
-void Course::addUser(User *h){
-    classroom.push_back(h);
-}
-
-void Course::removeUser(User *h){
-    MyVector<User*>::iterator it=classroom.begin();
-    bool temp=true;
-    while(it!=classroom.end() && temp){
-        if((*(*it))==*h)
-            temp = false;
-          else
-            ++it;
-    }
-
-    if(!temp)
-        classroom.erase(it);
-}
-
-double Course::ShowAllHomeworkStatistics() const{
-    //da implementare
-    double statistics=0; //percentuale homework completati
-    for(MyVector<Homework*>::const_iterator it = homew.begin(); it!=homew.end(); ++it)
-        statistics+=(*it)->isDone();
-
-    return statistics/homew.size()*100;
-}
-
 
 void Course::setCode(){
     code=random_code();
 }
 
-string Course::random_code(){
+const string Course::random_code(){
     string temp;
 
     srand(time(NULL));

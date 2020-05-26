@@ -14,11 +14,11 @@ protected:
     MyVector<Course*> course; // da mettere dopo che è stata creata l'opportuna classe;
 public:
     User();
-    User(const string& u,const string& p); //da aggiungere i corsi
+    User(const string& u,const string& p);
 
     string getUsername() const;
     string getPassword() const;
-    const MyVector<Course*>& getCourse() const;  //da implementare
+    const MyVector<Course*>& getCourse() const;
 
     void setUsername(const string& u);
     void setPassword(const string& p);
@@ -36,10 +36,9 @@ public:
     virtual bool CanAddQuiz() const=0;
     virtual bool CanDeleteQuiz() const=0;
     virtual bool CanEditQuiz() const=0;
-    virtual bool CanDoQuiz() const=0;
+    //virtual bool CanDoQuiz() const=0;
 
 
-    virtual double ShowCourseStatistics(const Course& c) const=0;//implementazione diverse per teacher o student
     virtual User* clone() const=0;
     virtual ~User();
 
