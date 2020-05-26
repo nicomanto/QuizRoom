@@ -3,7 +3,7 @@
 
 CourseForm::CourseForm(User* u,Controller& c,Course* course, bool & r,QWidget *parent): PrincipalForm(u,c,r,parent), this_course(course), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
     center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(QString::fromStdString(this_course->getTitle()),this)),
-    course_description(new QLabel(QString::fromStdString(this_course->getDescription()),this)),course_code(new QLabel(QString::fromStdString(this_course->getCode()),this)){
+    course_description(new QLabel(QString::fromStdString(this_course->getDescription()),this)),course_code(new QLabel(QString::fromStdString("Codice: "+this_course->getCode()),this)){
 
     main_layout=new QVBoxLayout(this);
     scroll= new QScrollArea(this);
