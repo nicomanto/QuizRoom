@@ -1,7 +1,9 @@
 #ifndef COMBINEQUIZ_H
 #define COMBINEQUIZ_H
-#include "quiz.h"
 #include <map>
+#include <iostream>
+#include "quiz.h"
+
 class CombineQuiz : public Quiz{ //NO-Malus
 private:
     std::map<std::string,std::string> correct_combine;

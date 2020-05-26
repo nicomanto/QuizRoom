@@ -1,9 +1,6 @@
 #ifndef QUIZ_H
 #define QUIZ_H
 #include <string>
-#include "myvector.h"
-#include <map>
-
 
 class Quiz{
 protected:

@@ -1,7 +1,8 @@
 #ifndef USER_H
 #define USER_H
-#include "myvector.h"
 #include <string>
+
+#include "myvector.h"
 #include "course.h"
 
 class Course;

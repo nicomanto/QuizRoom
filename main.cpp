@@ -1,32 +1,8 @@
-#include "View/loginform.h"
-#include "View/mainform.h"
-#include "View/courseform.h"
-#include "View/homeworkform.h"
-#include "View/classicquizform.h"
-#include "View/combinequizform.h"
-#include "View/containerquizform.h"
-#include "View/modifyaddform.h"
-#include "View/addhomeworkform.h"
-#include "View/addclassicquizform.h"
-#include "View/addcombinequizform.h"
-#include "View/containeraddquizform.h"
-#include "View/containerprincipalform.h"
-
-#include <iostream>
 #include <QApplication>
-#include "Model/myvector.h" //per testare
 #include <iostream>
-#include "Model/datetime.h"
-#include "Model/course.h"
 
-#include "Model/combinequiz.h"
-#include "Model/classicquiz.h"
-#include "Model/quizcontainer.h"
-#include "Model/timescorehomework.h"
-
-#include "Model/student.h"
-#include "Model/teacher.h"
-
+#include "Model/controller.h"
+#include "View/loginform.h"
 
 int main(int argc, char *argv[])
 {

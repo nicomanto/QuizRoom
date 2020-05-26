@@ -65,7 +65,6 @@ HEADERS += \
     Model/malusquiz.h \
     Model/myvector.h \
     Model/quiz.h \
-    Model/quizroom.h \
     Model/scorehomework.h \
     Model/time.h \
     Model/timehomework.h \

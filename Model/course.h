@@ -3,12 +3,12 @@
 #include <string>
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>
+
 #include "myvector.h"
 #include "homework.h"
-#include "user.h"
+
 using std::string;
 
-class User;
 
 class Course{
 private:

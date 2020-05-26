@@ -1,7 +1,6 @@
 #ifndef CLASSICQUIZ_H
 #define CLASSICQUIZ_H
 #include "myvector.h"
-#include "string"
 #include "malusquiz.h"
 class ClassicQuiz: public MalusQuiz{
 private:

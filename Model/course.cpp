@@ -1,5 +1,4 @@
 #include "course.h"
-#include "user.h"
 Course::Course(const string& t, const string& d): title(t), code(random_code()), description(d){
     //settare classroom dal file
 }

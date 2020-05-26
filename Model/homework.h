@@ -2,9 +2,11 @@
 #define HOMEWORK_H
 
 #include <string>
+#include "myvector.h"
+#include "quiz.h"
 
 using std::string;
-#include "quiz.h"
+
 
 class Homework{
 protected:
