@@ -25,7 +25,6 @@ SOURCES += \
     Model/homework.cpp \
     Model/malusquiz.cpp \
     Model/quiz.cpp \
-    Model/quizcontainer.cpp \
     Model/scorehomework.cpp \
     Model/time.cpp \
     Model/timehomework.cpp \
@@ -51,7 +50,6 @@ SOURCES += \
     View/principalform.cpp \
     View/quizbaseform.cpp \
     main.cpp \
-    Model/quizroom.cpp \
     Model/user.cpp \
     Model/student.cpp \
     Model/teacher.cpp
@@ -67,7 +65,6 @@ HEADERS += \
     Model/malusquiz.h \
     Model/myvector.h \
     Model/quiz.h \
-    Model/quizcontainer.h \
     Model/quizroom.h \
     Model/scorehomework.h \
     Model/time.h \
@@ -97,8 +94,7 @@ HEADERS += \
     View/principalform.h \
     View/quizbaseform.h
 
-FORMS += \
-    quizroom.ui
+FORMS +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
