@@ -35,10 +35,9 @@ bool CombineQuiz::HaveMalus() const{
     return false;
 }
 
-double CombineQuiz::CalcPointQuiz(){ // calcolo risultato diverso
-    double temp=(my_point/total_point)*10;
-    resetPoint();
-    return temp;
+double CombineQuiz::CalcPointQuiz() const{ // calcolo risultato diverso
+    return (my_point/total_point)*10;
+
 }
 
 void CombineQuiz::setPointCAnswer(){

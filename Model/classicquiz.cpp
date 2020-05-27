@@ -72,10 +72,8 @@ double ClassicQuiz::CalcMalus() const {//percentuale sui punti della domanda
     return (point_correct_answer*malus_point)/100;
 }
 
-double ClassicQuiz::CalcPointQuiz(){  //ritorna il punteggio ottenuto
-    double temp=(my_point/total_point)*9+1-total_malus;
-    resetPoint();
-    return temp;
+double ClassicQuiz::CalcPointQuiz() const{  //ritorna il punteggio ottenuto
+    return (getMyPoint()/total_point)*9+1;
 }
 
 void ClassicQuiz::setPointCAnswer(){  //setta il numero di punteggio ottenuto dalle domande

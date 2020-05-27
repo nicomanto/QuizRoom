@@ -30,6 +30,13 @@ void Homework::clearQuiz(){
     quiz.clear();
 }
 
+void Homework::resetPointQuiz()
+{
+    for(unsigned int i=0; i<quiz.size();++i){
+        quiz[i]->resetPoint();
+    }
+}
+
 const std::string Homework::AllSolutionToString() const{
 
     int i=1;

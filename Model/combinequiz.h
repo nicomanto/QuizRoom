@@ -10,7 +10,7 @@ private:
 
 
     virtual void setPointCAnswer();
-    virtual void resetPoint();
+
 public:
     CombineQuiz();
     CombineQuiz(const std::string& q);
@@ -23,7 +23,7 @@ public:
 
 
     virtual bool HaveMalus() const;
-    virtual double CalcPointQuiz();
+    virtual double CalcPointQuiz () const;
 
     void addPoint(const std::string &a1, const std::string &a2);
     virtual void showSolution() const;
@@ -33,6 +33,8 @@ public:
     virtual const std::string SolutionToString()const;
 
     virtual void clear_all_answers();
+
+    virtual void resetPoint();
 
     virtual CombineQuiz *clone() const;
 };

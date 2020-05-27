@@ -27,6 +27,8 @@ public:
 
     void clearQuiz();
 
+    void resetPointQuiz();
+
     const std::string AllSolutionToString() const;
 
     void showAllSolution() const; //mostra tutte le soluzioni dei quiz

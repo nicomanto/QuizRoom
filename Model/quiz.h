@@ -14,7 +14,7 @@ protected:
     virtual void setPointCAnswer()=0; //setta il punteggio che si può ottenre
                                        //da una domanda in base a quando domande ci sono e al total_point
 
-    virtual void resetPoint()=0; //resetta i punteggi e i malus ottenuti (se ha i malus)
+     //resetta i punteggi e i malus ottenuti (se ha i malus)
     //void addPointCorrectAnswer(double m);
 public:
     Quiz();
@@ -23,12 +23,12 @@ public:
     const std::string& getQuestion() const;
     double getTotalPoint() const;
     double getPointAnswer() const;
-    double getMyPoint() const;
+    virtual double getMyPoint() const;
 
     void setQuestion(const std::string& q);
 
     virtual bool HaveMalus() const=0;
-    virtual double CalcPointQuiz()=0; //calcola il punteggio ottenuto nel quiz
+    virtual double CalcPointQuiz()const =0; //calcola il punteggio ottenuto nel quiz
 
 
     virtual void showSolution()const=0;
@@ -37,7 +37,7 @@ public:
 
     virtual void clear_all_answers()=0; //elimina tutte le rispote e domande inserite
 
-
+    virtual void resetPoint()=0;
 
     virtual Quiz *clone() const=0;
     virtual ~Quiz();

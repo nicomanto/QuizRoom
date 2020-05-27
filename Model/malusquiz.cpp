@@ -12,6 +12,10 @@ double MalusQuiz::getMalusPoint() const{
     return malus_point;
 }
 
+double MalusQuiz::getMyPoint() const{
+    return my_point-total_malus;
+}
+
 void MalusQuiz::setMalusPoint(double mp){
     malus_point=mp;
 }
