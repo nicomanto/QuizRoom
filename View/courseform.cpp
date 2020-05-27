@@ -17,9 +17,6 @@ CourseForm::CourseForm(User* u,Controller& c,Course* course, bool & r,QWidget *p
     setLayout(main_layout);
 }
 
-CourseForm *CourseForm::clone() const{
-    return new CourseForm(user,control,this_course,relogin,parentWidget());
-}
 
 void CourseForm::addMenu(){
 
@@ -30,6 +27,7 @@ void CourseForm::addMenu(){
     QAction* previous_page= new QAction("<-",menubar); //torno alla pagina precedente
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
+    //controllo se posso fare qualcosa con i compiti e con il corso
     bool can_do_somethingC=false;
     bool can_do_somethingH=false;
 
@@ -118,6 +116,7 @@ void CourseForm::addForm(){
 
     }
 
+    //mapputara dei signal dei bottoni con il proprio indice da inviare alla to_next_page
     connect (signalMapperHomework, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
 
     main_layout->addWidget(container_center);
@@ -132,8 +131,7 @@ void CourseForm::setStyle(){
         homework[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         homework[i]->setMaximumSize(QSize(1000,height()/5));
 
-        //if(true)//controllo se è creato
-            homework_menu[i]->setFixedSize(22,height()/5);
+        homework_menu[i]->setFixedSize(22,height()/5);
     }
 
 
@@ -180,7 +178,6 @@ void CourseForm::setStyle(){
 
 
     //stile scroll area
-    //scroll->setMaximumWidth(width()*2);
     scroll->setWidgetResizable(true);
 
     //stile menubar
@@ -222,19 +219,18 @@ bool CourseForm::addMenuButton(QPushButton *b,unsigned int i){
 }
 
 
+CourseForm *CourseForm::clone() const{
+    return new CourseForm(user,control,this_course,relogin,parentWidget());
+}
+
+
 
 //SLOTS
-/*void CourseForm::to_previous_page(){
-    emit to_new_page(new MainForm(user,control,relogin, parentWidget()));
-
-    close();
-}*/
-
 
 void CourseForm::to_next_page(int index){
     emit to_new_page(new HomeworkForm(user,control,this_course->getHomeworks()[index],relogin,parentWidget()));
 
-    close();
+    //close();
 }
 
 
@@ -249,7 +245,7 @@ void CourseForm::to_addhomework(){
     layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
 
     connect(temp,SIGNAL(addHomeworkinformation(const QString& ,const QString&, bool, bool, const DateTime&)),this,SLOT(confirm_addhomework(const QString& ,const QString&, bool, bool, const DateTime&)));
-    connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
+    //connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
 
     dialog->show();
 }
@@ -260,7 +256,7 @@ void CourseForm::to_course_info(){
 
 void CourseForm::del_course(){
     control.deleteCourse(this_course);
-    //emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
+
     emit to_update_previous_page();
 
     to_previous_page();
@@ -273,37 +269,8 @@ void CourseForm::del_homework(int i){
     emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
     control.removeStackView();
 
-    close();
+    //close();
 }
-
-
-/*void CourseForm::to_modifyform(Course *c, const QString &title, const QString &description){
-    QDialog* dialog = new QDialog(this);
-    QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
-
-    ModifyAddForm* temp= new ModifyAddForm(title,description,dialog);
-    layout_dialog->addWidget(temp);
-
-    connect(temp,SIGNAL(addinformationcourse(Course*, const QString&, const QString&)),this,SLOT(confirm_modifyform(Course* ,const QString&, const QString&)));
-    connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
-
-    layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
-
-    dialog->show();
-}
-
-void CourseForm::confirm_modifyform(Course * c, const QString &, const QString &){
-    if(t=="")
-         throw std::runtime_error("Titolo mancante");
-
-
-    control.addCourse(user,t.toStdString(),d.toStdString());
-
-
-    emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
-
-    close();
-}*/
 
 
 void CourseForm::confirm_addform(const QString& t, const QString& d){

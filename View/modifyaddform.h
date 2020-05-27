@@ -6,13 +6,11 @@
 #include <QPushButton>
 #include <QGroupBox>
 #include <QFile>
-#include <QDialog>
 #include <QLabel>
 
 #include "baseform.h"
 #include "errordialog.h"
 
-#include "Model/course.h"
 
 
 class ModifyAddForm : public BaseForm{
@@ -43,10 +41,12 @@ public:
 
 
 signals:
+
+    //invia le informazioni da aggiungere
     void addinformation(const QString& ,const QString&);
-    void toClose();
 
 private slots:
+    //slot per emettere addinformation() o per mostrare una finestra di errore
     void send_information();
 };
 

@@ -2,12 +2,14 @@
 #define CLASSICQUIZFORM_H
 
 
-#include <QFile>
+
 #include <QPushButton>
+
+#include "quizbaseform.h"
 
 #include "Model/myvector.h"
 #include "Model/classicquiz.h"
-#include "quizbaseform.h"
+
 
 class ClassicQuizForm: public QuizBaseForm{
      Q_OBJECT
@@ -30,11 +32,8 @@ public:
 
 
 
-
-signals:
-
-public slots:
-
+private slots:
+    //invia le risposte al quiz date dall'utente al controller
     virtual void getAnswers();
 };
 

@@ -3,7 +3,6 @@
 CombineQuizForm::CombineQuizForm(CombineQuiz* q, QWidget *parent): QuizBaseForm(QString::fromStdString(q->getQuestion()), parent), this_quiz(q){
     main_layout= new QVBoxLayout(this);
 
-    //question=new QLabel("Famiglia dell'animale?",this);
     container_answers= new QGroupBox(this);
     answers_layout= new QGridLayout(container_answers);
 
@@ -12,21 +11,7 @@ CombineQuizForm::CombineQuizForm(CombineQuiz* q, QWidget *parent): QuizBaseForm(
     answers.push_back(new QComboBox(this));
     answers.push_back(new QComboBox(this));
 
-    /*elements.push_back(new QLabel("Cavallo",this));
-    elements.push_back(new QLabel("Lucertola",this));
-    elements.push_back(new QLabel("Delfino",this));
-    elements.push_back(new QLabel("Pesce pagliaccio",this));*/
-
     randomize_answer();
-
-
-
-    //std::cout<<this_quiz->getCorrectAnswer().at("lucertola")<<std::endl;
-
-
-
-
-
 
     addForm();
 
@@ -34,21 +19,15 @@ CombineQuizForm::CombineQuizForm(CombineQuiz* q, QWidget *parent): QuizBaseForm(
 
     setLayout(main_layout);
 
-
+    //connect del parent (containerquizform) per quando clicca su termina e quindi si invieranno le risposte inserite
     connect(parentWidget(),SIGNAL(getAnswers()),this,SLOT(getAnswers()));
 }
-
-void CombineQuizForm::getAnswers(){
-    for(unsigned int i=0; i< elements.size();++i)
-        this_quiz->addPoint(elements[i]->text().toStdString(),answers[i]->currentText().toStdString());
-}
-
 
 void CombineQuizForm::addForm(){
     main_layout->addWidget(question);
 
     //aggiungo elementi da combinare e possibili risposte
-    for(unsigned int i=0; i<4;++i){
+    for(unsigned int i=0; i<elements.size();++i){
 
             answers_layout->addWidget(elements[i],i,0,Qt::AlignCenter);
 
@@ -118,6 +97,17 @@ void CombineQuizForm::randomize_answer(){
 
         elements.push_back(new QLabel(QString::fromStdString(elem[number]),this));
     }
+}
+
+
+
+
+
+
+//SLOTS
+void CombineQuizForm::getAnswers(){
+    for(unsigned int i=0; i< elements.size();++i)
+        this_quiz->addPoint(elements[i]->text().toStdString(),answers[i]->currentText().toStdString());
 }
 
 

@@ -29,9 +29,11 @@ public:
 
 signals:
     void addCourse(const QString&);
-    void toClose();
+    //void toClose();
 
 private slots:
+
+    //slots per emettere il segnale addCourse;
     void send_code();
 
 };

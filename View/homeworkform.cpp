@@ -31,9 +31,6 @@ HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *p
     setLayout(main_layout);
 }
 
-HomeworkForm *HomeworkForm::clone() const{
-    return new HomeworkForm(user,control,this_homework,relogin,parentWidget());
-}
 
 void HomeworkForm::addMenu(){
 
@@ -43,6 +40,8 @@ void HomeworkForm::addMenu(){
     QAction* previous_page= new QAction("<-",menubar);
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
+
+    //controllo se posso modificare qualcosa dell'homework
     bool can_do_somethingH=false;
 
     if(user->CanEditHomework()){ //controllare se l'utente può modificare l'homework
@@ -102,12 +101,13 @@ void HomeworkForm::addForm(){
    main_layout->addWidget(container_button);
 
    connect(start_quiz,SIGNAL(clicked()),signalMapperQuiz,SLOT(map()));
+
    signalMapperQuiz->setMapping(start_quiz, 0);
+   //mappatuara dei siggnali con l'indice dei quiz (in questo caso è solo uno)
    connect (signalMapperQuiz, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
 
-   //connect dei bottoni
-   //connect(start_quiz,SIGNAL(clicked()),this,SLOT(to_next_page())); //tests
-   connect(add_quiz,SIGNAL(clicked()),this,SLOT(to_addquiz())); //tests
+
+   connect(add_quiz,SIGNAL(clicked()),this,SLOT(to_addquiz()));
 
 
 }
@@ -179,6 +179,11 @@ void HomeworkForm::setStyle(){
 }
 
 
+HomeworkForm *HomeworkForm::clone() const{
+    return new HomeworkForm(user,control,this_homework,relogin,parentWidget());
+}
+
+
 
 
 
@@ -188,13 +193,13 @@ void HomeworkForm::setStyle(){
 void HomeworkForm::to_addquiz(){
     emit to_new_page(new ContainerAddQuizForm(user,control,this_homework,relogin,parentWidget()));
 
-    close();
+    //close();
 }
 
 void HomeworkForm::to_next_page(int index){
     emit to_new_page(new ContainerQuizForm(user,control,this_homework,relogin,parentWidget()));
 
-    close();
+    //close();
 }
 
 
@@ -203,11 +208,6 @@ void HomeworkForm::to_homework_info(){
     to_addform(homework_title->text(),homework_instructions->text());
 }
 
-/*void HomeworkForm::to_previous_page(){
-    emit to_new_page(new CourseForm(user,control,course_father,relogin,parentWidget()));
-
-    close();
-}*/
 
 void HomeworkForm::del_homework(){
     control.deleteHomework(this_homework);

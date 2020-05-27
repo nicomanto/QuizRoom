@@ -1,5 +1,6 @@
 #include "loginform.h"
 #include "containerprincipalform.h"
+
 LoginForm::LoginForm(Controller& c,bool & r,QWidget *parent) : BaseForm(parent), control(c),relogin(r),login_button(new QPushButton("Login")),username_form(new QLineEdit(this)), password_form(new QLineEdit(this)),username(new QLabel("Username", this)),password(new QLabel("Password", this)){
 
     main_layout=new QVBoxLayout(this);

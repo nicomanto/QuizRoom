@@ -58,11 +58,13 @@ void AddHomeworkForm::setStyle(){
 
 
 
+
+//SLOTS
 void AddHomeworkForm::send_homework_information(){
     DateTime datetime(deadline->date().day(),deadline->date().month(), deadline->date().year(), deadline->time().hour(), deadline->time().minute());
     try{
             emit addHomeworkinformation(title_form->text(),description_form->toPlainText(),is_time->checkState(),is_score->checkState(),datetime);
-            emit toClose();
+            parentWidget()->close();
     } catch(std::logic_error exc){
             ErrorDialog* error = new ErrorDialog(exc.what(),this);
 

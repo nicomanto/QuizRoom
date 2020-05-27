@@ -13,10 +13,6 @@ MainForm::MainForm(User* u,Controller& c,bool &r,QWidget *parent) : PrincipalFor
     setLayout(main_layout);
 }
 
-MainForm *MainForm::clone() const{
-    return new MainForm(user,control,relogin,parentWidget());
-}
-
 
 void MainForm::addMenu(){
     QMenu* options = new QMenu("Opzioni",menubar);
@@ -33,6 +29,7 @@ void MainForm::addMenu(){
     if(user->CanAddCourse()){
         QAction* add_course = new QAction("crea corso",course);
         course->addAction(add_course);
+
         //connect del bottone aggiungi
         connect(add_course,SIGNAL(triggered()),this,SLOT(to_addform()));
     }
@@ -54,7 +51,6 @@ void MainForm::addMenu(){
 }
 
 void MainForm::addForm(){
-    //test inserimento push_button
 
 
 
@@ -66,7 +62,6 @@ void MainForm::addForm(){
 
     //for che aggiunge i bottoni
     for(unsigned int i=0; i <user->getCourse().size(); ++i){
-        //QString s= "Corso " + QString::number(i);
 
         course.push_back(new QPushButton(QString::fromStdString((user->getCourse()[i]->getTitle())),this));
 
@@ -83,7 +78,7 @@ void MainForm::addForm(){
 
 
 
-
+        //controllo se posso modificare qualcosa, altrimenti non lo mostro
         if(addMenuButton(course_menu[i],i))
             course_menu[i]->setVisible(true);
 
@@ -91,6 +86,7 @@ void MainForm::addForm(){
 
     }
 
+    //mappatura dei signali dei bottoni del vettore con i relativi indici
     connect (signalMapperCourse, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
 
 }
@@ -99,16 +95,13 @@ void MainForm::setStyle(){
     PrincipalForm::setStyle();
 
 
-
-
     //setto lo stile dei vari bottoni
     for(unsigned int i=0; i <user->getCourse().size(); ++i){
         course[i]->setMinimumSize(QSize(width()/2,height()/5));
         course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         course[i]->setMaximumSize(QSize(1000,height()/5));
 
-        if(true)//controllo se è creato
-            course_menu[i]->setFixedSize(22,height()/5);
+        course_menu[i]->setFixedSize(22,height()/5);
     }
 
     //area di scroll resizable
@@ -145,6 +138,7 @@ bool MainForm::addMenuButton(QPushButton *b,unsigned int i){
         signalMapperDelete -> setMapping (del, i) ;
     }
 
+    //mappatura dei segnali del menu a tendina con gli indici dei vettori
     connect (signalMapperDelete, SIGNAL(mapped(int)), this, SLOT(del_course(int)));
 
     b->setMenu(button_options);
@@ -153,13 +147,17 @@ bool MainForm::addMenuButton(QPushButton *b,unsigned int i){
 
 }
 
+MainForm *MainForm::clone() const{
+    return new MainForm(user,control,relogin,parentWidget());
+}
 
 
 //SLOTS
+
 void MainForm::to_next_page(int index){
     emit to_new_page(new CourseForm(user, control,user->getCourse()[index],relogin,parentWidget()));
 
-    close();
+    //close();
 }
 
 void MainForm::to_previous_page(){
@@ -187,7 +185,7 @@ void MainForm::del_course(int i){
     emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
     control.removeStackView();
 
-    close();
+    //close();
 }
 
 void MainForm::addCourse(){
@@ -198,7 +196,7 @@ void MainForm::addCourse(){
     layout_dialog->addWidget(temp);
 
     connect(temp,SIGNAL(addCourse(const QString&)),this,SLOT(send_code(const QString&)));
-    connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
+    //connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
 
     layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
 
@@ -211,6 +209,6 @@ void MainForm::send_code(const QString & code){
 
     emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
 
-    close();
+    //close();
 }
 

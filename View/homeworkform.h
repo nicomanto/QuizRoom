@@ -1,20 +1,14 @@
 #ifndef HOMEWORKFORM_H
 #define HOMEWORKFORM_H
 #include <QLabel>
-#include <QPushButton>
-#include <QFile>
 #include <QGroupBox>
+#include <QSignalMapper>
 
 #include "principalform.h"
-#include "mainform.h"
 #include "containerquizform.h"
 #include "containeraddquizform.h"
-#include "courseform.h"
 
-#include "Model/timescorehomework.h"
-#include "Model/course.h"
-
-
+#include "Model/homework.h"
 
 class HomeworkForm : public PrincipalForm{
     Q_OBJECT
@@ -54,13 +48,15 @@ public:
 signals:
 
 private slots:
+    //creazione form per la pagina dell'aggiunta dei quiz
     void to_addquiz();
+    //invio delle informazioni del compito in cui mi trovo per la modifica dei dati
     void to_homework_info();
 
     virtual void confirm_addform(const QString&, const QString&);
     virtual void to_next_page(int index);
-    //virtual void to_previous_page();
 
+    //eliminazione del compito in cui mi trovo
     void del_homework();
 };
 

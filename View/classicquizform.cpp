@@ -4,17 +4,12 @@
 ClassicQuizForm::ClassicQuizForm(ClassicQuiz* q, QWidget *parent): QuizBaseForm(QString::fromStdString(q->getQuestion()),parent), this_quiz(q){
     main_layout= new QVBoxLayout(this);
 
-    //question=new QLabel("Che animale è il lupo?",this);
     container_answers= new QGroupBox(this);
     answers_layout= new QGridLayout(container_answers);
 
 
 
     randomize_answer();
-    /*answers.push_back(new QPushButton(QString::fromStdString(this_quiz->getCorrectAnswer()[1]),this));
-    answers.push_back(new QPushButton(QString::fromStdString(this_quiz->getCorrectAnswer()[2]),this));
-    answers.push_back(new QPushButton(QString::fromStdString(this_quiz->getCorrectAnswer()[3]),this));*/
-
 
     addForm();
 
@@ -22,6 +17,7 @@ ClassicQuizForm::ClassicQuizForm(ClassicQuiz* q, QWidget *parent): QuizBaseForm(
 
     setLayout(main_layout);
 
+    //connect del parent (containerquizform) per quando clicca su termina e quindi si invieranno le risposte inserite
     connect(parentWidget(),SIGNAL(getAnswers()),this,SLOT(getAnswers()));
 }
 

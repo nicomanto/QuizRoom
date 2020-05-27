@@ -2,11 +2,11 @@
 #define ADDCLASSICQUIZFORM_H
 
 #include<QCheckBox>
-#include<QFile>
 
 #include "addquizform.h"
-#include "Model/myvector.h"
 #include "errordialog.h"
+#include "Model/myvector.h"
+
 
 
 class AddClassicQuizForm : public AddQuizForm{
@@ -26,6 +26,8 @@ public:
 
 
 public slots:
+
+    //invia i dati del quiz al controller
     virtual void setInformation();
 };
 

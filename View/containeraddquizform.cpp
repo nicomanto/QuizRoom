@@ -14,9 +14,6 @@ ContainerAddQuizForm::ContainerAddQuizForm(User* u,Controller& c,Homework* h,boo
     setLayout(main_layout);
 }
 
-ContainerAddQuizForm *ContainerAddQuizForm::clone() const{
-    return new ContainerAddQuizForm(user,control,this_homework,relogin,parentWidget());
-}
 
 void ContainerAddQuizForm::addMenu(){
 
@@ -87,6 +84,11 @@ void ContainerAddQuizForm::setStyle(){
 }
 
 
+ContainerAddQuizForm *ContainerAddQuizForm::clone() const{
+    return new ContainerAddQuizForm(user,control,this_homework,relogin,parentWidget());
+}
+
+
 
 
 //SLOTS
@@ -104,27 +106,19 @@ void ContainerAddQuizForm::addClassicWidget(){
 
 void ContainerAddQuizForm::to_next_page(int index){}
 
-/*void ContainerAddQuizForm::to_previous_page(){
-    //emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));
-
-    close();
-}*/
-
-
 
 void ContainerAddQuizForm::to_add_quiz(){
 
 
     try{
 
+        //controllare se il vettore contiene già dei quiz->significa che prima non si è riusciti ad inviare tutti i quiz per qualche eccezzione
+        //evita che ci siano dei duplicati dei quiz
         if(!(this_homework->getQuiz().empty()))
             this_homework->clearQuiz();
 
         emit setInformation();
         emit to_update_previous_page();
-        //HomeworkForm* temp= new HomeworkForm(user,control,this_homework,relogin,parentWidget());
-        //emit to_new_page(temp);
-
         to_previous_page();
 
 

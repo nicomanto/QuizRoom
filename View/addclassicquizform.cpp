@@ -17,25 +17,8 @@ AddClassicQuizForm::AddClassicQuizForm(Controller& c,Homework* h, int number_que
 
     setLayout(main_layout);
 
+    //connect per la richiesta del padre di inviare i dati
     connect(parentWidget(),SIGNAL(setInformation()),this,SLOT(setInformation()));
-
-}
-
-void AddClassicQuizForm::setInformation(){
-    MyVector<std::string> answers;
-    MyVector<std::string> correct_answers;
-
-    for(unsigned int i=0;i<answers_form.size();i++){
-        if(check_answers[i]->checkState()){
-            correct_answers.push_back(answers_form[i]->text().toStdString());
-        }
-
-        answers.push_back(answers_form[i]->text().toStdString());
-    }
-
-
-    control.addClassicQuiz(this_homework,question_form->text().toStdString(),answers,correct_answers);
-
 
 }
 
@@ -80,4 +63,25 @@ void AddClassicQuizForm::setStyle(){
     }
 }
 
+
+
+
+//SLOTS
+void AddClassicQuizForm::setInformation(){
+    MyVector<std::string> answers;
+    MyVector<std::string> correct_answers;
+
+    for(unsigned int i=0;i<answers_form.size();i++){
+        if(check_answers[i]->checkState()){
+            correct_answers.push_back(answers_form[i]->text().toStdString());
+        }
+
+        answers.push_back(answers_form[i]->text().toStdString());
+    }
+
+
+    control.addClassicQuiz(this_homework,question_form->text().toStdString(),answers,correct_answers);
+
+
+}
 

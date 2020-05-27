@@ -3,10 +3,10 @@
 
 
 #include "principalform.h"
-#include "Model/myvector.h"
 #include "addcombinequizform.h"
 #include "addclassicquizform.h"
-#include "homeworkform.h"
+
+#include "Model/myvector.h"
 class ContainerAddQuizForm : public PrincipalForm{
     Q_OBJECT
 private:
@@ -41,13 +41,20 @@ public:
     virtual ContainerAddQuizForm *clone() const;
 
 signals:
+
+    //segnale per settare le informazioni dei vari quiz (richiesta dei dati inseriti per i quiz)
     void setInformation();
 
-public slots:
+
 private slots:
+
+    //aggiunge un combine quiz
     void addCombineWidget();
+
+    //aggiunge un classic quiz
     void addClassicWidget();
 
+    //invio dei dati dei quiz al controller (emette il singale che a addClassicQuiz e addCombineQuiz di inviare i dati al controller)
     void to_add_quiz();
 
 

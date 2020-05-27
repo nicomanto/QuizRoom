@@ -1,12 +1,12 @@
 #ifndef COMBINEQUIZFORM_H
 #define COMBINEQUIZFORM_H
 
-#include <QFile>
+
 #include <QComboBox>
 
-#include "Model/myvector.h"
 #include "quizbaseform.h"
 
+#include "Model/myvector.h"
 #include "Model/combinequiz.h"
 
 class CombineQuizForm : public QuizBaseForm{
@@ -29,9 +29,8 @@ public:
 
 
 
-signals:
-
-public slots:
+private slots:
+   //invia le risposte al quiz date dall'utente al controller
    virtual void getAnswers();
 };
 

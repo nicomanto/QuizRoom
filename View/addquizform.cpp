@@ -36,9 +36,5 @@ void AddQuizForm::setStyle(){
     setStyleSheet(styleSheet);
 }
 
-/*AddQuizForm::AddQuizForm(Homework *h, int number_question, QWidget *parent)
-{
-
-}*/
 
 

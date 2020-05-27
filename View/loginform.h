@@ -5,9 +5,6 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QFile>
-#include <QStyle>
-
-#include <QGroupBox>
 
 #include "baseform.h"
 #include "Model/controller.h"
@@ -34,11 +31,6 @@ public:
     explicit LoginForm(Controller& c,bool &r,QWidget *parent = nullptr);
     ~LoginForm()= default;
 
-
-
-
-
-signals:
 
 private slots:
     void to_principalform();

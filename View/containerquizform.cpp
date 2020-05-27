@@ -12,6 +12,8 @@ ContainerQuizForm::ContainerQuizForm(User* u,Controller& c,Homework* h,bool & r,
 
     setLayout(main_layout);
 
+
+    //connect del bottone con lo show dei result
     connect(end_quiz,SIGNAL(clicked()),this,SLOT(show_result()));
 }
 
@@ -126,12 +128,27 @@ void ContainerQuizForm::show_result(){
     QDialog* dialog = new QDialog(this);
     QVBoxLayout* layout = new QVBoxLayout(dialog);
 
-    // Inserisco il messaggio nella finestra con QLabel
+    //Mostro le risposte corrette dei quiz e il punteggio ottenuto del singolo quiz
     QString temp("Ecco le risposte corrette: \n"+QString::fromStdString(this_homework->AllSolutionToString()));
 
+    //mostra il voto totale se il compito ce l'ha
     if(this_homework->haveResult()){
-        temp.append("\nVoto ottenuto: "+QString::number(this_homework->getResult()));
+        if (this_homework->isScoreHomework())
+            temp.append("\nVoto ottenuto: "+QString::number(this_homework->getResult()));
+        else{
+            if(this_homework->getResult()>0){
+                temp.append("\nQuiz completato prima della scadenza della deadline");
+            }
+            else{
+                temp.append("\nQuiz completato dopo la scadenza della deadline");
+            }
+        }
+
     }
+
+
+    //resetto il punteggio per poter rifare il quiz
+    this_homework->resetPointQuiz();
 
     QLabel* informations=new QLabel(temp,dialog);
     informations->setFont(QFont( "Arial", 12));
@@ -142,9 +159,4 @@ void ContainerQuizForm::show_result(){
     dialog->show();
 }
 
-/*void ContainerQuizForm::to_previous_page(){
-    //emit to_new_page(new HomeworkForm(user,control,relogin,parentWidget()));
 
-    close();
-
-}*/

@@ -5,8 +5,8 @@
 #include <QIntValidator>
 #include <QDateTimeEdit>
 #include <QTimeZone>
-#include "modifyaddform.h"
 
+#include "modifyaddform.h"
 
 #include "Model/datetime.h"
 
@@ -39,9 +39,12 @@ public:
 
 
 signals:
+    //invia i dati del compito da salvare
     void addHomeworkinformation(const QString& ,const QString&, bool Time, bool Score, const DateTime&);
 
-public slots:
+private slots:
+
+    //emette il segnale per inviare i dati del compito
     void send_homework_information();
 
 

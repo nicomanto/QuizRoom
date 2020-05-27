@@ -4,9 +4,11 @@
 #include "principalform.h"
 #include "homeworkform.h"
 #include "quizbaseform.h"
-#include "Model/myvector.h"
 #include "classicquizform.h"
 #include "combinequizform.h"
+
+
+#include "Model/myvector.h"
 
 
 class ContainerQuizForm : public PrincipalForm{
@@ -40,12 +42,15 @@ public:
 
     virtual ContainerQuizForm *clone() const;
 signals:
+    //emette il segnale che dice di essere pronto per ricevere le risposte dai figli (i singoli quiz)
     void getAnswers();
 
 private slots:
 
     virtual void confirm_addform(const QString&, const QString&){}
     virtual void to_next_page(int index);
+
+    //mostra una form con le risposte corrette e i punteggi ottenuti per ciascuna domanda
     void show_result();
 };
 

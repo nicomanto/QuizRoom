@@ -1,16 +1,15 @@
 #ifndef COURSEFORM_H
 #define COURSEFORM_H
-#include <QPushButton>
+
 #include <QLabel>
-#include <QFile>
-#include <QScrollArea>
 #include <QString>
 
 #include "menubutton.h"
-#include "Model/myvector.h"
 #include "mainform.h"
 #include "homeworkform.h"
 #include "addhomeworkform.h"
+
+#include "Model/myvector.h"
 
 class CourseForm : public PrincipalForm{
     Q_OBJECT
@@ -50,20 +49,25 @@ public:
     virtual CourseForm *clone() const;
 
 
-public slots:
+private slots:
+    //creazione form per la'ggiunta di un compito
     void to_addhomework();
+
+    //invio dei dati del corso in cui mi trovo
     void to_course_info();
+
+    //eliminazione del corso in cui mi trovo
     void del_course();
+
+    //eliminazione del compito all'indice i del vettore
     void del_homework(int);
 
-    //void to_modifyform(Course* c,const QString& title="", const QString& description="");
-    //void confirm_modifyform(Course* ,const QString&, const QString&);
-
     virtual void confirm_addform(const QString&, const QString&);
+
+    //aggiunta del nuovo compito appena creato
     void confirm_addhomework(const QString& ,const QString&, bool Time, bool Score, const DateTime&);
 
     virtual void to_next_page(int index);
-    //virtual void to_previous_page();
 
 };
 

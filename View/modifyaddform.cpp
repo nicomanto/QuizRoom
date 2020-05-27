@@ -27,6 +27,8 @@ void ModifyAddForm::addForm(){
     layout_button->addWidget(confirm_button);
     main_layout->addWidget(container_button);
 
+
+    //connect per il button verso send_information()
     connect(confirm_button,SIGNAL(clicked()),this,SLOT(send_information()));
 
 }
@@ -73,8 +75,9 @@ void ModifyAddForm::setStyle(){
 void ModifyAddForm::send_information(){
     try {
         emit addinformation(title_form->text(),description_form->toPlainText());
-        emit toClose();
+        parentWidget()->close();
     } catch(std::logic_error exc){
+        //mostro l'errore all'utente
         ErrorDialog* error = new ErrorDialog(exc.what(),this);
 
 

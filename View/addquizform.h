@@ -9,7 +9,6 @@
 #include "baseform.h"
 
 #include "Model/myvector.h"
-
 #include "Model/homework.h"
 #include "Model/controller.h"
 
@@ -40,11 +39,13 @@ public:
 
 
 
-signals:
-    void send_information(const std::string& ,const MyVector<std::string>& ,const MyVector<std::string>&);
+
+    //segnale per inviare i dati
+    //void send_information(const std::string& ,const MyVector<std::string>& ,const MyVector<std::string>&);
 
 public slots:
 
+    //invia i dati del quiz al controller
     virtual void setInformation()=0;
 
 };

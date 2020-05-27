@@ -5,6 +5,8 @@
 #include <QMenu>
 #include <QPushButton>
 
+
+//classe per la creazione del menu a tendina che mostra la tendinda a destra del menu
 class MenuButton : public QMenu{
     Q_OBJECT
 

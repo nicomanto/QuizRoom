@@ -4,7 +4,6 @@
 
 #include <QLabel>
 #include <QVBoxLayout>
-#include <QLabel>
 #include <QGroupBox>
 #include <QFile>
 
@@ -28,14 +27,16 @@ protected:
 
     virtual void setStyle();
 
-
+    //inserisce le risposte in ordine sparso ad ogni creazione di un quiz
     virtual void randomize_answer()=0;
 public:
     explicit QuizBaseForm(const QString& q, QWidget *parent = nullptr);
     virtual ~QuizBaseForm();
 
 
-public slots:
+private slots:
+
+    //invia le risposte al quiz date dall'utente al controller
     virtual void getAnswers() =0;
 
 

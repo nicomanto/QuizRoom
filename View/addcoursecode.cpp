@@ -28,15 +28,7 @@ void AddCourseCode::setStyle(){
 
 
     code_form->setPlaceholderText("Inserisci il codice del corso");
-
-    //larghezza del title_form fissa
-    //code_form->setFixedSize(QSize(width()/3,height()/4));
-
-
-    //main_layout->setAlignment(Qt::ali)
-    //imposto la scritto dei box al centro
-    //box_title->setAlignment(Qt::AlignCenter);
-    //box_description->setAlignment((Qt::AlignCenter));
+    code_form->setMaxLength(7);
 
 
     //setta la taglia della window
@@ -54,14 +46,6 @@ void AddCourseCode::setStyle(){
     //layout_button->setAlignment(Qt::AlignRight);
 
 
-
-
-    //imposto il foglio di stile
-    /*QFile file(":/Resources/style_modifyaddform.css");
-    file.open(QFile::ReadOnly);
-    QString styleSheet = QLatin1String(file.readAll());
-
-    setStyleSheet(styleSheet);*/
 }
 
 
@@ -72,7 +56,7 @@ void AddCourseCode::setStyle(){
 void AddCourseCode::send_code(){
     try {
         emit addCourse(code_form->text());
-        emit toClose();
+        parentWidget()->close();
     } catch(std::logic_error exc){
         ErrorDialog* error = new ErrorDialog(exc.what(),this);
 
