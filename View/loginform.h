@@ -7,7 +7,7 @@
 #include <QFile>
 
 #include "baseform.h"
-#include "Model/controller.h"
+#include "Control/controller.h"
 
 class LoginForm : public BaseForm{
     Q_OBJECT

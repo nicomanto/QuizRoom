@@ -10,7 +10,7 @@
 #include "loginform.h"
 #include "modifyaddform.h"
 
-#include "Model/controller.h"
+#include "Control/controller.h"
 
 
 class PrincipalForm : public BaseForm{

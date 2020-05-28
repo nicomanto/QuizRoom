@@ -1,6 +1,6 @@
 #include "combinequizform.h"
 
-CombineQuizForm::CombineQuizForm(CombineQuiz* q, QWidget *parent): QuizBaseForm(QString::fromStdString(q->getQuestion()), parent), this_quiz(q){
+CombineQuizForm::CombineQuizForm(Controller& c, CombineQuiz* q, QWidget *parent): QuizBaseForm(c, QString::fromStdString(q->getQuestion()), parent), this_quiz(q){
     main_layout= new QVBoxLayout(this);
 
     container_answers= new QGroupBox(this);
@@ -46,7 +46,7 @@ void CombineQuizForm::randomize_answer(){
     bool temp;
     for(unsigned int i=0;i <answers.size(); ++i){
 
-        for (std::map<std::string,std::string>::const_iterator it=this_quiz->getCorrectAnswer().begin(); it!=this_quiz->getCorrectAnswer().end(); ++it){
+        for (std::map<std::string,std::string>::const_iterator it=control.getCorrectAnswersCombineQuiz(this_quiz).begin(); it!=control.getCorrectAnswersCombineQuiz(this_quiz).end(); ++it){
             temp=true;
 
             for(unsigned int j=0;j <answers[i]->count() && temp; ++j){
@@ -63,7 +63,7 @@ void CombineQuizForm::randomize_answer(){
 
 
     //randomizzo gli elementi da abbinare
-    unsigned int count= this_quiz->getCorrectAnswer().size();
+    unsigned int count= control.getCorrectAnswersCombineQuizSize(this_quiz);
     srand(time(NULL));
     bool exist;
 
@@ -72,7 +72,7 @@ void CombineQuizForm::randomize_answer(){
 
     MyVector<std::string> elem;
 
-    for (std::map<std::string,std::string>::const_iterator it=this_quiz->getCorrectAnswer().begin(); it!=this_quiz->getCorrectAnswer().end(); ++it){
+    for (std::map<std::string,std::string>::const_iterator it=control.getCorrectAnswersCombineQuiz(this_quiz).begin(); it!=control.getCorrectAnswersCombineQuiz(this_quiz).end(); ++it){
         elem.push_back(it->first);
     }
 
@@ -82,7 +82,7 @@ void CombineQuizForm::randomize_answer(){
 
         do{
             exist=false;
-            number=rand()%this_quiz->getCorrectAnswer().size();
+            number=rand()%control.getCorrectAnswersCombineQuizSize(this_quiz);
 
             for(unsigned int i=0;i<already_included.size() && !exist;++i){
                 if(number==already_included[i])
@@ -107,7 +107,7 @@ void CombineQuizForm::randomize_answer(){
 //SLOTS
 void CombineQuizForm::getAnswers(){
     for(unsigned int i=0; i< elements.size();++i)
-        this_quiz->addPoint(elements[i]->text().toStdString(),answers[i]->currentText().toStdString());
+        control.addPointCombineQuiz(this_quiz,elements[i]->text().toStdString(),answers[i]->currentText().toStdString());
 }
 
 

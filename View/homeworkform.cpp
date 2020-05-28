@@ -1,6 +1,6 @@
 #include "homeworkform.h"
 
-HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *parent): PrincipalForm(u,c,r,parent),this_homework(h),homework_title(new QLabel(QString::fromStdString(this_homework->getTitle()),this)),homework_instructions(new QLabel(QString::fromStdString(this_homework->getInstructions()),this)),
+HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *parent): PrincipalForm(u,c,r,parent),this_homework(h),homework_title(new QLabel(QString::fromStdString(control.getHomeworkTitle(this_homework)),this)),homework_instructions(new QLabel(QString::fromStdString(control.getHomeworkInstructions(this_homework)),this)),
     container_info_quiz(new QWidget(this)),layout_container_info_quiz(new QVBoxLayout(container_info_quiz)), score(nullptr),deadline(nullptr),start_quiz(new QPushButton("start quiz",this)),add_quiz(new QPushButton("aggiungi quiz",this)), container_button(new QWidget(this)), layout_button(new QHBoxLayout(container_button)){
 
     main_layout=new QVBoxLayout(this);
@@ -9,7 +9,7 @@ HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *p
 
 
 
-    if(this_homework->isScoreHomework()){ //se è uno scorehomework;
+    if(control.isScoreHomework(this_homework)){ //se è uno scorehomework;
 
         ScoreHomework* t= dynamic_cast < ScoreHomework* > ( this_homework );
         //int my_score=0;
@@ -18,7 +18,7 @@ HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *p
         score= new QLabel("Punteggio massimo: "+s,this);
     }
 
-    if(this_homework->isTimeHomework()){ //se è un timehomework
+    if(control.isTimeHomework(this_homework)){ //se è un timehomework
         TimeHomework* t= dynamic_cast < TimeHomework* > ( this_homework );
         //QString s("09/05/2020");
         deadline= new QLabel("Deadline: "+QString::fromStdString(t->getDeadline().ToString()),this);
@@ -44,7 +44,7 @@ void HomeworkForm::addMenu(){
     //controllo se posso modificare qualcosa dell'homework
     bool can_do_somethingH=false;
 
-    if(user->CanEditHomework()){ //controllare se l'utente può modificare l'homework
+    if(control.UserCanEditHomework(user)){ //controllare se l'utente può modificare l'homework
         QAction* modify_homework = new QAction("modifica",homework);
         homework->addAction(modify_homework);
 
@@ -53,7 +53,7 @@ void HomeworkForm::addMenu(){
         can_do_somethingH=true;
     }
 
-    if(user->CanDeleteHomework()){ //controllare se l'utente può eliminare l'homework
+    if(control.UserCanDeleteHomework(user)){ //controllare se l'utente può eliminare l'homework
         QAction* delete_homework = new QAction("elimina",homework);
         homework->addAction(delete_homework);
         connect(delete_homework,SIGNAL(triggered()),this,SLOT(del_homework()));
@@ -85,13 +85,13 @@ void HomeworkForm::addForm(){
 
    QSignalMapper* signalMapperQuiz = new QSignalMapper (this);
 
-    if(this_homework->isScoreHomework())//controllo se è scorehomework
+    if(control.isScoreHomework(this_homework))//controllo se è scorehomework
         layout_container_info_quiz->addWidget(score);
 
-   if(this_homework->isTimeHomework()) //controllo se è timehomework
+   if(control.isTimeHomework(this_homework)) //controllo se è timehomework
         layout_container_info_quiz->addWidget(deadline);
 
-   if(this_homework->isTimeHomework() || this_homework->isScoreHomework()) //controllo se è timehomework o scorehomework
+   if(control.isTimeHomework(this_homework) || control.isScoreHomework(this_homework)) //controllo se è timehomework o scorehomework
        main_layout->addWidget(container_info_quiz, Qt::AlignCenter);
 
 
@@ -133,10 +133,10 @@ void HomeworkForm::setStyle(){
     //stile menubar
     menubar->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
-    if(this_homework->isScoreHomework()) //controllo se è scorehomework
+    if(control.isScoreHomework(this_homework)) //controllo se è scorehomework
         score->setAlignment(Qt::AlignCenter);
 
-    if(this_homework->isTimeHomework()) //controllo se è timehomework
+    if(control.isTimeHomework(this_homework)) //controllo se è timehomework
         deadline->setAlignment(Qt::AlignCenter);
 
 
@@ -145,7 +145,7 @@ void HomeworkForm::setStyle(){
     add_quiz->setFixedSize(QSize(width()/3,height()/7));
     add_quiz->setVisible(false);
 
-    if(this_homework->getQuiz().empty() && user->CanAddQuiz())//controllo se ha già un quiz o se ne è sprovvisto, in quel caso se ne può aggiungere uno
+    if(control.haveEmptyQuiz(this_homework) && control.UserCanAddQuiz(user))//controllo se ha già un quiz o se ne è sprovvisto, in quel caso se ne può aggiungere uno
         add_quiz->setVisible(true);
 
     //aggiunta dei alcuni font
@@ -154,11 +154,11 @@ void HomeworkForm::setStyle(){
     font=QFont( "Arial", 14);
     homework_instructions->setFont(font);    
 
-    if(this_homework->isScoreHomework()){ //controllo se è scorehomework
+    if(control.isScoreHomework(this_homework)){ //controllo se è scorehomework
         font=QFont( "Arial", 12);
         score->setFont(font);
     }
-    if(this_homework->isTimeHomework()){ //controllo se è timehomework
+    if(control.isTimeHomework(this_homework)){ //controllo se è timehomework
         font=QFont( "Arial", 12);
         deadline->setFont(font);
     }

@@ -44,15 +44,15 @@ void ContainerQuizForm::addForm(){
 
 
    //aggiungo i quiz
-    for(unsigned int i=0; i <this_homework->getQuiz().size(); ++i){
+    for(unsigned int i=0; i <control.getNumberHomeworkQuiz(this_homework); ++i){
 
         quiz_box.push_back(new QGroupBox("Domanda "+QString::number(i+1),this));
         QVBoxLayout* temp= new QVBoxLayout(quiz_box[i]);
 
-        if(dynamic_cast<ClassicQuiz*>(this_homework->getQuiz()[i]))
-            quiz.push_back(new ClassicQuizForm(dynamic_cast<ClassicQuiz*>(this_homework->getQuiz()[i]),this));
+        if(dynamic_cast<ClassicQuiz*>(control.getQuiz(this_homework,i)))
+            quiz.push_back(new ClassicQuizForm(control, dynamic_cast<ClassicQuiz*>(control.getQuiz(this_homework,i)),this));
         else
-            quiz.push_back(new CombineQuizForm(dynamic_cast<CombineQuiz*>(this_homework->getQuiz()[i]),this));
+            quiz.push_back(new CombineQuizForm(control, dynamic_cast<CombineQuiz*>(control.getQuiz(this_homework,i)),this));
 
         temp->addWidget(quiz[i]);
 
@@ -63,7 +63,7 @@ void ContainerQuizForm::addForm(){
 
     layout_button->addWidget(end_quiz);
 
-    if(!this_homework->getQuiz().empty())
+    if(!control.haveEmptyQuiz(this_homework))
         end_quiz->setVisible(true);
     else{
         layout_button->addWidget(new QLabel("Nessun quiz presente, ritorna più tardi"));
@@ -77,7 +77,7 @@ void ContainerQuizForm::setStyle(){
     PrincipalForm::setStyle();
 
     //stile della vista dei quiz
-    for(unsigned int i=0; i <this_homework->getQuiz().size(); ++i){
+    for(unsigned int i=0; i <control.getNumberHomeworkQuiz(this_homework); ++i){
        quiz_box[i]->setMinimumSize(QSize(width()/2,height()));
         quiz_box[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         quiz[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
@@ -131,30 +131,21 @@ void ContainerQuizForm::show_result(){
     QWidget *viewport = new QWidget(dialog);
     QVBoxLayout* layout = new QVBoxLayout(viewport);
 
-
-
-
-    layout->setAlignment(Qt::AlignCenter);
-    dialog->setFixedSize(width()/3,height()/3);
-
     QScrollArea* scroll= new QScrollArea(dialog);
 
     dialog->layout()->addWidget(scroll);
     scroll->setWidget(viewport);
-    scroll->setWidgetResizable(true);
-    //scroll->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
-    //Mostro le risposte corrette dei quiz e il punteggio ottenuto del singolo quiz
-    QString temp("Ecco le risposte corrette: \n"+QString::fromStdString(this_homework->AllSolutionToString()));
+    QString temp("Ecco le risposte corrette: \n"+QString::fromStdString(control.SolutionHomeworkToString(this_homework)));
 
     //mostra il voto totale se il compito ce l'ha
-    if(this_homework->haveResult()){
-        if (this_homework->isScoreHomework()){
+    if(control.HomeworkHaveResult(this_homework)){
+        if (control.isScoreHomework(this_homework)){
             //std::cout<<"ciao"<<std::endl;
-            temp.append("\nVoto ottenuto: "+QString::number(this_homework->getResult()));
+            temp.append("\nVoto ottenuto: "+QString::number(control.getResultHomework(this_homework),'f', 2));
         }
         else{
-            if(this_homework->getResult()>0){
+            if(control.getResultHomework(this_homework)>0){
                 temp.append("\nQuiz completato prima della scadenza della deadline");
             }
             else{
@@ -166,14 +157,21 @@ void ContainerQuizForm::show_result(){
 
 
     //resetto il punteggio per poter rifare il quiz
-    this_homework->resetPointQuiz();
+    control.resetHomeworkQuizPoint(this_homework);
 
     QLabel* informations=new QLabel(temp,dialog);
     informations->setFont(QFont( "Arial", 12));
     informations->setAlignment(Qt::AlignCenter);
 
     layout->addWidget(informations);
-    // Mostrare la finestra
+
+
+
+    //stile
+    layout->setAlignment(Qt::AlignCenter);
+    dialog->setFixedSize(width()/3,height()/3);
+    scroll->setWidgetResizable(true);
+
     dialog->show();
 }
 

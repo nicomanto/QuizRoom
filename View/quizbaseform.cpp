@@ -1,7 +1,7 @@
 #include "quizbaseform.h"
 
 
-QuizBaseForm::QuizBaseForm(const QString& q ,QWidget *parent):BaseForm(parent), question(new QLabel(q,this)), container_answers(nullptr),answers_layout(nullptr){}
+QuizBaseForm::QuizBaseForm(Controller& c,const QString& q ,QWidget *parent):BaseForm(parent), control(c), question(new QLabel(q,this)), container_answers(nullptr),answers_layout(nullptr){}
 
 QuizBaseForm::~QuizBaseForm(){}
 

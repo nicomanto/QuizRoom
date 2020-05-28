@@ -26,7 +26,7 @@ void MainForm::addMenu(){
 
 
 
-    if(user->CanAddCourse()){
+    if(control.UserCanAddCourse(user)){
         QAction* add_course = new QAction("crea corso",course);
         course->addAction(add_course);
 
@@ -61,9 +61,9 @@ void MainForm::addForm(){
     QSignalMapper* signalMapperCourse = new QSignalMapper (this);
 
     //for che aggiunge i bottoni
-    for(unsigned int i=0; i <user->getCourse().size(); ++i){
+    for(unsigned int i=0; i <control.getNumberUserCourse(user); ++i){
 
-        course.push_back(new QPushButton(QString::fromStdString((user->getCourse()[i]->getTitle())),this));
+        course.push_back(new QPushButton(QString::fromStdString(control.getCourseTitle(control.getCourse(user,i))),this));
 
         //connect del bottone corso
         connect(course[i],SIGNAL(clicked()),signalMapperCourse,SLOT(map()));
@@ -96,7 +96,7 @@ void MainForm::setStyle(){
 
 
     //setto lo stile dei vari bottoni
-    for(unsigned int i=0; i <user->getCourse().size(); ++i){
+    for(unsigned int i=0; i <control.getNumberUserCourse(user); ++i){
         course[i]->setMinimumSize(QSize(width()/2,height()/5));
         course[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         course[i]->setMaximumSize(QSize(1000,height()/5));
@@ -155,7 +155,7 @@ MainForm *MainForm::clone() const{
 //SLOTS
 
 void MainForm::to_next_page(int index){
-    emit to_new_page(new CourseForm(user, control,user->getCourse()[index],relogin,parentWidget()));
+    emit to_new_page(new CourseForm(user, control,control.getCourse(user,index),relogin,parentWidget()));
 
     //close();
 }

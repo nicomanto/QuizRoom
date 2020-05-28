@@ -1,7 +1,7 @@
 #include "classicquizform.h"
 
 
-ClassicQuizForm::ClassicQuizForm(ClassicQuiz* q, QWidget *parent): QuizBaseForm(QString::fromStdString(q->getQuestion()),parent), this_quiz(q){
+ClassicQuizForm::ClassicQuizForm(Controller& c, ClassicQuiz* q, QWidget *parent): QuizBaseForm(c, QString::fromStdString(q->getQuestion()),parent), this_quiz(q){
     main_layout= new QVBoxLayout(this);
 
     container_answers= new QGroupBox(this);
@@ -24,7 +24,7 @@ ClassicQuizForm::ClassicQuizForm(ClassicQuiz* q, QWidget *parent): QuizBaseForm(
 void ClassicQuizForm::getAnswers(){
     for(unsigned int i=0; i< answers.size();++i)
         if(answers[i]->isChecked())
-            this_quiz->addPoint(answers[i]->text().toStdString());
+            control.addPointClassicQuiz(this_quiz,answers[i]->text().toStdString());
 }
 
 
@@ -60,7 +60,7 @@ void ClassicQuizForm::setStyle(){
 }
 
 void ClassicQuizForm::randomize_answer(){
-    unsigned int count= this_quiz->getAnswers().size();
+    unsigned int count= control.getAnswersClassicQuizSize(this_quiz);
     srand(time(NULL));
     bool exist;
     MyVector<int>  already_included(1,-1);
@@ -71,7 +71,7 @@ void ClassicQuizForm::randomize_answer(){
 
         do{
             exist=false;
-            number=rand()%this_quiz->getAnswers().size();
+            number=rand()%control.getAnswersClassicQuizSize(this_quiz);
 
             for(unsigned int i=0;i<already_included.size() && !exist;++i){
                 if(number==already_included[i])
@@ -83,7 +83,7 @@ void ClassicQuizForm::randomize_answer(){
         already_included.push_back(number);
 
         count--;
-        answers.push_back(new QPushButton(QString::fromStdString(this_quiz->getAnswers()[number]),this));
+        answers.push_back(new QPushButton(QString::fromStdString(control.getAnsweratIndexClassicQuiz(this_quiz,number)),this));
 
 
     }

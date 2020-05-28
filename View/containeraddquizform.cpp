@@ -114,8 +114,8 @@ void ContainerAddQuizForm::to_add_quiz(){
 
         //controllare se il vettore contiene già dei quiz->significa che prima non si è riusciti ad inviare tutti i quiz per qualche eccezzione
         //evita che ci siano dei duplicati dei quiz
-        if(!(this_homework->getQuiz().empty()))
-            this_homework->clearQuiz();
+        if(!(control.haveEmptyQuiz(this_homework)))
+            control.HomeworkClearQuiz(this_homework);
 
         emit setInformation();
         emit to_update_previous_page();

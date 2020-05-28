@@ -23,7 +23,7 @@ private:
    virtual void randomize_answer();
 
 public:
-   explicit CombineQuizForm(CombineQuiz* q, QWidget *parent = nullptr);
+   explicit CombineQuizForm(Controller& c, CombineQuiz* q, QWidget *parent = nullptr);
    ~CombineQuizForm()= default;
 
 

@@ -27,7 +27,7 @@ private:
 
 
 public:
-    explicit ClassicQuizForm(ClassicQuiz* q,QWidget *parent = nullptr);
+    explicit ClassicQuizForm(Controller& c, ClassicQuiz* q,QWidget *parent = nullptr);
     ~ClassicQuizForm()= default;
 
 

@@ -10,7 +10,7 @@
 
 #include "Model/myvector.h"
 #include "Model/homework.h"
-#include "Model/controller.h"
+#include "Control/controller.h"
 
 
 class AddQuizForm : public BaseForm{

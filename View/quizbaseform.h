@@ -10,6 +10,7 @@
 #include "baseform.h"
 
 #include "Model/quiz.h"
+#include "Control/controller.h"
 
 
 class QuizBaseForm : public BaseForm{
@@ -17,7 +18,7 @@ class QuizBaseForm : public BaseForm{
 
 protected:
 
-
+    Controller& control;
     QLabel* question;
 
     QGroupBox* container_answers;
@@ -30,7 +31,7 @@ protected:
     //inserisce le risposte in ordine sparso ad ogni creazione di un quiz
     virtual void randomize_answer()=0;
 public:
-    explicit QuizBaseForm(const QString& q, QWidget *parent = nullptr);
+    explicit QuizBaseForm(Controller& c,const QString& q, QWidget *parent = nullptr);
     virtual ~QuizBaseForm();
 
 

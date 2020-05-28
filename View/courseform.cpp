@@ -2,8 +2,8 @@
 
 
 CourseForm::CourseForm(User* u,Controller& c,Course* course, bool & r,QWidget *parent): PrincipalForm(u,c,r,parent), this_course(course), container_course(new QGroupBox(this)),container_center(new QGroupBox(this)), info_course_layout(new QVBoxLayout(container_course)),
-    center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(QString::fromStdString(this_course->getTitle()),this)),
-    course_description(new QLabel(QString::fromStdString(this_course->getDescription()),this)),course_code(new QLabel(QString::fromStdString("Codice: "+this_course->getCode()),this)){
+    center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(QString::fromStdString(control.getCourseTitle(this_course)),this)),
+    course_description(new QLabel(QString::fromStdString(control.getCourseDescription(this_course)),this)),course_code(new QLabel(QString::fromStdString("Codice: "+control.getCourseCode(this_course)),this)){
 
     main_layout=new QVBoxLayout(this);
     scroll= new QScrollArea(this);
@@ -31,22 +31,22 @@ void CourseForm::addMenu(){
     bool can_do_somethingC=false;
     bool can_do_somethingH=false;
 
-    if(user->CanAddHomework()){ //controllare se l'utente può aggiungere homework
+    if(control.UserCanAddHomework(user)){ //controllare se l'utente può aggiungere homework
         QAction* add_homework = new QAction("crea compito",homework);
         homework->addAction(add_homework);
         connect(add_homework,SIGNAL(triggered()),this,SLOT(to_addhomework()));
         can_do_somethingH=true;
     }
 
-    if(user->CanEditCourse()){ //controllare se l'utente può modificare il corso
-        QAction* modify_course = new QAction("modifica",homework);
+    if(control.UserCanEditCourse(user)){ //controllare se l'utente può modificare il corso
+        QAction* modify_course = new QAction("modifica",course);
         course->addAction(modify_course);
         connect(modify_course,SIGNAL(triggered()),this,SLOT(to_course_info()));
         can_do_somethingC=true;
     }
 
-    if(user->CanDeleteHomework()){ //controllare se l'utente può eliminare il corso
-        QAction* delete_course = new QAction("elimina",homework);
+    if(control.UserCanDeleteCourse(user)){ //controllare se l'utente può eliminare il corso
+        QAction* delete_course = new QAction("elimina",course);
         course->addAction(delete_course);
         connect(delete_course,SIGNAL(triggered()),this,SLOT(del_course()));
         can_do_somethingC=true;
@@ -91,9 +91,9 @@ void CourseForm::addForm(){
     QSignalMapper* signalMapperHomework = new QSignalMapper (this);
 
     //aggiungo i compiti del corso
-    for(unsigned int i=0; i <this_course->getHomeworks().size(); ++i){
+    for(unsigned int i=0; i <control.getNumberCourseHomework(this_course); ++i){
         QString s= "Compito " + QString::number(i);
-        homework.push_back(new QPushButton(QString::fromStdString(this_course->getHomeworks()[i]->getTitle()),this));
+        homework.push_back(new QPushButton(QString::fromStdString(control.getHomeworkTitle(control.getHomework(this_course,i))),this));
 
         //connect del bottone compito
         connect(homework[i],SIGNAL(clicked()),signalMapperHomework,SLOT(map()));
@@ -126,7 +126,7 @@ void CourseForm::setStyle(){
     PrincipalForm::setStyle();
 
     //stile dei bottoni homework e homework_menu
-    for(unsigned int i=0; i <this_course->getHomeworks().size(); ++i){
+    for(unsigned int i=0; i <control.getNumberCourseHomework(this_course); ++i){
         homework[i]->setMinimumSize(width()/3,height()/5);
         homework[i]->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
         homework[i]->setMaximumSize(QSize(1000,height()/5));
@@ -201,7 +201,7 @@ bool CourseForm::addMenuButton(QPushButton *b,unsigned int i){
 
 
     //controllare se un utente può eliminare un corso
-    if(user->CanDeleteHomework()){
+    if(control.UserCanDeleteCourse(user)){
         QAction* del = new QAction("Elimina",button_options);
         button_options->addAction(del);
         temp=true;
@@ -228,7 +228,7 @@ CourseForm *CourseForm::clone() const{
 //SLOTS
 
 void CourseForm::to_next_page(int index){
-    emit to_new_page(new HomeworkForm(user,control,this_course->getHomeworks()[index],relogin,parentWidget()));
+    emit to_new_page(new HomeworkForm(user,control,control.getHomework(this_course,index),relogin,parentWidget()));
 
     //close();
 }
