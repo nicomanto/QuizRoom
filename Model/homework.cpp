@@ -45,7 +45,10 @@ const std::string Homework::AllSolutionToString() const{
         temp.append("\nQuiz ");
         temp.append(std::to_string(i)+":\n");
         temp.append((*it)->SolutionToString()+"\n");
-        temp.append("Punti ottenuti: "+std::to_string((*it)->getMyPoint())+"\n");
+
+        std::stringstream stream;
+        stream << std::fixed << std::setprecision(2) << (*it)->getMyPoint();
+        temp.append("Punti ottenuti: "+stream.str()+"\n");
         ++i;
     }
 

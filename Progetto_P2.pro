@@ -16,9 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Control/controller.cpp \
     Model/classicquiz.cpp \
     Model/combinequiz.cpp \
-    Model/controller.cpp \
     Model/course.cpp \
     Model/date.cpp \
     Model/datetime.cpp \
@@ -55,9 +55,9 @@ SOURCES += \
     Model/teacher.cpp
 
 HEADERS += \
+    Control/controller.h \
     Model/classicquiz.h \
     Model/combinequiz.h \
-    Model/controller.h \
     Model/course.h \
     Model/date.h \
     Model/datetime.h \

@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <iostream>
 
-#include "Model/controller.h"
+#include "Control/controller.h"
 #include "View/loginform.h"
 
 int main(int argc, char *argv[])

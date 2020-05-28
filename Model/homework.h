@@ -1,7 +1,9 @@
 #ifndef HOMEWORK_H
 #define HOMEWORK_H
-
+#include <iomanip>
+#include <sstream>
 #include <string>
+
 #include "myvector.h"
 #include "quiz.h"
 
