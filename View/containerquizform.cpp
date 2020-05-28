@@ -126,15 +126,33 @@ void ContainerQuizForm::show_result(){
 
     // Creo la finestra col messaggio con QDialog
     QDialog* dialog = new QDialog(this);
-    QVBoxLayout* layout = new QVBoxLayout(dialog);
+    QVBoxLayout* layout_dialog= new QVBoxLayout(dialog);
+
+    QWidget *viewport = new QWidget(dialog);
+    QVBoxLayout* layout = new QVBoxLayout(viewport);
+
+
+
+
+    layout->setAlignment(Qt::AlignCenter);
+    dialog->setFixedSize(width()/3,height()/3);
+
+    QScrollArea* scroll= new QScrollArea(dialog);
+
+    dialog->layout()->addWidget(scroll);
+    scroll->setWidget(viewport);
+    scroll->setWidgetResizable(true);
+    //scroll->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
     //Mostro le risposte corrette dei quiz e il punteggio ottenuto del singolo quiz
     QString temp("Ecco le risposte corrette: \n"+QString::fromStdString(this_homework->AllSolutionToString()));
 
     //mostra il voto totale se il compito ce l'ha
     if(this_homework->haveResult()){
-        if (this_homework->isScoreHomework())
+        if (this_homework->isScoreHomework()){
+            //std::cout<<"ciao"<<std::endl;
             temp.append("\nVoto ottenuto: "+QString::number(this_homework->getResult()));
+        }
         else{
             if(this_homework->getResult()>0){
                 temp.append("\nQuiz completato prima della scadenza della deadline");
@@ -152,9 +170,9 @@ void ContainerQuizForm::show_result(){
 
     QLabel* informations=new QLabel(temp,dialog);
     informations->setFont(QFont( "Arial", 12));
+    informations->setAlignment(Qt::AlignCenter);
 
     layout->addWidget(informations);
-    layout->setAlignment(Qt::AlignCenter);
     // Mostrare la finestra
     dialog->show();
 }
