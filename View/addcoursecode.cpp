@@ -29,7 +29,7 @@ void AddCourseCode::setStyle(){
 
     code_form->setPlaceholderText("Inserisci il codice del corso");
     code_form->setMaxLength(7);
-    code_form->setAlignment(Qt::AlignCenter);
+    //code_form->setAlignment(Qt::AlignCenter);
 
 
     //setta la taglia della window
