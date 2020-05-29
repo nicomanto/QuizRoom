@@ -9,7 +9,7 @@
 #include <QLabel>
 
 #include "baseform.h"
-#include "errordialog.h"
+#include "errormessage.h"
 
 
 

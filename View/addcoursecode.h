@@ -4,7 +4,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include "baseform.h"
-#include "errordialog.h"
+#include "errormessage.h"
 
 class AddCourseCode : public BaseForm{
     Q_OBJECT

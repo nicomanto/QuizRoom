@@ -190,6 +190,8 @@ void MainForm::del_course(int i){
 
 void MainForm::addCourse(){
     QDialog* dialog = new QDialog(this);
+
+    dialog->setWindowTitle("Iscrizione");
     QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
 
     AddCourseCode* temp= new AddCourseCode(dialog);

@@ -66,7 +66,7 @@ void AddHomeworkForm::send_homework_information(){
             emit addHomeworkinformation(title_form->text(),description_form->toPlainText(),is_time->checkState(),is_score->checkState(),datetime);
             parentWidget()->close();
     } catch(std::logic_error exc){
-            ErrorDialog* error = new ErrorDialog(exc.what(),this);
+            ErrorMessage* error = new ErrorMessage(exc.what());
 
 
             error->show();

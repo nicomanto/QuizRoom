@@ -24,7 +24,7 @@ ContainerQuizForm *ContainerQuizForm::clone() const{
 
 void ContainerQuizForm::addMenu(){
 
-    QAction* previous_page = new QAction("<-",menubar); //ritorno alla pagina precedent
+    QAction* previous_page= new QAction(QIcon(":/Resources/Images/left_arrow.png"),"Ritorna alla pagina precedente",menubar); //torno alla pagina precedente
 
     menubar->addAction(previous_page);
 
@@ -171,6 +171,8 @@ void ContainerQuizForm::show_result(){
     layout->setAlignment(Qt::AlignCenter);
     dialog->setFixedSize(width()/3,height()/3);
     scroll->setWidgetResizable(true);
+    dialog->setWindowTitle("Risultati");
+    dialog->setWindowIcon(QIcon(":/Resources/Images/result.png"));
 
     dialog->show();
 }

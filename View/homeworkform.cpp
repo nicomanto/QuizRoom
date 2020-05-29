@@ -37,7 +37,7 @@ void HomeworkForm::addMenu(){
     QMenu* options = new QMenu("Opzioni",menubar);
     QMenu*  homework= new QMenu("Compito",menubar);
 
-    QAction* previous_page= new QAction("<-",menubar);
+    QAction* previous_page= new QAction(QIcon(":/Resources/Images/left_arrow.png"),"Ritorna alla pagina precedente",menubar); //torno alla pagina precedente
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
 

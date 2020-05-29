@@ -17,7 +17,7 @@ ContainerAddQuizForm::ContainerAddQuizForm(User* u,Controller& c,Homework* h,boo
 
 void ContainerAddQuizForm::addMenu(){
 
-    QAction* previous_page = new QAction("<-",menubar); //ritorno alla pagina precedent
+    QAction* previous_page= new QAction(QIcon(":/Resources/Images/left_arrow.png"),"Ritorna alla pagina precedente",menubar); //torno alla pagina precedente
 
     menubar->addAction(previous_page);
 
@@ -126,7 +126,7 @@ void ContainerAddQuizForm::to_add_quiz(){
         //control.removeStackView();
 
     }catch(std::logic_error exc){
-        ErrorDialog* error = new ErrorDialog(exc.what(),this);
+        ErrorMessage* error = new ErrorMessage(exc.what());
 
 
         error->show();

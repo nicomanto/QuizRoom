@@ -26,6 +26,9 @@ void PrincipalForm::to_login(){
 void PrincipalForm::to_addform(const QString& title, const QString& description){
 
     QDialog* dialog = new QDialog(this);
+
+    dialog->setWindowTitle("Modifica o aggiungi");
+    dialog->setWindowIcon(QIcon(":/Resources/Images/modify_add.png"));
     QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
 
     ModifyAddForm* temp= new ModifyAddForm(title,description,dialog);

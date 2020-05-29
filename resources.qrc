@@ -9,5 +9,10 @@
         <file>Resources/Style_sheet/style_main.css</file>
         <file>Resources/Style_sheet/style_modifyaddform.css</file>
         <file>Resources/Style_sheet/style_quiz.css</file>
+        <file>Resources/Images/quiz_app_icon.png</file>
+        <file>Resources/Images/error.png</file>
+        <file>Resources/Images/login.png</file>
+        <file>Resources/Images/modify_add.png</file>
+        <file>Resources/Images/result.png</file>
     </qresource>
 </RCC>

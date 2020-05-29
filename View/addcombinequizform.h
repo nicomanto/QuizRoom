@@ -4,7 +4,7 @@
 
 #include "addquizform.h"
 #include "Model/myvector.h"
-#include "errordialog.h"
+#include "errormessage.h"
 
 
 

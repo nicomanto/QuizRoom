@@ -4,7 +4,7 @@
 #include<QCheckBox>
 
 #include "addquizform.h"
-#include "errordialog.h"
+#include "errormessage.h"
 #include "Model/myvector.h"
 
 

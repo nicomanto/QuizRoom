@@ -36,6 +36,8 @@ void ModifyAddForm::addForm(){
 void ModifyAddForm::setStyle(){
     BaseForm::setStyle();
 
+    //setWindowTitle("Modifica");
+
     //larghezza del title_form fissa
     title_form->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
@@ -78,7 +80,7 @@ void ModifyAddForm::send_information(){
         parentWidget()->close();
     } catch(std::logic_error exc){
         //mostro l'errore all'utente
-        ErrorDialog* error = new ErrorDialog(exc.what(),this);
+        ErrorMessage* error = new ErrorMessage(exc.what());
 
 
         error->show();

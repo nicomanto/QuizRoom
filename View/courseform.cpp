@@ -24,12 +24,10 @@ void CourseForm::addMenu(){
     QMenu* course= new QMenu("Corso",menubar);
     QMenu*  homework= new QMenu("Compito",menubar);
 
-    QAction* previous_page= new QAction(menubar); //torno alla pagina precedente
-    previous_page->setIcon(QIcon(":/Resources/Images/left_arrow.png"));
-
-
+    QAction* previous_page= new QAction(QIcon(":/Resources/Images/left_arrow.png"),"Ritorna alla pagina precedente",menubar); //torno alla pagina precedente
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
+    //connect(previous_page, &QAction::triggered, this, &MainWindow::open);
     //controllo se posso fare qualcosa con i compiti e con il corso
     bool can_do_somethingC=false;
     bool can_do_somethingH=false;
@@ -240,6 +238,9 @@ void CourseForm::to_next_page(int index){
 
 void CourseForm::to_addhomework(){
     QDialog* dialog = new QDialog(this);
+
+    dialog->setWindowTitle("Modifica o aggiungi");
+    dialog->setWindowIcon(QIcon(":/Resources/Images/modify_add.png"));
     QVBoxLayout* layout_dialog = new QVBoxLayout(dialog);
 
     AddHomeworkForm* temp= new AddHomeworkForm("","",dialog);

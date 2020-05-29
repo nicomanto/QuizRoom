@@ -59,7 +59,7 @@ void AddCourseCode::send_code(){
         emit addCourse(code_form->text());
         parentWidget()->close();
     } catch(std::logic_error exc){
-        ErrorDialog* error = new ErrorDialog(exc.what(),this);
+        ErrorMessage* error = new ErrorMessage(exc.what());
 
 
         error->show();

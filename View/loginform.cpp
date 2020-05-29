@@ -17,6 +17,8 @@ LoginForm::LoginForm(Controller& c,bool & r,QWidget *parent) : BaseForm(parent),
 
 
 void LoginForm::addForm(){
+    QPixmap img;
+    img.load(":/login.png");
     main_layout->addWidget(username);
     main_layout->addWidget(username_form);
 
@@ -35,6 +37,7 @@ void LoginForm::addForm(){
 void LoginForm::setStyle(){
     BaseForm::setStyle();
 
+    setWindowTitle("QuizRoom - Login");
 
     username->setAlignment(Qt::AlignCenter);  //setta al centro la scritta 'username'
     password->setAlignment(Qt::AlignCenter); //setta al centro la scritta 'password'
@@ -81,7 +84,7 @@ void LoginForm::to_principalform(){
         close();
     }
     catch(std::logic_error exc){
-        ErrorDialog* error = new ErrorDialog(exc.what(),this);
+       ErrorMessage* error = new ErrorMessage(exc.what());
 
 
         error->show();

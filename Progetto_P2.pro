@@ -41,7 +41,7 @@ SOURCES += \
     View/containerprincipalform.cpp \
     View/containerquizform.cpp \
     View/courseform.cpp \
-    View/errordialog.cpp \
+    View/errormessage.cpp \
     View/homeworkform.cpp \
     View/loginform.cpp \
     View/mainform.cpp \
@@ -84,7 +84,7 @@ HEADERS += \
     View/containerprincipalform.h \
     View/containerquizform.h \
     View/courseform.h \
-    View/errordialog.h \
+    View/errormessage.h \
     View/homeworkform.h \
     View/loginform.h \
     View/mainform.h \
