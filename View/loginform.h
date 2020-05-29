@@ -16,6 +16,10 @@ private:
     Controller& control;
     bool & relogin;
 
+    QWidget* container_informations;
+    QVBoxLayout* layout_informations;
+
+
     QPushButton *login_button;
     QLineEdit *username_form;
     QLineEdit *password_form;
