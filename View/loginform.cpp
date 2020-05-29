@@ -17,6 +17,8 @@ LoginForm::LoginForm(Controller& c,bool & r,QWidget *parent) : BaseForm(parent),
 
 
 void LoginForm::addForm(){
+
+    //aggiungo immagine login.png
     QPixmap img;
     img.load(":/Resources/Images/login.png");
 
