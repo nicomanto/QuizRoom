@@ -21,7 +21,7 @@ void QuizBaseForm::setStyle(){
 
     answers_layout->setSpacing(20);
 
-    QFile file(":/Resources/style_quiz.css");
+    QFile file(":/Resources/Style_sheet/style_quiz.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 

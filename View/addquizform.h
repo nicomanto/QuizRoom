@@ -43,7 +43,7 @@ public:
     //segnale per inviare i dati
     //void send_information(const std::string& ,const MyVector<std::string>& ,const MyVector<std::string>&);
 
-public slots:
+private slots:
 
     //invia i dati del quiz al controller
     virtual void setInformation()=0;

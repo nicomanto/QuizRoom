@@ -169,7 +169,7 @@ void HomeworkForm::setStyle(){
     container_info_quiz->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
 
     //aggiunta del foglio di stile
-    QFile file(":/Resources/style_homework.css");
+    QFile file(":/Resources/Style_sheet/style_homework.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 

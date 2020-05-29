@@ -11,7 +11,7 @@ private:
 
 public:
     ClassicQuiz();
-    ClassicQuiz(const std::string& q, double mp=1, double tm=0);
+    ClassicQuiz(const std::string& q, double mp=40, double tm=0);
 
     const MyVector<std::string>& getCorrectAnswer() const;
     const MyVector<std::string>& getAnswers() const;

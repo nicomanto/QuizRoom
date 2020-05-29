@@ -1,12 +1,13 @@
 <RCC>
     <qresource prefix="/">
-        <file>Resources/style_addquizform.css</file>
-        <file>Resources/style_containerquiz.css</file>
-        <file>Resources/style_course.css</file>
-        <file>Resources/style_homework.css</file>
-        <file>Resources/style_login.css</file>
-        <file>Resources/style_main.css</file>
-        <file>Resources/style_modifyaddform.css</file>
-        <file>Resources/style_quiz.css</file>
+        <file>Resources/Images/left_arrow.png</file>
+        <file>Resources/Style_sheet/style_addquizform.css</file>
+        <file>Resources/Style_sheet/style_containerquiz.css</file>
+        <file>Resources/Style_sheet/style_course.css</file>
+        <file>Resources/Style_sheet/style_homework.css</file>
+        <file>Resources/Style_sheet/style_login.css</file>
+        <file>Resources/Style_sheet/style_main.css</file>
+        <file>Resources/Style_sheet/style_modifyaddform.css</file>
+        <file>Resources/Style_sheet/style_quiz.css</file>
     </qresource>
 </RCC>

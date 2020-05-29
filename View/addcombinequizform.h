@@ -33,7 +33,7 @@ public:
 signals:
     //void send_information(const std::string& question, const MyVector<std::string>& elements_to_combine,const MyVector<std::string>& answers );
 
-public slots:
+private slots:
 
     //invia i dati del quiz al controller
     virtual void setInformation();

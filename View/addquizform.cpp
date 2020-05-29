@@ -29,7 +29,7 @@ void AddQuizForm::setStyle(){
 
 
     //imposto il foglio di stile
-    QFile file(":/Resources/style_addquizform.css");
+    QFile file(":/Resources/Style_sheet/style_addquizform.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 

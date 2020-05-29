@@ -112,7 +112,7 @@ void MainForm::setStyle(){
     scroll_layout->setAlignment(Qt::AlignCenter);
     scroll_layout->setSpacing(0);  //setto lo spazio fra gli elementi di scroll a
 
-    QFile file(":/Resources/style_main.css");
+    QFile file(":/Resources/Style_sheet/style_main.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 

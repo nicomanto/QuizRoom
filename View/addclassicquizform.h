@@ -25,7 +25,7 @@ public:
     ~AddClassicQuizForm()=default;
 
 
-public slots:
+private slots:
 
     //invia i dati del quiz al controller
     virtual void setInformation();

@@ -24,7 +24,10 @@ void CourseForm::addMenu(){
     QMenu* course= new QMenu("Corso",menubar);
     QMenu*  homework= new QMenu("Compito",menubar);
 
-    QAction* previous_page= new QAction("<-",menubar); //torno alla pagina precedente
+    QAction* previous_page= new QAction(menubar); //torno alla pagina precedente
+    previous_page->setIcon(QIcon(":/Resources/Images/left_arrow.png"));
+
+
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
     //controllo se posso fare qualcosa con i compiti e con il corso
@@ -185,7 +188,7 @@ void CourseForm::setStyle(){
 
 
     //aggiunta foglio di stile
-    QFile file(":/Resources/style_course.css");
+    QFile file(":/Resources/Style_sheet/style_course.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 

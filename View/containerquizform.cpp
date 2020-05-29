@@ -106,7 +106,7 @@ void ContainerQuizForm::setStyle(){
     scroll->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
     //aggiunta foglio di stile
-    QFile file(":/Resources/style_containerquiz.css");
+    QFile file(":/Resources/Style_sheet/style_containerquiz.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
 
