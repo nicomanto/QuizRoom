@@ -23,7 +23,6 @@ private:
 
 public:
     Controller();
-    ~Controller();
 
     void addStackView(PrincipalForm* p); //aggiunge una pagina allo stack delle pagine visitate
     PrincipalForm* removeStackView(); //rimuove una pagina dallo stack delle pagine visitate

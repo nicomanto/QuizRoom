@@ -174,11 +174,6 @@ Controller::Controller(){
     quiz_18->addCorrectCombine("serpente","rettile");
     quiz_18->addCorrectCombine("cavalletta","insetto");
 
-
-
-    while(course_1->getCode()==course_2->getCode())
-        course_2->setCode();
-
     homework_1->addQuiz(quiz_1);
     homework_1->addQuiz(quiz_2);
     homework_1->addQuiz(quiz_3);
@@ -224,11 +219,6 @@ Controller::Controller(){
     users[2]->addCourse(course_2);
     users[2]->addCourse(course_4);
 
-}
-
-Controller::~Controller(){
-    for(unsigned int i=0;i<users.size();++i)
-        delete users[i];
 }
 
 void Controller::addStackView(PrincipalForm *p){
