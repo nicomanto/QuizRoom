@@ -7,55 +7,172 @@ Controller::Controller(){
     Student* s2= new Student("student2","student2");
 
 
-
     users.push_back(t);
     users.push_back(s1);
     users.push_back(s2);
 
+    Course* course_1 =new Course("Storia","Corso di storia della classe 2B");
+    Course* course_2 =new Course("Matematica","Corso di matematica della classe 2B");
 
-    Course* course_1= new Course("Titolo","Descrizione");
-    Course* course_2 =new Course("Corso2","ciaooo");
+    while(course_1->getCode()==course_2->getCode())
+        course_2->setCode();
 
-    DateTime data(25,03,2020,00);
 
-    Homework* homework_1= new TimeScoreHomework(data, "Prova compito");
-    Homework* homework_2= new ScoreHomework("Prova compito 2","istruzioni");
+    Course* course_3= new Course("Italiano","Corso di italiano della classe 2B, dove ogni settimana verranno caricati dei compiti con dei quiz da eseguire");
 
-    ClassicQuiz* quiz_1= new ClassicQuiz("Di che color è il cavallo bianco di napoleone?");
+    while(course_1->getCode()==course_3->getCode() || course_2->getCode()==course_3->getCode())
+        course_3->setCode();
+
+    Course* course_4 =new Course("Scienze","Corso di scienze della classe 2B, dove ogni settimana verranno caricati dei compiti con dei quiz da eseguire");
+
+    while(course_1->getCode()==course_4->getCode() || course_2->getCode()==course_4->getCode() || course_3->getCode()==course_4->getCode())
+        course_4->setCode();
+
+    DateTime data_1(25,03,2020,00);
+    DateTime data_2(15,03,2021,00);
+
+
+    Homework* homework_1= new TimeScoreHomework(data_2, "Antica Roma", "Questo breve quiz comprende alcune domande sull'Antica Roma. Ogni studente riceverà un voto "
+                                                                     "che sarà pesato in base a quanto prima della fine della deadline è stato consegnato");
+    Homework* homework_2= new ScoreHomework("Equazioni","Questo quiz mettrà alla prova le vostre abilità sulle equazioni, divertitevi :)");
+
+    Homework* homework_3= new TimeScoreHomework(data_1,"Grammatica","Rispondi alle domande riguardo la grammatica italiana");
+
+    Homework* homework_4= new Homework("Famiglie di animali","Compito che si concentrerà sul rispondere ad alcune domande riguardo alla classificazione degli animali");
+
+    ClassicQuiz* quiz_1= new ClassicQuiz("Di che color è il cavallo bianco di Nerone?");
     quiz_1->addAnswer("Nero");
     quiz_1->addAnswer("Rosso");
     quiz_1->addCorrectAnswer("Bianco");
     quiz_1->addAnswer("Verde");
 
-    CombineQuiz* quiz_2= new CombineQuiz("Abbina questi animali");
-    quiz_2->addCorrectCombine("scimmia","mammifero");
-    quiz_2->addCorrectCombine("cavallo","mammifero");
-    quiz_2->addCorrectCombine("lucertola","rettile");
-    quiz_2->addCorrectCombine("squalo","pesce");
+    ClassicQuiz* quiz_2= new ClassicQuiz("Secondo la mitologia, chi fu il primo Re di Roma?");
+    quiz_2->addAnswer("Giulio Cesare");
+    quiz_2->addAnswer("Totti");
+    quiz_2->addCorrectAnswer("Romolo");
+    quiz_2->addAnswer("Remo");
 
-    ClassicQuiz* quiz_3= new ClassicQuiz("Di che color è il cavallo nero di napoleone?");
-    quiz_3->addCorrectAnswer("Nero");
-    quiz_3->addAnswer("Rosso");
-    quiz_3->addAnswer("Bianco");
-    quiz_3->addAnswer("Verde");
 
-    ClassicQuiz* quiz_4= new ClassicQuiz("Quando è stata scoperta l'america?");
-    quiz_4->addCorrectAnswer("1492");
-    quiz_4->addAnswer("2020");
-    quiz_4->addAnswer("10 A.C.");
-    quiz_4->addAnswer("1999");
+    ClassicQuiz* quiz_3= new ClassicQuiz("La caduta dell'Impero romano d'Occidente è fissata a...");
+    quiz_3->addAnswer("2020 d. C.");
+    quiz_3->addAnswer("0 d. C.");
+    quiz_3->addCorrectAnswer("476 d. C.");
+    quiz_3->addAnswer("1492 d. C.");
 
-    ClassicQuiz* quiz_5= new ClassicQuiz("Quanto fa 5+5*0");
-    quiz_5->addCorrectAnswer("5");
-    quiz_5->addCorrectAnswer("10-5");
-    quiz_5->addAnswer("22");
-    quiz_5->addAnswer("0");
+    CombineQuiz* quiz_4= new CombineQuiz("In che anno sono stati proclamati Imperatori?");
+    quiz_4->addCorrectCombine("Giulio Cesare","49 a. C.");
+    quiz_4->addCorrectCombine("Nerone","54 d. C.");
+    quiz_4->addCorrectCombine("Caligola","37 d. C.");
+    quiz_4->addCorrectCombine("Marco Aurelio","180 d. C.");
 
-    CombineQuiz* quiz_6 =new CombineQuiz("Chi è la versione femminile? Abbina");
-    quiz_6->addCorrectCombine("Leone","Leonessa");
-    quiz_6->addCorrectCombine("Toro","Mucca");
-    quiz_6->addCorrectCombine("Gallo","Gallina");
-    quiz_6->addCorrectCombine("Cane","Cagnolina");
+    ClassicQuiz* quiz_5= new ClassicQuiz("Chi è famoso per aver bruciato Roma?");
+    quiz_5->addAnswer("Totti");
+    quiz_5->addAnswer("Augusto");
+    quiz_5->addCorrectAnswer("Nerone");
+    quiz_5->addAnswer("Romolo Augustolo");
+
+
+
+
+
+
+
+    ClassicQuiz* quiz_6= new ClassicQuiz("Quanto fa x = 5+5*0?");
+    quiz_6->addCorrectAnswer("x = 5");
+    quiz_6->addCorrectAnswer("x = 10-5");
+    quiz_6->addAnswer("x = 22");
+    quiz_6->addAnswer("x = 0");
+
+
+    ClassicQuiz* quiz_7= new ClassicQuiz("Quanto fa x^2 = 49?");
+    quiz_7->addAnswer("x = -7");
+    quiz_7->addAnswer("x = +7");
+    quiz_7->addCorrectAnswer("x1 = -7, x2 = +7");
+    quiz_7->addAnswer("x = 49");
+
+
+    ClassicQuiz* quiz_8= new ClassicQuiz("Quanto fa x+3+7=0?");
+    quiz_8->addCorrectAnswer("x=-10");
+    quiz_8->addAnswer("x=10");
+    quiz_8->addAnswer("x=-4");
+    quiz_8->addAnswer("x=4");
+
+
+    CombineQuiz* quiz_9= new CombineQuiz("Abbina l'equazione alla risposta esatta");
+    quiz_9->addCorrectCombine("x = 9","9");
+    quiz_9->addCorrectCombine("x+2-4 = 7","9");
+    quiz_9->addCorrectCombine("-2y = -4","2");
+    quiz_9->addCorrectCombine("0x = 7","impossiile");
+
+
+
+
+
+
+
+
+    ClassicQuiz* quiz_10= new ClassicQuiz("Quali di questi è un articolo?");
+    quiz_10->addCorrectAnswer("la");
+    quiz_10->addCorrectAnswer("il");
+    quiz_10->addCorrectAnswer("un");
+    quiz_10->addAnswer("tra");
+
+
+    CombineQuiz* quiz_11= new CombineQuiz("Abbina alla descrizione più appropriata");
+    quiz_11->addCorrectCombine("la","articolo");
+    quiz_11->addCorrectCombine("Claudio","nome");
+    quiz_11->addCorrectCombine("bello","aggettivo");
+    quiz_11->addCorrectCombine("di","preposizione");
+
+    CombineQuiz* quiz_12= new CombineQuiz("Abbina alla descrizione più appropriata");
+    quiz_12->addCorrectCombine("io","pronome");
+    quiz_12->addCorrectCombine("tu","pronome");
+    quiz_12->addCorrectCombine("simpatico","aggettivo");
+    quiz_12->addCorrectCombine("andare","verbo");
+
+
+    CombineQuiz* quiz_13= new CombineQuiz("Nome proprio o nome comune?");
+    quiz_13->addCorrectCombine("cane","nome comune");
+    quiz_13->addCorrectCombine("Roberto","nome proprio");
+    quiz_13->addCorrectCombine("Briciola","nome proprio");
+    quiz_13->addCorrectCombine("uomo","nome comune");
+
+
+
+
+
+
+
+
+    CombineQuiz* quiz_14= new CombineQuiz("A quale classe appartiene ciascun animale?");
+    quiz_14->addCorrectCombine("scimmia","mammifero");
+    quiz_14->addCorrectCombine("cavallo","mammifero");
+    quiz_14->addCorrectCombine("lucertola","rettile");
+    quiz_14->addCorrectCombine("squalo","pesce");
+
+    ClassicQuiz* quiz_15= new ClassicQuiz("Quale classe depone le uova?");
+    quiz_15->addCorrectAnswer("Rettili");
+    quiz_15->addAnswer("Mammiferi");
+    quiz_15->addCorrectAnswer("Uccelli");
+    quiz_15->addCorrectAnswer("Pesci");
+
+    ClassicQuiz* quiz_16= new ClassicQuiz("Questi animali depongono le uova, trova l'intruso");
+    quiz_16->addCorrectAnswer("Delfino");
+    quiz_16->addAnswer("Pinguino");
+    quiz_16->addAnswer("Squalo");
+    quiz_16->addAnswer("Serpente");
+
+    ClassicQuiz* quiz_17= new ClassicQuiz("Tutti questi animali sono mammiferi, seleziona la risposta sbagliata");
+    quiz_17->addAnswer("delfino");
+    quiz_17->addCorrectAnswer("squalo");
+    quiz_17->addAnswer("maiale");
+    quiz_17->addAnswer("orso");
+
+    CombineQuiz* quiz_18= new CombineQuiz("A quale classe appartiene ciascun animale?");
+    quiz_18->addCorrectCombine("umano","mammifero");
+    quiz_18->addCorrectCombine("rondine","uccello");
+    quiz_18->addCorrectCombine("serpente","rettile");
+    quiz_18->addCorrectCombine("cavalletta","insetto");
 
 
 
@@ -67,21 +184,45 @@ Controller::Controller(){
     homework_1->addQuiz(quiz_3);
     homework_1->addQuiz(quiz_4);
     homework_1->addQuiz(quiz_5);
-    homework_1->addQuiz(quiz_6);
 
-    homework_2->addQuiz(quiz_1);
-    homework_2->addQuiz(quiz_2);
+
+    homework_2->addQuiz(quiz_6);
+    homework_2->addQuiz(quiz_7);
+    homework_2->addQuiz(quiz_8);
+    homework_2->addQuiz(quiz_9);
+
+
+
+    homework_3->addQuiz(quiz_10);
+    homework_3->addQuiz(quiz_11);
+    homework_3->addQuiz(quiz_12);
+    homework_3->addQuiz(quiz_13);
+
+    homework_4->addQuiz(quiz_14);
+    homework_4->addQuiz(quiz_15);
+    homework_4->addQuiz(quiz_16);
+    homework_4->addQuiz(quiz_17);
+    homework_4->addQuiz(quiz_18);
 
 
     course_1->addHomework(homework_1);
     course_2->addHomework(homework_2);
+    course_3->addHomework(homework_3);
+    course_4->addHomework(homework_4);
+
+
 
 
 
     users[0]->addCourse(course_1);
     users[0]->addCourse(course_2);
+    users[0]->addCourse(course_3);
+    users[0]->addCourse(course_4);
+
     users[1]->addCourse(course_1);
+    users[1]->addCourse(course_3);
     users[2]->addCourse(course_2);
+    users[2]->addCourse(course_4);
 
 }
 
