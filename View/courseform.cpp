@@ -153,7 +153,7 @@ void CourseForm::setStyle(){
     course_code->setWordWrap(true);
 
     //styleSheet groupBox delle informazioni del corso
-    container_course->setStyleSheet("margin-top:-21px;");
+    container_course->setStyleSheet("border:none;");
 
 
     //stile info corso
