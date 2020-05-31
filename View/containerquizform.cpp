@@ -133,7 +133,7 @@ void ContainerQuizForm::show_result(){
 
     QScrollArea* scroll= new QScrollArea(dialog);
 
-    dialog->layout()->addWidget(scroll);
+    layout_dialog->addWidget(scroll);
     scroll->setWidget(viewport);
 
     QString temp("Ecco le risposte corrette: \n"+QString::fromStdString(control.SolutionHomeworkToString(this_homework)));
