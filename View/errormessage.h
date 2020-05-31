@@ -5,6 +5,11 @@
 #include <QLabel>
 #include <QMessageBox>
 #include <QIcon>
+#include <QStyle>
+#include <QScreen>
+#include <QApplication>
+#include <QDesktopWidget>
+
 
 
 class ErrorMessage : public QMessageBox{

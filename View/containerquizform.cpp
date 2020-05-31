@@ -169,7 +169,7 @@ void ContainerQuizForm::show_result(){
 
     //stile
     layout->setAlignment(Qt::AlignCenter);
-    dialog->setFixedSize(width()/3,height()/3);
+    dialog->setFixedSize(width_screen/3,height_screen/3);
     scroll->setWidgetResizable(true);
     dialog->setWindowTitle("Risultati");
     dialog->setWindowIcon(QIcon(":/Resources/Images/result.png"));

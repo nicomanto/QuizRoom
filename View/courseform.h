@@ -22,7 +22,7 @@ private:
     MyVector <QPushButton *> homework_menu;  //vettore dei pulsanti modifica homework
 
     QGroupBox* container_course; //contenitore delle informazioni del corso
-    QGroupBox* container_center;  //contenitore degli elementi centrali della window (informazioni corso e i due vettori di bottoni)
+    QWidget* container_center;  //contenitore degli elementi centrali della window (informazioni corso e i due vettori di bottoni)
 
     QVBoxLayout* info_course_layout;  // layout delle info del corso
     QHBoxLayout* center_layout;  //layout di container_center

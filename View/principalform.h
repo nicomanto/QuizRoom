@@ -24,7 +24,7 @@ protected:
     QMenuBar* menubar;
     QScrollArea* scroll;
 
-    QGroupBox* container_scroll;  //contenitore della scroll area
+    QWidget* container_scroll;  //contenitore della scroll area
 
     //aggiunta della barra del menu nella parte superiore della pagina
     virtual void addMenu()=0;

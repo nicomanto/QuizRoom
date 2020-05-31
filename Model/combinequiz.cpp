@@ -56,7 +56,7 @@ void CombineQuiz::resetPoint(){
 const std::string CombineQuiz::SolutionToString() const{
     std::string temp="";
     for(std::map<std::string,std::string>::const_iterator it=correct_combine.begin(); it!=correct_combine.end(); ++it)
-        temp.append(it->first+" "+it->second+"\n");
+        temp.append(it->first+" <-> "+it->second+"\n");
 
     return temp;
 }
