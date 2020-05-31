@@ -49,7 +49,7 @@ void CombineQuizForm::randomize_answer(){
         for (std::map<std::string,std::string>::const_iterator it=control.getCorrectAnswersCombineQuiz(this_quiz).begin(); it!=control.getCorrectAnswersCombineQuiz(this_quiz).end(); ++it){
             temp=true;
 
-            for(unsigned int j=0;j <answers[i]->count() && temp; ++j){
+            for(int j=0;j <answers[i]->count() && temp; ++j){
                 if(QString::fromStdString(it->second)==answers[i]->itemText(j))
                     temp=false;
 

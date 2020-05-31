@@ -322,7 +322,7 @@ void Controller::addCourse(User* s, const string& t, const string& d){
 
     Course* temp=new Course(t,d);
 
-    for(int i=0;i<s->getCourse().size();++i)
+    for(unsigned int i=0;i<s->getCourse().size();++i)
         if(s->getCourse()[i]->getCode()==temp->getCode())
             temp->setCode();
 
