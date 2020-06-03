@@ -3,6 +3,7 @@
 
 #include <QLineEdit>
 #include <QPushButton>
+#include <QFile>
 #include "baseform.h"
 #include "errormessage.h"
 
@@ -10,6 +11,8 @@ class AddCourseCode : public BaseForm{
     Q_OBJECT
 
 private:
+
+    QLabel* code_label;
 
     QLineEdit *code_form;
 

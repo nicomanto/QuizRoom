@@ -64,4 +64,5 @@ void ContainerPrincipalForm::setStyle(){
     //dimensione minima delle pagine
     setMinimumSize(QSize(width_screen/2+100,height_screen/3+50));
 
+
 }

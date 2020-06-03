@@ -6,6 +6,7 @@ MainForm::MainForm(User* u,Controller& c,bool &r,QWidget *parent) : PrincipalFor
     menubar=new QMenuBar(this);
     scroll= new QScrollArea(this);
 
+
     addMenu();
     addForm();
     setStyle();
@@ -117,6 +118,9 @@ void MainForm::setStyle(){
     QString styleSheet = QLatin1String(file.readAll());
 
     setStyleSheet(styleSheet);
+
+
+
 }
 
 

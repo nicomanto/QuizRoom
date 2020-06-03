@@ -24,5 +24,4 @@ void BaseForm::setStyle(){
 
     //dimensione minima delle pagine
     setMinimumSize(QSize(width_screen/2,height_screen/4));
-
 }

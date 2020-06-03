@@ -1,6 +1,6 @@
 #include "addcoursecode.h"
 
-AddCourseCode::AddCourseCode(QWidget *parent): BaseForm(parent),code_form(new QLineEdit(this)),confirm_button(new QPushButton("Conferma",this)){
+AddCourseCode::AddCourseCode(QWidget *parent): BaseForm(parent),code_label(new QLabel("Iscriviti al corso",this)),code_form(new QLineEdit(this)),confirm_button(new QPushButton("Conferma",this)){
     main_layout= new QVBoxLayout(this);
 
     addForm();
@@ -15,7 +15,10 @@ AddCourseCode::AddCourseCode(QWidget *parent): BaseForm(parent),code_form(new QL
 
 void AddCourseCode::addForm(){
 
+    main_layout->addWidget(code_label);
+
     main_layout->addWidget(code_form);
+
     main_layout->addWidget(confirm_button);
 
     connect(confirm_button,SIGNAL(clicked()),this,SLOT(send_code()));
@@ -29,6 +32,8 @@ void AddCourseCode::setStyle(){
 
     code_form->setPlaceholderText("Inserisci il codice del corso");
     code_form->setMaxLength(7);
+
+    code_label->setAlignment(Qt::AlignCenter);
     //code_form->setAlignment(Qt::AlignCenter);
 
 
@@ -47,6 +52,13 @@ void AddCourseCode::setStyle(){
     //layout_button->setAlignment(Qt::AlignRight);
 
 
+
+
+    QFile file(":/Resources/Style_sheet/style_addcoursecode.css");
+    file.open(QFile::ReadOnly);
+    QString styleSheet = QLatin1String(file.readAll());
+
+    setStyleSheet(styleSheet);
 }
 
 

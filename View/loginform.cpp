@@ -10,8 +10,6 @@ LoginForm::LoginForm(Controller& c,bool & r,QWidget *parent) : BaseForm(parent),
     setStyle();
 
     setLayout(main_layout);
-
-
 }
 
 
@@ -70,7 +68,6 @@ void LoginForm::setStyle(){
 
     //imposta la dimensione fissa dalla window
     setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
-
 
 
     //imposto il foglio di stile

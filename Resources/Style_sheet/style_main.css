@@ -1,9 +1,16 @@
+QWidget{
+    /*background-color:white;*/
+}
+
 QMenuBar {
+    background: rgb(34, 47, 87);
+    color: white
 }
 
-QVboxLayout{
-
+QMenuBar::item:selected {
+    background: rgb(34, 147, 192);
 }
+
 
 QLabel{
     font: 12pt Times New Roman;
@@ -14,4 +21,16 @@ QPushButton{
     margin-top: 10;
     margin-bottom: 10;
     font: 11pt Times New Roman;
+    color: white;
+    background: rgb(34, 47, 87,100);
+    /*background: rgb(118, 198, 211,100)*/;
+    border-radius: 10px;
+}
+
+QPushButton:pressed {
+    background-color: rgb(34, 47, 87)
+}
+
+QPushButton:hover {
+    background-color: rgb(34, 47, 87)
 }

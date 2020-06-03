@@ -1,13 +1,11 @@
 QLabel{
-    font: 12pt Times New Roman;
+    margin-bottom: 10px;
 }
-
 
 QPushButton{
     font: 11pt Times New Roman;
     color: white;
     background: rgb(18, 124, 237,200);
-    padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
 }

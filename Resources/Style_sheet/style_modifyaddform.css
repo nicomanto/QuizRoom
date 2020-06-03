@@ -1,7 +1,21 @@
 QPushButton{
-    font: 12pt Times New Roman;
+    font: 11pt Times New Roman;
+    color: white;
+    background: rgb(18, 124, 237,200);
+    /*margin-top: 5px;*/
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color: rgb(18, 124, 237);
+}
+
+QPushButton:hover {
+    background-color: rgb(18, 124, 237);
 }
 
 QGroupBox{
     font: 14pt Times New Roman;
 }
+
+
