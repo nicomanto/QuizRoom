@@ -28,10 +28,10 @@ double TimeHomework::getResult() const{
     DateTime now(DateTime::getCurrentDateTime());
 
     if(now<deadline || now==deadline)
-        return true;
+        return 1;
 
     else
-        return false;
+        return 0;
 }
 
 TimeHomework *TimeHomework::clone() const{
