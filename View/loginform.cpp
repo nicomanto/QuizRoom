@@ -10,6 +10,8 @@ LoginForm::LoginForm(Controller& c,bool & r,QWidget *parent) : BaseForm(parent),
     setStyle();
 
     setLayout(main_layout);
+
+    container_informations->setObjectName("informations");
 }
 
 

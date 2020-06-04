@@ -1,5 +1,16 @@
+QWidget{
+    background: rgb(41, 52, 75,200);
+}
+
+QWidget#informations{
+    background: transparent;
+}
+
+
 QLabel{
     font: 12pt Times New Roman;
+    background: transparent;
+    color: white;
 }
 
 
@@ -18,4 +29,8 @@ QPushButton:pressed {
 
 QPushButton:hover {
     background-color: rgb(18, 124, 237)
+}
+
+QLineEdit{
+    background: white;
 }
