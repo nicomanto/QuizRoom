@@ -3,7 +3,7 @@ QLabel{
 }
 
 QPushButton{
-    font: 11pt Times New Roman;
+    font-size: 11pt;
     color: white;
     background: rgb(18, 124, 237,200);
     margin-top: 5px;

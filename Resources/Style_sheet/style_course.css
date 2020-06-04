@@ -2,7 +2,7 @@
 QPushButton{
     margin-top: 10;
     margin-bottom: 10;
-    font: 11pt Times New Roman;
+    font-size: 11pt;
     /*border: 1px solid blue;*/
 }
 

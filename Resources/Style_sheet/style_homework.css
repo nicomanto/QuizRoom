@@ -7,5 +7,5 @@ QVboxLayout{
 
 
 QPushButton{
-    font: 11pt Times New Roman;
+    font-size: 11pt;
 }

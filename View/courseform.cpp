@@ -169,13 +169,13 @@ void CourseForm::setStyle(){
 
 
     //aggiunta dei font di alcuni elementi
-    QFont font( "Arial", 18, QFont::Bold);
+    QFont font( "Times new Roman", 18, QFont::Bold);
     course_title->setFont(font);
 
-    font=QFont( "Arial", 14);
+    font=QFont( "Times new Roman", 14);
     course_description->setFont(font);
 
-    font=QFont( "Arial", 12);
+    font=QFont( "Times new Roman", 12);
     course_code->setFont(font);
 
 

@@ -149,17 +149,17 @@ void HomeworkForm::setStyle(){
         add_quiz->setVisible(true);
 
     //aggiunta dei alcuni font
-    QFont font( "Arial", 18, QFont::Bold);
+    QFont font( "Times new Roman", 18, QFont::Bold);
     homework_title->setFont(font);
-    font=QFont( "Arial", 14);
+    font=QFont( "Times new Roman", 14);
     homework_instructions->setFont(font);    
 
     if(control.isScoreHomework(this_homework)){ //controllo se è scorehomework
-        font=QFont( "Arial", 12);
+        font=QFont( "Times new Roman", 12);
         score->setFont(font);
     }
     if(control.isTimeHomework(this_homework)){ //controllo se è timehomework
-        font=QFont( "Arial", 12);
+        font=QFont( "Times new Roman", 12);
         deadline->setFont(font);
     }
 

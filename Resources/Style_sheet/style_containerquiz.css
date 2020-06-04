@@ -1,7 +1,7 @@
 QPushButton{
-    font: 12pt Times New Roman;
+    font-size: 12pt;
 }
 
 QGroupBox{
-    font: 14pt Times New Roman;
+    font-size: 14pt;
 }

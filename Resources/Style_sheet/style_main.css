@@ -13,14 +13,14 @@ QMenuBar::item:selected {
 
 
 QLabel{
-    font: 12pt Times New Roman;
+    font-size: 12pt;
 }
 
 
 QPushButton{
     margin-top: 10;
     margin-bottom: 10;
-    font: 11pt Times New Roman;
+    font-size: 11pt;
     color: white;
     background: rgb(34, 47, 87,100);
     /*background: rgb(118, 198, 211,100)*/;

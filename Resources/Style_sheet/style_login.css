@@ -8,14 +8,14 @@ QWidget#informations{
 
 
 QLabel{
-    font: 12pt Times New Roman;
+    font-size: 12pt;
     background: transparent;
     color: white;
 }
 
 
 QPushButton{
-    font: 11pt Times New Roman;
+    font-size: 11pt;
     color: white;
     background: rgb(18, 124, 237,200);
     padding: 10px;

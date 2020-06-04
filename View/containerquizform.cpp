@@ -160,7 +160,7 @@ void ContainerQuizForm::show_result(){
     control.resetHomeworkQuizPoint(this_homework);
 
     QLabel* informations=new QLabel(temp,dialog);
-    informations->setFont(QFont( "Arial", 12));
+    informations->setFont(QFont( "Times new Roman", 12));
     informations->setAlignment(Qt::AlignCenter);
 
     layout->addWidget(informations);

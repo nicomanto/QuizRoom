@@ -12,7 +12,7 @@ void QuizBaseForm::setStyle(){
     question->setMaximumHeight(height()*3);  //setto l'ampiezza massima di question
     question->setWordWrap(true);  //la scritta di question può andare a capo
 
-    question->setStyleSheet("font: 18pt Times New Roman;"); //imposto il font diverso per question
+    question->setStyleSheet("font-size: 18pt;"); //imposto il font diverso per question
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);  //window espandibile
 
 
