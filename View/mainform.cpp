@@ -94,6 +94,7 @@ void MainForm::addForm(){
 
 void MainForm::setStyle(){
     PrincipalForm::setStyle();
+    main_layout->setSpacing(0);
 
 
     //setto lo stile dei vari bottoni

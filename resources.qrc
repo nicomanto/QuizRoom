@@ -15,5 +15,6 @@
         <file>Resources/Images/modify_add.png</file>
         <file>Resources/Images/result.png</file>
         <file>Resources/Style_sheet/style_addcoursecode.css</file>
+        <file>Resources/Style_sheet/style_containerprincipalform.css</file>
     </qresource>
 </RCC>
