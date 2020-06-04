@@ -162,6 +162,7 @@ void ContainerQuizForm::show_result(){
     QLabel* informations=new QLabel(temp,dialog);
     informations->setFont(QFont( "Times new Roman", 12));
     informations->setAlignment(Qt::AlignCenter);
+    informations->setWordWrap(true);
 
     layout->addWidget(informations);
 
