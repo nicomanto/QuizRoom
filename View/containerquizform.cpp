@@ -24,7 +24,7 @@ ContainerQuizForm *ContainerQuizForm::clone() const{
 
 void ContainerQuizForm::addMenu(){
 
-    QAction* previous_page= new QAction(QIcon(":/Resources/Images/left_arrow.png"),"Ritorna alla pagina precedente",menubar); //torno alla pagina precedente
+    QAction* previous_page= new QAction(QIcon(":/Resources/Images/left_arrow.png"),"",menubar); //torno alla pagina precedente
 
     menubar->addAction(previous_page);
 

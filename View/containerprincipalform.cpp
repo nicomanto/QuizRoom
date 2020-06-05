@@ -73,7 +73,7 @@ void ContainerPrincipalForm::setStyle(){
 
     //setColorBackground
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, QColor::fromRgb(71,71,71));
+    pal.setColor(QPalette::Background, QColor::fromRgb(51,51,51));
     setAutoFillBackground(true);
     setPalette(pal);
 

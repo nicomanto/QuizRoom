@@ -16,6 +16,21 @@ QPushButton:hover {
 
 QGroupBox{
     font-size: 14pt;
+    color: rgb(141, 178, 211, 255);
+
+
 }
+
+QLineEdit {
+    color: white;
+    border: none;
+
+}
+
+QTextEdit {
+    color: white;
+    border: none;
+}
+
 
 

@@ -24,7 +24,7 @@ void CourseForm::addMenu(){
     QMenu* course= new QMenu("Corso",menubar);
     QMenu*  homework= new QMenu("Compito",menubar);
 
-    QAction* previous_page= new QAction(QIcon(":/Resources/Images/left_arrow.png"),"Ritorna alla pagina precedente",menubar); //torno alla pagina precedente
+    QAction* previous_page= new QAction(QIcon(":/Resources/Images/left_arrow.png"),"",menubar); //torno alla pagina precedente
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
     //connect(previous_page, &QAction::triggered, this, &MainWindow::open);
@@ -123,6 +123,7 @@ void CourseForm::addForm(){
 
 void CourseForm::setStyle(){
     PrincipalForm::setStyle();
+    main_layout->setSpacing(0);
 
     //stile dei bottoni homework e homework_menu
     for(unsigned int i=0; i <control.getNumberCourseHomework(this_course); ++i){
