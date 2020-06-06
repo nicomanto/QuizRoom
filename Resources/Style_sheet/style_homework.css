@@ -1,11 +1,49 @@
+QWidget {
+    background-color: rgb(21, 30, 39, 255);
+    color: rgb(141, 178, 211, 255);
+}
+
+QWidget#Title {
+    padding-top: 50;
+}
+
+QMenu {
+background-color: rgb(50, 60, 80);
+}
+
+
 QMenuBar {
+background: rgb(21, 30, 39, 150);
+color: white;
 }
 
-QVboxLayout{
-
+QMenuBar::item:selected {
+background: rgb(141, 178, 211, 255);
+color: black;
 }
 
+QMenuBar::item:hover {
+background: rgb(141, 178, 211, 255);
+color: black;
+}
 
 QPushButton{
-    font-size: 11pt;
+margin-top: 10;
+margin-bottom: 10;
+font-size: 12pt;
+color: black;
+background: rgb(141, 178, 211, 255);
+/*background: rgb(118, 198, 211,100)*/;
+border-radius: 10px;
 }
+
+QPushButton:pressed {
+color: white;
+background-color: rgb(34, 47, 87)
+}
+
+QPushButton:hover {
+color: white;
+background-color: rgb(34, 47, 87)
+}
+

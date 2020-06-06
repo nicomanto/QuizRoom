@@ -16,12 +16,6 @@ QMenu {
     background-color: rgb(50, 60, 80);
 }
 
-QPushButton{
-    margin-top: 10;
-    margin-bottom: 10;
-    font-size: 11pt;
-    /*border: 1px solid blue;*/
-}
 
 QMenuBar {
     background: rgb(21, 30, 39, 150);

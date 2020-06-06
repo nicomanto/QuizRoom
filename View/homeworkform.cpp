@@ -82,14 +82,20 @@ void HomeworkForm::addForm(){
 
    main_layout->addWidget(homework_title);
    main_layout->addWidget(homework_instructions);
+   score->setVisible(false);
+   deadline->setVisible(false);
 
    QSignalMapper* signalMapperQuiz = new QSignalMapper (this);
 
-    if(control.isScoreHomework(this_homework))//controllo se è scorehomework
+    if(control.isScoreHomework(this_homework)) { //controllo se è scorehomework
         layout_container_info_quiz->addWidget(score);
+        score->setVisible(true);
+    }
 
-   if(control.isTimeHomework(this_homework)) //controllo se è timehomework
+   if(control.isTimeHomework(this_homework)) { //controllo se è timehomework
         layout_container_info_quiz->addWidget(deadline);
+        deadline->setVisible(true);
+    }
 
    if(control.isTimeHomework(this_homework) || control.isScoreHomework(this_homework)) //controllo se è timehomework o scorehomework
        main_layout->addWidget(container_info_quiz, Qt::AlignCenter);
@@ -114,6 +120,7 @@ void HomeworkForm::addForm(){
 
 void HomeworkForm::setStyle(){
     PrincipalForm::setStyle();
+    main_layout->setSpacing(0);
 
 
     //stile del titolo del compito
@@ -121,13 +128,15 @@ void HomeworkForm::setStyle(){
     homework_title->setTextInteractionFlags(Qt::TextSelectableByMouse);
     homework_title->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);
     homework_title->setWordWrap(true);
+    homework_title->setObjectName("Title");
+
 
     //stile delle istruzioni del compito
     homework_instructions->setAlignment(Qt::AlignCenter);
     homework_instructions->setTextInteractionFlags(Qt::TextSelectableByMouse);
     homework_instructions->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     homework_instructions->setWordWrap(true);
-    homework_instructions->setStyleSheet("margin: 0 200 0 200;");
+    /*homework_instructions->setStyleSheet("margin: 0 200 0 200;");*/
 
 
     //stile menubar
