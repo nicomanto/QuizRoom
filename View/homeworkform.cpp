@@ -7,10 +7,7 @@ HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *p
 
     menubar=new QMenuBar(this);
 
-
-
     if(control.isScoreHomework(this_homework)){ //se è uno scorehomework;
-
         ScoreHomework* t= dynamic_cast < ScoreHomework* > ( this_homework );
         //int my_score=0;
         //int total_score=200;
@@ -82,19 +79,20 @@ void HomeworkForm::addForm(){
 
    main_layout->addWidget(homework_title);
    main_layout->addWidget(homework_instructions);
-   score->setVisible(false);
-   deadline->setVisible(false);
+   container_info_quiz->setVisible(false);
 
    QSignalMapper* signalMapperQuiz = new QSignalMapper (this);
 
     if(control.isScoreHomework(this_homework)) { //controllo se è scorehomework
+        container_info_quiz->setVisible(true);
         layout_container_info_quiz->addWidget(score);
-        score->setVisible(true);
+
     }
 
    if(control.isTimeHomework(this_homework)) { //controllo se è timehomework
-        layout_container_info_quiz->addWidget(deadline);
-        deadline->setVisible(true);
+       container_info_quiz->setVisible(true);
+       layout_container_info_quiz->addWidget(deadline);
+
     }
 
    if(control.isTimeHomework(this_homework) || control.isScoreHomework(this_homework)) //controllo se è timehomework o scorehomework
