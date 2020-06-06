@@ -1,6 +1,15 @@
 
-QWidget{
+QWidget {
     background-color: rgb(21, 30, 39, 255);
+}
+
+QLabel {
+    color: rgb(141, 178, 211, 255);
+}
+
+QWidget#CourseCode {
+    color: rgb(141, 178, 211, 255);
+    text-decoration: underline;
 }
 
 QMenu {
@@ -48,6 +57,3 @@ QPushButton:hover {
     color: white;
     background-color: rgb(34, 47, 87)
 }
-
-
-

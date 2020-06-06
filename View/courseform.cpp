@@ -3,7 +3,7 @@
 
 CourseForm::CourseForm(User* u,Controller& c,Course* course, bool & r,QWidget *parent): PrincipalForm(u,c,r,parent), this_course(course), container_course(new QGroupBox(this)),container_center(new QWidget(this)), info_course_layout(new QVBoxLayout(container_course)),
     center_layout(new QHBoxLayout(container_center)), scroll_layout(new QGridLayout(container_scroll)), course_title(new QLabel(QString::fromStdString(control.getCourseTitle(this_course)),this)),
-    course_description(new QLabel(QString::fromStdString(control.getCourseDescription(this_course)),this)),course_code(new QLabel(QString::fromStdString("Codice: "+control.getCourseCode(this_course)),this)){
+    course_description(new QLabel(QString::fromStdString(control.getCourseDescription(this_course)),this)),course_code(new QLabel(QString::fromStdString("Codice del corso: "+control.getCourseCode(this_course)),this)){
 
     main_layout=new QVBoxLayout(this);
     scroll= new QScrollArea(this);
@@ -147,11 +147,12 @@ void CourseForm::setStyle(){
     course_description->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     course_description->setWordWrap(true);
 
-    //stile del coruse code
+    //stile del course code
     course_code->setAlignment(Qt::AlignCenter);
     course_code->setTextInteractionFlags(Qt::TextSelectableByMouse);
     course_code->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     course_code->setWordWrap(true);
+    course_code->setObjectName("CourseCode");
 
     //styleSheet groupBox delle informazioni del corso
     container_course->setStyleSheet("border:none;");
