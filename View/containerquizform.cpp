@@ -39,6 +39,7 @@ void ContainerQuizForm::addForm(){
    end_quiz->setVisible(false);
 
    main_layout->addWidget(scroll);
+   main_layout->setSpacing(0);
 
    scroll->setWidget( container_scroll );
 
@@ -70,6 +71,7 @@ void ContainerQuizForm::addForm(){
     }
 
     scroll_layout->addWidget(container_button);
+    end_quiz->setObjectName("Endquiz");
 
 }
 
