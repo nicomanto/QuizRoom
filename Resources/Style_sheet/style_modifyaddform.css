@@ -1,3 +1,11 @@
+QCheckBox {
+    color: white;
+}
+
+QDateTimeEdit{
+    color: white;
+}
+
 QPushButton{
     font-size: 11pt;
     color: white;
