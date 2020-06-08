@@ -38,7 +38,7 @@ QPushButton{
     border-radius: 5px;
 }
 
-QPushButton:pressed {
+QPushButton:checked {
     color: black;
     background-color: rgb(141, 178, 211, 255);
 }

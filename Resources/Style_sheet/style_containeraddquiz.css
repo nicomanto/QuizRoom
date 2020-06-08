@@ -37,7 +37,16 @@ QPushButton:pressed {
     background-color: rgb(34, 47, 87)
 }
 
+/*QPushButton:checked {
+    color: white;
+    background-color: rgb(34, 47, 87)
+}*/
+
 QPushButton:hover {
     color: white;
     background-color: rgb(34, 47, 87)
+}
+
+QGroupBox {
+ border: none;
 }
