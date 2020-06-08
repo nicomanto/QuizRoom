@@ -1,9 +1,7 @@
-
-QWidget {
+QWidget{
     background-color: rgb(21, 30, 39, 255);
     color: white;
 }
-
 
 QMenu {
     background-color: rgb(50, 60, 80);
@@ -25,28 +23,21 @@ QMenuBar::item:hover {
 }
 
 QPushButton{
-    font-size: 12pt;
-
-}
-
-QPushButton#Endquiz {
+ /*   margin-top: 10;
+    margin-bottom: 10;*/
     font-size: 14pt;
     color: black;
     background: rgb(141, 178, 211, 255);
     /*background: rgb(118, 198, 211,100)*/;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
-QPushButton#Endquiz:pressed {
+QPushButton:pressed {
     color: white;
-    background-color: rgb(34, 47, 87);
+    background-color: rgb(34, 47, 87)
 }
 
-QPushButton#Endquiz:hover {
+QPushButton:hover {
     color: white;
-    background-color: rgb(34, 47, 87);
-}
-
-QGroupBox{
-    font-size: 14pt;
+    background-color: rgb(34, 47, 87)
 }
