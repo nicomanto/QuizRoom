@@ -50,3 +50,13 @@ QPushButton:hover {
 QGroupBox {
  border: none;
 }
+
+QLineEdit {
+    background: white;
+    color: black;
+}
+
+QCheckBox {
+    background: white;
+    color: black;
+}

@@ -37,6 +37,8 @@ void ContainerAddQuizForm::addForm(){
 
    scroll_layout->addWidget(container_button);
 
+
+
    layout_button->addWidget(end);
    layout_button->addWidget(add_combine);
    layout_button->addWidget(add_classic);
@@ -64,6 +66,8 @@ void ContainerAddQuizForm::setStyle(){
     //stile layout scroll
     scroll_layout->setAlignment(Qt::AlignCenter);
     scroll_layout->setSpacing(10);
+
+    /*layout_container_quiz->setSpacing(100);*/
 
     //stile layout del button
     layout_button->setAlignment(Qt::AlignCenter);
