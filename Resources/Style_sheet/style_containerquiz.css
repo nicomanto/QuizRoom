@@ -50,3 +50,8 @@ QPushButton#Endquiz:hover {
 QGroupBox{
     font-size: 14pt;
 }
+
+
+QLabel{
+    color: rgb(141, 178, 211, 255);
+}

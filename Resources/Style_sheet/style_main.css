@@ -22,7 +22,7 @@ QMenuBar::item:hover {
 }
 
 QLabel{
-    font-size: 12pt;
+    color: rgb(141, 178, 211, 255);
 }
 
 

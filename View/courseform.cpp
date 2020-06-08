@@ -115,6 +115,10 @@ void CourseForm::addForm(){
 
     }
 
+    if(control.getNumberCourseHomework(this_course)==0)
+        scroll_layout->addWidget(new QLabel("Nessun compito presente"));
+
+
     //mapputara dei signal dei bottoni con il proprio indice da inviare alla to_next_page
     connect (signalMapperHomework, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
 

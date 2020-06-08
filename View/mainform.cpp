@@ -87,6 +87,10 @@ void MainForm::addForm(){
 
     }
 
+    if(control.getNumberUserCourse(user)==0)
+        scroll_layout->addWidget(new QLabel("Non sei iscritto a nessun corso"));
+
+
     //mappatura dei signali dei bottoni del vettore con i relativi indici
     connect (signalMapperCourse, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
 

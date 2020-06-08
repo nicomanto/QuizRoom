@@ -102,7 +102,7 @@ Controller::Controller(){
     quiz_9->addCorrectCombine("x = 9","9");
     quiz_9->addCorrectCombine("x+2-4 = 7","9");
     quiz_9->addCorrectCombine("-2y = -4","2");
-    quiz_9->addCorrectCombine("0x = 7","impossiile");
+    quiz_9->addCorrectCombine("0x = 7","impossibile");
 
 
 
