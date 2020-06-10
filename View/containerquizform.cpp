@@ -147,11 +147,13 @@ void ContainerQuizForm::show_result(){
             temp.append("\nVoto ottenuto: "+QString::number(control.getResultHomework(this_homework),'f', 2));
         }
         else{
-            if(control.getResultHomework(this_homework)>0){
-                temp.append("\nQuiz completato prima della scadenza della deadline");
+
+            double days_difference=control.getResultHomework(this_homework);
+            if(days_difference>=0){
+                temp.append("\nQuiz completato con "+QString::number(days_difference)+" giorni d'anticipo");
             }
             else{
-                temp.append("\nQuiz completato dopo la scadenza della deadline");
+                temp.append("\nQuiz completato con "+QString::number(std::abs(days_difference))+" giorni di ritardo");
             }
         }
 

@@ -25,13 +25,7 @@ bool TimeHomework::haveResult() const{
 }
 
 double TimeHomework::getResult() const{
-    DateTime now(DateTime::getCurrentDateTime());
-
-    if(now<deadline || now==deadline)
-        return 1;
-
-    else
-        return 0;
+    return deadline.daysFromNowToDate();
 }
 
 TimeHomework *TimeHomework::clone() const{

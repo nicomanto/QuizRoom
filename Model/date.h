@@ -11,6 +11,8 @@ private:
     unsigned int year;
 
     bool isBisestile(unsigned int y) const;
+    //ritorna il numero di anni bisestili prima della data
+    int numeroAnniBisestili() const;
     bool isDate(unsigned d, unsigned m,unsigned int y) const;
 public:
     Date();
@@ -25,6 +27,8 @@ public:
     bool operator>(const Date& t) const;
     bool operator==(const Date& t) const;
     bool operator!=(const Date& t) const;
+
+    int daysFromNowToDate() const;
 
     std::string ToString() const;
     static Date getCurrentDate();

@@ -27,6 +27,17 @@ bool Date::isBisestile(unsigned int y) const{
     return y%400==0 || (y%4==0 && !(y%100==0));
 }
 
+
+int Date::numeroAnniBisestili() const{
+    int y = year;
+
+    if (month<= 2)
+        y--;
+
+    return y/4 - y/100 + y/400;
+}
+
+
 bool Date::operator<(const Date &t) const{
     if(year<t.year)
         return true;
@@ -50,6 +61,29 @@ bool Date::operator==(const Date &t) const
 
 bool Date::operator!=(const Date &t) const{
     return !(*this==t);
+}
+
+
+int Date::daysFromNowToDate() const{
+    Date now(getCurrentDate());
+
+    unsigned int month_days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    long int now_d = now.year*365 +now.day;
+    long int deadline_d = year*365 + day;
+
+    for (unsigned int i=0; i<now.month - 1; ++i)
+        now_d += month_days[i];
+
+
+    for (unsigned int i=0; i<month - 1; ++i)
+        deadline_d += month_days[i];
+
+
+    now_d += now.numeroAnniBisestili();
+    deadline_d += numeroAnniBisestili();
+
+    return deadline_d - now_d;
 }
 
 std::string Date::ToString() const{

@@ -35,8 +35,6 @@ DateTime DateTime::getCurrentDateTime(){
     return DateTime(Date::getCurrentDate(),Time::getCurrentTime());
 }
 
-
-
 std::ostream &operator<<(std::ostream &out, const DateTime& d){
     out<<d.ToString();
     return out;
