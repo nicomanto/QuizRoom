@@ -42,8 +42,16 @@ QCheckBox {
     color: white;
 }
 
-QCheckBox::indicator {
+QCheckBox:indicator{
     border: 1px solid white;
+    border-radius: 7px;
 }
+
+QCheckBox:indicator:checked {
+    background: rgb(141, 178, 211, 255);
+}
+
+
+
 
 

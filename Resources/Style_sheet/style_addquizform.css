@@ -2,4 +2,18 @@ QGroupBox{
     font-size: 14pt;
 }
 
+QCheckBox {
+    background: transparent;
+}
+
+QCheckBox:indicator{
+    width: 15px;
+    height: 15px;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+
+QCheckBox:indicator:checked {
+    background: rgb(141, 178, 211, 255);
+}
 

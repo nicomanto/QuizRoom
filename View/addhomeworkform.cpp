@@ -55,6 +55,9 @@ void AddHomeworkForm::setStyle(){
     score_time_information->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     layout_ST_infomation->setAlignment(Qt::AlignCenter);
 
+
+
+
   /*  QFile file(":/Resources/Style_sheet/style_addhomeworkform.css");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
