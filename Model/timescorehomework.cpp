@@ -18,9 +18,9 @@ bool TimeScoreHomework::haveResult() const{
 
 double TimeScoreHomework::getResult() const{
     double somma=ScoreHomework::getResult();
+    DateTime now(DateTime::getCurrentDateTime());
 
-    if(!TimeHomework::getResult()){
-        DateTime now(DateTime::getCurrentDateTime());
+    if(now>deadline){
 
         if(now.Year()>deadline.Year() || (now.Year()==deadline.Year() && now.Month()>deadline.Month()))
                 somma-=3;
