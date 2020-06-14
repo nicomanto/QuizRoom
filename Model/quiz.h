@@ -10,7 +10,7 @@ protected:
 
     static double total_point;
 
-    void addMyPoint(double p); //aggiunge p a my_poiny
+    void addMyPoint(double p); //aggiunge p a my_point
     virtual void setPointCAnswer()=0; //setta il punteggio che si può ottenre
                                        //da una domanda in base a quando domande ci sono e al total_point
 
