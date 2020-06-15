@@ -24,10 +24,11 @@ public:
     void setUsername(const string& u);
     void setPassword(const string& p);
 
+    void addCourse(Course* c);
+    void deleteCourse(Course* c);
+
     virtual bool CanAddCourse()const =0;
-    virtual void addCourse(Course* c);
     virtual bool CanDeleteCourse() const=0;
-    virtual void deleteCourse(Course* c);
     virtual bool CanEditCourse() const=0;
 
     virtual bool CanAddHomework()const =0;
