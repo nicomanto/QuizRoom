@@ -28,7 +28,7 @@ private:
 
     virtual void setStyle();
 
-    virtual bool addMenuButton(QPushButton* b, unsigned int i);
+    bool addMenuButton(QPushButton* b, unsigned int i);
 public:
     explicit MainForm(User* u,Controller& c,bool &r,QWidget *parent = nullptr);
     ~MainForm()= default;
