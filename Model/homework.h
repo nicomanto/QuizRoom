@@ -39,8 +39,8 @@ public:
     double allPoint() const; //ritorna il punteggio di tutti i quiz
     double getTotalAllPoint() const; //ritorna la somma del punteggio massimo ottenibile
 
-    virtual void addQuiz(Quiz* q); //aggiunge un quiz
-    virtual void removeQuiz(Quiz* q); //rimuove un quiz
+    void addQuiz(Quiz* q); //aggiunge un quiz
+    void removeQuiz(Quiz* q); //rimuove un quiz
 
     virtual bool isScoreHomework() const;
     virtual bool isTimeHomework() const;
