@@ -45,26 +45,9 @@ QPushButton:hover {
     color: white;
     background-color: rgb(34, 47, 87)
 }
-/*
-QScrollBar:vertical {
-    background: rgb(141, 178, 211, 255);
-    border: none;
-}
-
-QScrollBar::handle:vertical {
-    background: rgb(34, 47, 87);
-    border: none;
-}
-
-QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
-    border: 1px solid black;
-    background: rgb(34, 47, 87);
-}
-*/
 
 QScrollBar {
-    border: 1px solid rgb(34, 47, 84);
-    background: rgb(141, 178, 211, 255);
+    color: white;
 }
 
 
