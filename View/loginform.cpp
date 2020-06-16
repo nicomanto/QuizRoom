@@ -25,7 +25,6 @@ void LoginForm::addForm(){
     QLabel* ImgLogin = new QLabel;
 
     ImgLogin->setPixmap(img.scaled(200,200));
-    //ImgLogin->setFixedSize(QSize(200,200));
     main_layout->addWidget(ImgLogin);
 
     main_layout->addWidget(container_informations);
@@ -55,14 +54,6 @@ void LoginForm::setStyle(){
 
     setFixedSize(QSize(width_screen/3,height_screen/4));  //setta la taglia della window
 
-
-    //setto le dimensioni fisse dei vari form
-    /*username_form->setFixedWidth(width()/2);
-    password_form->setFixedWidth(width()/2);
-    login_button->setFixedWidth(width()/2);
-    login_button->setFixedHeight(height()/7);*/
-
-   // main_layout->setSpacing(30);
 
     //imposta la modalitò 'testo oscurato'
     password_form->setEchoMode(QLineEdit::Password);

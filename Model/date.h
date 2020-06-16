@@ -11,6 +11,7 @@ private:
     unsigned int year;
 
     bool isBisestile(unsigned int y) const;
+
     //ritorna il numero di anni bisestili prima della data
     int numeroAnniBisestili() const;
     bool isDate(unsigned d, unsigned m,unsigned int y) const;

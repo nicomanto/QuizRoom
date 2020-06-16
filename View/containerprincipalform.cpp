@@ -64,12 +64,6 @@ void ContainerPrincipalForm::setStyle(){
     //dimensione minima delle pagine
     setMinimumSize(QSize(width_screen/2+100,height_screen/3+50));
 
-    /*QFile file(":/Resources/Style_sheet/style_containerprincipalform.css");
-    file.open(QFile::ReadOnly);
-    QString styleSheet = QLatin1String(file.readAll());
-
-    setStyleSheet(styleSheet);*/
-
 
     //setColorBackground
     QPalette pal = palette();

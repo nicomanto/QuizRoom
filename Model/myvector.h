@@ -12,7 +12,6 @@ ostream& operator<< (ostream&, const MyVector<T>&);
 template<class T>
 class MyVector{
     friend ostream& operator<< <T> (ostream&, const MyVector<T>&);
-    //friend class iterator;
 private:
     T* punt;
     unsigned int my_size;
@@ -305,13 +304,13 @@ template<class T>
 typename MyVector<T>::iterator MyVector<T>::erase(MyVector<T>::iterator it){
         iterator copy_iterator=it;
         iterator return_iterator=it;
-        iterator e=end(); // shortens the vector by 1
+        iterator e=end();
         --e;
 
         while (it != e)
             *copy_iterator++ = *++it;
 
-        resize(my_size-1);// destroy last element in vector
+        resize(my_size-1);
         return_iterator.sizeV=my_size;
 
         return return_iterator;

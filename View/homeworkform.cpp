@@ -9,15 +9,14 @@ HomeworkForm::HomeworkForm(User* u,Controller& c,Homework* h,bool & r,QWidget *p
 
     if(control.isScoreHomework(this_homework)){ //se è uno scorehomework;
         ScoreHomework* t= dynamic_cast < ScoreHomework* > ( this_homework );
-        //int my_score=0;
-        //int total_score=200;
+
         QString s(QString::number(t->getTotalAllPoint()));
         score= new QLabel("Punteggio massimo: "+s,this);
     }
 
     if(control.isTimeHomework(this_homework)){ //se è un timehomework
         TimeHomework* t= dynamic_cast < TimeHomework* > ( this_homework );
-        //QString s("09/05/2020");
+
         deadline= new QLabel("Deadline: "+QString::fromStdString(t->getDeadline().ToString()),this);
     }
 
@@ -107,7 +106,7 @@ void HomeworkForm::addForm(){
    connect(start_quiz,SIGNAL(clicked()),signalMapperQuiz,SLOT(map()));
 
    signalMapperQuiz->setMapping(start_quiz, 0);
-   //mappatuara dei siggnali con l'indice dei quiz (in questo caso è solo uno)
+   //mappatura dei siggnali con l'indice dei quiz (in questo caso è solo uno)
    connect (signalMapperQuiz, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
 
 
@@ -134,7 +133,6 @@ void HomeworkForm::setStyle(){
     homework_instructions->setTextInteractionFlags(Qt::TextSelectableByMouse);
     homework_instructions->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     homework_instructions->setWordWrap(true);
-    /*homework_instructions->setStyleSheet("margin: 0 200 0 200;");*/
 
 
     //stile menubar

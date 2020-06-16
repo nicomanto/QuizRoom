@@ -16,9 +16,6 @@ private:
 
     MyVector<QLineEdit*> options_form;  //opzione da combinare
     MyVector<QLineEdit*> answers_form;  //risposta
-
-
-
     //in questo caso vanno inserite le combinazioni giuste, poi sarà compito del programma disordinarle per lo studente
 
 
@@ -28,10 +25,6 @@ private:
 public:
     explicit AddCombineQuizForm(Controller& c,Homework* h,int number_question, QWidget *parent = nullptr);
     ~AddCombineQuizForm()=default;
-
-
-signals:
-    //void send_information(const std::string& question, const MyVector<std::string>& elements_to_combine,const MyVector<std::string>& answers );
 
 private slots:
 

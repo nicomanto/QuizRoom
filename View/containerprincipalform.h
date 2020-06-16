@@ -9,8 +9,6 @@ class ContainerPrincipalForm : public BaseForm{
     Q_OBJECT
 
 private:
-    //User* user;
-    //bool& relogin;
     Controller& control;
 
     PrincipalForm* main_window;

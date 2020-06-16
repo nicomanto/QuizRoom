@@ -67,17 +67,11 @@ void ContainerAddQuizForm::setStyle(){
     scroll_layout->setAlignment(Qt::AlignCenter);
     scroll_layout->setSpacing(10);
 
-    /*layout_container_quiz->setSpacing(100);*/
-
     //stile layout del button
     layout_button->setAlignment(Qt::AlignCenter);
 
 
     container_quiz->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-
-
-    //setto la dimensione minima della finistra
-    //setMinimumSize(QSize(width_screen/3,height_screen/3));
 
     //aggiunta foglio di stile
     QFile file(":/Resources/Style_sheet/style_containeraddquiz.css");
@@ -125,9 +119,6 @@ void ContainerAddQuizForm::to_add_quiz(){
         emit to_update_previous_page();
         to_previous_page();
 
-
-
-        //control.removeStackView();
 
     }catch(std::logic_error exc){
         ErrorMessage* error = new ErrorMessage(exc.what());

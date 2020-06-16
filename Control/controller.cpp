@@ -500,39 +500,13 @@ void Controller::addCombineQuiz(Homework *h, const std::string &question, const 
 
 
 
-    /*bool not_exist=true;
+    CombineQuiz* quiz= new CombineQuiz(question);
 
-    //controllo se esiste un quiz con la domanda uguale e lo aggiorno
-    for(unsigned int i=0;i <h->getQuiz().size() && not_exist;++i){
-        if(dynamic_cast<CombineQuiz*>(h->getQuiz()[i])){
-            CombineQuiz* temp= dynamic_cast<CombineQuiz*>(h->getQuiz()[i]);
+    for(unsigned int i=0; i<elements.size();++i){
+        quiz->addCorrectCombine(elements[i],answers[i]);
+    }
 
-            if(temp->getQuestion()==question){
-
-                temp->clear_all_answers();
-                not_exist=false;
-
-
-
-
-
-
-            }
-        }
-
-
-    }*/
-
-
-
-        CombineQuiz* quiz= new CombineQuiz(question);
-
-        for(unsigned int i=0; i<elements.size();++i){
-            //std::cout<<correct_answers[i]<<std::endl;
-            quiz->addCorrectCombine(elements[i],answers[i]);
-        }
-
-        h->addQuiz(quiz);
+    h->addQuiz(quiz);
 
 }
 
@@ -563,59 +537,23 @@ void Controller::addClassicQuiz(Homework *h, const std::string &question, const 
 
     }
 
-    /*bool not_exist=true;
-
-    //controllo se esiste un quiz con la domanda uguale e lo aggiorno
-    for(unsigned int i=0;i <h->getQuiz().size() && not_exist;++i){
-        if(dynamic_cast<ClassicQuiz*>(h->getQuiz()[i])){
-            ClassicQuiz* temp= dynamic_cast<ClassicQuiz*>(h->getQuiz()[i]);
-
-            if(temp->getQuestion()==question){
-
-                temp->clear_all_answers();
-                not_exist=false;
 
 
 
-                for(unsigned int i=0; i<answers.size();++i){
-                    //std::cout<<correct_answers[i]<<std::endl;
-                    temp->addAnswer(answers[i]);
-                }
 
-                for(unsigned int i=0; i<correct_answers.size();++i){
-                    //std::cout<<correct_answers[i]<<std::endl;
-                    temp->addCorrectAnswer(correct_answers[i]);
-                }
-            }
-        }
+    ClassicQuiz* quiz= new ClassicQuiz(question);
 
+    for(unsigned int i=0; i<answers.size();++i){
+        quiz->addAnswer(answers[i]);
+    }
 
-    }*/
+    for(unsigned int i=0; i<correct_answers.size();++i){
+        quiz->addCorrectAnswer(correct_answers[i]);
+    }
 
-
-
-        ClassicQuiz* quiz= new ClassicQuiz(question);
-
-        //std::cout<<"size answer: "<<answers.size()<<std::endl;
-        for(unsigned int i=0; i<answers.size();++i){
-            //std::cout<<correct_answers[i]<<std::endl;
-            quiz->addAnswer(answers[i]);
-        }
-
-        for(unsigned int i=0; i<correct_answers.size();++i){
-            //std::cout<<correct_answers[i]<<std::endl;
-            quiz->addCorrectAnswer(correct_answers[i]);
-        }
-
-        h->addQuiz(quiz);
+    h->addQuiz(quiz);
 
 }
-
-/*void Controller::addPoint(Homework *k,){
-}*/
-
-
-
 
 Quiz *Controller::getQuiz(Homework *h, unsigned int i) const{
     return h->getQuiz()[i];

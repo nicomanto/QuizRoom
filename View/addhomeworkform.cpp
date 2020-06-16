@@ -24,7 +24,6 @@ void AddHomeworkForm::addForm(){
     layout_box_description->addWidget(description_form);
 
     layout_ST_infomation->addWidget(is_score,0,0,Qt::AlignCenter);
-    //layout_ST_infomation->addWidget(max_score,0,1,Qt::AlignCenter);
     layout_ST_infomation->addWidget(is_time,1,0,Qt::AlignCenter);
     layout_ST_infomation->addWidget(deadline,1,1,Qt::AlignCenter);
 
@@ -43,26 +42,15 @@ void AddHomeworkForm::addForm(){
 void AddHomeworkForm::setStyle(){
     ModifyAddForm::setStyle();
 
-    //max_score->setMaximumWidth(width()/3);
-    //deadline->setMaximumWidth(width()/3);
     deadline->setDisplayFormat("dd/MM/yyyy hh:mm");
     is_score->setFixedWidth(width()/3);
     is_time->setFixedWidth(width()/3);
-    //max_score->setValidator( new QIntValidator(0, 100, this) );
 
 
     layout_button->setAlignment(Qt::AlignCenter);
     score_time_information->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     layout_ST_infomation->setAlignment(Qt::AlignCenter);
 
-
-
-
-  /*  QFile file(":/Resources/Style_sheet/style_addhomeworkform.css");
-    file.open(QFile::ReadOnly);
-    QString styleSheet = QLatin1String(file.readAll());
-
-    setStyleSheet(styleSheet);*/
 }
 
 

@@ -101,10 +101,6 @@ void ContainerQuizForm::setStyle(){
     end_quiz->setFixedHeight(50);
     layout_button->setAlignment(Qt::AlignCenter);
 
-    //setto la dimensione minima della finistra
-    //etMinimumSize(QSize(width_screen/2,height_screen/2));
-
-
     scroll->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
 
     //aggiunta foglio di stile
@@ -143,7 +139,6 @@ void ContainerQuizForm::show_result(){
     //mostra il voto totale se il compito ce l'ha
     if(control.HomeworkHaveResult(this_homework)){
         if (control.isScoreHomework(this_homework)){
-            //std::cout<<"ciao"<<std::endl;
             temp.append("\nVoto ottenuto: "+QString::number(control.getResultHomework(this_homework),'f', 2));
         }
         else{

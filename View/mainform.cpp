@@ -166,7 +166,6 @@ MainForm *MainForm::clone() const{
 void MainForm::to_next_page(int index){
     emit to_new_page(new CourseForm(user, control,control.getCourse(user,index),relogin,parentWidget()));
 
-    //close();
 }
 
 void MainForm::to_previous_page(){
@@ -194,7 +193,6 @@ void MainForm::del_course(int i){
     emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
     control.removeStackView();
 
-    //close();
 }
 
 void MainForm::addCourse(){
@@ -220,6 +218,5 @@ void MainForm::send_code(const QString & code){
 
     emit to_new_page(new MainForm(user,control,relogin,parentWidget()));
 
-    //close();
 }
 

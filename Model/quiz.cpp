@@ -29,10 +29,6 @@ void Quiz::addMyPoint(double p){
     my_point+=p;
 }
 
-/*void Quiz::addPointCorrectAnswer(double m){
-    point_correct_answer+=m;
-}*/
-
 
 Quiz::~Quiz(){}
 

@@ -1,15 +1,14 @@
 #include "user.h"
 User::User(){}
 
-User::User(const string& u,const string& p): username(u), password(p){} //da aggiungere i corsi
-
+User::User(const string& u,const string& p): username(u), password(p){}
 string User::getUsername() const {return username;}
 string User::getPassword() const {return password;}
 
 const MyVector<Course*>& User::getCourse() const{
     return course;
 }
-//da aggiungere i corsi
+
 void User::setUsername(const string& u) {username=u;}
 void User::setPassword(const string& p) {password=p;}
 
@@ -35,7 +34,6 @@ void User::deleteCourse(Course* c){
 
 User::~User(){}
 
-//da aggiungere i corsi
 
 bool User::operator == (const User& u) const{
     return username==u.username && password == u.password;

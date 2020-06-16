@@ -18,9 +18,6 @@ private:
 
     QPushButton *confirm_button;
 
-    /*QWidget* container_button; //container del button
-    QBoxLayout* layout_button; //layout del container del button*/
-
     virtual void addForm();
 
     virtual void setStyle();

@@ -60,7 +60,6 @@ private slots:
 
     virtual void confirm_addform(const QString&, const QString&){}
     virtual void to_next_page(int index);
-    //virtual void to_previous_page();
 };
 
 #endif // CONTAINERADDQUIZFORM_H

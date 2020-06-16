@@ -38,11 +38,6 @@ public:
     virtual ~AddQuizForm();
 
 
-
-
-    //segnale per inviare i dati
-    //void send_information(const std::string& ,const MyVector<std::string>& ,const MyVector<std::string>&);
-
 private slots:
 
     //invia i dati del quiz al controller

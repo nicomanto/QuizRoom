@@ -27,16 +27,12 @@ void ModifyAddForm::addForm(){
     layout_button->addWidget(confirm_button);
     main_layout->addWidget(container_button);
 
-
-    //connect per il button verso send_information()
     connect(confirm_button,SIGNAL(clicked()),this,SLOT(send_information()));
 
 }
 
 void ModifyAddForm::setStyle(){
     BaseForm::setStyle();
-
-    //setWindowTitle("Modifica");
 
     //larghezza del title_form fissa
     title_form->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Fixed);

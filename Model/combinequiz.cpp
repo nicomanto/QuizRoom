@@ -11,7 +11,6 @@ const std::map<std::string,std::string>& CombineQuiz::getCorrectAnswer() const{
 void CombineQuiz::addCorrectCombine(const std::string& a1, const std::string& a2){
     correct_combine[a1]=a2;
 
-    //std::cout<<correct_combine[a1];
     setPointCAnswer();
 }
 

@@ -34,12 +34,10 @@ void AddCourseCode::setStyle(){
     code_form->setMaxLength(7);
 
     code_label->setAlignment(Qt::AlignCenter);
-    //code_form->setAlignment(Qt::AlignCenter);
 
 
     //setta la taglia della window
     setFixedSize(QSize(width_screen/5,height_screen/5));
-    //main_layout->SetFixedSize(QSize(width_screen/3,height_screen/3));
 
     //imposta la dimensione fissa dalla windowp
     setSizePolicy(QSizePolicy::Fixed,QSizePolicy::Fixed);
@@ -47,11 +45,7 @@ void AddCourseCode::setStyle(){
     //imposto l'altezza fissa del bottone
     confirm_button->setFixedHeight(height()/4);
     code_form->setFixedHeight(height()/7);
-    //confirm_button->setFixedWidth(width()/3);
     confirm_button->setAutoDefault(false);
-    //layout_button->setAlignment(Qt::AlignRight);
-
-
 
 
     QFile file(":/Resources/Style_sheet/style_addcoursecode.css");

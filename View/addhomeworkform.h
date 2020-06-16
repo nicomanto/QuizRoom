@@ -20,7 +20,6 @@ private:
     QCheckBox* is_score;
     QCheckBox* is_time;
 
-    //QLineEdit* max_score;  //dove scrivere il punteggio massimo
     QDateTimeEdit* deadline;  //dove scrivere la deadline
 
     QWidget* score_time_information;  //widget dell'informazioni sul tipo di compito(score/time)

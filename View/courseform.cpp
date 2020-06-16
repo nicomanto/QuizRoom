@@ -27,7 +27,6 @@ void CourseForm::addMenu(){
     QAction* previous_page= new QAction(QIcon(":/Resources/Images/left_arrow.png"),"",menubar); //torno alla pagina precedente
     QAction* exit_login = new QAction("ritorna alla pagina di login",options);
 
-    //connect(previous_page, &QAction::triggered, this, &MainWindow::open);
     //controllo se posso fare qualcosa con i compiti e con il corso
     bool can_do_somethingC=false;
     bool can_do_somethingH=false;
@@ -256,7 +255,6 @@ void CourseForm::to_addhomework(){
     layout_dialog->setSizeConstraint( QLayout::SetFixedSize );
 
     connect(temp,SIGNAL(addHomeworkinformation(const QString& ,const QString&, bool, bool, const DateTime&)),this,SLOT(confirm_addhomework(const QString& ,const QString&, bool, bool, const DateTime&)));
-    //connect(temp,SIGNAL(toClose()),dialog,SLOT(close()));
 
     dialog->show();
 }
@@ -280,7 +278,6 @@ void CourseForm::del_homework(int i){
     emit to_new_page(new CourseForm(user,control,this_course,relogin,parentWidget()));
     control.removeStackView();
 
-    //close();
 }
 
 
@@ -296,8 +293,6 @@ void CourseForm::confirm_addform(const QString& t, const QString& d){
 
    control.removeStackView();
 
-
-   //close();
 }
 
 
