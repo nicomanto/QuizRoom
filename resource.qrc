@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>Resources/style_course.css</file>
-        <file>Resources/style_homework.css</file>
-        <file>Resources/style_login.css</file>
-    </qresource>
-</RCC>
