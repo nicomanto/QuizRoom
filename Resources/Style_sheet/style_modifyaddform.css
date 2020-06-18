@@ -8,7 +8,6 @@ QPushButton{
     font-size: 11pt;
     color: white;
     background: rgb(18, 124, 237,200);
-    /*margin-top: 5px;*/
     border-radius: 5px;
 }
 
