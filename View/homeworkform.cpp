@@ -80,7 +80,6 @@ void HomeworkForm::addForm(){
    main_layout->addWidget(homework_instructions);
    container_info_quiz->setVisible(false);
 
-   QSignalMapper* signalMapperQuiz = new QSignalMapper (this);
 
     if(control.isScoreHomework(this_homework)) { //controllo se è scorehomework
         container_info_quiz->setVisible(true);
@@ -103,12 +102,7 @@ void HomeworkForm::addForm(){
 
    main_layout->addWidget(container_button);
 
-   connect(start_quiz,SIGNAL(clicked()),signalMapperQuiz,SLOT(map()));
-
-   signalMapperQuiz->setMapping(start_quiz, 0);
-   //mappatura dei siggnali con l'indice dei quiz (in questo caso è solo uno)
-   connect (signalMapperQuiz, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
-
+   connect(start_quiz, &QPushButton::clicked, [=]() {to_next_page(0);});
 
    connect(add_quiz,SIGNAL(clicked()),this,SLOT(to_addquiz()));
 
@@ -197,14 +191,10 @@ HomeworkForm *HomeworkForm::clone() const{
 
 void HomeworkForm::to_addquiz(){
     emit to_new_page(new ContainerAddQuizForm(user,control,this_homework,relogin,parentWidget()));
-
-    //close();
 }
 
 void HomeworkForm::to_next_page(int index){
     emit to_new_page(new ContainerQuizForm(user,control,this_homework,relogin,parentWidget()));
-
-    //close();
 }
 
 

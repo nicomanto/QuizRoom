@@ -59,16 +59,13 @@ void MainForm::addForm(){
 
     scroll->setWidget( container_scroll );  //il contenitore degli elemnti all'interno della scroll area
 
-    QSignalMapper* signalMapperCourse = new QSignalMapper (this);
-
     //for che aggiunge i bottoni
     for(unsigned int i=0; i <control.getNumberUserCourse(user); ++i){
 
         course.push_back(new QPushButton(QString::fromStdString(control.getCourseTitle(control.getCourse(user,i))),this));
 
         //connect del bottone corso
-        connect(course[i],SIGNAL(clicked()),signalMapperCourse,SLOT(map()));
-        signalMapperCourse->setMapping(course[i], i);
+        connect(course[i], &QPushButton::clicked, [=]() {to_next_page(i);});
 
 
 
@@ -89,10 +86,6 @@ void MainForm::addForm(){
 
     if(control.getNumberUserCourse(user)==0)
         scroll_layout->addWidget(new QLabel("Non sei iscritto a nessun corso"));
-
-
-    //mappatura dei signali dei bottoni del vettore con i relativi indici
-    connect (signalMapperCourse, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
 
 }
 
@@ -134,21 +127,14 @@ bool MainForm::addMenuButton(QPushButton *b,unsigned int i){
     MenuButton* button_options = new MenuButton(i,b,this);
     bool temp=false;
 
-    QSignalMapper* signalMapperDelete = new QSignalMapper (this);
-
-
     //controllare se un utente può eliminare un corso
     if(user->CanDeleteCourse()){
         QAction* del = new QAction("Elimina",button_options);
         button_options->addAction(del);
         temp=true;
 
-        connect(del,SIGNAL(triggered()),signalMapperDelete,SLOT(map()));
-        signalMapperDelete -> setMapping (del, i) ;
+        connect(del, &QAction::triggered, [=]() {del_course(i);});
     }
-
-    //mappatura dei segnali del menu a tendina con gli indici dei vettori
-    connect (signalMapperDelete, SIGNAL(mapped(int)), this, SLOT(del_course(int)));
 
     b->setMenu(button_options);
 

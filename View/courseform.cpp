@@ -86,16 +86,13 @@ void CourseForm::addForm(){
 
     scroll->setWidget( container_scroll );
 
-    QSignalMapper* signalMapperHomework = new QSignalMapper (this);
-
     //aggiungo i compiti del corso
     for(unsigned int i=0; i <control.getNumberCourseHomework(this_course); ++i){
         QString s= "Compito " + QString::number(i);
         homework.push_back(new QPushButton(QString::fromStdString(control.getHomeworkTitle(control.getHomework(this_course,i))),this));
 
         //connect del bottone compito
-        connect(homework[i],SIGNAL(clicked()),signalMapperHomework,SLOT(map()));
-        signalMapperHomework->setMapping(homework[i], i);
+        connect(homework[i], &QPushButton::clicked, [=]() {to_next_page(i);});
 
 
         homework_menu.push_back(new QPushButton(homework[i]));
@@ -116,10 +113,6 @@ void CourseForm::addForm(){
 
     if(control.getNumberCourseHomework(this_course)==0)
         scroll_layout->addWidget(new QLabel("Nessun compito presente"));
-
-
-    //mapputara dei signal dei bottoni con il proprio indice da inviare alla to_next_page
-    connect (signalMapperHomework, SIGNAL(mapped(int)), this, SLOT(to_next_page(int)));
 
     main_layout->addWidget(container_center);
 }
@@ -204,20 +197,14 @@ bool CourseForm::addMenuButton(QPushButton *b,unsigned int i){
     MenuButton* button_options = new MenuButton(i,b,this);
     bool temp=false;
 
-    QSignalMapper* signalMapperDelete = new QSignalMapper (this);
-
-
     //controllare se un utente può eliminare un corso
     if(control.UserCanDeleteCourse(user)){
         QAction* del = new QAction("Elimina",button_options);
         button_options->addAction(del);
         temp=true;
 
-        connect(del,SIGNAL(triggered()),signalMapperDelete,SLOT(map()));
-        signalMapperDelete -> setMapping (del, i) ;
+        connect(del, &QAction::triggered, [=]() {del_homework(i);});
     }
-
-    connect (signalMapperDelete, SIGNAL(mapped(int)), this, SLOT(del_homework(int)));
 
     b->setMenu(button_options);
 
