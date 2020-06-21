@@ -1,0 +1,56 @@
+
+
+QDateTimeEdit{
+    color: white;
+}
+
+QPushButton{
+    font-size: 11pt;
+    color: white;
+    background: rgb(18, 124, 237,200);
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color: rgb(18, 124, 237);
+}
+
+QPushButton:hover {
+    background-color: rgb(18, 124, 237);
+}
+
+QGroupBox{
+    font-size: 14pt;
+    color: rgb(141, 178, 211, 255);
+
+
+}
+
+QLineEdit {
+    color: white;
+    border: none;
+
+}
+
+QTextEdit {
+    color: white;
+    border: none;
+}
+
+QCheckBox {
+    color: white;
+}
+
+QCheckBox:indicator{
+    border: 1px solid white;
+    border-radius: 7px;
+}
+
+QCheckBox:indicator:checked {
+    background: rgb(141, 178, 211, 255);
+}
+
+
+
+
+

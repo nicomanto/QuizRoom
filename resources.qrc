@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/Images/left_arrow.png</file>
+        <file>Resources/Style_sheet/style_addquizform.css</file>
+        <file>Resources/Style_sheet/style_containerquiz.css</file>
+        <file>Resources/Style_sheet/style_course.css</file>
+        <file>Resources/Style_sheet/style_homework.css</file>
+        <file>Resources/Style_sheet/style_login.css</file>
+        <file>Resources/Style_sheet/style_main.css</file>
+        <file>Resources/Style_sheet/style_modifyaddform.css</file>
+        <file>Resources/Style_sheet/style_quiz.css</file>
+        <file>Resources/Images/quiz_app_icon.png</file>
+        <file>Resources/Images/error.png</file>
+        <file>Resources/Images/login.png</file>
+        <file>Resources/Images/modify_add.png</file>
+        <file>Resources/Images/result.png</file>
+        <file>Resources/Style_sheet/style_addcoursecode.css</file>
+        <file>Resources/Style_sheet/style_errormessage.css</file>
+        <file>Resources/Style_sheet/style_containeraddquiz.css</file>
+    </qresource>
+</RCC>

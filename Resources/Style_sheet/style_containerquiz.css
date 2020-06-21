@@ -1,0 +1,56 @@
+
+QWidget {
+    background-color: rgb(21, 30, 39, 255);
+    color: white;
+}
+
+
+QMenu {
+    background-color: rgb(50, 60, 80);
+}
+
+QMenuBar {
+    background: rgb(21, 30, 39, 150);
+    color: white;
+}
+
+QMenuBar::item:selected {
+    background: rgb(141, 178, 211, 255);
+    color: black;
+}
+
+QMenuBar::item:hover {
+    background: rgb(141, 178, 211, 255);
+    color: black;
+}
+
+QPushButton{
+    font-size: 12pt;
+
+}
+
+QPushButton#Endquiz {
+    font-size: 14pt;
+    color: black;
+    background: rgb(141, 178, 211, 255);
+    border-radius: 20px;
+}
+
+QPushButton#Endquiz:pressed {
+    color: white;
+    background-color: rgb(34, 47, 87);
+}
+
+QPushButton#Endquiz:hover {
+    color: white;
+    background-color: rgb(34, 47, 87);
+}
+
+QGroupBox{
+    font-size: 14pt;
+}
+
+
+QLabel{
+    color: rgb(141, 178, 211, 255);
+}

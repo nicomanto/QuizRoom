@@ -1,0 +1,58 @@
+QWidget{
+    background-color: rgb(21, 30, 39, 255);
+    color: white;
+}
+
+QMenu {
+    background-color: rgb(50, 60, 80);
+}
+
+QMenuBar {
+    background: rgb(21, 30, 39, 150);
+    color: white;
+}
+
+QMenuBar::item:selected {
+    background: rgb(141, 178, 211, 255);
+    color: black;
+}
+
+QMenuBar::item:hover {
+    background: rgb(141, 178, 211, 255);
+    color: black;
+}
+
+QPushButton{
+    font-size: 14pt;
+    color: black;
+    background: rgb(141, 178, 211, 255);
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    color: white;
+    background-color: rgb(34, 47, 87)
+}
+
+QPushButton:hover {
+    color: white;
+    background-color: rgb(34, 47, 87)
+}
+
+QGroupBox {
+ border: none;
+}
+
+QLineEdit {
+    background: white;
+    color: black;
+}
+
+QCheckBox {
+    background: white;
+    color: black;
+}
+
+QScrollBar {
+    color: white;
+}

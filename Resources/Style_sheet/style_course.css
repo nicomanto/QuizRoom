@@ -1,0 +1,56 @@
+
+QWidget {
+    background-color: rgb(21, 30, 39, 255);
+}
+
+QLabel {
+    color: rgb(141, 178, 211, 255);
+}
+
+QWidget#CourseCode {
+    color: rgb(141, 178, 211, 255);
+    text-decoration: underline;
+}
+
+QMenu {
+    background-color: rgb(50, 60, 80);
+}
+
+
+QMenuBar {
+    background: rgb(21, 30, 39, 150);
+    color: white;
+}
+
+QMenuBar::item:selected {
+    background: rgb(141, 178, 211, 255);
+    color: black;
+}
+
+QMenuBar::item:hover {
+    background: rgb(141, 178, 211, 255);
+    color: black;
+}
+
+QPushButton{
+    margin-top: 10;
+    margin-bottom: 10;
+    font-size: 12pt;
+    color: black;
+    background: rgb(141, 178, 211, 255);
+    border-radius: 10px;
+}
+
+QPushButton:pressed {
+    color: white;
+    background-color: rgb(34, 47, 87)
+}
+
+QPushButton:hover {
+    color: white;
+    background-color: rgb(34, 47, 87)
+}
+
+QScrollBar {
+    color: white;
+}

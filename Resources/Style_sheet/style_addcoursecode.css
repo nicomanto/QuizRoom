@@ -1,0 +1,23 @@
+QLabel{
+    color: rgb(141, 178, 211, 255);
+}
+
+QLineEdit {
+    color: white;
+}
+
+QPushButton{
+    font-size: 11pt;
+    color: white;
+    background: rgb(18, 124, 237,200);
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+QPushButton:pressed {
+    background-color: rgb(18, 124, 237)
+}
+
+QPushButton:hover {
+    background-color: rgb(18, 124, 237)
+}
