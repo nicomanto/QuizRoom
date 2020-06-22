@@ -1,8 +1,8 @@
-# Progetto di Programmazione ad oggetti dell'Università di Padova (QuizRoom)
+# Progetto di Programmazione ad Oggetti dell'Università di Padova (QuizRoom)
 QuizRoom è un applicazione desktop che permette di creare/eseguire dei quiz. L'applicativo è stato pensato sopratutto per essere usato in ambito educativo tra professori e studenti.
 Maggiori informazioni possono essere trovate nei file **relazione_mantovani.pdf** e **relazione_petrea.pdf**. 
 
-## Divisione Model-View
+## Divisione Model-Control-View (MCV)
 Il progetto è diviso in cartelle contenenti i file raggruppati per diversa categoria:
 *  **Model**: contiene i modelli (struttura) del nostro software
 *  **Control**: contiene **controlller.h** e **controller.cpp**
