@@ -9,7 +9,7 @@ Il progetto è diviso in cartelle contenenti i file raggruppati per diversa cate
 *  **Model**: contiene i modelli (struttura) del nostro software
 *  **Control**: contiene `controlller.h` e `controller.cpp`
 *  **View**: contiene la GUI (interfaccia grafica) del nostro software 
-*  **Resources**: contiene il foglio di stile `(style.css)` per gli elementi dell'app e le immagini dell'app
+*  **Resources**: contiene la cartella **Style_sheet** contenente i fogli di stile (**css**). Inoltre contiene la cartella **Images** con le immagini utilizzate all'interno dell'app
 
 ## Valutazione
 Il progetto è stato valutato fra ottimo ed eccellente, qui di seguito alcune considerazioni:
