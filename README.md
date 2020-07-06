@@ -14,23 +14,23 @@ Il progetto è diviso in cartelle contenenti i file raggruppati per diversa cate
 ## Valutazione
 Il progetto è stato valutato fra ottimo ed eccellente, qui di seguito alcune considerazioni:
 
-### Vincoli obbligatori
-* - Warning non gravi durante la compilazione (unused paramter, sign compare)
+**Vincoli obbligatori**
+* Warning non gravi durante la compilazione (unused paramter, sign compare)
 
-### Orientamento ad oggetti
-* + Incapsulamento
-* + Modularità (modello logico e la GUI sono separati)
-* + Estensibilità ed evolvibilità, polimorfismo
-
-
-### Funzionalità
-* + Sono utilizzate diverse gerarchie
-* + Sistema di autenticazione multi-utente
-* + Sistema di gestione di quiz/compiti
+**Orientamento ad oggetti**
+* Incapsulamento
+* Modularità (modello logico e la GUI sono separati)
+* Estensibilità ed evolvibilità, polimorfismo
 
 
-### GUI
-* + Visualizza i diversi tipi di dato in maniera opportuna
-* + Usabile e intuitiva
-* + Robusta, gestisce ridimensionamento
-* + Aspetti grafici ben curati
+**Funzionalità**
+* Sono utilizzate diverse gerarchie
+* Sistema di autenticazione multi-utente
+* Sistema di gestione di quiz/compiti
+
+
+**GUI**
+* Visualizza i diversi tipi di dato in maniera opportuna
+* Usabile e intuitiva
+* Robusta, gestisce ridimensionamento
+* Aspetti grafici ben curati
