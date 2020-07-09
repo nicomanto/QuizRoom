@@ -15,7 +15,7 @@ Il progetto è diviso in cartelle contenenti i file raggruppati per diversa cate
 Il progetto è stato valutato fra ottimo ed eccellente, qui di seguito alcune considerazioni:
 
 **Vincoli obbligatori**
-* Warning non gravi durante la compilazione (unused paramter, sign compare)
+* Warning non gravi durante la compilazione (unused parameter, sign compare)
 
 **Orientamento ad oggetti**
 * Incapsulamento
