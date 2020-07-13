@@ -9,7 +9,7 @@ All'interno dell'artifacts (archivio scaricabile alla voce **build** del downloa
 ## Divisione Model-Control-View (MCV)
 Il progetto è diviso in cartelle contenenti i file raggruppati per diversa categoria:
 *  **Model**: contiene i modelli (struttura) del nostro software
-*  **Control**: contiene `controlller.h` e `controller.cpp`
+*  **Control**: contiene `controlller.h` e `controller.cpp` i quali garantiscono un interfaccia fra GUI e modello
 *  **View**: contiene la GUI (interfaccia grafica) del nostro software 
 *  **Resources**: contiene la cartella **Style_sheet** contenente i fogli di stile (**css**). Inoltre contiene la cartella **Images** con le immagini utilizzate all'interno dell'app
 
