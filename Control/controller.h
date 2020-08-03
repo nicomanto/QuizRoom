@@ -10,8 +10,6 @@
 #include "Model/combinequiz.h"
 #include "Model/classicquiz.h"
 
-#include <QStackedWidget>
-
 
 class PrincipalForm;
 
