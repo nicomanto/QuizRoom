@@ -1,12 +1,29 @@
 # QuizRoom
 
-[![Generic badge](https://img.shields.io/gitlab/pipeline/nicomanto/progetto_p2/master?label=Linux%20build)](https://shields.io/)
+[![Linux Build badge](https://img.shields.io/gitlab/pipeline/nicomanto/progetto_p2/master?label=Linux%20build)](https://shields.io/)
+
+<div align="center">
+  ![QuizRoom Logo](Resources/Images/Icon_Applicazione.png)
+</div>
 
 ## Descrizione
-QuizRoom è un applicazione desktop (sviluppata con **Qt**) che permette di creare/eseguire dei quiz. L'applicativo è stato pensato sopratutto per essere usato in ambito educativo tra professori e studenti.
+QuizRoom è un applicazione desktop (sviluppata con **Qt**) che permette di creare/eseguire dei quiz. L'applicativo è stato pensato soprattutto per essere usato in ambito educativo tra professori e studenti.
 Maggiori informazioni possono essere trovate nei file `relazione_mantovani.pdf` e `relazione_petrea.pdf`.
 
-All'interno dell'artifacts (archivio scaricabile alla voce **build** del download) si trova l'eseguibile **Progetto_P2**. Per eseguire il programma in ambiente Linux (dopo aver scaricato Qt) si deve scrivere il seguente comando : `./Progetto_P2`
+### Requisiti
+Qt 5.12.5 o successivo
+
+### Compilazione
+L'applicativo è stato creato per essere eseguito in ambiente Linux, anche se Windows è supportato. All'interno dell'artifacts (archivio scaricabile alla voce **build** del download) si trova l'eseguibile **Progetto_P2**.
+Per eseguire il programma in ambiente Linux (dopo aver scaricato Qt) si deve scrivere il seguente comando : `./Progetto_P2`
+
+Se invece si desidera avere il codice sorgente, per eseguire l'applicazione bisogna:
+
+1. scaricare la *repository* da *GitLab*
+2. aprire il terminale (prompt dei comandi)
+3. spostarsi nella repository appena scaricata
+4. scrivere `qmake Progetto_P2.pro` e successivamente `make`
+5. eseguire con il comando `./Progetto_P2`
 
 ## Divisione Model-Control-View (MCV)
 Il progetto è diviso in cartelle contenenti i file raggruppati per diversa categoria:
@@ -18,22 +35,22 @@ Il progetto è diviso in cartelle contenenti i file raggruppati per diversa cate
 ## Valutazione
 Il progetto è stato valutato fra ottimo ed eccellente, qui di seguito alcune considerazioni:
 
-**Vincoli obbligatori**
+### Vincoli obbligatori
 * Warning non gravi durante la compilazione (unused parameter, sign compare)
 
-**Orientamento ad oggetti**
+### Orientamento ad oggetti
 * Incapsulamento
 * Modularità (modello logico e la GUI sono separati)
 * Estensibilità ed evolvibilità, polimorfismo
 
 
-**Funzionalità**
+### Funzionalità
 * Sono utilizzate diverse gerarchie
 * Sistema di autenticazione multi-utente
 * Sistema di gestione di quiz/compiti
 
 
-**GUI**
+### GUI
 * Visualizza i diversi tipi di dato in maniera opportuna
 * Usabile e intuitiva
 * Robusta, gestisce ridimensionamento
