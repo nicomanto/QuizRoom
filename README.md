@@ -1,5 +1,7 @@
 # QuizRoom
 
+[![Generic badge](https://img.shields.io/gitlab/pipeline/nicomanto/progetto_p2/master?label=Linux%20build)](https://shields.io/)
+
 ## Descrizione
 QuizRoom è un applicazione desktop (sviluppata con **Qt**) che permette di creare/eseguire dei quiz. L'applicativo è stato pensato sopratutto per essere usato in ambito educativo tra professori e studenti.
 Maggiori informazioni possono essere trovate nei file `relazione_mantovani.pdf` e `relazione_petrea.pdf`.
