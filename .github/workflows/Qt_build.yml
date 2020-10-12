@@ -25,7 +25,7 @@ jobs:
       
       - name: Compile project
         run: |
-          - qmake
+          - qmake Progetto_P2.pro
           - make
 
       - name: Upload to virtual env
