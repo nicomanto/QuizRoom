@@ -2,10 +2,6 @@
 
 [![Linux Build badge](https://img.shields.io/gitlab/pipeline/nicomanto/progetto_p2/master?label=Linux%20build)](https://shields.io/)
 
-<div align="center">
-  ![QuizRoom Logo](Resources/Images/Icon_Applicazione.png)
-</div>
-
 ## Descrizione
 QuizRoom è un applicazione desktop (sviluppata con **Qt**) che permette di creare/eseguire dei quiz. L'applicativo è stato pensato soprattutto per essere usato in ambito educativo tra professori e studenti.
 Maggiori informazioni possono essere trovate nei file `relazione_mantovani.pdf` e `relazione_petrea.pdf`.
@@ -14,12 +10,12 @@ Maggiori informazioni possono essere trovate nei file `relazione_mantovani.pdf` 
 Qt 5.12.5 o successivo
 
 ### Compilazione
-L'applicativo è stato creato per essere eseguito in ambiente Linux, anche se Windows è supportato. All'interno dell'artifacts (archivio scaricabile alla voce **build** del download) si trova l'eseguibile **Progetto_P2**.
+L'applicativo è stato creato per essere eseguito in ambiente Linux, anche se Windows è supportato. Per l'eseguibile già compilato si rimanda alla repository su *GitLab* https://gitlab.com/nicomanto/progetto_p2.
 Per eseguire il programma in ambiente Linux (dopo aver scaricato Qt) si deve scrivere il seguente comando : `./Progetto_P2`
 
 Se invece si desidera avere il codice sorgente, per eseguire l'applicazione bisogna:
 
-1. scaricare la *repository* da *GitLab*
+1. scaricare la *repository* da *GitHub*
 2. aprire il terminale (prompt dei comandi)
 3. spostarsi nella repository appena scaricata
 4. scrivere `qmake Progetto_P2.pro` e successivamente `make`
